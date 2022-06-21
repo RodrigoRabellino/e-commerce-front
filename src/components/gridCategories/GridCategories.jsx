@@ -1,5 +1,5 @@
-import { Box, Grid, Button, Typography } from "@mui/material";
-import { Masonry } from "@mui/lab";
+import { Box, Grid } from "@mui/material";
+import "./gridCategories.css";
 
 const GridCategories = () => {
   const containerStyles = {
@@ -7,14 +7,14 @@ const GridCategories = () => {
     overflow: "hidden",
   };
   return (
-    <Box width="100%" display="flex" justifyContent="center" marginTop="100px">
-      <Box
-        display="flex"
-        width="75%"
-        border="1px solid green"
-        height="700px"
-      ></Box>
-    </Box>
+    <Grid container spacing={0} marginTop="100px">
+      <Grid item sx={4}>
+        <Box xs={{ height: "100px", border: "1px solid red" }}>holiwi</Box>
+      </Grid>
+      <Grid item sx={4}>
+        <Box xs={{ height: "100px", border: "1px solid red" }}></Box>
+      </Grid>
+    </Grid>
   );
 };
 
