@@ -5,7 +5,16 @@ import { ThemeProvider, createTheme } from "@mui/material";
 
 const myTheme = createTheme({
   palette: {
-    mode: "dark",
+    primary: {
+      main: "#BF8832",
+      contrastText: "#F2DBB8",
+      dark: "#8C5032",
+    },
+    secondary: {
+      main: "#8C5032",
+      light: "#F2DBB8",
+      contrastText: "#F2DBB8",
+    },
   },
 });
 
