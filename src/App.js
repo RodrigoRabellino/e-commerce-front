@@ -16,6 +16,10 @@ const myTheme = createTheme({
       light: "#F2DBB8",
       contrastText: "#F2DBB8",
     },
+    background: {
+      default: "#f2dbb8",
+      paper: "#f2dbb8",
+    },
   },
 });
 
@@ -24,7 +28,6 @@ function App() {
     <ThemeProvider theme={myTheme}>
       <div className="App">
         <Navbar />
-        <MyCarousel />
         <MyRoutes />
       </div>
     </ThemeProvider>
