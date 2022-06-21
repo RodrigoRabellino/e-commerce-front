@@ -51,20 +51,20 @@ const MyChartBar = () => {
       {
         label: "Guitars",
         data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-        backgroundColor: "#5a9944",
+        backgroundColor: "#FFFB7D",
       },
       {
         label: "Amps",
         data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-        backgroundColor: "#8c5032",
+        backgroundColor: "#FBAB7E",
       },
       {
         label: "Others",
         data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-        backgroundColor: "#519970",
+        backgroundColor: "#85FFBD",
       },
     ],
   };
-  return <Bar options={options} data={data} style={{ height: "400px" }} />;
+  return <Bar options={options} data={data} />;
 };
 export default MyChartBar;
