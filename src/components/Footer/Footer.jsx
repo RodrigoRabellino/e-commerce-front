@@ -7,14 +7,15 @@ import {
   Divider,
   FormControl,
   Typography,
-  TextField,
+  Button,
 } from "@mui/material";
+
+import "./Footer.css";
 
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-
 
 function Footer() {
   return (
@@ -145,62 +146,34 @@ function Footer() {
                   subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing
                   elit. Quos blanditiis tenetur
                 </Typography>
-                <TextField
-                  label="Filled success"
-                  variant="filled"
-                  color="success"
-                  focused
-                />
+                <input type="text" placeholder="Enter Your Email" />
+                <Button  variant="contained" color="primary">
+                  Send
+                </Button>
               </FormControl>
             </Grid>
           </Grid>
           <Divider></Divider>
 
-          <Grid container spacing={4} paddingTop={6}>
+          <Grid container spacing={4} paddingTop={4}>
             <Grid item xs={12} sm={4}>
-              <Box textAlign="left" pt={{ xs: 5, sm: 0 }} pb={{ xs: 5, sm: 0 }}>
+              <Box
+                textAlign="left"
+                pt={{ xs: 1, sm: 4 }}
+                pb={{ xs: 1, sm: 4 }}
+                pl={{ xs: 3, sm: 6 }}
+              >
                 &reg;{new Date().getFullYear()} nombredelnegocio
               </Box>
-              </Grid>
-
-              <Grid item xs={12} sm={4}>
-                <Box
-                  textAlign="center"
-                  pt={{ xs: 5, sm: 0 }}
-                  pb={{ xs: 5, sm: 0 }}
-                >
-                  <Link href="" color="inherit">
-                    <InstagramIcon />
-                  </Link>
-                  <Link href="" color="inherit" marginLeft={1}>
-                    <GitHubIcon />
-                  </Link>
-                  <Link href="" color="inherit" marginLeft={1}>
-                    <TwitterIcon />
-                  </Link>
-                  <Link href="" color="inherit" marginLeft={1}>
-                    <LinkedInIcon />
-                  </Link>
-                </Box>
-             
             </Grid>
 
             <Grid item xs={12} sm={4}>
-            <Box textAlign="right"   pt={{ xs: 5, sm: 0 }}
-            pb={{ xs: 5, sm: 0 }}>
-            by: grupo:3(nombres)
-
-          </Box>
-            </Grid>
-          </Grid>
-
-          {/*    <Box
-            textAlign="center"
-         
-            pt={{ xs: 5, sm: 10 }}
-            pb={{ xs: 5, sm: 0 }}
-          >
-              <Link href="" color="inherit">
+              <Box
+                textAlign="center"
+                pt={{ xs: 1, sm: 4 }}
+                pb={{ xs: 1, sm: 4 }}
+              >
+                <Link href="" color="inherit">
                   <InstagramIcon />
                 </Link>
                 <Link href="" color="inherit" marginLeft={1}>
@@ -212,18 +185,20 @@ function Footer() {
                 <Link href="" color="inherit" marginLeft={1}>
                   <LinkedInIcon />
                 </Link>
+              </Box>
+            </Grid>
 
-
-      
-          </Box>
-          <Box textAlign="left"  pt={{ xs: 5, sm: 0 }}
-            pb={{ xs: 5, sm: 0 }}>
-            &reg;{new Date().getFullYear()} nombredelnegocio
-
-          </Box>
-
-            
-           */}
+            <Grid item xs={12} sm={4}>
+              <Box
+                textAlign="right"
+                pt={{ xs: 1, sm: 4 }}
+                pb={{ xs: 1, sm: 4 }}
+                pr={{ xs: 3, sm: 6 }}
+              >
+                by: grupo:3(nombres)
+              </Box>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
     </>
