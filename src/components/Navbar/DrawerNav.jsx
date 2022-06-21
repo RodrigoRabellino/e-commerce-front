@@ -13,7 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 function DrawerNav() {
   const [openDrawer, setOpenDrawer] = useState(false);
   return (
-    <React.Fragment>
+    <>
       <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <List>
          
@@ -31,7 +31,7 @@ function DrawerNav() {
       >
         <MenuIcon />
       </IconButton>
-    </React.Fragment>
+    </>
   );
 }
 

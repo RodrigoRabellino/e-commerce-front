@@ -3,6 +3,7 @@ import MyRoutes from "./MyRoutes";
 import Navbar from "./components/Navbar/Navbar";
 import { ThemeProvider, createTheme } from "@mui/material";
 import MyCarousel from "./components/homePage/MyCarousel";
+import Footer from "./components/Footer/Footer";
 
 const myTheme = createTheme({
   palette: {
@@ -28,7 +29,9 @@ function App() {
     <ThemeProvider theme={myTheme}>
       <div className="App">
         <Navbar />
+        <MyCarousel/>
         <MyRoutes />
+        <Footer/>
       </div>
     </ThemeProvider>
   );
