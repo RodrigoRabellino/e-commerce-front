@@ -13,3 +13,12 @@ input[type=text]{
     border-color:#BF8832;
     box-shadow:0 0 8px 0 #BF8832;
   }
+
+  .footerLink {
+    text-decoration: none;
+    color: #BF8832;
+  }
+  
+  .footerLink:hover{
+    color: #8C5032;
+  }
