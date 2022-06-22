@@ -27,7 +27,7 @@ function ElevationScroll(props) {
 
 function Navbar() {
   const [value, setValue] = useState();
-  const [isCartOpen, setIsCartOpen] = useState(true);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -65,6 +65,7 @@ function Navbar() {
                     </Button>
                     <ShoppingCartIcon
                       sx={{ paddingTop: 0.1 }}
+                      className="hover"
                       onClick={() => setIsCartOpen(true)}
                     />
                   </Box>
