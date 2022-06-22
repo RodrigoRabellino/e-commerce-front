@@ -8,9 +8,11 @@ import {
   useMediaQuery,
   useTheme,
   useScrollTrigger,
+  Container
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
+
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -32,6 +34,7 @@ function Navbar() {
     <>
       <ElevationScroll>
         <AppBar position="fixed">
+        <Container>
           <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography>LOGUITO</Typography>
             {isMatch ? (
@@ -60,6 +63,7 @@ function Navbar() {
               </>
             )}
           </Toolbar>
+          </Container>
         </AppBar>
       </ElevationScroll>
     </>

@@ -3,6 +3,13 @@ import { MoreVert } from "@mui/icons-material";
 import MyChartBar from "./myCharts/MyChartBar";
 
 const DashBoard = () => {
+  const cardStyle = {
+    background:
+      "linear-gradient(90deg, rgba(41,255,198,1) 0%, rgba(32,227,178,1) 50%, rgba(12,235,235,1) 100%)",
+    width: "300px",
+    height: "150px",
+    padding: "0.65rem",
+  };
   return (
     <Box
       width="100%"
@@ -14,12 +21,9 @@ const DashBoard = () => {
       justifyContent="center"
     >
       <Box padding="1rem">
-        <Grid container spacing={4}>
+        <Grid container spacing={4} marginBottom="0.65rem">
           <Grid item lg="auto">
-            <Paper
-              elevation={0}
-              sx={{ width: "300px", height: "150px", padding: "0.65rem" }}
-            >
+            <Paper elevation={0} sx={cardStyle}>
               <Box
                 sx={{
                   width: "100%",
@@ -35,10 +39,7 @@ const DashBoard = () => {
             </Paper>
           </Grid>
           <Grid item lg="auto">
-            <Paper
-              elevation={0}
-              sx={{ width: "300px", height: "150px", padding: "0.65rem" }}
-            >
+            <Paper elevation={0} sx={cardStyle}>
               <Box
                 sx={{
                   width: "100%",
@@ -54,10 +55,7 @@ const DashBoard = () => {
             </Paper>
           </Grid>
           <Grid item lg="auto">
-            <Paper
-              elevation={0}
-              sx={{ width: "300px", height: "150px", padding: "0.65rem" }}
-            >
+            <Paper elevation={0} sx={cardStyle}>
               <Box
                 sx={{
                   width: "100%",
@@ -80,10 +78,10 @@ const DashBoard = () => {
       <Paper
         elevation={0}
         sx={{
+          ...cardStyle,
           width: "300px",
           height: "100%",
           padding: "0.65rem",
-          bgcolor: "#bf8832",
         }}
       >
         <Box
