@@ -123,7 +123,8 @@ const ModuleView = ({ product, handleNavigate }) => {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "fill",
+            objectFit: "cover",
+            objectPosition: "top",
           }}
         />
       </CardMedia>
