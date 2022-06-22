@@ -133,8 +133,13 @@ function Footer() {
                   subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing
                   elit. Quos blanditiis tenetur
                 </Typography>
+<<<<<<< Updated upstream
                 <input type="text" placeholder="Enter Your Email" />
                 <Button variant="contained" color="primary">
+=======
+                <input className="suscribe" type="text" placeholder="Enter Your Email" />
+                <Button  variant="contained" color="primary">
+>>>>>>> Stashed changes
                   Send
                 </Button>
               </FormControl>

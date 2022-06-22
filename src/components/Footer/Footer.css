@@ -1,4 +1,4 @@
-input[type=text]{
+.suscribe[type=text]{
     width:100%;
     border:2px solid #aaa;
     border-radius:4px;
@@ -9,7 +9,7 @@ input[type=text]{
     transition:.3s;
   }
   
-  input[type=text]:focus{
+  .suscribe[type=text]:focus{
     border-color:#BF8832;
     box-shadow:0 0 8px 0 #BF8832;
   }
