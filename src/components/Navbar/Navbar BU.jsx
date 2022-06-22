@@ -27,7 +27,6 @@ function ElevationScroll(props) {
 
 function Navbar() {
   const [value, setValue] = useState();
-  const [isCartOpen, setIsCartOpen] = useState(true);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -63,10 +62,7 @@ function Navbar() {
                     <Button variant="text" color="secondary">
                       Login
                     </Button>
-                    <ShoppingCartIcon
-                      sx={{ paddingTop: 0.1 }}
-                      onClick={() => setIsCartOpen(true)}
-                    />
+                    <ShoppingCartIcon sx={{ paddingTop: 0.1 }} />
                   </Box>
                 </>
               )}
@@ -74,7 +70,6 @@ function Navbar() {
           </Container>
         </AppBar>
       </ElevationScroll>
-      <CartDrawer isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
     </>
   );
 }
