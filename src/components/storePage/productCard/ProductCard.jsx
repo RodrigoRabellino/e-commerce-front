@@ -8,12 +8,17 @@ import {
   CardContent,
   Divider,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addProduct } from "../../../Redux/product";
 
 const ProductCard = ({ product, display }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleNavigate = () =>
+  const handleNavigate = () => {
     navigate(`/product/${product._id}`, { replace: false });
+    dispatch(addProduct(product));
+  };
 
   return (
     <Grid item xs={display === "module" ? "auto" : 12}>

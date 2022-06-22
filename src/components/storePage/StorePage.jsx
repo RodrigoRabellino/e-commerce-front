@@ -133,6 +133,7 @@ const StorePage = () => {
                     key={product.id}
                     product={product}
                     display={viewDisplay}
+                    onClick={() => console.log(product)}
                   />
                 );
               })}

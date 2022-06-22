@@ -13,7 +13,7 @@ const MyRoutes = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/admin" element={<DashBoard />} />
-      <Route path="/productDetail" element={<ProductDetail />} />
+      <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/categories" element={<GridCategories />} />
       <Route path="/store" element={<StorePage />} />
