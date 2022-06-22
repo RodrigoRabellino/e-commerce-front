@@ -22,6 +22,9 @@ const myTheme = createTheme({
       paper: "#f2dbb8",
     },
   },
+  typography: {
+    fontFamily: ["Raleway"],
+  },
 });
 
 function App() {
