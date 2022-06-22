@@ -31,7 +31,6 @@ function ProductDetail() {
   // ];
 
   const product = useSelector((state) => state.products);
-  console.log(product);
 
   return (
     <Container maxWidth="lg">
