@@ -1,7 +1,9 @@
 import {
   Box,
+  Button,
   Grid,
   Paper,
+  Stack,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
@@ -20,8 +22,12 @@ const StorePage = () => {
   const [viewDisplay, setViewDisplay] = useState("module");
 
   const handleNextPage = () => {
-    setPage((prev) => prev++);
+    //setPage((prev) => prev++);
     console.log("handlemore");
+  };
+
+  const handleToggleView = (newValue) => {
+    console.log(newValue);
   };
 
   useEffect(() => {
@@ -29,12 +35,10 @@ const StorePage = () => {
       const resp = await fetchProducts(numPage);
       setProducts((prev) => [...prev, ...resp]);
     };
-    //getProducts(1);
+    getProducts(page);
   }, [page]);
-  console.log(products);
   return (
     <Box
-      height="100vh"
       marginTop="65px"
       display="flex"
       padding="0.65rem"
@@ -42,17 +46,63 @@ const StorePage = () => {
     >
       <Paper
         elevation={0}
-        sx={{ width: "25%", height: "50%", position: "sticky", top: "70px" }}
-      ></Paper>
-      <Box
-        width="70%"
-        display="flex"
-        flexDirection="column"
-        border="1px solid red"
+        sx={{
+          width: "20%",
+          minWidth: "170px",
+          maxWidth: "270px",
+          height: "400px",
+          position: "sticky",
+          top: "70px",
+          padding: "1rem",
+        }}
       >
-        <Box display="flex" alignItems="center" justifyContent="space-between">
+        <Typography variant="h5" color="secondary">
+          Categories
+        </Typography>
+        <Stack marginTop="1rem" spacing={2}>
+          <Button variant="contained" sx={{ borderRadius: "50px" }}>
+            All Products
+          </Button>
+          <Button
+            variant="outlined"
+            elevation={0}
+            sx={{ borderRadius: "50px" }}
+          >
+            Guitars
+          </Button>
+          <Button
+            variant="outlined"
+            elevation={0}
+            sx={{ borderRadius: "50px" }}
+          >
+            Bass
+          </Button>
+          <Button
+            variant="outlined"
+            elevation={0}
+            sx={{ borderRadius: "50px" }}
+          >
+            Amps
+          </Button>
+          <Button
+            variant="outlined"
+            elevation={0}
+            sx={{ borderRadius: "50px" }}
+          >
+            Accessories
+          </Button>
+        </Stack>
+      </Paper>
+      <Box width="75%" display="flex" flexDirection="column">
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          marginBottom="1rem"
+        >
           <Typography variant="h4">{categorySelected}</Typography>
           <ToggleButtonGroup
+            size="small"
             exclusive
             color="primary"
             value={viewDisplay}
@@ -73,13 +123,16 @@ const StorePage = () => {
             hasMore={true}
             loader={<LoadingSkeleton />}
             scrollThreshold={0.95}
+            endMessage={null}
           >
-            <Grid container spacing={2}>
+            <Grid container spacing={2} justifyContent="center">
               {products.map((product) => {
                 return (
-                  <Grid item lg="auto" key={product.id}>
-                    <ProductCard product={product} />
-                  </Grid>
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    display={viewDisplay}
+                  />
                 );
               })}
             </Grid>

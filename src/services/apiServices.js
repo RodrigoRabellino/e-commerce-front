@@ -18,3 +18,12 @@ export const fetchOneProduct = async (id) => {
     return error;
   }
 };
+
+export const fetchCategories = async () => {
+  try {
+    const response = axios.get(`${API_URL}/category`);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
