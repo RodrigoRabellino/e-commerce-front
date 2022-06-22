@@ -113,7 +113,7 @@ function Footer() {
             </Grid>
 
             <Grid item xs={12} sm={3}>
-              <FormControl variant="standart">
+              <FormControl variant="standard">
                 <Typography
                   variant="h5"
                   gutterBottom
