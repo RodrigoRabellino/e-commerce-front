@@ -29,9 +29,8 @@ function App() {
     <ThemeProvider theme={myTheme}>
       <div className="App">
         <Navbar />
-        <MyCarousel/>
         <MyRoutes />
-        <Footer/>
+        <Footer />
       </div>
     </ThemeProvider>
   );
