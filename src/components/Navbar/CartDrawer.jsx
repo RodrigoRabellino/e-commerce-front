@@ -14,19 +14,30 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
         <Drawer anchor="right" open={isCartOpen}>
           <Box p={2} width="400px" textAlign="center" role="presentation">
             <div className="d-flex border-bottom border-white">
-              <Typography variant="h4" component="div" className="flex-grow-1">
+              <Typography
+                variant="h4"
+                component="div"
+                className="flex-grow-1"
+                sx={{ color: "#8C5032" }}
+              >
                 Shopping Cart
               </Typography>
               <Button
                 variant="text"
                 onClick={() => setIsCartOpen(false)}
-                className="flex-shrink-1"
+                className="flex-shrink-1 navLink"
+                sx={{ color: "#8C5032" }}
               >
                 X
               </Button>
             </div>
           </Box>
-          <Box p={2} width="400px" className="row mt-5">
+          <Box
+            p={2}
+            width="400px"
+            className="row mt-5"
+            sx={{ color: "#8C5032" }}
+          >
             <div className="col text-center">
               <span style={{ fontSize: "3rem" }}>
                 <FontAwesomeIcon icon={faCartShopping} />
