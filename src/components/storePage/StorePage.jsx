@@ -45,14 +45,14 @@ const StorePage = () => {
       justifyContent="space-around"
     >
       <Paper
-        elevation={0}
+        elevation={2}
         sx={{
           width: "20%",
           minWidth: "170px",
           maxWidth: "270px",
           height: "400px",
           position: "sticky",
-          top: "70px",
+          top: "75px",
           padding: "1rem",
         }}
       >
@@ -124,8 +124,9 @@ const StorePage = () => {
             loader={<LoadingSkeleton />}
             scrollThreshold={0.95}
             endMessage={null}
+            style={{ paddingTop: "1rem" }}
           >
-            <Grid container spacing={2} justifyContent="center">
+            <Grid container spacing={2} justifyContent="center" paddingX="1rem">
               {products.map((product) => {
                 return (
                   <ProductCard
