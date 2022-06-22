@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Box,
   AppBar,
@@ -13,6 +14,7 @@ import {
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
 import CartDrawer from "./CartDrawer";
+import "./NavBar.css";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -37,7 +39,9 @@ function Navbar() {
         <AppBar position="fixed">
           <Container>
             <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography>LOGUITO</Typography>
+              <Link to="/" className="navLink">
+                <Typography>LOGUITO</Typography>
+              </Link>
               {isMatch ? (
                 <>
                   <DrawerNav />
@@ -49,23 +53,31 @@ function Navbar() {
                     justifyContent="space-between"
                     width="35%"
                   >
-                    <Typography variant="button" color="secondary">
-                      All Products
+                    <Typography variant="button">
+                      <Link to="/store" className="navLink">
+                        All Products
+                      </Link>
                     </Typography>
-                    <Typography variant="button" color="secondary">
-                      Contact Us
+                    <Typography variant="button">
+                      <Link to="/" className="navLink">
+                        Contact Us
+                      </Link>
                     </Typography>
-                    <Typography variant="button" color="secondary">
-                      About Us
+                    <Typography variant="button">
+                      <Link to="/aboutus" className="navLink">
+                        About Us
+                      </Link>
                     </Typography>
                   </Box>
                   <Box>
-                    <Button variant="text" color="secondary">
-                      Login
-                    </Button>
+                    <Typography variant="button">
+                      <Link to="/login" className="hover navLink">
+                        Login
+                      </Link>
+                    </Typography>
                     <ShoppingCartIcon
-                      sx={{ paddingTop: 0.1 }}
-                      className="hover"
+                      sx={{ paddingTop: 0.1, marginLeft: 2 }}
+                      className="hover navLink"
                       onClick={() => setIsCartOpen(true)}
                     />
                   </Box>
