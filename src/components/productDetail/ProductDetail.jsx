@@ -1,8 +1,33 @@
-import React from "react";
 import { Grid, Typography, Button, Box, Link } from "@mui/material";
+import Carousel from "react-material-ui-carousel";
 import { Block } from "@mui/icons-material";
 
 function ProductDetail() {
+  // const Item = [
+  //   {
+  //     name: "Random Name #1",
+  //     description: "Probably the most random thing you have ever seen!",
+  //   },
+  // ];
+
+  // const items = [
+  //   {
+  //     name: "Random Name #1",
+  //     description: "Probably the most random thing you have ever seen!",
+  //   },
+  //   {
+  //     name: "Random Name #2",
+  //     description: "Hello World!",
+  //   },
+  //   {
+  //     name: "Random Name #3",
+  //     description: "Hello World!",
+  //   },
+  //   {
+  //     name: "Random Name #4",
+  //     description: "Hello World!",
+  //   },
+  // ];
   return (
     <Grid
       sx={{
@@ -23,15 +48,13 @@ function ProductDetail() {
           }}
           src="https://images.unsplash.com/photo-1605020420620-20c943cc4669?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Z3VpdGFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
         />
-        {/* <Carousel
-          sx={{
-            marginTop: "200px",
-          }}
-        >
-          {items.map((item, i) => (
-            <Item key={i} item={item} />
-          ))}
-        </Carousel> */}
+        {/* <> */}
+        {/* <Carousel>
+            {items.map((item, i) => (
+              <Item key={i} item={item} />
+            ))}
+          </Carousel>
+        </> */}
       </Grid>
       <Grid sx={{ marginLeft: "300px" }} item lg="auto">
         <Typography
