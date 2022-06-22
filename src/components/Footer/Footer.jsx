@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Box,
   Grid,
-  Link,
   Divider,
   FormControl,
   Typography,
@@ -30,7 +30,9 @@ function Footer() {
           <Grid container spacing={4} paddingBottom={14}>
             <Grid item xs={12} sm={3}>
               <Box textAlign="left" variant="h1" marginBottom={3}>
-                LOGUITO
+                <Link to="/" className="footerLink">
+                  LOGUITO
+                </Link>
               </Box>
               <Typography
                 variant="subtitle1"
@@ -94,32 +96,17 @@ function Footer() {
                 Store
               </Typography>
               <Box textAlign="left" marginTop={1}>
-                <Link
-                  href=""
-                  color="inherit"
-                  variant="caption"
-                  sx={{ textDecoration: "none" }}
-                >
+                <Link to="/" className="footerLink">
                   HOME
                 </Link>
               </Box>
               <Box textAlign="left">
-                <Link
-                  href=""
-                  color="inherit"
-                  variant="caption"
-                  sx={{ textDecoration: "none" }}
-                >
+                <Link to="/store" className="footerLink">
                   SHOP
                 </Link>
               </Box>
               <Box textAlign="left">
-                <Link
-                  href=""
-                  color="inherit"
-                  variant="caption"
-                  sx={{ textDecoration: "none" }}
-                >
+                <Link to="/admin" className="footerLink">
                   ADMIN
                 </Link>
               </Box>
@@ -147,7 +134,7 @@ function Footer() {
                   elit. Quos blanditiis tenetur
                 </Typography>
                 <input type="text" placeholder="Enter Your Email" />
-                <Button  variant="contained" color="primary">
+                <Button variant="contained" color="primary">
                   Send
                 </Button>
               </FormControl>
@@ -173,16 +160,16 @@ function Footer() {
                 pt={{ xs: 1, sm: 4 }}
                 pb={{ xs: 1, sm: 4 }}
               >
-                <Link href="" color="inherit">
+                <Link to="/" className="footerLink">
                   <InstagramIcon />
                 </Link>
-                <Link href="" color="inherit" marginLeft={1}>
+                <Link to="/" className="footerLink">
                   <GitHubIcon />
                 </Link>
-                <Link href="" color="inherit" marginLeft={1}>
+                <Link to="/" className="footerLink">
                   <TwitterIcon />
                 </Link>
-                <Link href="" color="inherit" marginLeft={1}>
+                <Link to="/" className="footerLink">
                   <LinkedInIcon />
                 </Link>
               </Box>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Box,
   AppBar,
@@ -8,11 +9,12 @@ import {
   useMediaQuery,
   useTheme,
   useScrollTrigger,
-  Container
+  Container,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
-
+import CartDrawer from "./CartDrawer";
+import "./NavBar.css";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -27,6 +29,7 @@ function ElevationScroll(props) {
 
 function Navbar() {
   const [value, setValue] = useState();
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -34,38 +37,57 @@ function Navbar() {
     <>
       <ElevationScroll>
         <AppBar position="fixed">
-        <Container>
-          <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography>LOGUITO</Typography>
-            {isMatch ? (
-              <>
-                <DrawerNav />
-              </>
-            ) : (
-              <>
-                <Box display="flex" justifyContent="space-between" width="35%">
-                  <Typography variant="button" color="secondary">
-                    All Products
-                  </Typography>
-                  <Typography variant="button" color="secondary">
-                    Contact Us
-                  </Typography>
-                  <Typography variant="button" color="secondary">
-                    About Us
-                  </Typography>
-                </Box>
-                <Box>
-                  <Button variant="text" color="secondary">
-                    Login
-                  </Button>
-                  <ShoppingCartIcon sx={{ paddingTop: 0.1 }} />
-                </Box>
-              </>
-            )}
-          </Toolbar>
+          <Container>
+            <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Link to="/" className="navLink">
+                <Typography>LOGUITO</Typography>
+              </Link>
+              {isMatch ? (
+                <>
+                  <DrawerNav />
+                </>
+              ) : (
+                <>
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    width="35%"
+                  >
+                    <Typography variant="button">
+                      <Link to="/store" className="navLink">
+                        All Products
+                      </Link>
+                    </Typography>
+                    <Typography variant="button">
+                      <Link to="/" className="navLink">
+                        Contact Us
+                      </Link>
+                    </Typography>
+                    <Typography variant="button">
+                      <Link to="/aboutus" className="navLink">
+                        About Us
+                      </Link>
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <Typography variant="button">
+                      <Link to="/login" className="hover navLink">
+                        Login
+                      </Link>
+                    </Typography>
+                    <ShoppingCartIcon
+                      sx={{ paddingTop: 0.1, marginLeft: 2 }}
+                      className="hover navLink"
+                      onClick={() => setIsCartOpen(true)}
+                    />
+                  </Box>
+                </>
+              )}
+            </Toolbar>
           </Container>
         </AppBar>
       </ElevationScroll>
+      <CartDrawer isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
     </>
   );
 }

@@ -4,6 +4,7 @@ import GridCategories from "./components/gridCategories/GridCategories";
 import HomePage from "./components/homePage/HomePage";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import AboutUs from "./components/aboutUs/AboutUs";
+import StorePage from "./components/storePage/StorePage";
 
 const MyRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const MyRoutes = () => {
       <Route path="/productDetail" element={<ProductDetail />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/categories" element={<GridCategories />} />
+      <Route path="/store" element={<StorePage />} />
     </Routes>
   );
 };
