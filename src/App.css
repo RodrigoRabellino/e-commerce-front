@@ -1,4 +1,5 @@
 .App {
+  font-family: "Raleway", sans-serif;
   text-align: center;
   background-color: "#F2DBB8";
 }
@@ -38,8 +39,6 @@
   }
 }
 
-.hover:hover{
+.hover:hover {
   cursor: pointer;
 }
-
-
