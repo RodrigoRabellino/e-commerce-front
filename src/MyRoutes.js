@@ -5,6 +5,8 @@ import HomePage from "./components/homePage/HomePage";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import AboutUs from "./components/aboutUs/AboutUs";
 import StorePage from "./components/storePage/StorePage";
+import ProductCarousel from "./components/productDetail/ProductCarousel.jsx";
+import QuantityItems from "./components/productDetail/QuantityItems";
 
 const MyRoutes = () => {
   return (
@@ -15,6 +17,8 @@ const MyRoutes = () => {
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/categories" element={<GridCategories />} />
       <Route path="/store" element={<StorePage />} />
+      <Route path="/productCarousel" element={<ProductCarousel />} />
+      <Route path="/quantityItems" element={<QuantityItems />} />
     </Routes>
   );
 };

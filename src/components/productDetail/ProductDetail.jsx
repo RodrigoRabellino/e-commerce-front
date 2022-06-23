@@ -1,33 +1,9 @@
 import { Grid, Typography, Button, Box, Link } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import { Block } from "@mui/icons-material";
+import ProductCarousel from "../productDetail/ProductCarousel";
 
 function ProductDetail() {
-  // const Item = [
-  //   {
-  //     name: "Random Name #1",
-  //     description: "Probably the most random thing you have ever seen!",
-  //   },
-  // ];
-
-  // const items = [
-  //   {
-  //     name: "Random Name #1",
-  //     description: "Probably the most random thing you have ever seen!",
-  //   },
-  //   {
-  //     name: "Random Name #2",
-  //     description: "Hello World!",
-  //   },
-  //   {
-  //     name: "Random Name #3",
-  //     description: "Hello World!",
-  //   },
-  //   {
-  //     name: "Random Name #4",
-  //     description: "Hello World!",
-  //   },
-  // ];
   return (
     <Grid
       sx={{
@@ -48,13 +24,7 @@ function ProductDetail() {
           }}
           src="https://images.unsplash.com/photo-1605020420620-20c943cc4669?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Z3VpdGFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
         />
-        {/* <> */}
-        {/* <Carousel>
-            {items.map((item, i) => (
-              <Item key={i} item={item} />
-            ))}
-          </Carousel>
-        </> */}
+        <ProductCarousel />
       </Grid>
       <Grid sx={{ marginLeft: "300px" }} item lg="auto">
         <Typography
@@ -67,10 +37,11 @@ function ProductDetail() {
         <Typography variant="h4">Product introduction</Typography>
         <Typography sx={{ fontSize: "15px" }} variant="h5"></Typography>
         <hr />
-        <Typography>falta el quantity picker</Typography>
+
         <Typography sx={{ paddingBottom: "30px" }} variant="h6">
           Product Available
         </Typography>
+
         <Button variant="contained">Add to cart</Button>
 
         <Typography
