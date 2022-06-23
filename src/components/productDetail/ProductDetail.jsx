@@ -1,8 +1,9 @@
 import { Grid, Typography, Button, Box, Link, Container } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import { Block } from "@mui/icons-material";
-import ProductCarousel from "../productDetail/ProductCarousel";
+import ExampleCarousel from "../ExampleCarousel/ExampleCarousel";
 import { useSelector } from "react-redux";
+import QuantityItems from "./QuantityItems";
 
 function ProductDetail() {
   const product = useSelector((state) => state.products);
@@ -10,14 +11,27 @@ function ProductDetail() {
   return (
     <Container maxWidth="lg">
       <Grid
+        container
         sx={{
           marginTop: "80px",
-          p: 5,
+          p: 1,
         }}
-        spacing={2}
+        spacing={5}
       >
-        <Grid item>
-          <img src={product.imgUrl[0]} style={{ width: "500px" }} />
+        <Grid item xs={6}>
+          <ExampleCarousel />
+          <Box
+            sx={{
+              display: "flex",
+              marginTop: "50px",
+              justifyContent: "space-between",
+            }}
+          >
+            <img src={product.imgUrl[0]} style={{ width: "150px" }} />
+            <img src={product.imgUrl[1]} style={{ width: "150px" }} />
+            <img src={product.imgUrl[2]} style={{ width: "150px" }} />
+          </Box>
+          {/* <img src={product.imgUrl[0]} style={{ width: "500px" }} /> */}
           {/* <> */}
           {/* <Carousel>
             {items.map((item, i) => (
@@ -26,7 +40,7 @@ function ProductDetail() {
           </Carousel>
         </> */}
         </Grid>
-        <Grid>
+        <Grid item xs={6}>
           <Typography
             sx={{ fontSize: "40px", marginBottom: "35px" }}
             variant="h3"
@@ -44,87 +58,23 @@ function ProductDetail() {
           <Typography sx={{ paddingBottom: "30px" }} variant="h6">
             Product Available
           </Typography>
+          <Box sx={{ marginBottom: "30px" }}>
+            <QuantityItems />
+          </Box>
+
           <Button variant="contained">Add to cart</Button>
-
-          <Typography
-            sx={{
-              fontSize: "17px",
-              marginTop: "30px",
-              float: "left",
-              fontWeight: "bold",
-              marginTop: "50px",
-            }}
-            variant="h5"
-          >
-            Origin
-          </Typography>
-          <Typography
-            sx={{ paddingTop: "40px", paddingBottom: "10px", fontSize: "15px" }}
-            variant="h6"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </Typography>
-
-          <Typography
-            sx={{
-              fontSize: "17px",
-              marginTop: "30px",
-              float: "left",
-              fontWeight: "bold",
-              marginTop: "6px",
-            }}
-            variant="h5"
-          >
-            Dimension
-          </Typography>
-          <Typography
-            sx={{ paddingTop: "29px", paddingBottom: "10px", fontSize: "15px" }}
-            variant="h6"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "17px",
-              marginTop: "30px",
-              float: "left",
-              fontWeight: "bold",
-              marginTop: "6px",
-            }}
-            variant="h5"
-          >
-            Material
-          </Typography>
-          <Typography
-            sx={{ paddingTop: "29px", paddingBottom: "10px", fontSize: "15px" }}
-            variant="h6"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "17px",
-              marginTop: "30px",
-              float: "left",
-              fontWeight: "bold",
-              marginTop: "6px",
-            }}
-            variant="h5"
-          >
-            Color
-          </Typography>
-          <Typography
-            sx={{ paddingTop: "29px", paddingBottom: "10px", fontSize: "15px" }}
-            variant="h6"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </Typography>
-          <Link
-            sx={{ paddingTop: "15px", cursor: "pointer", marginLeft: "200px" }}
-            href="#"
-          >
-            Add to Wish List +
-          </Link>
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <Link
+              sx={{
+                paddingTop: "15px",
+                cursor: "pointer",
+                marginLeft: "70px",
+              }}
+              href="#"
+            >
+              Add to Wish List +
+            </Link>
+          </Box>
         </Grid>
       </Grid>
     </Container>

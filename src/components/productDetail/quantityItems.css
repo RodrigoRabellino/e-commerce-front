@@ -1,0 +1,12 @@
+.counter-class {
+  background: #f2dbb8;
+  border: 3px solid #8c5032;
+  width: 150px;
+}
+.counter-class svg {
+  color: #bf8832;
+}
+
+.counter-class legend {
+  width: 0%;
+}

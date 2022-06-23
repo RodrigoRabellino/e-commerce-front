@@ -7,7 +7,7 @@ import Login from "./components/admin/login/Login";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import AboutUs from "./components/aboutUs/AboutUs";
 import StorePage from "./components/storePage/StorePage";
-import ProductCarousel from "./components/productDetail/ProductCarousel.jsx";
+import ProductCarousel from "./components/productDetail/ProductCarousel";
 import QuantityItems from "./components/productDetail/QuantityItems";
 import MyCarousel from "./components/homePage/MyCarousel";
 

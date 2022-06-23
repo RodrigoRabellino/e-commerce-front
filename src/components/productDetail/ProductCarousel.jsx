@@ -1,44 +1,42 @@
+import ImageGallery from "react-image-gallery";
+import "./productCarousel.module.css";
 import React from "react";
-import Carousel from "react-material-ui-carousel";
-import { Paper, Button } from "@mui/material";
+import { Box } from "@mui/material";
 
-function MyCarousel(props) {
-  var items = [
-    {
-      name: "Photo#1",
-    },
-    {
-      name: "Photo#2",
-    },
-    {
-      name: "Photo#3",
-    },
-    {
-      name: "Photo#4",
-    },
-  ];
+const images = [
+  {
+    original: "https://picsum.photos/id/1018/1000/600/",
+    thumbnail: "https://picsum.photos/id/1018/250/150/",
+  },
+  {
+    original: "https://picsum.photos/id/1015/1000/600/",
+    thumbnail: "https://picsum.photos/id/1015/250/150/",
+  },
+  {
+    original: "https://picsum.photos/id/1019/1000/600/",
+    thumbnail: "https://picsum.photos/id/1019/250/150/",
+  },
+];
 
-  return (
-    <Carousel
-      sx={{
-        marginLeft: "250px",
-        marginBottom: "30px",
-      }}
-    >
-      {items.map((item, i) => (
-        <Item key={i} item={item} />
-      ))}
-    </Carousel>
-  );
+class ProductCarousel extends React.Component {
+  render() {
+    return (
+      <Box sx={{ width: "100vw", height: "100vh", backgroundColor: "red" }}>
+        <ImageGallery
+          originalHeight={"auto"}
+          items={images}
+          showPlayButton={false}
+          infinite={true}
+          showBullets={true}
+          showFullscreenButton={true}
+          showIndex={false}
+          showNav={true}
+          showThumbnails={true}
+          useWindowKeyDown={true}
+        />
+      </Box>
+    );
+  }
 }
 
-function Item(props) {
-  return (
-    <Paper sx={{ width: "100%", height: "150px", border: "1px solid #BF8832" }}>
-      <h2>{props.item.name}</h2>
-      <p>{props.item.description}</p>
-    </Paper>
-  );
-}
-
-export default MyCarousel;
+export default ProductCarousel;
