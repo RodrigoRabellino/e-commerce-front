@@ -1,4 +1,4 @@
-import React from "react";
+import { Box } from "@mui/material";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -20,10 +20,10 @@ ChartJS.register(
   Legend
 );
 
-const MyChartBar = () => {
+const MyChartBar = ({ colors }) => {
+  const { primary, secondary, third, fourth } = colors;
   const options = {
     responsive: true,
-
     plugins: {
       legend: {
         position: "top",
@@ -50,21 +50,25 @@ const MyChartBar = () => {
     datasets: [
       {
         label: "Guitars",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-        backgroundColor: "#FFFB7D",
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 50 })),
+        backgroundColor: primary,
       },
       {
         label: "Amps",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-        backgroundColor: "#FBAB7E",
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 50 })),
+        backgroundColor: secondary,
       },
       {
         label: "Others",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-        backgroundColor: "#85FFBD",
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 50 })),
+        backgroundColor: third,
       },
     ],
   };
-  return <Bar options={options} data={data} />;
+  return (
+    <Box width="100%">
+      <Bar options={options} data={data} />
+    </Box>
+  );
 };
 export default MyChartBar;

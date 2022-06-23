@@ -113,7 +113,7 @@ function Footer() {
             </Grid>
 
             <Grid item xs={12} sm={3}>
-              <FormControl variant="standart">
+              <FormControl variant="standard">
                 <Typography
                   variant="h5"
                   gutterBottom
@@ -133,7 +133,11 @@ function Footer() {
                   subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing
                   elit. Quos blanditiis tenetur
                 </Typography>
-                <input type="text" placeholder="Enter Your Email" />
+                <input
+                  className="suscribe"
+                  type="text"
+                  placeholder="Enter Your Email"
+                />
                 <Button variant="contained" color="primary">
                   Send
                 </Button>
