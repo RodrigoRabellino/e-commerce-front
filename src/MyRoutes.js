@@ -10,7 +10,6 @@ import StorePage from "./components/storePage/StorePage";
 import ProductCarousel from "./components/productDetail/ProductCarousel.jsx";
 import QuantityItems from "./components/productDetail/QuantityItems";
 import MyCarousel from "./components/homePage/MyCarousel";
-import Login from "./components/admin/login/Login";
 
 const MyRoutes = () => {
   return (
