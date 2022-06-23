@@ -8512,6 +8512,11 @@
     "@mui/system" "^5.4.1"
     "framer-motion" "^4.1.17"
 
+"react-mui-counter@^1.0.9":
+  "integrity" "sha512-EHikOwk3aCuUg6maD9X5/5PbHwBD4xSO+u7XphUlu9JaxyPsJ8A0Uj/FyKB7bOsXCPNHptq9DcX7h6PULF8muA=="
+  "resolved" "https://registry.npmjs.org/react-mui-counter/-/react-mui-counter-1.0.9.tgz"
+  "version" "1.0.9"
+
 "react-redux@^7.2.1 || ^8.0.0-beta", "react-redux@^8.0.2":
   "integrity" "sha512-nBwiscMw3NoP59NFCXFf02f8xdo+vSHT/uZ1ldDwF7XaTpzm+Phk97VT4urYBl5TYAPNVaFm12UHAEyzkpNzRA=="
   "resolved" "https://registry.npmjs.org/react-redux/-/react-redux-8.0.2.tgz"

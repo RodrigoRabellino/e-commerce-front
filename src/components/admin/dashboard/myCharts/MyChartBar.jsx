@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 const MyChartBar = ({ colors }) => {
-  const { primary, secondary, third, fourth } = colors;
+  const { primary, secondary, third } = colors;
   const options = {
     responsive: true,
     plugins: {

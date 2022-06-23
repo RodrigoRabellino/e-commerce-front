@@ -1,35 +1,10 @@
 import { Grid, Typography, Button, Box, Link, Container } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import { Block } from "@mui/icons-material";
+import ProductCarousel from "../productDetail/ProductCarousel";
 import { useSelector } from "react-redux";
 
 function ProductDetail() {
-  // const Item = [
-  //   {
-  //     name: "Random Name #1",
-  //     description: "Probably the most random thing you have ever seen!",
-  //   },
-  // ];
-
-  // const items = [
-  //   {
-  //     name: "Random Name #1",
-  //     description: "Probably the most random thing you have ever seen!",
-  //   },
-  //   {
-  //     name: "Random Name #2",
-  //     description: "Hello World!",
-  //   },
-  //   {
-  //     name: "Random Name #3",
-  //     description: "Hello World!",
-  //   },
-  //   {
-  //     name: "Random Name #4",
-  //     description: "Hello World!",
-  //   },
-  // ];
-
   const product = useSelector((state) => state.products);
 
   return (

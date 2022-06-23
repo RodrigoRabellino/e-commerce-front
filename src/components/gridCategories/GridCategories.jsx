@@ -6,6 +6,7 @@ const GridCategories = () => {
     width: "33.3%",
     overflow: "hidden",
   };
+  //Allproducts, guitars, bass, amps, accessories
   return (
     <Grid container spacing={0} marginTop="100px">
       <Grid item sx={4}>
