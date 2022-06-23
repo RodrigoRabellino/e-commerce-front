@@ -2,77 +2,9 @@ import { Grid, Typography, Button, Box, Link, Container } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import { Block } from "@mui/icons-material";
 import ProductCarousel from "../productDetail/ProductCarousel";
-
-function ProductDetail() {
-  return (
-    <Grid
-      sx={{
-        marginTop: "80px",
-      }}
-      container
-      spacing={2}
-    >
-      <Grid item lg="auto">
-        <img
-          style={{
-            marginLeft: "250px",
-            marginTop: "80px",
-            marginBottom: "30px",
-            width: "300px",
-            height: "370px",
-            borderRadius: "20px",
-          }}
-          src="https://images.unsplash.com/photo-1605020420620-20c943cc4669?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Z3VpdGFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-        />
-        <ProductCarousel />
-      </Grid>
-      <Grid sx={{ marginLeft: "300px" }} item lg="auto">
-        <Typography
-          sx={{ fontSize: "40px", marginBottom: "35px" }}
-          variant="h3"
-        >
-          Title
-          <h4 sx={{}}>$150</h4>
-        </Typography>
-        <Typography variant="h4">Product introduction</Typography>
-        <Typography sx={{ fontSize: "15px" }} variant="h5"></Typography>
-        <hr />
-
-        <Typography sx={{ paddingBottom: "30px" }} variant="h6">
-          Product Available
-        </Typography>
-
-        <Button variant="contained">Add to cart</Button>
-        
 import { useSelector } from "react-redux";
 
 function ProductDetail() {
-  // const Item = [
-  //   {
-  //     name: "Random Name #1",
-  //     description: "Probably the most random thing you have ever seen!",
-  //   },
-  // ];
-
-  // const items = [
-  //   {
-  //     name: "Random Name #1",
-  //     description: "Probably the most random thing you have ever seen!",
-  //   },
-  //   {
-  //     name: "Random Name #2",
-  //     description: "Hello World!",
-  //   },
-  //   {
-  //     name: "Random Name #3",
-  //     description: "Hello World!",
-  //   },
-  //   {
-  //     name: "Random Name #4",
-  //     description: "Hello World!",
-  //   },
-  // ];
-
   const product = useSelector((state) => state.products);
 
   return (
@@ -198,6 +130,5 @@ function ProductDetail() {
     </Container>
   );
 }
-
 
 export default ProductDetail;
