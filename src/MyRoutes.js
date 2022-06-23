@@ -3,13 +3,17 @@ import DashBoard from "./components/admin/dashboard/DashBoard";
 import GridCategories from "./components/gridCategories/GridCategories";
 import HomePage from "./components/homePage/HomePage";
 
-import Login from "./components/admin/login/Login";
+import SignIn from "./components/admin/login/SignIn";
+import SignUp from "./components/admin/login/SignUp";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import AboutUs from "./components/aboutUs/AboutUs";
 import StorePage from "./components/storePage/StorePage";
 import ProductCarousel from "./components/productDetail/ProductCarousel.jsx";
 import QuantityItems from "./components/productDetail/QuantityItems";
+<<<<<<< Updated upstream
 import MyCarousel from "./components/homePage/MyCarousel";
+=======
+>>>>>>> Stashed changes
 
 const MyRoutes = () => {
   return (
@@ -22,7 +26,8 @@ const MyRoutes = () => {
       <Route path="/store" element={<StorePage />} />
       <Route path="/productCarousel" element={<ProductCarousel />} />
       <Route path="/quantityItems" element={<QuantityItems />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   );
 };
