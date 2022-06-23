@@ -133,12 +133,8 @@ function Footer() {
                   subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing
                   elit. Quos blanditiis tenetur
                 </Typography>
-                <input
-                  className="suscribe"
-                  type="text"
-                  placeholder="Enter Your Email"
-                />
-                <Button variant="contained" color="primary">
+                <input className="suscribe" type="text" placeholder="Enter Your Email" />
+                <Button  variant="contained" color="primary">
                   Send
                 </Button>
               </FormControl>

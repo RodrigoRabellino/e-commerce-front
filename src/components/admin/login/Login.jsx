@@ -1,50 +1,122 @@
 import "./Login.css"
 
-export default function Login() {
+import{ Button, Divider }from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+
+const theme = createTheme();
+
+export default function SignInSide() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
+
+ 
+
   return (
-    <>
-       <div className="container">
-        <div className="forms-container">
-          <div className="signin-signup">
-            <form action="" class="sign-in-form">
-                <h1 className="title1">LOGO</h1>
-              <h2 className="title2">Login Here!..</h2>
-              <div className="input-field">
-                <i className="fas fa-user"></i>
-                <input type="email" name="email" autocomplete="email" placeholder="E-mail" />
-              </div>
-              <div className="input-field">
-                <i className="fas fa-lock"></i>
-                <input type="password" name="contraseña" autocomplete="current-password" placeholder="Password" id="id_password" />
-               
-              </div>
-            
-              <a className="pass" href="#">Forgot your password?</a>
-              <input type="submit" value="Sign in" class="btn solid"/>
-             
-            </form>
+    <ThemeProvider theme={theme}>
+      <Grid container component="main" sx={{ height: '100vh' }}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: 'url(https://img.wallpapersafari.com/tablet/2560/1700/29/66/N7iGLn.jpg)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+        
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link href="#" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+              <Divider sx={{paddingTop: '2rem'}}>OR</Divider>
+              <Box>
           
-          </div>
-        </div>
-        <div className="panels-container">
-          <div className="panel left-panel">
-            <div className="content">
-              <h3>You don't have an account?</h3>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
-              <button className="btn transparent" id="sign-up-btn">Register</button>
-            </div>
-            <img src="img/log.svg" className="image" alt=""/>
-          </div>
-    
-          <div className="panel right-panel">
-            <div className="content">
-              <h3>Already have an account?</h3>
-              <button className="btn transparent" id="sign-in-btn">Sign in</button>
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </>
+              </Box>
+
+
+
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </ThemeProvider>
   );
 }
