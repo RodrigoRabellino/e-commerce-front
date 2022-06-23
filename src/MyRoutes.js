@@ -10,13 +10,15 @@ import AboutUs from "./components/aboutUs/AboutUs";
 import StorePage from "./components/storePage/StorePage";
 import ProductCarousel from "./components/productDetail/ProductCarousel.jsx";
 import QuantityItems from "./components/productDetail/QuantityItems";
-import MyCarousel from "./components/homePage/MyCarousel";
+import AdminLogin from "./components/admin/login/AdminLogin";
 
 const MyRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/admin" element={<DashBoard />} />
+      <Route path="/admin/dashboard" element={<DashBoard />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+
       <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/categories" element={<GridCategories />} />
