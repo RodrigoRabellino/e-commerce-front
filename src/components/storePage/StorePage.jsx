@@ -62,32 +62,44 @@ const StorePage = () => {
           Categories
         </Typography>
         <Stack marginTop="1rem" spacing={2}>
-          <Button variant="contained" sx={{ borderRadius: "50px" }}>
+          <Button
+            onClick={() => setCategorySelected("all products")}
+            variant={
+              categorySelected === "all products" ? "contained" : "outlined"
+            }
+            sx={{ borderRadius: "50px" }}
+          >
             All Products
           </Button>
           <Button
-            variant="outlined"
+            onClick={() => setCategorySelected("guitars")}
+            variant={categorySelected === "guitars" ? "contained" : "outlined"}
             elevation={0}
             sx={{ borderRadius: "50px" }}
           >
             Guitars
           </Button>
           <Button
-            variant="outlined"
+            onClick={() => setCategorySelected("bass")}
+            variant={categorySelected === "bass" ? "contained" : "outlined"}
             elevation={0}
             sx={{ borderRadius: "50px" }}
           >
             Bass
           </Button>
           <Button
-            variant="outlined"
+            onClick={() => setCategorySelected("amps")}
+            variant={categorySelected === "amps" ? "contained" : "outlined"}
             elevation={0}
             sx={{ borderRadius: "50px" }}
           >
             Amps
           </Button>
           <Button
-            variant="outlined"
+            onClick={() => setCategorySelected("accessories")}
+            variant={
+              categorySelected === "accessories" ? "contained" : "outlined"
+            }
             elevation={0}
             sx={{ borderRadius: "50px" }}
           >
