@@ -54,6 +54,8 @@ const StorePage = () => {
           position: "sticky",
           top: "75px",
           padding: "1rem",
+          backgroundImage:
+            "linear-gradient(62deg, rgba(251, 171, 126, 0.33) 0%, rgba(247, 206, 104, 0.33) 100%)",
         }}
       >
         <Typography variant="h5" color="secondary">
