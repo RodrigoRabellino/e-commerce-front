@@ -37,6 +37,7 @@ const StorePage = () => {
     };
     getProducts(page);
   }, [page]);
+
   return (
     <Box
       marginTop="65px"

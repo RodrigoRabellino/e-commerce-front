@@ -9,6 +9,7 @@ const userSlice = createSlice({
     },
     logOutUser(state, action) {
       console.log("logOut user:", action.payload);
+      return {};
     },
   },
 });

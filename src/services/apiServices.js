@@ -10,6 +10,15 @@ export const fetchProducts = async (page) => {
   }
 };
 
+export const fetchStarredProducts = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/product/starred`);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const fetchOneProduct = async (id) => {
   try {
     const response = axios.get(`${API_URL}/product/${id}`);
