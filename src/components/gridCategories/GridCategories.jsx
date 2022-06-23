@@ -30,7 +30,7 @@ const GridCategories = () => {
   ];
   return (
     <Box
-      height="100%"
+      height="700px"
       width="100%"
       display="flex"
       alignItems="center"
