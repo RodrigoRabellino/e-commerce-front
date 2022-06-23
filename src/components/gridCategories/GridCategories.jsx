@@ -4,39 +4,40 @@ import "./gridCategories.css";
 const GridCategories = () => {
   const categories = [
     {
-      name: "All Products",
-      imageName: "accessories.png",
+      name: "Effects",
+      imageName: "pedals.png",
     },
     {
-      name: "Guitars",
-      imageName: "accessories.png",
+      name: "Acoustic",
+      imageName: "acoustic.png",
+    },
+    {
+      name: "Electric",
+      imageName: "guitar.png",
     },
     {
       name: "Bass",
-      imageName: "accessories.png",
+      imageName: "bass.png",
     },
     {
       name: "Amps",
-      imageName: "accessories.png",
+      imageName: "amps.png",
     },
     {
       name: "Accessories",
       imageName: "accessories.png",
     },
-    {
-      name: "Others",
-      imageName: "accessories.png",
-    },
   ];
   return (
     <Box
-      height="100vh"
+      height="100%"
       width="100%"
       display="flex"
       alignItems="center"
       justifyContent="center"
+      bgcolor="#f2dbb8"
     >
-      <Grid container spacing={0} sx={{ width: "75%" }}>
+      <Grid container spacing={1} sx={{ width: "75%" }}>
         {categories.map((category) => {
           let image = require(`../../assets/images/${category.imageName}`);
           return (
@@ -65,7 +66,7 @@ const CategoryButton = ({ imgUri, categoryName }) => {
       >
         <Box
           sx={{
-            height: "100px",
+            height: "175px",
             width: "100%",
           }}
         >
