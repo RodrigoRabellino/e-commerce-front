@@ -35,15 +35,16 @@ const ProductCard = ({ product, display }) => {
 
 const cardStyle = {
   display: "flex",
-  pointerEvents: "visible",
+  cursor: "pointer",
   padding: "0.2rem",
   transition: "0.2s",
   backgroundColor: "transparent",
-  border: "1px solid rgb(242,219,184, 0.33)",
+  border: "1px solid rgba(247, 206, 104, 0.33)",
   ":hover": {
     transition: "0.2s",
     transform: "translateY(-5px)",
-    backgroundColor: "rgb(242,219,184 , 0.33)",
+    backgroundImage:
+      "linear-gradient(62deg, rgba(251, 171, 126, 0.33) 0%, rgba(247, 206, 104, 0.33) 100%)",
     boxShadow:
       "0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)",
   },
@@ -56,16 +57,22 @@ const ListView = ({ product, handleNavigate }) => {
       <Card
         onClick={handleNavigate}
         elevation={0}
-        sx={{ ...cardStyle, width: "100%", height: "150px" }}
+        sx={{
+          ...cardStyle,
+          width: "100%",
+          height: "150px",
+        }}
       >
         <CardMedia sx={{ height: "100%", width: "150px" }}>
           <img
             srcSet={imgUrl}
             alt={name}
             style={{
+              borderRadius: "5px",
               width: "100%",
               height: "100%",
-              objectFit: "fill",
+              objectFit: "cover",
+              objectPosition: "top",
             }}
           />
         </CardMedia>
@@ -110,7 +117,6 @@ const ListView = ({ product, handleNavigate }) => {
 
 const ModuleView = ({ product, handleNavigate }) => {
   const { name, imgUrl, price, id } = product;
-  const navigate = useNavigate();
   return (
     <Card
       onClick={handleNavigate}
@@ -126,6 +132,7 @@ const ModuleView = ({ product, handleNavigate }) => {
           srcSet={imgUrl}
           alt={name}
           style={{
+            borderRadius: "5px",
             width: "100%",
             height: "100%",
             objectFit: "cover",
