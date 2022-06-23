@@ -3,17 +3,14 @@ import DashBoard from "./components/admin/dashboard/DashBoard";
 import GridCategories from "./components/gridCategories/GridCategories";
 import HomePage from "./components/homePage/HomePage";
 
-import SignIn from "./components/admin/login/SignIn";
-import SignUp from "./components/admin/login/SignUp";
+import SignIn from "./components/login/SignIn";
+import SignUp from "./components/login/SignUp";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import AboutUs from "./components/aboutUs/AboutUs";
 import StorePage from "./components/storePage/StorePage";
 import ProductCarousel from "./components/productDetail/ProductCarousel.jsx";
 import QuantityItems from "./components/productDetail/QuantityItems";
-<<<<<<< Updated upstream
 import MyCarousel from "./components/homePage/MyCarousel";
-=======
->>>>>>> Stashed changes
 
 const MyRoutes = () => {
   return (
