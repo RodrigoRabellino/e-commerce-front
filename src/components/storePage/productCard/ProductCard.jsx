@@ -38,8 +38,7 @@ const cardStyle = {
   cursor: "pointer",
   padding: "0.2rem",
   transition: "0.2s",
-  backgroundColor: "transparent",
-  border: "1px solid rgba(247, 206, 104, 0.33)",
+  backgroundColor: "rgb(191,136,50, 0.1)",
   ":hover": {
     transition: "0.2s",
     transform: "translateY(-5px)",
