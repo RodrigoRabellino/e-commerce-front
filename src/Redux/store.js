@@ -23,20 +23,12 @@ const persistConfig = {
 const rootReducer = combineReducers({
   cart: cartReducer,
   user: userReducer,
-  products: productsReducer,
 });
-const myReducer = { cartReducer, userReducer, productsReducer };
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-<<<<<<< Updated upstream
   reducer: persistedReducer,
-=======
-  reducer: {
-    user: userReducer,
-    cart: persistedReducerCart,
-  },
->>>>>>> Stashed changes
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

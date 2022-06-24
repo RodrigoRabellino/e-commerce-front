@@ -74,14 +74,6 @@ function ProductDetail() {
               </Box>
             </>
           )}
-          {/* <img src={product.imgUrl[0]} style={{ width: "500px" }} /> */}
-          {/* <> */}
-          {/* <Carousel>
-            {items.map((item, i) => (
-              <Item key={i} item={item} />
-            ))}
-          </Carousel>
-        </> */}
         </Grid>
         <Grid item xs={6}>
           <Typography

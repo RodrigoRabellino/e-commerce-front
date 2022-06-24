@@ -1,15 +1,6 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-<<<<<<< Updated upstream
-import { Paper, Box } from "@mui/material";
-import { useSelector } from "react-redux";
-
-function ExampleCarousel(props) {
-  const product = useSelector((state) => state.products);
-  var items = product.imgUrl;
-=======
-import { Paper, Button, Box, CircularProgress } from "@mui/material";
->>>>>>> Stashed changes
+import { Paper, Box, CircularProgress } from "@mui/material";
 
 function ExampleCarousel({ selectedProduct }) {
   const productImages = selectedProduct.imgUrl;

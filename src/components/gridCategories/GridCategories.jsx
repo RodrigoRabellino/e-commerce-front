@@ -36,12 +36,12 @@ const GridCategories = () => {
       justifyContent="center"
     >
       <Grid container spacing={1} sx={{ width: "75%" }}>
-        {categories.map((category) => {
+        {categories.map((category, index) => {
           let image = require(`../../assets/images/${category.imageName}`);
           return (
             <Grid item xs={4}>
               <CategoryButton
-                key={category.name}
+                key={index}
                 imgUri={image}
                 categoryName={category.name}
               />
