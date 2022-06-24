@@ -25,7 +25,7 @@ const HomePage = () => {
           }}
         >
           <img
-            srcSet={require("../../assets/images/acoustic-guitar-close-up-on-beautiful-colored-background.jpg")}
+            srcSet={require("../../assets/images/acousticguitar.jpg")}
             style={{
               width: "100%",
               height: "100%",
