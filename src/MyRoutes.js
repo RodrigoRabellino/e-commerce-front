@@ -10,7 +10,10 @@ import AboutUs from "./components/aboutUs/AboutUs";
 import StorePage from "./components/storePage/StorePage";
 import ProductCarousel from "./components/productDetail/ProductCarousel";
 import QuantityItems from "./components/productDetail/QuantityItems";
+<<<<<<< Updated upstream
 import AdminLogin from "./components/admin/login/AdminLogin";
+=======
+>>>>>>> Stashed changes
 
 const MyRoutes = () => {
   return (
