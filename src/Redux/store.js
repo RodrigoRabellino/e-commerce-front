@@ -10,7 +10,6 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import productsReducer from "./product";
 import userReducer from "./user/slice";
 import cartReducer from "./cart/slice";
 import { combineReducers } from "redux";
@@ -30,7 +29,14 @@ const myReducer = { cartReducer, userReducer, productsReducer };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
+<<<<<<< Updated upstream
   reducer: persistedReducer,
+=======
+  reducer: {
+    user: userReducer,
+    cart: persistedReducerCart,
+  },
+>>>>>>> Stashed changes
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
