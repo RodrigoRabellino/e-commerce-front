@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { Paper, Button, Box } from "@mui/material";
+import { Paper, Box } from "@mui/material";
 import { useSelector } from "react-redux";
 
 function ExampleCarousel(props) {
