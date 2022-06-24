@@ -1,7 +1,13 @@
+<<<<<<< Updated upstream
 import { Container, Grid, Box } from "@mui/material";
+=======
+import { Container, Grid,Box  } from "@mui/material";
+import axios from "axios";
+>>>>>>> Stashed changes
 import React, { useEffect, useState } from "react";
 import { fetchStarredProducts } from "../../services/apiServices";
 import GridCategories from "../gridCategories/GridCategories";
+
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
@@ -23,6 +29,7 @@ const HomePage = () => {
             height: "500px",
           }}
         >
+<<<<<<< Updated upstream
           <img
             srcSet={require("../../assets/images/guitar2.jpg")}
             style={{
@@ -35,6 +42,11 @@ const HomePage = () => {
       </section>
 
       {/* {starredProducts.map((product) => {
+=======
+       
+        
+          {/* {starredProducts.map((product) => {
+>>>>>>> Stashed changes
             return (
               <ProductCard
                 key={product.id}

@@ -39,6 +39,7 @@ function Footer() {
                 borderBottom={0}
                 textAlign="left"
                 color="primary"
+                fontWeight={700}
               >
                 Contact
               </Typography>
@@ -60,6 +61,7 @@ function Footer() {
                 borderBottom={0}
                 textAlign="left"
                 color="primary"
+                fontWeight={700}
               >
                 Locals
               </Typography>
@@ -92,6 +94,7 @@ function Footer() {
                 borderBottom={0}
                 textAlign="left"
                 color="primary"
+                fontWeight={700}
               >
                 Store
               </Typography>

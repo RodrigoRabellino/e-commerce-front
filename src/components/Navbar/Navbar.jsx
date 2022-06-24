@@ -71,7 +71,7 @@ function Navbar() {
                   </Box>
                   <Box>
                     <Typography variant="button">
-                      <Link to="/login" className="hover navLink">
+                      <Link to="/signin" className="hover navLink">
                         Login
                       </Link>
                     </Typography>
