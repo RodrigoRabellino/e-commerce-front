@@ -2,8 +2,8 @@ import "./App.css";
 import MyRoutes from "./MyRoutes";
 import Navbar from "./components/Navbar/Navbar";
 import { ThemeProvider, createTheme } from "@mui/material";
-import MyCarousel from "./components/homePage/MyCarousel";
 import Footer from "./components/Footer/Footer";
+import { SnackbarProvider } from "notistack";
 
 const myTheme = createTheme({
   palette: {
@@ -30,11 +30,13 @@ const myTheme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={myTheme}>
-      <div className="App">
-        <Navbar />
-        <MyRoutes />
-        <Footer />
-      </div>
+      <SnackbarProvider maxSnack={4}>
+        <div className="App">
+          <Navbar />
+          <MyRoutes />
+          <Footer />
+        </div>
+      </SnackbarProvider>
     </ThemeProvider>
   );
 }
