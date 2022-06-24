@@ -10,10 +10,7 @@ import AboutUs from "./components/aboutUs/AboutUs";
 import StorePage from "./components/storePage/StorePage";
 import ProductCarousel from "./components/productDetail/ProductCarousel";
 import QuantityItems from "./components/productDetail/QuantityItems";
-<<<<<<< Updated upstream
 import AdminLogin from "./components/admin/login/AdminLogin";
-=======
->>>>>>> Stashed changes
 
 const MyRoutes = () => {
   return (
@@ -21,7 +18,6 @@ const MyRoutes = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/admin/dashboard" element={<DashBoard />} />
       <Route path="/admin/login" element={<AdminLogin />} />
-
       <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/categories" element={<GridCategories />} />

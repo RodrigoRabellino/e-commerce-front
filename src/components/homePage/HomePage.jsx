@@ -1,18 +1,8 @@
-<<<<<<< HEAD
 import { Container, Grid, Box, Typography } from "@mui/material";
-=======
-<<<<<<< Updated upstream
-import { Container, Grid, Box } from "@mui/material";
-=======
-import { Container, Grid,Box  } from "@mui/material";
-import axios from "axios";
->>>>>>> Stashed changes
->>>>>>> c5f380c171acdb72f52aba3ec5ddcebef1409bd8
 import React, { useEffect, useState } from "react";
 import { fetchStarredProducts } from "../../services/apiServices";
 import GridCategories from "../gridCategories/GridCategories";
 import ExampleCarousel from "../../components/ExampleCarousel/ExampleCarousel";
-
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
@@ -34,7 +24,6 @@ const HomePage = () => {
             height: "500px",
           }}
         >
-<<<<<<< Updated upstream
           <img
             srcSet={require("../../assets/images/acoustic-guitar-close-up-on-beautiful-colored-background.jpg")}
             style={{
@@ -55,11 +44,6 @@ const HomePage = () => {
       </Box>
 
       {/* {starredProducts.map((product) => {
-=======
-       
-        
-          {/* {starredProducts.map((product) => {
->>>>>>> Stashed changes
             return (
               <ProductCard
                 key={product.id}
