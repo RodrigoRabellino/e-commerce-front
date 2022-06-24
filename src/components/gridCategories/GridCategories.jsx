@@ -35,7 +35,6 @@ const GridCategories = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      bgcolor="#f2dbb8"
     >
       <Grid container spacing={1} sx={{ width: "75%" }}>
         {categories.map((category) => {

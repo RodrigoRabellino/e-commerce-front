@@ -1,8 +1,7 @@
 import { Container, Grid, Box } from "@mui/material";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { fetchStarredProducts } from "../../services/apiServices";
-import ProductCard from "../storePage/productCard/ProductCard";
+import GridCategories from "../gridCategories/GridCategories";
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
@@ -16,19 +15,26 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
-      <Container maxWidth="lg">
-        <Grid
-          item
+    <Box sx={{ width: "100vw", minHeight: "100vh" }}>
+      <section>
+        <Box
           sx={{
-            position: "relative",
-            width: "%100",
-            height: "50vh",
-            top: "5rem",
+            width: "100%",
+            height: "500px",
           }}
         >
-          <h1>Slider con los productos starred=true</h1>
-          {/* {starredProducts.map((product) => {
+          <img
+            srcSet={require("../../assets/images/guitar2.jpg")}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </Box>
+      </section>
+
+      {/* {starredProducts.map((product) => {
             return (
               <ProductCard
                 key={product.id}
@@ -37,10 +43,13 @@ const HomePage = () => {
                 onClick={() => console.log(product)}
               />
             );
+            
           })} */}
-        </Grid>
-      </Container>
-    </>
+
+      <Box>
+        <GridCategories />
+      </Box>
+    </Box>
   );
 };
 
