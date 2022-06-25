@@ -13,24 +13,26 @@ import ProductCarousel from "./components/productDetail/ProductCarousel";
 import QuantityItems from "./components/productDetail/QuantityItems";
 import AdminLogin from "./components/admin/login/AdminLogin";
 
-const MyRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />}>
-        <Route path="product/:id" element={<ProductDetail />} />
-        <Route path="aboutUs" element={<AboutUs />} />
-        <Route path="categories" element={<GridCategories />} />
-        <Route path="store" element={<StorePage />} />
-        <Route path="productCarousel" element={<ProductCarousel />} />
-        <Route path="quantityItems" element={<QuantityItems />} />
-        <Route path="signin" element={<SignIn />} />
-        <Route path="signup" element={<SignUp />} />
-      </Route>
-
+const MyRoutes = ({ type }) => {
+  if (type === "admin") {
+    return (
       <Route path="/admin">
         <Route path="dashboard" element={<DashBoard />} />
         <Route path="login" element={<AdminLogin />} />
       </Route>
+    );
+  }
+
+  return (
+    <Routes>
+      <Route path="/product/:id" element={<ProductDetail />} />
+      <Route path="/aboutUs" element={<AboutUs />} />
+      <Route path="/categories" element={<GridCategories />} />
+      <Route path="/store" element={<StorePage />} />
+      <Route path="/productCarousel" element={<ProductCarousel />} />
+      <Route path="/quantityItems" element={<QuantityItems />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   );
 };

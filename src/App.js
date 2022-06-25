@@ -4,6 +4,7 @@ import MyRoutes from "./MyRoutes";
 import { ThemeProvider, createTheme } from "@mui/material";
 
 import { SnackbarProvider } from "notistack";
+import UserMain from "./userMain/UserMain";
 
 const myTheme = createTheme({
   palette: {
@@ -32,7 +33,7 @@ function App() {
     <ThemeProvider theme={myTheme}>
       <SnackbarProvider maxSnack={4}>
         <div className="App">
-          <MyRoutes />
+          <UserMain />
         </div>
       </SnackbarProvider>
     </ThemeProvider>
