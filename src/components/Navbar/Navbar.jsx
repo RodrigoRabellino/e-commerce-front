@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   Box,
   AppBar,
   Typography,
   Toolbar,
-  Button,
+  Grid,
   useMediaQuery,
   useTheme,
   useScrollTrigger,
@@ -32,6 +33,11 @@ function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+  const cart = useSelector((state) => state.cart);
+  let cartQty = 0;
+  cart.forEach((item) => {
+    cartQty += item.qty;
+  });
 
   return (
     <>
@@ -69,17 +75,38 @@ function Navbar() {
                       </Link>
                     </Typography>
                   </Box>
-                  <Box>
-                    <Typography variant="button">
-                      <Link to="/signin" className="hover navLink">
-                        Login
-                      </Link>
-                    </Typography>
-                    <ShoppingCartIcon
-                      sx={{ paddingTop: 0.1, marginLeft: 2 }}
-                      className="hover navLink"
-                      onClick={() => setIsCartOpen(true)}
-                    />
+                  <Box display="flex" justifyContent="space-between">
+                    <Box>
+                      <Typography variant="button">
+                        <Link to="/signin" className="hover navLink">
+                          Login
+                        </Link>
+                      </Typography>
+                    </Box>
+                    <Box display="flex">
+                      <ShoppingCartIcon
+                        sx={{ paddingTop: 0.1, marginLeft: 2 }}
+                        className="hover navLink"
+                        onClick={() => setIsCartOpen(true)}
+                        color="background"
+                      />
+                      <Box
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                        sx={{
+                          position: "relative",
+                          right: "18px",
+                          bottom: "5px",
+                          backgroundColor: "#8C5032",
+                          width: "15px",
+                          height: "15px",
+                          borderRadius: "100%",
+                        }}
+                      >
+                        {cartQty}
+                      </Box>
+                    </Box>
                   </Box>
                 </>
               )}

@@ -82,7 +82,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
             <Grid container mt={5} sx={{ width: "100%" }}>
               {cart.map((item) => {
                 return (
-                  <>
+                  <div key={item._id}>
                     <Grid
                       container
                       p={2}
@@ -138,7 +138,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                         </Box>
                       </Grid>
                     </Grid>
-                  </>
+                  </div>
                 );
               })}
               <Grid container p={2}>
