@@ -24,16 +24,6 @@ const colors = {
 };
 
 const DashBoard = () => {
-  const [showLateral, setShowLateral] = useState(true);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   const cardStyle = {
     borderRadius: "15px",
     background: colors.background,
@@ -58,39 +48,7 @@ const DashBoard = () => {
           background: colors.secondary,
         }}
       >
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "end",
-          }}
-        >
-          <IconButton
-            id="button-dashboard"
-            aria-controls={open ? "menu-dashboard" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-          >
-            <MoreVert />
-          </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "button-dashboard",
-            }}
-            color={colors.secondary}
-          >
-            <MenuItem onClick={handleClose}>
-              <ListItemIcon>
-                <Print fontSize="small" />
-              </ListItemIcon>
-              <ListItemText>Print Report</ListItemText>
-            </MenuItem>
-          </Menu>
-        </Box>
+        <MenuButton />
       </Paper>
 
       <Box
@@ -120,6 +78,53 @@ const DashBoard = () => {
           <MyChartBar colors={colors} />
         </Box>
       </Box>
+    </Box>
+  );
+};
+
+const MenuButton = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "end",
+      }}
+    >
+      <IconButton
+        id="button-dashboard"
+        aria-controls={open ? "menu-dashboard" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      >
+        <MoreVert />
+      </IconButton>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "button-dashboard",
+        }}
+        color={colors.secondary}
+      >
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Print fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Print Report</ListItemText>
+        </MenuItem>
+      </Menu>
     </Box>
   );
 };
