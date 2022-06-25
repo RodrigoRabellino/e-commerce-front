@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import thunk from "redux-thunk";
 import userReducer from "./user/slice";
 import cartReducer from "./cart/slice";
 import adminReducer from "./admin/slice";
@@ -36,7 +37,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(thunk),
 });
 export let persistor = persistStore(store);
 

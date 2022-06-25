@@ -6,7 +6,7 @@ export const loginUser = async (email, password) => {
     const response = await axios.post(`${API_URL}/login/user`);
     return response.data;
   } catch (error) {
-    return error;
+    console.log("error in loginAdmin", error);
   }
 };
 
@@ -16,6 +16,6 @@ export const loginAdmin = async (email, password) => {
     const response = await axios.post(`${API_URL}/login/admin`, body);
     return response.data;
   } catch (error) {
-    return error;
+    console.log("error in loginAdmin", error);
   }
 };

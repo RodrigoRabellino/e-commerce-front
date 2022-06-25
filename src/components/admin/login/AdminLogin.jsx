@@ -1,10 +1,11 @@
 import { LoadingButton } from "@mui/lab";
 import { Box, IconButton, Paper, TextField, Typography } from "@mui/material";
 import { Cottage } from "@mui/icons-material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AnimatedBg from "./animatedBg/AnimatedBg";
 import { useNavigate } from "react-router-dom";
 import { loginAdmin } from "../../../services/loginServices";
+import { useDispatch } from "react-redux";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("admin@admin.com");
@@ -12,7 +13,10 @@ const AdminLogin = () => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [admin, setAdmin] = useState({});
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,21 +28,19 @@ const AdminLogin = () => {
     setLoading(true);
     try {
       const admin = await loginAdmin(email, password);
-      console.log("admin", admin);
       if (!Object.entries(admin)) {
         setErrorMessage("credentials are not good");
-        console.log("vpi", admin);
         setLoading(false);
         return setError(true);
       }
-      if (admin.response.status === 401) {
-        setErrorMessage("credentials are not good");
-        setLoading(false);
-        return setError(true);
-      }
+      console.log("admin", admin);
+      setAdmin(admin);
     } catch (error) {
-      setLoading(false);
+      console.log("errors in handleSub", error);
+      setErrorMessage("credentials are not good");
+      setError(true);
     }
+
     setLoading(false);
   };
 

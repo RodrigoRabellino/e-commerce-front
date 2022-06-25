@@ -5,6 +5,7 @@ const adminSlice = createSlice({
   initialState: {},
   reducers: {
     loginAdmin(state, action) {
+      console.log(action.payload);
       return { ...action.payload };
     },
     logOutAdmin(state, action) {
