@@ -3,14 +3,17 @@ import { MoreVert } from "@mui/icons-material";
 import MyChartBar from "./myCharts/MyChartBar";
 import MyChartLine from "./myCharts/MyChartLine";
 import MyChartBubble from "./myCharts/MyChartBubble";
+import { useState } from "react";
+
+const colors = {
+  primary: "#FFFB7D",
+  secondary: "#FBAB7E",
+  third: "#85FFBD",
+  fourth: "",
+};
 
 const DashBoard = () => {
-  const colors = {
-    primary: "#FFFB7D",
-    secondary: "#FBAB7E",
-    third: "#85FFBD",
-    fourth: "",
-  };
+  const [showLateral, setShowLateral] = useState(true);
 
   const cardStyle = {
     background:
@@ -22,12 +25,13 @@ const DashBoard = () => {
   return (
     <Box
       width="100%"
-      marginTop="65px"
+      height="100vh"
       display="flex"
-      padding="1rem"
       alignItems="flex-start"
       justifyContent="center"
     >
+      {showLateral ? <Paper></Paper> : <></>}
+
       <Box
         padding="1rem"
         display="flex"
@@ -68,29 +72,6 @@ const DashBoard = () => {
           <MyChartBar colors={colors} />
         </Box>
       </Box>
-      <Paper
-        elevation={0}
-        sx={{
-          ...cardStyle,
-          width: "300px",
-          height: "800px",
-          padding: "0.65rem",
-        }}
-      >
-        <Box
-          sx={{
-            width: "100%",
-            height: "33%",
-            display: "flex",
-            justifyContent: "end",
-            alignItems: "start",
-          }}
-        >
-          <IconButton>
-            <MoreVert />
-          </IconButton>
-        </Box>
-      </Paper>
     </Box>
   );
 };
