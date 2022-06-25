@@ -1,36 +1,97 @@
-import { Box, Paper, Grid, IconButton } from "@mui/material";
-import { MoreVert } from "@mui/icons-material";
+import {
+  Box,
+  Paper,
+  Grid,
+  IconButton,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import { MoreVert, Print } from "@mui/icons-material";
 import MyChartBar from "./myCharts/MyChartBar";
 import MyChartLine from "./myCharts/MyChartLine";
 import MyChartBubble from "./myCharts/MyChartBubble";
 import { useState } from "react";
 
 const colors = {
-  primary: "#FFFB7D",
-  secondary: "#FBAB7E",
-  third: "#85FFBD",
-  fourth: "",
+  primary: "#bc8839",
+  secondary: "#559971",
+  third: "#8a4f35",
+  fourth: "#5d9a47",
+  background: "#f1dbba",
 };
 
 const DashBoard = () => {
   const [showLateral, setShowLateral] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const cardStyle = {
-    background:
-      "linear-gradient(90deg, rgba(41,255,198,1) 0%, rgba(32,227,178,1) 50%, rgba(12,235,235,1) 100%)",
+    borderRadius: "15px",
+    background: colors.background,
     width: "300px",
     height: "150px",
     padding: "0.65rem",
   };
   return (
     <Box
+      sx={{ background: "#eaeaea" }}
       width="100%"
       height="100vh"
       display="flex"
-      alignItems="flex-start"
-      justifyContent="center"
+      alignItems="center"
+      justifyContent="space-evenly"
     >
-      {showLateral ? <Paper></Paper> : <></>}
+      <Paper
+        elevation={0}
+        sx={{
+          width: "250px",
+          height: "90%",
+          background: colors.secondary,
+        }}
+      >
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "end",
+          }}
+        >
+          <IconButton
+            id="button-dashboard"
+            aria-controls={open ? "menu-dashboard" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <MoreVert />
+          </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "button-dashboard",
+            }}
+            color={colors.secondary}
+          >
+            <MenuItem onClick={handleClose}>
+              <ListItemIcon>
+                <Print fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Print Report</ListItemText>
+            </MenuItem>
+          </Menu>
+        </Box>
+      </Paper>
 
       <Box
         padding="1rem"
@@ -52,20 +113,7 @@ const DashBoard = () => {
             </Paper>
           </Grid>
           <Grid item lg="auto">
-            <Paper elevation={0} sx={cardStyle}>
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "33%",
-                  display: "flex",
-                  justifyContent: "end",
-                }}
-              >
-                <IconButton>
-                  <MoreVert color="primary" />
-                </IconButton>
-              </Box>
-            </Paper>
+            <Paper elevation={0} sx={cardStyle}></Paper>
           </Grid>
         </Grid>
         <Box width="90%" display="flex">

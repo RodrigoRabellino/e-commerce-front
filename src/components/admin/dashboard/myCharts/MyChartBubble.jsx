@@ -23,7 +23,7 @@ const MyChartBubble = ({ colors }) => {
   const data = {
     datasets: [
       {
-        label: "Red dataset",
+        label: "Bubbles",
         data: Array.from({ length: 10 }, () => ({
           x: faker.datatype.number({ min: -100, max: 100 }),
           y: faker.datatype.number({ min: -100, max: 100 }),
@@ -32,7 +32,7 @@ const MyChartBubble = ({ colors }) => {
         backgroundColor: primary,
       },
       {
-        label: "Blue dataset",
+        label: "More Bubbles",
         data: Array.from({ length: 15 }, () => ({
           x: faker.datatype.number({ min: -100, max: 100 }),
           y: faker.datatype.number({ min: -100, max: 100 }),
