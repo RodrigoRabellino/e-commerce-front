@@ -16,15 +16,16 @@ import AdminLogin from "./components/admin/login/AdminLogin";
 const MyRoutes = ({ type }) => {
   if (type === "admin") {
     return (
-      <Route path="/admin">
-        <Route path="dashboard" element={<DashBoard />} />
-        <Route path="login" element={<AdminLogin />} />
-      </Route>
+      <Routes>
+        <Route path="/admin/dashboard" element={<DashBoard />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+      </Routes>
     );
   }
 
   return (
     <Routes>
+      <Route path="/" element={<HomePage />} />
       <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/categories" element={<GridCategories />} />
