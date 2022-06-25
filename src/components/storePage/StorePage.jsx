@@ -145,7 +145,7 @@ const StorePage = () => {
               {products.map((product) => {
                 return (
                   <ProductCard
-                    key={product.id}
+                    key={product._id}
                     product={product}
                     display={viewDisplay}
                     onClick={() => console.log(product)}

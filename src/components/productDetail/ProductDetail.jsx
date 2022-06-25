@@ -1,12 +1,40 @@
-import { Grid, Typography, Button, Box, Link, Container } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Button,
+  Box,
+  Link,
+  Container,
+  CircularProgress,
+} from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import { Block } from "@mui/icons-material";
 import ExampleCarousel from "../ExampleCarousel/ExampleCarousel";
 import { useSelector } from "react-redux";
 import QuantityItems from "./QuantityItems";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchOneProduct } from "../../services/apiServices";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../Redux/cart/slice";
 
 function ProductDetail() {
-  const product = useSelector((state) => state.products);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const [selectedProduct, setSelectedProduct] = useState({});
+
+  useEffect(() => {
+    const getProduct = async () => {
+      const response = await fetchOneProduct(id);
+      setSelectedProduct({ ...response.data });
+    };
+    getProduct();
+  }, []);
+
+  const addToCart = () => {
+    console.log(selectedProduct);
+    dispatch(addItemToCart(selectedProduct));
+  };
 
   return (
     <Container maxWidth="lg">
@@ -19,42 +47,49 @@ function ProductDetail() {
         spacing={5}
       >
         <Grid item xs={6}>
-          <ExampleCarousel />
-          <Box
-            sx={{
-              display: "flex",
-              marginTop: "50px",
-              justifyContent: "space-between",
-            }}
-          >
-            <img src={product.imgUrl[0]} style={{ width: "150px" }} />
-            <img src={product.imgUrl[1]} style={{ width: "150px" }} />
-            <img src={product.imgUrl[2]} style={{ width: "150px" }} />
-          </Box>
-          {/* <img src={product.imgUrl[0]} style={{ width: "500px" }} /> */}
-          {/* <> */}
-          {/* <Carousel>
-            {items.map((item, i) => (
-              <Item key={i} item={item} />
-            ))}
-          </Carousel>
-        </> */}
+          {Object.entries(selectedProduct).length === 0 ? (
+            <CircularProgress />
+          ) : (
+            <>
+              <ExampleCarousel selectedProduct={selectedProduct} />
+              <Box
+                sx={{
+                  display: "flex",
+                  marginTop: "50px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <img
+                  src={selectedProduct.imgUrl[0]}
+                  style={{ width: "150px" }}
+                />
+                <img
+                  src={selectedProduct.imgUrl[1]}
+                  style={{ width: "150px" }}
+                />
+                <img
+                  src={selectedProduct.imgUrl[2]}
+                  style={{ width: "150px" }}
+                />
+              </Box>
+            </>
+          )}
         </Grid>
         <Grid item xs={6}>
           <Typography
             sx={{ fontSize: "40px", marginBottom: "35px" }}
             variant="h3"
           >
-            {product.name}
+            {selectedProduct.name}
           </Typography>
-          <Typography variant="h4">${product.price}</Typography>
+          <Typography variant="h4">${selectedProduct.price}</Typography>
 
           <Typography variant="h6">Product introduction</Typography>
-          <Typography variant="p">{product.description}</Typography>
+          <Typography variant="p">{selectedProduct.description}</Typography>
 
           <Typography sx={{ fontSize: "15px" }} variant="h5"></Typography>
           <hr />
-          <Typography>Stock: {product.stock}</Typography>
+          <Typography>Stock: {selectedProduct.stock}</Typography>
           <Typography sx={{ paddingBottom: "30px" }} variant="h6">
             Product Available
           </Typography>
@@ -62,7 +97,9 @@ function ProductDetail() {
             <QuantityItems />
           </Box>
 
-          <Button variant="contained">Add to cart</Button>
+          <Button variant="contained" onClick={() => addToCart()}>
+            Add to cart
+          </Button>
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <Link
               sx={{

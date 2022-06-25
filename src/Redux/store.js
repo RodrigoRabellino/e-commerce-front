@@ -10,9 +10,11 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import productsReducer from "./product";
+import thunk from "redux-thunk";
 import userReducer from "./user/slice";
 import cartReducer from "./cart/slice";
+import adminReducer from "./admin/slice";
+import { combineReducers } from "redux";
 
 const persistConfig = {
   key: "root",
@@ -20,20 +22,22 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducerCart = persistReducer(persistConfig, cartReducer);
+const rootReducer = combineReducers({
+  cart: cartReducer,
+  user: userReducer,
+  admin: adminReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: {
-    products: productsReducer,
-    user: userReducer,
-    cart: persistedReducerCart,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(thunk),
 });
 export let persistor = persistStore(store);
 

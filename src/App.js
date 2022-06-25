@@ -1,9 +1,10 @@
 import "./App.css";
 import MyRoutes from "./MyRoutes";
-import Navbar from "./components/Navbar/Navbar";
+
 import { ThemeProvider, createTheme } from "@mui/material";
-import Footer from "./components/Footer/Footer";
+
 import { SnackbarProvider } from "notistack";
+import UserMain from "./userMain/UserMain";
 
 const myTheme = createTheme({
   palette: {
@@ -32,9 +33,7 @@ function App() {
     <ThemeProvider theme={myTheme}>
       <SnackbarProvider maxSnack={4}>
         <div className="App">
-          <Navbar />
-          <MyRoutes />
-          <Footer />
+          <UserMain />
         </div>
       </SnackbarProvider>
     </ThemeProvider>

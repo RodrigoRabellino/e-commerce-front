@@ -92,7 +92,7 @@ export default function Login() {
                   variant="standard"
                 />
 
-                <Button fullWidth variant="contained" color="#F2DBB8">
+                <Button fullWidth variant="contained">
                   Sign Up
                 </Button>
 
@@ -127,7 +127,9 @@ export default function Login() {
                         />
                       </svg>
                     </span>
-                    <span class="google-button__text">Sign in with Google</span>
+                    <span className="google-button__text">
+                      Sign in with Google
+                    </span>
                   </button>
                 </Box>
                 <Box alignItems="center">
@@ -157,7 +159,7 @@ export default function Login() {
                         />
                       </svg>
                     </span>
-                    <span class="google-button__text">
+                    <span className="google-button__text">
                       Sign in with Twitter
                     </span>
                   </button>

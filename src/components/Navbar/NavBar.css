@@ -6,3 +6,7 @@
 .navLink:hover{
   color: #8C5032;
 }
+
+.cartCounter{
+  position: 'relative'
+}

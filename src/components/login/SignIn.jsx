@@ -102,12 +102,12 @@ export default function SignIn() {
                   label="Remember me"
                 />
                 <Box className="butonsingin">
-                  <Button fullWidth variant="contained" color="primary">
+                  <Button fullWidth variant="contained">
                     Sign In
                   </Button>
                 </Box>
                 <NavLink to="/signup">
-                  <Button fullWidth variant="contained" color="primary">
+                  <Button fullWidth variant="contained">
                     Sign Up
                   </Button>
                 </NavLink>
@@ -143,7 +143,9 @@ export default function SignIn() {
                         />
                       </svg>
                     </span>
-                    <span class="google-button__text">Sign in with Google</span>
+                    <span className="google-button__text">
+                      Sign in with Google
+                    </span>
                   </button>
                 </Box>
                 <Box alignItems="center">
@@ -173,7 +175,7 @@ export default function SignIn() {
                         />
                       </svg>
                     </span>
-                    <span class="google-button__text">
+                    <span className="google-button__text">
                       Sign in with Twitter
                     </span>
                   </button>
