@@ -17,12 +17,17 @@ import { isCartOpen, setIsCartOpen } from "./Navbar";
 import { RemoveItemCart } from "../../Redux/cart/slice";
 
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
-  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(cart);
   const removeFromCart = (cartItem) => {
     dispatch(RemoveItemCart(cartItem));
   };
+
+  const cart = useSelector((state) => state.cart);
+  let cartTotal = 0;
+  cart.forEach((item) => {
+    cartTotal += item.qty * item.price;
+  });
+
   return (
     <>
       <Drawer anchor="right" open={isCartOpen}>
@@ -53,22 +58,24 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
             </Box>
           </Grid>
           {cart.length === 0 ? (
-            <Grid item>
-              <Box
-                p={2}
-                width="400px"
-                className="row mt-5"
-                sx={{ color: "#8C5032" }}
-              >
-                <div className="col text-center">
-                  {/* <FontAwesomeIcon icon={faCartShopping} /> */}
-
-                  <span style={{ fontSize: "1.5rem" }}>
-                    {/* <FontAwesomeIcon icon={faCircleExclamation} /> */}
-                  </span>
-                  <h5>It looks like your Shopping Cart is empty!</h5>
-                  <RemoveShoppingCartIcon fontSize="large" />
-                </div>
+            <Grid
+              container
+              xs={12}
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              sx={{ height: "70vh" }}
+            >
+              <Box p={2} width="100%" sx={{ color: "#8C5032" }}>
+                <Typography variant="h5" textAlign="center">
+                  It looks like your Shopping Cart is empty!
+                </Typography>
+              </Box>
+              <Box>
+                <RemoveShoppingCartIcon
+                  fontSize="large"
+                  sx={{ color: "#8C5032" }}
+                />
               </Box>
             </Grid>
           ) : (
@@ -81,7 +88,6 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                       p={2}
                       sx={{
                         width: "100%",
-
                         borderBottom: "1px solid #8C5032",
                       }}
                     >
@@ -127,7 +133,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                             component="span"
                             align="center"
                           >
-                            {item.price}
+                            {item.price * item.qty}
                           </Typography>
                         </Box>
                       </Grid>
@@ -135,6 +141,16 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                   </>
                 );
               })}
+              <Grid container p={2}>
+                <Box>
+                  <Typography variant="h6" ms={5}>
+                    Total:{" "}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography variant="h6">USD {cartTotal}</Typography>
+                </Box>
+              </Grid>
             </Grid>
           )}
         </Grid>
