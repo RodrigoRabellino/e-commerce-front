@@ -83,11 +83,14 @@ function Navbar() {
                         </Link>
                       </Typography>
                     </Box>
-                    <Box display="flex">
+                    <Box
+                      display="flex"
+                      onClick={() => setIsCartOpen(true)}
+                      sx={{ cursor: "pointer" }}
+                    >
                       <ShoppingCartIcon
                         sx={{ paddingTop: 0.1, marginLeft: 2 }}
                         className="hover navLink"
-                        onClick={() => setIsCartOpen(true)}
                         color="background"
                       />
                       <Box
@@ -96,12 +99,13 @@ function Navbar() {
                         alignItems="center"
                         sx={{
                           position: "relative",
-                          right: "18px",
+                          right: "13px",
                           bottom: "5px",
-                          backgroundColor: "#8C5032",
                           width: "15px",
                           height: "15px",
                           borderRadius: "100%",
+                          fontSize: "12px",
+                          backgroundColor: "#8C5032",
                         }}
                       >
                         {cartQty}

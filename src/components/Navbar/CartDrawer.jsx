@@ -25,7 +25,11 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
 
   return (
     <>
-      <Drawer anchor="right" open={isCartOpen}>
+      <Drawer
+        anchor="right"
+        open={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+      >
         <Grid container p={2} sx={{ width: "400px" }}>
           <Grid
             item
@@ -98,9 +102,10 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                       </Grid>
 
                       <Grid
-                        container
+                        item
                         sm={8}
                         p={1}
+                        display="flex"
                         flexDirection="column"
                         justifyContent="space-between"
                       >
@@ -112,6 +117,12 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                         <Grid item>
                           <Typography variant="span" color="secondary">
                             <RemoveIcon
+                              sx={{
+                                "&:hover": {
+                                  cursor: "pointer",
+                                  color: "black",
+                                },
+                              }}
                               fontSize="small"
                               onClick={() => removeFromCart(item)}
                             />
@@ -121,6 +132,12 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                           </Typography>
                           <Typography variant="span" color="secondary">
                             <AddIcon
+                              sx={{
+                                "&:hover": {
+                                  cursor: "pointer",
+                                  color: "black",
+                                },
+                              }}
                               fontSize="small"
                               onClick={() => addToCart(item)}
                             />
@@ -129,16 +146,17 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                       </Grid>
 
                       <Grid
-                        container
+                        item
                         p={1}
-                        direction="column"
+                        display="flex"
+                        flexDirection="column"
                         justifyContent="space-between"
                         sm={2}
                         sx={{
                           textAlign: "center",
                         }}
                       >
-                        <Box>
+                        <Box textAlign="end">
                           <DeleteIcon
                             onClick={() => removeFromCart(item)}
                             sx={{
@@ -147,14 +165,19 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                             }}
                           />
                         </Box>
-                        <Box>
-                          <Typography variant="p" component="span">
+                        <Box display="flex" justifyContent="space-between">
+                          <Typography
+                            variant="p"
+                            component="span"
+                            color="secondary"
+                          >
                             $
                           </Typography>
                           <Typography
                             variant="p"
                             component="span"
                             align="center"
+                            color="secondary"
                           >
                             {item.price * item.qty}
                           </Typography>
