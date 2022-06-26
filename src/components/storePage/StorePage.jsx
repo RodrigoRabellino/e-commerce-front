@@ -7,6 +7,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../services/apiServices";
@@ -22,6 +23,8 @@ const StorePage = () => {
   const [categorySelected, setCategorySelected] = useState("All Products");
   const [viewDisplay, setViewDisplay] = useState("module");
 
+  const theme = useTheme();
+  console.log(theme);
   const handleNextPage = () => {
     //setPage((prev) => prev++);
     console.log("handlemore");
@@ -41,7 +44,7 @@ const StorePage = () => {
 
   return (
     <Grid container>
-      <Grid item xs={3}>
+      <Grid item xs={3} sx={{ display: { xs: "none", sm: "block" } }}>
         <Box
           sx={{
             position: "sticky",
@@ -50,50 +53,81 @@ const StorePage = () => {
             padding: "1rem",
           }}
         >
-          <Typography variant="h5" color="primary">
+          <Typography variant="h5" color={theme.palette.primary.dark}>
             Categories
           </Typography>
           <Stack marginTop="1rem" spacing={2}>
             <Button
-              onClick={() => setCategorySelected("all products")}
-              variant={
-                categorySelected === "all products" ? "contained" : "outlined"
-              }
-              sx={{ borderRadius: "50px", backgroundColor: "primary" }}
+              onClick={() => setCategorySelected("All Products")}
+              // color={
+              //   categorySelected === "All Products"
+              //     ? "primary"
+              //     // : theme.palette.primary.dark
+              // }
+              variant="contained"
+              // variant={
+              //   categorySelected === "all products" ? "contained" : "outlined"
+              // }
+              sx={{ borderRadius: "50px" }}
             >
               All Products
             </Button>
             <Button
-              onClick={() => setCategorySelected("guitars")}
-              variant={
-                categorySelected === "guitars" ? "contained" : "outlined"
-              }
+              onClick={() => setCategorySelected("Guitars")}
+              // color={
+              //   categorySelected === "Guitars"
+              //     ? "primary"
+              //     : theme.palette.primary.dark
+              // }
+              variant="contained"
+              // variant={
+              //   categorySelected === "guitars" ? "contained" : "outlined"
+              // }
               elevation={0}
               sx={{ borderRadius: "50px" }}
             >
               Guitars
             </Button>
             <Button
-              onClick={() => setCategorySelected("bass")}
-              variant={categorySelected === "bass" ? "contained" : "outlined"}
+              onClick={() => setCategorySelected("Basses")}
+              variant="contained"
+              // color={
+              //   categorySelected === "Basses"
+              //     ? "primary"
+              //     : theme.palette.primary.dark
+              // }
+              // variant={categorySelected === "Basses" ? "contained" : "outlined"}
               elevation={0}
               sx={{ borderRadius: "50px" }}
             >
               Bass
             </Button>
             <Button
-              onClick={() => setCategorySelected("amps")}
-              variant={categorySelected === "amps" ? "contained" : "outlined"}
+              onClick={() => setCategorySelected("Amps")}
+              // color={
+              //   categorySelected === "Amps"
+              //     ? "primary"
+              //     : theme.palette.primary.dark
+              // }
+              variant="contained"
+              // variant={categorySelected === "amps" ? "contained" : "outlined"}
               elevation={0}
               sx={{ borderRadius: "50px" }}
             >
               Amps
             </Button>
             <Button
-              onClick={() => setCategorySelected("accessories")}
-              variant={
-                categorySelected === "accessories" ? "contained" : "outlined"
-              }
+              onClick={() => setCategorySelected("Accessories")}
+              color="primary"
+              // color={
+              //   categorySelected === "Accessories"
+              //     ? "primary"
+              //     // : theme.palette.primary.dark
+              // }
+              variant="contained"
+              // variant={
+              //   categorySelected === "Accessories" ? "contained" : "outlined"
+              // }
               elevation={0}
               sx={{ borderRadius: "50px" }}
             >
@@ -167,22 +201,28 @@ const StorePage = () => {
           </Stack>
         </Paper> */}
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12} sm={9} md={8}>
         <Box
+          position="relative"
           width="100%"
           marginTop="65px"
           display="flex"
+          flexDirection="column"
           padding="0.65rem"
           justifyContent="space-around"
         >
-          <Box width="100%" display="flex" flexDirection="column">
-            <Box
-              display="fle"
-              alignItems="center"
-              justifyContent="space-between"
-              marginBottom="1rem"
-            >
-              <Typography variant="h4">{categorySelected}</Typography>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            marginBottom="1rem"
+          >
+            <Box flex={10}>
+              <Typography variant="h4" color={theme.palette.primary.dark}>
+                {categorySelected}
+              </Typography>
+            </Box>
+            <Box>
               <ToggleButtonGroup
                 size="small"
                 exclusive
@@ -198,35 +238,37 @@ const StorePage = () => {
                 </ToggleButton>
               </ToggleButtonGroup>
             </Box>
-            <Box>
-              <InfiniteScroll
-                dataLength={products.length}
-                next={() => handleNextPage()}
-                hasMore={true}
-                loader={<LoadingSkeleton />}
-                scrollThreshold={0.95}
-                endMessage={null}
-                style={{ paddingTop: "1rem" }}
+          </Box>
+
+          <Box>
+            <InfiniteScroll
+              dataLength={products.length}
+              next={() => handleNextPage()}
+              hasMore={true}
+              loader={<LoadingSkeleton />}
+              scrollThreshold={0.95}
+              endMessage={null}
+              style={{ paddingTop: "1rem" }}
+            >
+              <Grid
+                container
+                width="100%"
+                spacing={2}
+                justifyContent="space-evenly"
+                paddingX="1rem"
               >
-                <Grid
-                  container
-                  spacing={2}
-                  justifyContent="center"
-                  paddingX="1rem"
-                >
-                  {products.map((product) => {
-                    return (
-                      <ProductCard
-                        key={product._id}
-                        product={product}
-                        display={viewDisplay}
-                        onClick={() => console.log(product)}
-                      />
-                    );
-                  })}
-                </Grid>
-              </InfiniteScroll>
-            </Box>
+                {products.map((product) => {
+                  return (
+                    <ProductCard
+                      key={product._id}
+                      product={product}
+                      display={viewDisplay}
+                      onClick={() => console.log(product)}
+                    />
+                  );
+                })}
+              </Grid>
+            </InfiniteScroll>
           </Box>
         </Box>
       </Grid>

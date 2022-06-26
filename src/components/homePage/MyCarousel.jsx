@@ -33,7 +33,6 @@ function MyCarousel({ starredProducts }) {
 
 function Item(props) {
   const theme = useTheme();
-  console.log(theme.palette.primary);
   const dispatch = useDispatch();
   const addToCart = (item) => {
     dispatch(addItemToCart(item));

@@ -64,8 +64,13 @@ const HomePage = () => {
       <Box sx={{ paddingY: "3rem", marginY: "3rem" }}>
         <GridCategories />
       </Box>
-      <Container p={2} sx={{ marginBottom: "5rem" }}>
-        <Grid item xs={2}>
+      <Grid
+        container
+        p={2}
+        sx={{ paddingBottom: "5rem" }}
+        justifyContent="center"
+      >
+        <Grid item sm={8} md={6}>
           <Typography
             variant="h3"
             color={theme.palette.primary.dark}
@@ -75,7 +80,7 @@ const HomePage = () => {
           </Typography>
           <MyCarousel starredProducts={starredProducts} />
         </Grid>
-      </Container>
+      </Grid>
     </Box>
   );
 };
