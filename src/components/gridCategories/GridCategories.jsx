@@ -39,7 +39,7 @@ const GridCategories = () => {
         {categories.map((category, index) => {
           let image = require(`../../assets/images/${category.imageName}`);
           return (
-            <Grid item xs={4} key={index}>
+            <Grid item xs={12} sm={6} md={4} key={index}>
               <CategoryButton imgUri={image} categoryName={category.name} />
             </Grid>
           );

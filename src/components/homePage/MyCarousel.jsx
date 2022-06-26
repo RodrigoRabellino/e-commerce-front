@@ -13,8 +13,9 @@ import {
   CardContent,
   CardActions,
   Typography,
+  useTheme,
 } from "@mui/material";
-import { starredProducts } from "./HomePage";
+
 import { Card } from "react-bootstrap";
 import { Box } from "@mui/system";
 import { useDispatch } from "react-redux";
@@ -31,17 +32,19 @@ function MyCarousel({ starredProducts }) {
 }
 
 function Item(props) {
+  const theme = useTheme();
+  console.log(theme.palette.primary);
   const dispatch = useDispatch();
   const addToCart = (item) => {
     dispatch(addItemToCart(item));
   };
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardHeader
         title={props.item.name}
         sx={{
-          backgroundColor: "#BF8832",
-          color: "#F2DBB8",
+          backgroundColor: theme.palette.primary.main,
+          color: "white",
         }}
       />
       <Grid
@@ -56,38 +59,38 @@ function Item(props) {
         <CardMedia
           sx={{ objectFit: "contain", height: "90%", margin: "auto" }}
           component="img"
-          image={props.item.imgUrl}
+          image={props.item.imgUrl[0]}
           alt={props.item.name}
         />
       </Grid>
       <CardContent
         sx={{
-          backgroundColor: "#BF8832",
+          backgroundColor: theme.palette.primary.main,
           height: "90px",
           overflow: "hidden",
           textOverflow: "ellipsis",
         }}
       >
-        <Typography variant="p" color="#F2DBB8">
+        <Typography variant="p" color="white">
           {props.item.description}
         </Typography>
       </CardContent>
-      <CardActions sx={{ backgroundColor: "#BF8832" }}>
+      <CardActions sx={{ backgroundColor: theme.palette.primary.main }}>
         <Grid container>
           <Box flex={1}>
             {" "}
             <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
+              <FavoriteIcon sx={{ color: theme.palette.primary.dark }} />
             </IconButton>
             <IconButton aria-label="share">
-              <ShareIcon />
+              <ShareIcon sx={{ color: theme.palette.primary.dark }} />
             </IconButton>
           </Box>
           <Box flex={1}>
             <Button
               variant="contained"
               onClick={() => addToCart(props.item)}
-              sx={{ backgroundColor: "#F2DBB8", color: "#BF8832" }}
+              sx={{ backgroundColor: theme.palette.primary.dark }}
             >
               Add to cart
             </Button>

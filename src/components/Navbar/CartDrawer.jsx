@@ -3,7 +3,7 @@ import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Drawer, Box, Typography, Button, Grid } from "@mui/material";
+import { Drawer, Box, Typography, Button, Grid, useTheme } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { removeItemCart, addItemToCart } from "../../Redux/cart/slice";
 
@@ -22,6 +22,8 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
     cartTotal += item.qty * item.price;
   });
 
+  const theme = useTheme();
+
   return (
     <>
       <Drawer
@@ -35,25 +37,27 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
             px={1}
             sx={{
               width: "100%",
-              borderBottom: "1px solid #8C5032",
+              borderBottom: `1px solid ${theme.palette.primary.main}`,
             }}
           >
             <Box style={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography variant="h4" sx={{ color: "#8C5032" }}>
+              <Typography
+                variant="h4"
+                sx={{ color: theme.palette.primary.main }}
+              >
                 Shopping Cart
               </Typography>
-              <Button
-                style={{
-                  textAlign: "end",
-                  justifyContent: "flex-end",
-                  padding: 0,
+
+              <CloseIcon
+                sx={{
+                  color: theme.palette.primary.main,
+                  "&:hover": {
+                    color: theme.palette.primary.dark,
+                    cursor: "pointer",
+                  },
                 }}
-              >
-                <CloseIcon
-                  sx={{ color: "#8C5032" }}
-                  onClick={() => setIsCartOpen(false)}
-                ></CloseIcon>
-              </Button>
+                onClick={() => setIsCartOpen(false)}
+              ></CloseIcon>
             </Box>
           </Grid>
           {cart.length === 0 ? (
@@ -65,7 +69,11 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
               alignItems="center"
               sx={{ height: "70vh" }}
             >
-              <Box p={2} width="100%" sx={{ color: "#8C5032" }}>
+              <Box
+                p={2}
+                width="100%"
+                sx={{ color: theme.palette.primary.main }}
+              >
                 <Typography variant="h5" textAlign="center">
                   It looks like your Shopping Cart is empty!
                 </Typography>
@@ -73,7 +81,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
               <Box>
                 <RemoveShoppingCartIcon
                   fontSize="large"
-                  sx={{ color: "#8C5032" }}
+                  sx={{ color: theme.palette.primary.main }}
                 />
               </Box>
             </Grid>
@@ -85,7 +93,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                     <Grid
                       container
                       sx={{
-                        borderBottom: "1px solid #8C5032",
+                        borderBottom: `1px solid ${theme.palette.primary.main}`,
                       }}
                     >
                       <Grid item sm={2} p={1} maxHeight="5rem">
@@ -109,32 +117,32 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                         justifyContent="space-between"
                       >
                         <Grid item>
-                          <Typography variant="p" color="secondary">
+                          <Typography variant="p" color="primary">
                             {item.name}
                           </Typography>
                         </Grid>
                         <Grid item>
-                          <Typography variant="span" color="secondary">
+                          <Typography variant="span" color="primary">
                             <RemoveIcon
                               sx={{
                                 "&:hover": {
                                   cursor: "pointer",
-                                  color: "black",
+                                  color: theme.palette.primary.dark,
                                 },
                               }}
                               fontSize="small"
                               onClick={() => removeFromCart(item)}
                             />
                           </Typography>
-                          <Typography variant="span" color="secondary">
+                          <Typography variant="span" color="primary">
                             x {item.qty}
                           </Typography>
-                          <Typography variant="span" color="secondary">
+                          <Typography variant="span" color="primary">
                             <AddIcon
                               sx={{
                                 "&:hover": {
                                   cursor: "pointer",
-                                  color: "black",
+                                  color: theme.palette.primary.dark,
                                 },
                               }}
                               fontSize="small"
@@ -160,7 +168,10 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                             onClick={() => removeFromCart(item)}
                             sx={{
                               color: "#8C5032",
-                              "&:hover": { cursor: "pointer", color: "black" },
+                              "&:hover": {
+                                cursor: "pointer",
+                                color: theme.palette.primary.dark,
+                              },
                             }}
                           />
                         </Box>
@@ -168,7 +179,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                           <Typography
                             variant="p"
                             component="span"
-                            color="secondary"
+                            color="primary"
                           >
                             $
                           </Typography>
@@ -176,7 +187,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                             variant="p"
                             component="span"
                             align="center"
-                            color="secondary"
+                            color="primary"
                           >
                             {item.price * item.qty}
                           </Typography>
@@ -188,12 +199,12 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
               })}
               <Grid container p={1} columnSpacing={2} justifyContent="flex-end">
                 <Grid item>
-                  <Typography variant="h6" ms={5} color="secondary">
+                  <Typography variant="h6" ms={5} color="primary">
                     Total:
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography variant="h6" color="secondary">
+                  <Typography variant="h6" color="primary">
                     {" "}
                     $ {cartTotal}
                   </Typography>

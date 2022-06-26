@@ -1,21 +1,19 @@
 import "./App.css";
 import MyRoutes from "./MyRoutes";
-
 import { ThemeProvider, createTheme } from "@mui/material";
-
 import { SnackbarProvider } from "notistack";
 import UserMain from "./userMain/UserMain";
 
 const myTheme = createTheme({
   palette: {
     primary: {
-      main: "#BF8832",
-      contrastText: "#F2DBB8",
-      dark: "#8C5032",
+      main: "#ab832a",
+      light: "#f8f8e6",
+      dark: "#3E2707",
     },
     secondary: {
-      main: "#8C5032",
-      light: "#F2DBB8",
+      main: "#7B8723",
+      light: "#f6feea",
       contrastText: "#F2DBB8",
     },
     background: {

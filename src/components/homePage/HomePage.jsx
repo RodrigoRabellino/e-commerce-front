@@ -4,6 +4,7 @@ import { fetchStarredProducts } from "../../services/apiServices";
 import GridCategories from "../gridCategories/GridCategories";
 import ExampleCarousel from "../../components/ExampleCarousel/ExampleCarousel";
 import MyCarousel from "./MyCarousel";
+import { useTheme } from "@emotion/react";
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
@@ -15,9 +16,16 @@ const HomePage = () => {
     };
     getstarredProducts();
   }, []);
+  const theme = useTheme();
 
   return (
-    <Box sx={{ width: "100vw", minHeight: "100vh" }}>
+    <Box
+      sx={{
+        width: "100vw",
+        minHeight: "100vh",
+        backgroundColor: theme.palette.primary.light,
+      }}
+    >
       <section>
         <Box
           sx={{
@@ -40,11 +48,15 @@ const HomePage = () => {
           fontWeight="600"
           marginTop="50px"
           variant="h3"
-          color="primary"
+          color={theme.palette.primary.dark}
         >
           Music Inspires
         </Typography>
-        <Typography variant="h5" sx={{ marginTop: "20px" }} color="primary">
+        <Typography
+          variant="h5"
+          sx={{ marginTop: "20px" }}
+          color={theme.palette.primary.dark}
+        >
           Life without playing music is inconceivable for me.
         </Typography>
       </Box>
@@ -53,10 +65,16 @@ const HomePage = () => {
         <GridCategories />
       </Box>
       <Container p={2} sx={{ marginBottom: "5rem" }}>
-        <Typography variant="h3" sx={{ marginBottom: "2rem" }}>
-          Our Featured Products
-        </Typography>
-        <MyCarousel starredProducts={starredProducts} />
+        <Grid item xs={2}>
+          <Typography
+            variant="h3"
+            color={theme.palette.primary.dark}
+            sx={{ marginBottom: "2rem" }}
+          >
+            Our Featured Products
+          </Typography>
+          <MyCarousel starredProducts={starredProducts} />
+        </Grid>
       </Container>
     </Box>
   );
