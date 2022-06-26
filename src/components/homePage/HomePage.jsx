@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { fetchStarredProducts } from "../../services/apiServices";
 import GridCategories from "../gridCategories/GridCategories";
 import ExampleCarousel from "../../components/ExampleCarousel/ExampleCarousel";
+import MyCarousel from "./MyCarousel";
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
@@ -35,29 +36,28 @@ const HomePage = () => {
         </Box>
       </section>
       <Box>
-        <Typography fontWeight="600" marginTop="50px" variant="h3">
+        <Typography
+          fontWeight="600"
+          marginTop="50px"
+          variant="h3"
+          color="primary"
+        >
           Music Inspires
         </Typography>
-        <Typography variant="h5" sx={{ marginTop: "20px" }}>
+        <Typography variant="h5" sx={{ marginTop: "20px" }} color="primary">
           Life without playing music is inconceivable for me.
         </Typography>
       </Box>
 
-      {/* {starredProducts.map((product) => {
-            return (
-              <ProductCard
-                key={product.id}
-                product={product}
-                display={viewDisplay}
-                onClick={() => console.log(product)}
-              />
-            );
-            
-          })} */}
-
-      <Box sx={{ paddingY: "3rem" }}>
+      <Box sx={{ paddingY: "3rem", marginY: "3rem" }}>
         <GridCategories />
       </Box>
+      <Container p={2} sx={{ marginBottom: "5rem" }}>
+        <Typography variant="h3" sx={{ marginBottom: "2rem" }}>
+          Our Featured Products
+        </Typography>
+        <MyCarousel starredProducts={starredProducts} />
+      </Container>
     </Box>
   );
 };

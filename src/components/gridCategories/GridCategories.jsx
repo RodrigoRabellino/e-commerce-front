@@ -38,7 +38,6 @@ const GridCategories = () => {
       <Grid container spacing={1} sx={{ width: "75%" }}>
         {categories.map((category, index) => {
           let image = require(`../../assets/images/${category.imageName}`);
-          console.log(category);
           return (
             <Grid item xs={4} key={index}>
               <CategoryButton imgUri={image} categoryName={category.name} />

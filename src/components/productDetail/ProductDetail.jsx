@@ -32,7 +32,6 @@ function ProductDetail() {
   }, []);
 
   const addToCart = () => {
-    console.log(selectedProduct);
     dispatch(addItemToCart(selectedProduct));
   };
 
