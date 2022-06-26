@@ -1,25 +1,20 @@
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+
 import DeleteIcon from "@mui/icons-material/Delete";
-import {
-  Drawer,
-  Box,
-  Typography,
-  Button,
-  Grid,
-  List,
-  ListItem,
-} from "@mui/material";
-import { style } from "@mui/system";
-import { useState } from "react";
+import { Drawer, Box, Typography, Button, Grid } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { isCartOpen, setIsCartOpen } from "./Navbar";
-import { RemoveItemCart } from "../../Redux/cart/slice";
+import { removeItemCart, addItemToCart } from "../../Redux/cart/slice";
 
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const dispatch = useDispatch();
   const removeFromCart = (cartItem) => {
-    dispatch(RemoveItemCart(cartItem));
+    dispatch(removeItemCart(cartItem));
+  };
+  const addToCart = (cartItem) => {
+    dispatch(addItemToCart(cartItem));
   };
 
   const cart = useSelector((state) => state.cart);
@@ -31,9 +26,10 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   return (
     <>
       <Drawer anchor="right" open={isCartOpen}>
-        <Grid container p={2} style={{ width: "500px" }}>
+        <Grid container p={2} sx={{ width: "400px" }}>
           <Grid
             item
+            px={1}
             sx={{
               width: "100%",
               borderBottom: "1px solid #8C5032",
@@ -79,37 +75,64 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
               </Box>
             </Grid>
           ) : (
-            <Grid container mt={5} sx={{ width: "100%" }}>
+            <Grid container mt={3} sx={{ width: "100%" }}>
               {cart.map((item) => {
                 return (
                   <div key={item._id}>
                     <Grid
                       container
-                      p={2}
                       sx={{
-                        width: "100%",
                         borderBottom: "1px solid #8C5032",
                       }}
                     >
-                      <Grid item sm={2}>
+                      <Grid item sm={2} p={1} maxHeight="5rem">
                         <img
                           src={item.imgUrl[0]}
                           alt=""
                           style={{
-                            width: "80%",
+                            width: "100%",
                             height: "100%",
                             objectFit: "contain",
                           }}
                         />
                       </Grid>
 
-                      <Grid item sm={8}>
-                        <Typography variant="h6">{item.name}</Typography>
-                        <Typography variant="span">x {item.qty}</Typography>
+                      <Grid
+                        container
+                        sm={8}
+                        p={1}
+                        flexDirection="column"
+                        justifyContent="space-between"
+                      >
+                        <Grid item>
+                          <Typography variant="p" color="secondary">
+                            {item.name}
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <Typography variant="span" color="secondary">
+                            <RemoveIcon
+                              fontSize="small"
+                              onClick={() => removeFromCart(item)}
+                            />
+                          </Typography>
+                          <Typography variant="span" color="secondary">
+                            x {item.qty}
+                          </Typography>
+                          <Typography variant="span" color="secondary">
+                            <AddIcon
+                              fontSize="small"
+                              onClick={() => addToCart(item)}
+                            />
+                          </Typography>
+                        </Grid>
                       </Grid>
 
                       <Grid
-                        item
+                        container
+                        p={1}
+                        direction="column"
+                        justifyContent="space-between"
                         sm={2}
                         sx={{
                           textAlign: "center",
@@ -125,11 +148,11 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                           />
                         </Box>
                         <Box>
-                          <Typography variant="h6" component="span">
-                            USD
+                          <Typography variant="p" component="span">
+                            $
                           </Typography>
                           <Typography
-                            variant="h5"
+                            variant="p"
                             component="span"
                             align="center"
                           >
@@ -141,15 +164,18 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                   </div>
                 );
               })}
-              <Grid container p={2}>
-                <Box>
-                  <Typography variant="h6" ms={5}>
-                    Total:{" "}
+              <Grid container p={1} columnSpacing={2} justifyContent="flex-end">
+                <Grid item>
+                  <Typography variant="h6" ms={5} color="secondary">
+                    Total:
                   </Typography>
-                </Box>
-                <Box>
-                  <Typography variant="h6">USD {cartTotal}</Typography>
-                </Box>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6" color="secondary">
+                    {" "}
+                    $ {cartTotal}
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
           )}
