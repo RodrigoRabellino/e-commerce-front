@@ -12,6 +12,10 @@ import StorePage from "./components/storePage/StorePage";
 import ProductCarousel from "./components/productDetail/ProductCarousel";
 import QuantityItems from "./components/productDetail/QuantityItems";
 import AdminLogin from "./components/admin/login/AdminLogin";
+import CheckOut from "./components/checkout/CheckOut";
+import AddressForm from "./components/addressForm/AddressForm";
+import ReviewForm from "./components/reviewForm/ReviewForm";
+import PaymentForm from "./components/paymentForm/PaymentForm.jsx";
 
 const MyRoutes = ({ type }) => {
   if (type === "admin") {
@@ -34,6 +38,10 @@ const MyRoutes = ({ type }) => {
       <Route path="/quantityItems" element={<QuantityItems />} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/checkout" element={<CheckOut />} />
+      <Route path="/addressForm" element={<AddressForm />} />
+      <Route path="/reviewForm" element={<ReviewForm />} />
+      <Route path="/paymentForm" element={<PaymentForm />} />
     </Routes>
   );
 };
