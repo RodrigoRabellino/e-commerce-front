@@ -166,10 +166,13 @@ const HomePage = () => {
           </Grid>
         </Container>
       </Box>
-      <Box className="marquee">
-      <p className="gifname">International shipping available</p>
-      <p className="gifname">[Free shipping]Lorem Ipsum has been the industry's standard dummy</p>
-      <p className="gifname">Lorem Ipsum has been the industry's standard dummy</p>
+      <Box className="marqueebutom">
+      <span>
+      <p className="giftext">International shipping available [Free shipping]Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+      </span>
+    
+      
+    
       </Box>
     </>
   );
