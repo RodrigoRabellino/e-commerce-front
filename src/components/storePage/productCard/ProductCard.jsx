@@ -33,38 +33,38 @@ const ProductCard = ({ product, display }) => {
   );
 };
 
-const cardStyle = {
-  display: "flex",
-  cursor: "pointer",
-  transition: "0.2s",
-  padding: "0.5rem",
-  ":hover": {
-    transition: "0.2s",
-    transform: "translateY(-5px)",
-    backgroundImage:
-      "linear-gradient(62deg, rgba(251, 171, 126, 0.33) 0%, rgba(247, 206, 104, 0.33) 100%)",
-    boxShadow:
-      "0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)",
-  },
-};
-
 const ListView = ({ product, handleNavigate }) => {
   const { name, imgUrl, price, id, description } = product;
   const theme = useTheme();
 
+  const cardStyle = {
+    display: "flex",
+    cursor: "pointer",
+    transition: "0.2s",
+    padding: "0.5rem",
+    ":hover": {
+      backgroundColor: "white",
+      transition: "0.2s",
+      transform: "translateY(-5px)",
+      boxShadow: "2px 2px 5px 5px rgb(0,0,0,0.22)",
+      border: `thick double ${theme.palette.primary.main}`,
+      borderRadius: "15px",
+    },
+  };
+
   return (
     <>
       <Grid
+        p={5}
+        m={1}
         container
-        spacing={1}
         onClick={handleNavigate}
         elevation={0}
         sx={{
           ...cardStyle,
           width: "100%",
           height: "180px",
-          backgroundColor: theme.palette.primary.main,
-          ":hover": { backgroundColor: theme.palette.primary.dark },
+          backgroundColor: "white",
         }}
       >
         <Grid item xs={3} sx={{ height: "100%" }}>
@@ -82,13 +82,14 @@ const ListView = ({ product, handleNavigate }) => {
         </Grid>
         <Grid
           item
+          px={5}
           xs={9}
+          display="flex"
           flexDirection="column"
           justifyContent="space-between"
-          sx={{ height: "100%" }}
         >
           <Typography
-            color={theme.palette.primary.light}
+            color="primary"
             fontWeight="500"
             variant="h6"
             textAlign="start"
@@ -96,33 +97,32 @@ const ListView = ({ product, handleNavigate }) => {
           >
             {name}
           </Typography>
-          <Grid item display="flex" sx={{ height: "100%" }}>
-            <Grid item xs={10} sx={{ height: "100%" }}>
+          <Grid
+            item
+            display="flex"
+            sx={{ height: "100%" }}
+            alignItems="flex-end"
+          >
+            <Grid item xs={10}>
               <Typography
                 sx={{
                   textOverflow: "ellipsis",
                   overflow: "hidden",
+                  height: "4rem",
                 }}
                 component="p"
                 variant="subtitle2"
                 align="left"
-                color={theme.palette.primary.light}
+                color="primary"
               >
-                {description.substring(0, 250)}...
+                {description.substring(0, 140)}...
               </Typography>
             </Grid>
-            <Grid
-              item
-              xs={2}
-              display="flex"
-              justifyContent="end"
-              alignItems="flex-end"
-            >
+            <Grid item xs={2}>
               <Typography
-                sx={{ height: "100%" }}
                 fontWeight="500"
-                color={theme.palette.primary.light}
-              >{`U$S ${price}`}</Typography>
+                color="primary"
+              >{`$ ${price}`}</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -205,16 +205,32 @@ const ListView = ({ product, handleNavigate }) => {
 const ModuleView = ({ product, handleNavigate }) => {
   const theme = useTheme();
   const { name, imgUrl, price, id } = product;
+
+  const cardStyle = {
+    display: "flex",
+    cursor: "pointer",
+    transition: "0.2s",
+    padding: "0.5rem",
+    ":hover": {
+      backgroundColor: "white",
+      transition: "0.2s",
+      transform: "translateY(-5px)",
+      boxShadow: "2px 2px 5px 1px rgb(0,0,0,0.22)",
+      border: `thick double ${theme.palette.primary.main}`,
+      borderRadius: "15px",
+    },
+  };
+
   return (
     <Card
       onClick={handleNavigate}
-      elevation={0}
+      elevation={1}
       sx={{
         ...cardStyle,
         display: "block",
         width: "200px",
-        backgroundColor: theme.palette.primary.main,
-        ":hover": { backgroundColor: theme.palette.primary.dark },
+        backgroundColor: "white",
+        marginBottom: "2rem",
       }}
     >
       <CardMedia p={1} sx={{ height: "170px" }}>
@@ -237,7 +253,7 @@ const ModuleView = ({ product, handleNavigate }) => {
             fontWeight="700"
             variant="body1"
             textAlign="center"
-            color={theme.palette.primary.light}
+            color="primary"
           >
             {name.substring(0, 14)}
           </Typography>
@@ -245,9 +261,9 @@ const ModuleView = ({ product, handleNavigate }) => {
         subheader={
           <Typography
             sx={{ width: "100%" }}
-            color={theme.palette.primary.light}
+            color="primary"
             fontWeight="500"
-            variant="overline"
+            variant="subtitle2"
           >{`U$S ${price}`}</Typography>
         }
       />

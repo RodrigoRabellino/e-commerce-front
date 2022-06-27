@@ -10,3 +10,6 @@
 .cartCounter{
   position: 'relative'
 }
+#drawer{
+  background-color: white;
+}

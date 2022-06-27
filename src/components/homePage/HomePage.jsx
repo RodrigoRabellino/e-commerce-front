@@ -2,8 +2,7 @@ import { Container, Grid, Box, Typography, Divider } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { fetchStarredProducts } from "../../services/apiServices";
 import GridCategories from "../gridCategories/GridCategories";
-// import ExampleCarousel from "../../components/ExampleCarousel/ExampleCarousel";
-
+import MyCarousel from "./MyCarousel";
 import { useTheme } from "@emotion/react";
 import MyCarousel from "./MyCarousel";
 
@@ -167,12 +166,12 @@ const HomePage = () => {
         </Container>
       </Box>
       <Box className="marqueebutom">
-      <span>
-      <p className="giftext">International shipping available [Free shipping]Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-      </span>
-    
-      
-    
+        <span>
+          <p className="giftext">
+            International shipping available [Free shipping]Lorem Ipsum is
+            simply dummy text of the printing and typesetting
+          </p>
+        </span>
       </Box>
     </>
   );

@@ -24,7 +24,6 @@ const StorePage = () => {
   const [viewDisplay, setViewDisplay] = useState("module");
 
   const theme = useTheme();
-  console.log(theme);
   const handleNextPage = () => {
     //setPage((prev) => prev++);
     console.log("handlemore");
@@ -44,12 +43,21 @@ const StorePage = () => {
 
   return (
     <Grid container>
-      <Grid item xs={3} sx={{ display: { xs: "none", sm: "block" } }}>
+      <Grid
+        item
+        xs={3}
+        justifyContent="center"
+        sx={{
+          position: "relative",
+          top: "10rem",
+          display: { xs: "none", sm: "flex" },
+        }}
+      >
         <Box
           sx={{
             position: "sticky",
-            top: "5rem",
-            width: "100%",
+            top: "10rem",
+            width: "80%",
             padding: "1rem",
           }}
         >
@@ -59,30 +67,20 @@ const StorePage = () => {
           <Stack marginTop="1rem" spacing={2}>
             <Button
               onClick={() => setCategorySelected("All Products")}
-              // color={
-              //   categorySelected === "All Products"
-              //     ? "primary"
-              //     // : theme.palette.primary.dark
-              // }
-              variant="contained"
-              // variant={
-              //   categorySelected === "all products" ? "contained" : "outlined"
-              // }
+              color="primary"
+              variant={
+                categorySelected === "All Products" ? "contained" : "outlined"
+              }
               sx={{ borderRadius: "50px" }}
             >
               All Products
             </Button>
             <Button
               onClick={() => setCategorySelected("Guitars")}
-              // color={
-              //   categorySelected === "Guitars"
-              //     ? "primary"
-              //     : theme.palette.primary.dark
-              // }
-              variant="contained"
-              // variant={
-              //   categorySelected === "guitars" ? "contained" : "outlined"
-              // }
+              color="primary"
+              variant={
+                categorySelected === "Guitars" ? "contained" : "outlined"
+              }
               elevation={0}
               sx={{ borderRadius: "50px" }}
             >
@@ -90,13 +88,8 @@ const StorePage = () => {
             </Button>
             <Button
               onClick={() => setCategorySelected("Basses")}
-              variant="contained"
-              // color={
-              //   categorySelected === "Basses"
-              //     ? "primary"
-              //     : theme.palette.primary.dark
-              // }
-              // variant={categorySelected === "Basses" ? "contained" : "outlined"}
+              color="primary"
+              variant={categorySelected === "Basses" ? "contained" : "outlined"}
               elevation={0}
               sx={{ borderRadius: "50px" }}
             >
@@ -104,13 +97,8 @@ const StorePage = () => {
             </Button>
             <Button
               onClick={() => setCategorySelected("Amps")}
-              // color={
-              //   categorySelected === "Amps"
-              //     ? "primary"
-              //     : theme.palette.primary.dark
-              // }
-              variant="contained"
-              // variant={categorySelected === "amps" ? "contained" : "outlined"}
+              color="primary"
+              variant={categorySelected === "Amps" ? "contained" : "outlined"}
               elevation={0}
               sx={{ borderRadius: "50px" }}
             >
@@ -119,15 +107,9 @@ const StorePage = () => {
             <Button
               onClick={() => setCategorySelected("Accessories")}
               color="primary"
-              // color={
-              //   categorySelected === "Accessories"
-              //     ? "primary"
-              //     // : theme.palette.primary.dark
-              // }
-              variant="contained"
-              // variant={
-              //   categorySelected === "Accessories" ? "contained" : "outlined"
-              // }
+              variant={
+                categorySelected === "Accessories" ? "contained" : "outlined"
+              }
               elevation={0}
               sx={{ borderRadius: "50px" }}
             >
@@ -135,71 +117,6 @@ const StorePage = () => {
             </Button>
           </Stack>
         </Box>
-        {/* <Paper
-          elevation={2}
-          sx={{
-            width: "100%",
-            minWidth: "170px",
-            maxWidth: "270px",
-            height: "400px",
-            position: "sticky",
-            top: "60px",
-            padding: "3rem",
-            backgroundImage:
-              "linear-gradient(62deg, rgba(251, 171, 126, 0.33) 0%, rgba(247, 206, 104, 0.33) 100%)",
-          }}
-        >
-          <Typography variant="h5" color="secondary">
-            Categories
-          </Typography>
-          <Stack marginTop="1rem" spacing={2}>
-            <Button
-              onClick={() => setCategorySelected("all products")}
-              variant={
-                categorySelected === "all products" ? "contained" : "outlined"
-              }
-              sx={{ borderRadius: "50px" }}
-            >
-              All Products
-            </Button>
-            <Button
-              onClick={() => setCategorySelected("guitars")}
-              variant={
-                categorySelected === "guitars" ? "contained" : "outlined"
-              }
-              elevation={0}
-              sx={{ borderRadius: "50px" }}
-            >
-              Guitars
-            </Button>
-            <Button
-              onClick={() => setCategorySelected("bass")}
-              variant={categorySelected === "bass" ? "contained" : "outlined"}
-              elevation={0}
-              sx={{ borderRadius: "50px" }}
-            >
-              Bass
-            </Button>
-            <Button
-              onClick={() => setCategorySelected("amps")}
-              variant={categorySelected === "amps" ? "contained" : "outlined"}
-              elevation={0}
-              sx={{ borderRadius: "50px" }}
-            >
-              Amps
-            </Button>
-            <Button
-              onClick={() => setCategorySelected("accessories")}
-              variant={
-                categorySelected === "accessories" ? "contained" : "outlined"
-              }
-              elevation={0}
-              sx={{ borderRadius: "50px" }}
-            >
-              Accessories
-            </Button>
-          </Stack>
-        </Paper> */}
       </Grid>
       <Grid item xs={12} sm={9} md={8}>
         <Box
@@ -218,7 +135,13 @@ const StorePage = () => {
             marginBottom="1rem"
           >
             <Box flex={10}>
-              <Typography variant="h4" color={theme.palette.primary.dark}>
+              <Typography
+                mt={2}
+                mb={5}
+                variant="h2"
+                color={theme.palette.primary.dark}
+                sx={{ borderBottom: `solid 1px ${theme.palette.primary.dark}` }}
+              >
                 {categorySelected}
               </Typography>
             </Box>
@@ -253,7 +176,6 @@ const StorePage = () => {
               <Grid
                 container
                 width="100%"
-                spacing={2}
                 justifyContent="space-evenly"
                 paddingX="1rem"
               >

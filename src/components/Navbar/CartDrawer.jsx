@@ -4,6 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Drawer, Box, Typography, Button, Grid, useTheme } from "@mui/material";
+
 import { useSelector, useDispatch } from "react-redux";
 import { removeItemCart, addItemToCart } from "../../Redux/cart/slice";
 
@@ -27,16 +28,26 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   return (
     <>
       <Drawer
+        sx={{ paper: { background: "white" } }}
         anchor="right"
         open={isCartOpen}
         onClose={() => setIsCartOpen(false)}
       >
-        <Grid container p={2} sx={{ width: "400px" }}>
+        <Box
+          container
+          p={2}
+          display="flex"
+          flexDirection="column"
+          justifyContent="flex-start"
+          alignItems="flext-start"
+          sx={{ width: "400px", height: "100%", background: "white" }}
+        >
           <Grid
             item
             px={1}
             sx={{
               width: "100%",
+              height: "auto",
               borderBottom: `1px solid ${theme.palette.primary.main}`,
             }}
           >
@@ -57,19 +68,15 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                   },
                 }}
                 onClick={() => setIsCartOpen(false)}
-              ></CloseIcon>
+              />
             </Box>
           </Grid>
           {cart.length === 0 ? (
-            <Grid
-              container
-              xs={12}
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
-              sx={{ height: "70vh" }}
-            >
+            <Box container xs={12} sx={{ height: "70vh" }}>
               <Box
+                position="relative"
+                textAlign="center"
+                top="15rem"
                 p={2}
                 width="100%"
                 sx={{ color: theme.palette.primary.main }}
@@ -77,14 +84,12 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                 <Typography variant="h5" textAlign="center">
                   It looks like your Shopping Cart is empty!
                 </Typography>
-              </Box>
-              <Box>
                 <RemoveShoppingCartIcon
                   fontSize="large"
-                  sx={{ color: theme.palette.primary.main }}
+                  sx={{ marginTop: "1rem", color: theme.palette.primary.main }}
                 />
               </Box>
-            </Grid>
+            </Box>
           ) : (
             <Grid container mt={3} sx={{ width: "100%" }}>
               {cart.map((item) => {
@@ -212,7 +217,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
               </Grid>
             </Grid>
           )}
-        </Grid>
+        </Box>
       </Drawer>
     </>
   );
