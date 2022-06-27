@@ -1,17 +1,12 @@
 import { Container, Grid, Box, Typography, Divider } from "@mui/material";
-
 import React, { useEffect, useState } from "react";
 import { fetchStarredProducts } from "../../services/apiServices";
-<<<<<<< Updated upstream
 import GridCategories from "../gridCategories/GridCategories";
-import ExampleCarousel from "../../components/ExampleCarousel/ExampleCarousel";
+// import ExampleCarousel from "../../components/ExampleCarousel/ExampleCarousel";
 import MyCarousel from "./MyCarousel";
 import { useTheme } from "@emotion/react";
-=======
-import GridCategories from "../../components/gridCategories/GridCategories";
 
 import "./HomePage.css";
->>>>>>> Stashed changes
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
@@ -26,31 +21,17 @@ const HomePage = () => {
   const theme = useTheme();
 
   return (
-<<<<<<< Updated upstream
-    <Box
-      sx={{
-        width: "100vw",
-        minHeight: "100vh",
-        backgroundColor: theme.palette.primary.light,
-      }}
-    >
+    <>
       <section>
         <Box
           sx={{
-            width: "100%",
-            height: "500px",
+            width: "100vw",
+
+            backgroundColor: theme.palette.primary.light,
           }}
         >
-          <img
-            srcSet={require("../../assets/images/acousticguitar.jpg")}
-            style={{
-=======
-    <>
-      <Box>
-        <section>
           <Box
             sx={{
->>>>>>> Stashed changes
               width: "100%",
               height: "500px",
             }}
@@ -59,16 +40,22 @@ const HomePage = () => {
               srcSet={require("../../assets/images/acousticguitar.jpg")}
               style={{
                 width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                opacity: 0.8,
+                height: "500px",
               }}
             />
+            {/* <img
+      srcSet={require("../../assets/images/acousticguitar.jpg")}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        opacity: 0.8,
+      }}
+    /> */}
           </Box>
-        </section>
-      </Box>
+        </Box>
+      </section>
       <Box>
-<<<<<<< Updated upstream
         <Typography
           fontWeight="600"
           marginTop="50px"
@@ -84,23 +71,16 @@ const HomePage = () => {
         >
           Life without playing music is inconceivable for me.
         </Typography>
-=======
-        <Container>
-          <Typography fontWeight="600" marginTop="50px" variant="h4">
-            Music Inspires
-          </Typography>
-          <Typography variant="h6" sx={{ marginTop: "0.4rem" }}>
-            Life without playing music is inconceivable for me.
-          </Typography>
-          <Divider sx={{ marginTop: "0.8rem" }}></Divider>
-        </Container>
->>>>>>> Stashed changes
       </Box>
 
       <Box sx={{ paddingY: "3rem", marginY: "3rem" }}>
         <GridCategories />
       </Box>
-<<<<<<< Updated upstream
+      <section className="parallax">
+        <Box className="parallax-inner" sx={{ marginBottom: "3rem" }}>
+          <h3 className="title-parallax">Lorem Impsum</h3>
+        </Box>
+      </section>
       <Grid
         container
         p={2}
@@ -118,24 +98,7 @@ const HomePage = () => {
           <MyCarousel starredProducts={starredProducts} />
         </Grid>
       </Grid>
-    </Box>
-=======
-    
-      <section className="parallax">
-        <div className="parallax-inner">
-          <h3 className="title-parallax">Lorem Impsum</h3>
-        </div>
-      </section>
-
-      <Box>
-        <Typography>
-          <h3>Lorem ipsum</h3>
-        </Typography>
-      </Box>
-
-
     </>
->>>>>>> Stashed changes
   );
 };
 
