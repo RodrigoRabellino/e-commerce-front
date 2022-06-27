@@ -42,6 +42,7 @@ const MyRoutes = ({ type }) => {
       <Route path="/addressForm" element={<AddressForm />} />
       <Route path="/reviewForm" element={<ReviewForm />} />
       <Route path="/paymentForm" element={<PaymentForm />} />
+      <Route path="/paymentConfirmation" element={<PaymentForm />} />
     </Routes>
   );
 };

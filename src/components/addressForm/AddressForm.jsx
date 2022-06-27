@@ -13,35 +13,37 @@ import {
   Button,
 } from "@mui/material";
 
-import CheckOut from "../checkout/CheckOut";
-
-function AddressForm() {
+function AddressForm({ handleNext }) {
+  const buttonStyles = {
+    ":hover": { transition: "0.2s", color: "white" },
+  };
   return (
     <>
       <Container
         sx={{
-          mb: "200px",
-          mt: "200px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Box sx={{ boxShadow: "0 5px 10px 0", width: "50%" }}>
-          <Typography variant="h4" sx={{ mt: "20px", mb: "30px" }}>
-            Checkout
+        <Box sx={{ boxShadow: "0px 5px 10px 0px", width: "60%" }}>
+          <Typography mt="10px" variant="h6">
+            Shipping Address
           </Typography>
-          <CheckOut />
-          <Typography variant="h6">Shipping Address</Typography>
-          <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-            <FormControl>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <FormControl sx={{ width: "32%" }}>
               <InputLabel htmlFor="Name" />
               <InputLabel />
               <Input id="name" type="text" aria-describedby="name-helper" />
               <FormHelperText id="name-helper">Name*</FormHelperText>
             </FormControl>
 
-            <FormControl>
+            <FormControl sx={{ width: "32%" }}>
               <InputLabel htmlFor="LastName" />
               <InputLabel />
               <Input
@@ -54,7 +56,7 @@ function AddressForm() {
           </Box>
 
           <Box>
-            <FormControl sx={{ width: "75%" }}>
+            <FormControl sx={{ width: "76%" }}>
               <InputLabel htmlFor="AddressLine" />
               <InputLabel />
               <Input
@@ -76,14 +78,14 @@ function AddressForm() {
             </FormControl>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-            <FormControl>
+            <FormControl sx={{ width: "32%" }}>
               <InputLabel htmlFor="Name" />
               <InputLabel />
               <Input id="name" type="text" aria-describedby="name-helper" />
               <FormHelperText id="name-helper">City*</FormHelperText>
             </FormControl>
 
-            <FormControl>
+            <FormControl sx={{ width: "32%" }}>
               <InputLabel htmlFor="Name" />
               <InputLabel />
               <Input id="name" type="text" aria-describedby="name-helper" />
@@ -93,21 +95,21 @@ function AddressForm() {
             </FormControl>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-            <FormControl>
+            <FormControl sx={{ width: "32%" }}>
               <InputLabel htmlFor="Name" />
               <InputLabel />
               <Input id="name" type="text" aria-describedby="name-helper" />
               <FormHelperText id="name-helper">Zip/Postal Code*</FormHelperText>
             </FormControl>
 
-            <FormControl>
+            <FormControl sx={{ width: "32%" }}>
               <InputLabel htmlFor="Name" />
               <InputLabel />
               <Input id="name" type="text" aria-describedby="name-helper" />
               <FormHelperText id="name-helper">Country</FormHelperText>
             </FormControl>
           </Box>
-          <Box sx={{ float: "right", mt: "30px", mb: "30px" }}>
+          <Box sx={{ float: "right", mt: "50px", mb: "30px" }}>
             <FormGroup>
               <FormControlLabel
                 control={<Checkbox defaultChecked />}
@@ -125,9 +127,10 @@ function AddressForm() {
             }}
           >
             <Button
-              sx={{ fontWeight: "600" }}
+              sx={{ fontWeight: "600", ...buttonStyles }}
               variant="contained"
               href="#contained-buttons"
+              onClick={handleNext}
             >
               Next
             </Button>

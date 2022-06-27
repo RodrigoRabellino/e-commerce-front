@@ -14,56 +14,87 @@ import {
   ListItem,
 } from "@mui/material";
 
-import CheckOut from "../checkout/CheckOut";
+// import Total from "../Accounting/Total";
 
-function ReviewForm() {
+function ReviewForm({ handleNext, handleBack }) {
+  const buttonStyles = {
+    ":hover": { transition: "0.2s", color: "white" },
+  };
   return (
     <>
       <Container
         sx={{
-          mb: "200px",
-          mt: "200px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
         <Box sx={{ boxShadow: "0 5px 10px 0", width: "50%" }}>
-          <Typography variant="h4" sx={{ mt: "20px", mb: "30px" }}>
-            Checkout
+          <Typography mt="10px" variant="h6">
+            Review your order
           </Typography>
-          <CheckOut />
-          <Box sx={{ mt: "30px" }}>
-            <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
+          <Box
+            sx={{
+              mt: "30px",
+              ml: "40px",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+              }}
+            >
               <ListItem>Product 1</ListItem>
-              <ListItem>$1000</ListItem>
+              <ListItem
+                sx={{ display: "flex", justifyContent: "space-evenly" }}
+              >
+                $1000
+              </ListItem>
             </Box>
 
             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <ListItem>Product 2</ListItem>
-              <ListItem>$1000</ListItem>
+              <ListItem
+                sx={{ display: "flex", justifyContent: "space-evenly" }}
+              >
+                $1000
+              </ListItem>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <ListItem>Product 3</ListItem>
-              <ListItem>$6000</ListItem>
+              <ListItem
+                sx={{ display: "flex", justifyContent: "space-evenly" }}
+              >
+                $6000
+              </ListItem>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <ListItem>Product 4</ListItem>
-              <ListItem>$2500</ListItem>
+              <ListItem
+                sx={{ display: "flex", justifyContent: "space-evenly" }}
+              >
+                $2500
+              </ListItem>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <ListItem>Product 5</ListItem>
-              <ListItem>$4000</ListItem>
+              <ListItem
+                sx={{ display: "flex", justifyContent: "space-evenly" }}
+              >
+                $4000
+              </ListItem>
             </Box>
           </Box>
           <Box
             sx={{ display: "flex", justifyContent: "space-evenly", mt: "20px" }}
           >
             {/* <ListItem sx={{ mb: "25px" }}>Free Shipping</ListItem> */}
-            <ListItem variant="h4" sx={{ mb: "20px" }}>
+            <ListItem variant="h4" sx={{ mb: "20px", ml: "40px" }}>
               Total
             </ListItem>
-            <ListItem>$20000</ListItem>
+            <ListItem sx={{ display: "flex", justifyContent: "space-evenly" }}>
+              $20000
+            </ListItem>
           </Box>
           <Box sx={{ float: "left", m: "20px" }}>
             <Typography variant="h6" fontWeight="600">
@@ -91,9 +122,18 @@ function ReviewForm() {
             }}
           >
             <Button
-              sx={{ fontWeight: "600" }}
+              sx={{ fontWeight: "600", mr: "10px", ...buttonStyles }}
               variant="contained"
               href="#contained-buttons"
+              onClick={handleBack}
+            >
+              Back
+            </Button>
+            <Button
+              sx={{ fontWeight: "600", ...buttonStyles }}
+              variant="contained"
+              href="#contained-buttons"
+              onClick={handleNext}
             >
               Place order
             </Button>
