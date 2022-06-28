@@ -153,68 +153,71 @@ function ProductDetail() {
             alignItems="flex-start"
             rowSpacing={1}
           >
-            <ButtonGroup sx={{ display: "flex", mb: "0.5rem" }}>
-              <Button
-                variant="contained"
-                sx={{
-                  borderRadius: "15px",
-                  border: `2px solid ${theme.palette.primary.light}`,
-                  flexGrow: "1",
-                }}
-                onClick={() => removeFromQty()}
-              >
-                <RemoveCircleOutlineIcon />
-              </Button>
-              <Button
-                sx={{
-                  border: `2px solid ${theme.palette.primary.light}`,
-                  flexGrow: "1",
-                }}
-              >
-                <Typography
-                  value={1}
+            <Box>
+              <ButtonGroup sx={{ display: "flex", mb: "0.5rem" }}>
+                <Button
+                  variant="contained"
                   sx={{
-                    fontWeight: "600",
-                    fontSize: "1.2rem",
-                    padding: "0 12px",
+                    borderRadius: "15px",
+                    border: `2px solid ${theme.palette.primary.light}`,
+                    flexGrow: "1",
+                  }}
+                  onClick={() => removeFromQty()}
+                >
+                  <RemoveCircleOutlineIcon />
+                </Button>
+                <Button
+                  sx={{
+                    border: `2px solid ${theme.palette.primary.light}`,
+                    flexGrow: "1",
                   }}
                 >
-                  {qty}
-                </Typography>
-              </Button>
+                  <Typography
+                    value={1}
+                    sx={{
+                      fontWeight: "600",
+                      fontSize: "1.2rem",
+                      padding: "0 12px",
+                    }}
+                  >
+                    {qty}
+                  </Typography>
+                </Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: "15px",
+                    border: `2px solid ${theme.palette.primary.light}`,
+                    flexGrow: "1",
+                  }}
+                  onClick={() => setQty((prev) => (prev += 1))}
+                >
+                  <AddCircleOutlineIcon />
+                </Button>
+              </ButtonGroup>
               <Button
-                variant="contained"
                 sx={{
+                  mb: "1rem",
+                  width: "100%",
                   borderRadius: "15px",
                   border: `2px solid ${theme.palette.primary.light}`,
-                  flexGrow: "1",
                 }}
-                onClick={() => setQty((prev) => (prev += 1))}
+                variant="contained"
+                onClick={() => addToCart()}
               >
-                <AddCircleOutlineIcon />
+                <AddShoppingCartIcon />
+                <Typography
+                  variant="p"
+                  sx={{
+                    fontSize: "1rem",
+                    fontWeight: "700",
+                  }}
+                >
+                  Add to cart
+                </Typography>
               </Button>
-            </ButtonGroup>
-            <Button
-              sx={{
-                mb: "1rem",
-                width: "100%",
-                borderRadius: "15px",
-                border: `2px solid ${theme.palette.primary.light}`,
-              }}
-              variant="contained"
-              onClick={() => addToCart()}
-            >
-              <AddShoppingCartIcon />
-              <Typography
-                variant="p"
-                sx={{
-                  fontSize: "1rem",
-                  fontWeight: "700",
-                }}
-              >
-                Add to cart
-              </Typography>
-            </Button>
+            </Box>
+
             <Box display="flex" alignItems="center" mb={1}>
               <GppGoodOutlinedIcon sx={{ color: "secondary.main" }} />
               <Typography variant="body2">
