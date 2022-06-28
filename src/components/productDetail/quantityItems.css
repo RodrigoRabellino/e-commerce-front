@@ -1,6 +1,6 @@
 .counter-class {
   background: #f2dbb8;
-  border: 3px solid #8c5032;
+  border: 3px solid #8c5032!important;
   width: 150px;
 }
 .counter-class svg {

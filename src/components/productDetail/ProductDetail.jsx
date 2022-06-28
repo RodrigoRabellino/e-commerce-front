@@ -6,22 +6,25 @@ import {
   Link,
   Container,
   CircularProgress,
+  ButtonGroup,
 } from "@mui/material";
-import Carousel from "react-material-ui-carousel";
-import { Block } from "@mui/icons-material";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+
 import ExampleCarousel from "../ExampleCarousel/ExampleCarousel";
 import { useSelector } from "react-redux";
-import QuantityItems from "./QuantityItems";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchOneProduct } from "../../services/apiServices";
 import { useDispatch } from "react-redux";
-import { addItemToCart } from "../../Redux/cart/slice";
+import { addItemToCart, addOneQty, removeOneQty } from "../../Redux/cart/slice";
+import "./quantityItems.css";
 
 function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState({});
+  const [qty, setQty] = useState(0);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -32,7 +35,13 @@ function ProductDetail() {
   }, []);
 
   const addToCart = () => {
-    dispatch(addItemToCart(selectedProduct));
+    dispatch(addItemToCart({ ...selectedProduct, qty: qty }));
+  };
+
+  const removeFromQty = () => {
+    if (qty > 1) {
+      setQty((prev) => (prev -= 1));
+    } else return;
   };
 
   return (
@@ -93,10 +102,41 @@ function ProductDetail() {
             Product Available
           </Typography>
           <Box sx={{ marginBottom: "30px" }}>
-            <QuantityItems />
+            <ButtonGroup>
+              <Button
+                variant="contained"
+                sx={{ borderRadius: "15px" }}
+                onClick={() => removeFromQty()}
+              >
+                <RemoveCircleOutlineIcon />
+              </Button>
+              <Button>
+                <Typography
+                  value={1}
+                  sx={{
+                    fontWeight: "600",
+                    fontSize: "1.2rem",
+                    padding: "0 12px",
+                  }}
+                >
+                  {qty}
+                </Typography>
+              </Button>
+              <Button
+                variant="contained"
+                sx={{ borderRadius: "15px" }}
+                onClick={() => setQty((prev) => (prev += 1))}
+              >
+                <AddCircleOutlineIcon />
+              </Button>
+            </ButtonGroup>
           </Box>
 
-          <Button variant="contained" onClick={() => addToCart()}>
+          <Button
+            sx={{ borderRadius: "15px" }}
+            variant="contained"
+            onClick={() => addToCart()}
+          >
             Add to cart
           </Button>
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>

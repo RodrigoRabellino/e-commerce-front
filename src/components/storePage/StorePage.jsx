@@ -71,7 +71,7 @@ const StorePage = () => {
               variant={
                 categorySelected === "All Products" ? "contained" : "outlined"
               }
-              sx={{ borderRadius: "50px" }}
+              sx={{ borderRadius: "15px" }}
             >
               All Products
             </Button>
@@ -82,7 +82,7 @@ const StorePage = () => {
                 categorySelected === "Guitars" ? "contained" : "outlined"
               }
               elevation={0}
-              sx={{ borderRadius: "50px" }}
+              sx={{ borderRadius: "15px" }}
             >
               Guitars
             </Button>
@@ -91,7 +91,7 @@ const StorePage = () => {
               color="primary"
               variant={categorySelected === "Basses" ? "contained" : "outlined"}
               elevation={0}
-              sx={{ borderRadius: "50px" }}
+              sx={{ borderRadius: "15px" }}
             >
               Bass
             </Button>
@@ -100,7 +100,7 @@ const StorePage = () => {
               color="primary"
               variant={categorySelected === "Amps" ? "contained" : "outlined"}
               elevation={0}
-              sx={{ borderRadius: "50px" }}
+              sx={{ borderRadius: "15px" }}
             >
               Amps
             </Button>
@@ -111,7 +111,7 @@ const StorePage = () => {
                 categorySelected === "Accessories" ? "contained" : "outlined"
               }
               elevation={0}
-              sx={{ borderRadius: "50px" }}
+              sx={{ borderRadius: "15px" }}
             >
               Accessories
             </Button>
