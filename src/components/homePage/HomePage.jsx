@@ -1,4 +1,12 @@
-import { Container, Grid, Box, Typography, Divider } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Box,
+  Typography,
+  Divider,
+  Button,
+} from "@mui/material";
+
 import React, { useEffect, useState } from "react";
 import { fetchStarredProducts } from "../../services/apiServices";
 import GridCategories from "../gridCategories/GridCategories";
@@ -6,6 +14,7 @@ import MyCarousel from "./MyCarousel";
 import { useTheme } from "@emotion/react";
 
 import "./HomePage.css";
+
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
@@ -21,30 +30,25 @@ const HomePage = () => {
 
   return (
     <>
-      <section>
-        <Box
-          sx={{
-            width: "100vw",
-
-            backgroundColor: theme.palette.primary.light,
-          }}
-        >
-          <Box
-            sx={{
-              width: "100%",
-              height: "500px",
-            }}
-          >
-            <img
-              srcSet={require("../../assets/images/acousticguitar.jpg")}
-              style={{
-                width: "100%",
-                height: "500px",
-              }}
-            />
+      <section className="start-page parallax-background" id="home">
+        <Box className="opacity-bg"></Box>
+        <Box className="content-bg">
+          <Box className="title-text">
+            <Typography variant="h2" sx={{ color: "white" }}>
+              lorem ipsum
+            </Typography>
+            <Typography variant="subtitle1" sx={{ color: "white" }}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy
+            </Typography>
+            <Box sx={{paddingTop:"2rem"}}>
+            <Button variant="contained" >Contact Us</Button>
+            </Box>
           </Box>
+          <Box className="arrow-down"></Box>
         </Box>
       </section>
+
       <Box>
         <Typography
           fontWeight="600"
