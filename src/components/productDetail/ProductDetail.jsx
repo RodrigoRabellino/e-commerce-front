@@ -29,7 +29,7 @@ function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState({});
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     const getProduct = async () => {

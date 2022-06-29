@@ -26,7 +26,7 @@ const cartSlice = createSlice({
       if (prodInCart.qty > 1) {
         prodInCart.qty -= 1;
       } else {
-        return;
+        return state.filter((item) => item._id !== action.payload._id);
       }
     },
   },
