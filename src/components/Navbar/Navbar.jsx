@@ -43,6 +43,7 @@ function Navbar() {
   const navStyles = {
     fontSize: "0.9rem",
     fontWeight: "500",
+    transition: "0.2s",
     borderBottom: `thick double ${theme.palette.primary.main}`,
     ":hover": {
       borderBottom: `thick double ${theme.palette.primary.light}`,

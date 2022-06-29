@@ -7,6 +7,7 @@ import {
   Container,
   CircularProgress,
   ButtonGroup,
+  CssBaseline,
 } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
@@ -62,8 +63,10 @@ function ProductDetail() {
         mt: "4rem",
         borderLeft: `1px solid ${theme.palette.primary.light}`,
         borderRight: `1px solid ${theme.palette.primary.light}`,
+        backgroundColor: "white",
       }}
     >
+      <CssBaseline />
       <Grid
         container
         sx={{

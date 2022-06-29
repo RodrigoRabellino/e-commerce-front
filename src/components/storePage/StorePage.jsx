@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  CssBaseline,
   Grid,
   Paper,
   Stack,
@@ -42,6 +43,8 @@ const StorePage = () => {
   }, [page]);
 
   const categoryBtnStyles = {
+    marginY: "8px",
+    width: "30%",
     bgcolor: "primary.main",
     border: `1px solid ${theme.palette.primary.light}`,
     borderRadius: "15px",
@@ -52,29 +55,23 @@ const StorePage = () => {
   };
 
   return (
-    <Grid container>
-      <Grid
-        item
-        xs={3}
-        justifyContent="center"
-        sx={{
-          position: "relative",
-          top: "10rem",
-          display: { xs: "none", sm: "flex" },
-        }}
-      >
-        <Box
-          sx={{
-            position: "sticky",
-            top: "10rem",
-            width: "80%",
-            padding: "1rem",
-          }}
-        >
-          <Typography variant="h5" color={theme.palette.primary.dark}>
-            Categories
-          </Typography>
-          <Stack marginTop="1rem" spacing={2}>
+    <Container>
+      <CssBaseline />
+      <Grid container sx={{ position: "relative", top: "64px" }}>
+        <Grid item xs={12} my={2}>
+          <Box my={2}>
+            <Typography variant="h4" color={theme.palette.primary.main}>
+              Categories
+            </Typography>
+          </Box>
+          <Box
+            mb={2}
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
+            }}
+          >
             <Button
               sx={{ ...categoryBtnStyles }}
               onClick={() => setCategorySelected("All Products")}
@@ -114,52 +111,37 @@ const StorePage = () => {
             >
               Accessories
             </Button>
-          </Stack>
-        </Box>
-      </Grid>
-      <Grid item xs={12} sm={9} md={8}>
-        <Box
-          position="relative"
-          width="100%"
-          marginTop="65px"
-          display="flex"
-          flexDirection="column"
-          padding="0.65rem"
-          justifyContent="space-around"
-        >
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
           <Box
             display="flex"
             alignItems="center"
-            justifyContent="center"
+            justifyContent="space-between"
             marginBottom="1rem"
+            sx={{
+              width: "100%",
+              borderBottom: `solid 1px ${theme.palette.primary.main}`,
+            }}
           >
-            <Box flex={10}>
-              <Typography
-                mt={2}
-                mb={5}
-                variant="h2"
-                color={theme.palette.primary.dark}
-                sx={{ borderBottom: `solid 1px ${theme.palette.primary.dark}` }}
-              >
-                {categorySelected}
-              </Typography>
-            </Box>
-            <Box>
-              <ToggleButtonGroup
-                size="small"
-                exclusive
-                color="primary"
-                value={viewDisplay}
-                onChange={(e, newValue) => setViewDisplay(newValue)}
-              >
-                <ToggleButton value="module">
-                  <ViewModule fontSize="small" />
-                </ToggleButton>
-                <ToggleButton value="list">
-                  <ViewList fontSize="small" />
-                </ToggleButton>
-              </ToggleButtonGroup>
-            </Box>
+            <Typography variant="h3" color={theme.palette.primary.main}>
+              {categorySelected}
+            </Typography>
+
+            <ToggleButtonGroup
+              size="small"
+              exclusive
+              color="primary"
+              value={viewDisplay}
+              onChange={(e, newValue) => setViewDisplay(newValue)}
+            >
+              <ToggleButton value="module">
+                <ViewModule fontSize="small" />
+              </ToggleButton>
+              <ToggleButton value="list">
+                <ViewList fontSize="small" />
+              </ToggleButton>
+            </ToggleButtonGroup>
           </Box>
 
           <Box>
@@ -172,12 +154,7 @@ const StorePage = () => {
               endMessage={null}
               style={{ paddingTop: "1rem" }}
             >
-              <Grid
-                container
-                width="100%"
-                justifyContent="space-evenly"
-                paddingX="1rem"
-              >
+              <Grid container width="100%" justifyContent="space-between">
                 {products.map((product) => {
                   return (
                     <ProductCard
@@ -191,9 +168,9 @@ const StorePage = () => {
               </Grid>
             </InfiniteScroll>
           </Box>
-        </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </Container>
   );
 };
 

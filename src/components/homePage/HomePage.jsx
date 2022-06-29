@@ -5,6 +5,7 @@ import {
   Typography,
   Divider,
   Button,
+  CssBaseline,
 } from "@mui/material";
 
 import React, { useEffect, useState } from "react";
@@ -38,6 +39,7 @@ const HomePage = () => {
 
   return (
     <>
+      <CssBaseline />
       <section className="start-page parallax-background" id="home">
         <Box className="opacity-bg"></Box>
         <Box className="content-bg">
@@ -72,14 +74,14 @@ const HomePage = () => {
               fontWeight="600"
               marginTop="50px"
               variant="h3"
-              color={theme.palette.primary.dark}
+              color={theme.palette.primary.main}
             >
               Music Inspires
             </Typography>
             <Typography
               variant="h5"
               sx={{ marginTop: "20px" }}
-              color={theme.palette.primary.dark}
+              color={theme.palette.primary.main}
             >
               Life without playing music is inconceivable for me.
             </Typography>
