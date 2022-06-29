@@ -13,7 +13,9 @@ import {
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-function AboutUs() {
+import "./aboutUs.css";
+
+const AboutUs = () => {
   const avatarStyles = {
     height: "190px",
     width: "190px",
@@ -32,17 +34,15 @@ function AboutUs() {
   return (
     <>
       <Box
+        className="about-page"
         sx={{
-          backgroundColor: "#e8c084",
-          height: "300px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          height: "400px",
           width: "100%",
           marginTop: "64px",
         }}
       >
         <Stack
+          className="about-opacity-bg"
           sx={{
             display: "flex",
             width: "80%",
@@ -65,10 +65,10 @@ function AboutUs() {
               srcSet={require("../../assets/images/man1.webp")}
             />
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <IconButton aria-label="LinkedInIcon">
+              <IconButton aria-label="LinkedInIcon" sx={{ color: "white" }}>
                 <LinkedInIcon />
               </IconButton>
-              <IconButton aria-label="GitHubIcon">
+              <IconButton aria-label="GitHubIcon" sx={{ color: "white" }}>
                 <GitHubIcon />
               </IconButton>
             </Box>
@@ -86,10 +86,10 @@ function AboutUs() {
               srcSet={require("../../assets/images/man2.webp")}
             />
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <IconButton aria-label="LinkedInIcon">
+              <IconButton aria-label="LinkedInIcon" sx={{ color: "white" }}>
                 <LinkedInIcon />
               </IconButton>
-              <IconButton aria-label="GitHubIcon">
+              <IconButton aria-label="GitHubIcon" sx={{ color: "white" }}>
                 <GitHubIcon />
               </IconButton>
             </Box>
@@ -107,10 +107,10 @@ function AboutUs() {
               srcSet={require("../../assets/images/man3.webp")}
             />
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <IconButton aria-label="LinkedInIcon">
+              <IconButton aria-label="LinkedInIcon" sx={{ color: "white" }}>
                 <LinkedInIcon />
               </IconButton>
-              <IconButton aria-label="GitHubIcon">
+              <IconButton aria-label="GitHubIcon" sx={{ color: "white" }}>
                 <GitHubIcon />
               </IconButton>
             </Box>
@@ -128,10 +128,10 @@ function AboutUs() {
               srcSet={require("../../assets/images/woman1.webp")}
             />
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <IconButton aria-label="LinkedInIcon">
+              <IconButton aria-label="LinkedInIcon" sx={{ color: "white" }}>
                 <LinkedInIcon />
               </IconButton>
-              <IconButton aria-label="GitHubIcon">
+              <IconButton aria-label="GitHubIcon" sx={{ color: "white" }}>
                 <GitHubIcon />
               </IconButton>
             </Box>
@@ -152,71 +152,74 @@ function AboutUs() {
         About Us
       </Typography>
       <Divider />
-      <Container sx={{ paddingY: "2rem" }}>
-        <Typography fontSize="15px" textAlign="start" variant="h5">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
-          distinctio maxime sint praesentium dolorem illum, quo alias odit
-          aspernatur minima soluta reiciendis earum natus porro atque fugit
-          debitis sit velit.Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Obcaecati distinctio maxime sint praesentium dolorem illum, quo
-          alias odit aspernatur minima soluta reiciendis earum natus porro atque
-          fugit debitis sit velit.Lorem ipsum dolor sit amet consectetur,
-          adipisicing elit. Obcaecati distinctio maxime sint praesentium dolorem
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
-          distinctio maxime sint praesentium dolorem illum, quo alias odit
-          aspernatur minima soluta reiciendis earum natus porro atque fugit
-          debitis sit velit.Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Obcaecati distinctio maxime sint praesentium dolorem illum, quo
-          alias odit aspernatur minima soluta reiciendis earum natus porro atque
-          fugit debitis sit velit.Lorem ipsum dolor sit amet consectetur,
-          adipisicing elit. Obcaecati distinctio maxime sint praesentium dolorem
-        </Typography>
-      </Container>
-      <Container
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-end",
-          pb: "2rem",
-        }}
-      >
-        <Box>
-          <Typography
-            sx={{
-              fontSize: "15px",
-              fontWeight: "bold",
-              textDecoration: "underline",
-            }}
-          >
-            Accede como cliente usando las siguientes credenciales:
+      <Box>
+        <Container sx={{ paddingY: "2rem" }}>
+          <Typography fontSize="15px" textAlign="start" variant="h5">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
+            distinctio maxime sint praesentium dolorem illum, quo alias odit
+            aspernatur minima soluta reiciendis earum natus porro atque fugit
+            debitis sit velit.Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Obcaecati distinctio maxime sint praesentium
+            dolorem illum, quo alias odit aspernatur minima soluta reiciendis
+            earum natus porro atque fugit debitis sit velit.Lorem ipsum dolor
+            sit amet consectetur, adipisicing elit. Obcaecati distinctio maxime
+            sint praesentium dolorem Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Obcaecati distinctio maxime sint praesentium
+            dolorem illum, quo alias odit aspernatur minima soluta reiciendis
+            earum natus porro atque fugit debitis sit velit.Lorem ipsum dolor
+            sit amet consectetur, adipisicing elit. Obcaecati distinctio maxime
+            sint praesentium dolorem illum, quo alias odit aspernatur minima
+            soluta reiciendis earum natus porro atque fugit debitis sit
+            velit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Obcaecati distinctio maxime sint praesentium dolorem
           </Typography>
-          <Typography sx={{ fontSize: "13px" }}>
-            Email:user@user.com / Password:1234
-          </Typography>
-          <Typography sx={{ fontSize: "13px" }}>
-            O dirígete a la página de ADMIN para tener acceso total al CRUD.
-          </Typography>
-          <Button
-            sx={{
-              color: "#7B8723",
-            }}
-            onClick={() => {
-              window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
-            }}
-          >
-            ADMIN
-          </Button>
-          <Typography
-            sx={{
-              fontSize: "13px",
-              fontWeight: "bold",
-            }}
-          >
-            Para una mejor experiencia, por favor resetear la base de datos:
-          </Typography>
-          <Button variant="outlined">Reset DataBase</Button>
-        </Box>
-      </Container>
+        </Container>
+        <Container
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+            pb: "2rem",
+          }}
+        >
+          <Box>
+            <Typography
+              sx={{
+                fontSize: "15px",
+                fontWeight: "bold",
+                textDecoration: "underline",
+              }}
+            >
+              Accede como cliente usando las siguientes credenciales:
+            </Typography>
+            <Typography sx={{ fontSize: "13px" }}>
+              Email:user@user.com / Password:1234
+            </Typography>
+            <Typography sx={{ fontSize: "13px" }}>
+              O dirígete a la página de ADMIN para tener acceso total al CRUD.
+            </Typography>
+            <Button
+              sx={{
+                color: "#7B8723",
+              }}
+              onClick={() => {
+                window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
+              }}
+            >
+              ADMIN
+            </Button>
+            <Typography
+              sx={{
+                fontSize: "13px",
+                fontWeight: "bold",
+              }}
+            >
+              Para una mejor experiencia, por favor resetear la base de datos:
+            </Typography>
+            <Button variant="outlined">Reset DataBase</Button>
+          </Box>
+        </Container>
+      </Box>
       <Divider />
       <Container
         sx={{
@@ -275,6 +278,6 @@ function AboutUs() {
       </Container>
     </>
   );
-}
+};
 
 export default AboutUs;

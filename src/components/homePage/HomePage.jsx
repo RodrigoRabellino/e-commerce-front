@@ -20,7 +20,7 @@ const HomePage = () => {
   const theme = useTheme();
   const categoryBtnStyles = {
     bgcolor: "primary.main",
-    border: `thick double ${theme.palette.primary.light}`,
+    border: `1px solid ${theme.palette.primary.light}`,
     borderRadius: "15px",
     color: "white",
     "&:hover": {
@@ -41,7 +41,13 @@ const HomePage = () => {
       <section className="start-page parallax-background" id="home">
         <Box className="opacity-bg"></Box>
         <Box className="content-bg">
-          <Box className="title-text">
+          <Box
+            sx={{ height: "100%" }}
+            className="title-text"
+            display="flex"
+            flexDirection="column"
+            JustifyContent="center"
+          >
             <Typography variant="h2" sx={{ color: "white" }}>
               lorem ipsum
             </Typography>
@@ -50,9 +56,9 @@ const HomePage = () => {
               industry. Lorem Ipsum has been the industry's standard dummy
             </Typography>
             <Box sx={{ paddingTop: "2rem" }}>
-              <Button variant="contained" sx={{ ...categoryBtnStyles }}>
+              {/* <Button variant="contained" sx={{ ...categoryBtnStyles }}>
                 Contact Us
-              </Button>
+              </Button> */}
             </Box>
           </Box>
           <Box className="arrow-down"></Box>

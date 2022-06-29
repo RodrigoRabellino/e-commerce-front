@@ -20,7 +20,7 @@ export default function SignIn() {
   const theme = useTheme();
   const categoryBtnStyles = {
     bgcolor: "primary.main",
-    border: `thick double ${theme.palette.primary.light}`,
+    border: `1px solid ${theme.palette.primary.light}`,
     borderRadius: "15px",
     color: "white",
     "&:hover": {
