@@ -17,6 +17,16 @@ import "./HomePage.css";
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
+  const theme = useTheme();
+  const categoryBtnStyles = {
+    bgcolor: "primary.main",
+    border: `thick double ${theme.palette.primary.light}`,
+    borderRadius: "15px",
+    color: "white",
+    "&:hover": {
+      color: "primary",
+    },
+  };
 
   useEffect(() => {
     const getstarredProducts = async () => {
@@ -25,7 +35,6 @@ const HomePage = () => {
     };
     getstarredProducts();
   }, []);
-  const theme = useTheme();
 
   return (
     <>
@@ -41,7 +50,9 @@ const HomePage = () => {
               industry. Lorem Ipsum has been the industry's standard dummy
             </Typography>
             <Box sx={{ paddingTop: "2rem" }}>
-              <Button variant="contained">Contact Us</Button>
+              <Button variant="contained" sx={{ ...categoryBtnStyles }}>
+                Contact Us
+              </Button>
             </Box>
           </Box>
           <Box className="arrow-down"></Box>
@@ -101,7 +112,7 @@ const HomePage = () => {
 
           <Box>
             <Grid container paddingBottom={3}>
-              <Grid item xs className="iconsvg">
+              <Grid item xs={12} sm={4} className="iconsvg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   version="1.1"
@@ -126,10 +137,19 @@ const HomePage = () => {
                   standard dummy
                 </Typography>
               </Grid>
-              <Divider orientation="vertical" flexItem>
+              {/* <Divider orientation="vertical" flexItem>
                 .
-              </Divider>
-              <Grid item xs className="iconsvg">
+              </Divider> */}
+              <Grid
+                item
+                xs={12}
+                sm={4}
+                className="iconsvg"
+                sx={{
+                  borderLeft: `1px solid ${theme.palette.primary.light}`,
+                  borderRight: `1px solid ${theme.palette.primary.light}`,
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   id="Layer_1"
@@ -149,10 +169,10 @@ const HomePage = () => {
                   standard dummy
                 </Typography>
               </Grid>
-              <Divider orientation="vertical" flexItem>
+              {/* <Divider orientation="vertical" flexItem>
                 .
-              </Divider>
-              <Grid item xs className="iconsvg">
+              </Divider> */}
+              <Grid item xs={12} sm={4} className="iconsvg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="iconsvg"

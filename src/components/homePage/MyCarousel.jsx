@@ -23,7 +23,11 @@ import { addItemToCart } from "../../Redux/cart/slice";
 
 function MyCarousel({ starredProducts }) {
   return (
-    <Carousel>
+    <Carousel
+      sx={{
+        borderRadius: "15px",
+      }}
+    >
       {starredProducts.map((item, i) => (
         <Item key={i} item={item} />
       ))}
@@ -74,7 +78,13 @@ function Item(props) {
           {props.item.description}
         </Typography>
       </CardContent>
-      <CardActions sx={{ backgroundColor: theme.palette.primary.main }}>
+      <CardActions
+        sx={{
+          backgroundColor: theme.palette.primary.main,
+          borderEndEndRadius: "15px",
+          borderEndStartRadius: "15px",
+        }}
+      >
         <Grid container>
           <Box flex={1}>
             {" "}

@@ -11,21 +11,30 @@ import {
 } from "@mui/material";
 
 import Typography from "@mui/material/Typography";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-const theme = createTheme();
+import { Container } from "@mui/system";
+import { useTheme } from "@emotion/react";
 
 export default function Login() {
+  const theme = useTheme();
+  const categoryBtnStyles = {
+    bgcolor: "primary.main",
+    border: `thick double ${theme.palette.primary.light}`,
+    borderRadius: "15px",
+    color: "white",
+    "&:hover": {
+      color: "primary",
+    },
+  };
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <Container>
         <Grid
           container
           component="main"
           className="borderform"
           sx={{
             height: "100vh",
-            paddingLeft: "10rem",
+
             marginTop: "13rem",
             marginBottom: "4rem",
           }}
@@ -36,7 +45,7 @@ export default function Login() {
           <Grid
             item
             xs={12}
-            sm={12}
+            sm={6}
             md={5}
             className="gradientbg"
             component={Paper}
@@ -92,7 +101,11 @@ export default function Login() {
                   variant="standard"
                 />
 
-                <Button fullWidth variant="contained">
+                <Button
+                  fullWidth
+                  variant="contained"
+                  sx={{ ...categoryBtnStyles, mt: "2rem" }}
+                >
                   Sign Up
                 </Button>
 
@@ -171,8 +184,8 @@ export default function Login() {
             className="background-guitar"
             item
             xs={false}
-            sm={8}
-            md={6}
+            sm={6}
+            md={7}
             sx={{
               backgroundImage:
                 "url(https://wallpaperboat.com/wp-content/uploads/2019/04/electric-guitar-003.jpg)",
@@ -187,7 +200,7 @@ export default function Login() {
             }}
           />
         </Grid>
-      </ThemeProvider>
+      </Container>
     </>
   );
 }

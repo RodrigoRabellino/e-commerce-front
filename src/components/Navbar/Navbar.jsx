@@ -40,6 +40,15 @@ function Navbar() {
     cartQty += item.qty;
   });
 
+  const navStyles = {
+    fontSize: "0.9rem",
+    fontWeight: "500",
+    borderBottom: `thick double ${theme.palette.primary.main}`,
+    ":hover": {
+      borderBottom: `thick double ${theme.palette.primary.light}`,
+    },
+  };
+
   return (
     <>
       <ElevationScroll>
@@ -75,17 +84,17 @@ function Navbar() {
                     justifyContent="space-between"
                     width="35%"
                   >
-                    <Typography variant="button">
+                    <Typography variant="button" sx={{ ...navStyles }}>
                       <Link to="/store" className="navLink">
                         All Products
                       </Link>
                     </Typography>
-                    <Typography variant="button">
+                    <Typography variant="button" sx={{ ...navStyles }}>
                       <Link to="/" className="navLink">
                         Contact Us
                       </Link>
                     </Typography>
-                    <Typography variant="button">
+                    <Typography variant="button" sx={{ ...navStyles }}>
                       <Link to="/aboutus" className="navLink">
                         About Us
                       </Link>
@@ -93,7 +102,7 @@ function Navbar() {
                   </Box>
                   <Box display="flex" justifyContent="space-between">
                     <Box>
-                      <Typography variant="button">
+                      <Typography variant="button" sx={{ ...navStyles }}>
                         <Link to="/signin" className="hover navLink">
                           Login
                         </Link>

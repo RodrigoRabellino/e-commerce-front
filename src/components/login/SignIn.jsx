@@ -10,41 +10,47 @@ import {
   Paper,
   Box,
   Grid,
+  Container,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
-
 import Typography from "@mui/material/Typography";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-const theme = createTheme();
+import { useTheme } from "@emotion/react";
 
 export default function SignIn() {
+  const theme = useTheme();
+  const categoryBtnStyles = {
+    bgcolor: "primary.main",
+    border: `thick double ${theme.palette.primary.light}`,
+    borderRadius: "15px",
+    color: "white",
+    "&:hover": {
+      color: "primary",
+    },
+  };
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <Container justifyContent="center">
         <Grid
           container
           component="main"
           className="borderform"
           sx={{
             height: "100vh",
-            paddingLeft: "10rem",
+            width: "100%",
             marginTop: "13rem",
             marginBottom: "4rem",
           }}
         >
           <CssBaseline />
-          <Box></Box>
           <Grid
             className="background-guitar"
             item
             xs={false}
-            sm={8}
-            md={6}
+            sm={6}
+            md={7}
             sx={{
               backgroundImage:
                 "url(https://img.wallpapersafari.com/tablet/2560/1700/29/66/N7iGLn.jpg)",
-
               backgroundRepeat: "no-repeat",
               backgroundColor: (t) =>
                 t.palette.mode === "light"
@@ -58,7 +64,7 @@ export default function SignIn() {
           <Grid
             item
             xs={12}
-            sm={12}
+            sm={6}
             md={5}
             className="gradientbg"
             component={Paper}
@@ -76,7 +82,11 @@ export default function SignIn() {
             >
               <Box>LOGUITO</Box>
 
-              <Typography component="h1" variant="h5">
+              <Typography
+                component="h1"
+                variant="h5"
+                color={theme.palette.primary.main}
+              >
                 Sign in
               </Typography>
               <Divider></Divider>
@@ -98,16 +108,25 @@ export default function SignIn() {
                   variant="standard"
                 />
                 <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
+                  sx={{ color: "black" }}
+                  control={<Checkbox value="remember" color="secondary" />}
                   label="Remember me"
                 />
                 <Box className="butonsingin">
-                  <Button fullWidth variant="contained">
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    sx={{ ...categoryBtnStyles }}
+                  >
                     Sign In
                   </Button>
                 </Box>
-                <NavLink to="/signup">
-                  <Button fullWidth variant="contained">
+                <NavLink to="/signup" style={{ textDecoration: "none" }}>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    sx={{ ...categoryBtnStyles }}
+                  >
                     Sign Up
                   </Button>
                 </NavLink>
@@ -184,7 +203,7 @@ export default function SignIn() {
             </Box>
           </Grid>
         </Grid>
-      </ThemeProvider>
+      </Container>
     </>
   );
 }

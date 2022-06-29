@@ -15,7 +15,7 @@
 
 .start-page .content-bg {
   position: relative;
-  width: 900px;
+  width: 100%;
   margin: 0 auto;
   height: 580px;
 }
@@ -125,7 +125,8 @@
 }
 
 .iconsvg {
-  width: 5rem;
+  width: 7rem;
+  padding:1rem;
   margin: 0;
 }
 
