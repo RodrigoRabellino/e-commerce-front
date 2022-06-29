@@ -11,6 +11,7 @@ import {
   useTheme,
   useScrollTrigger,
   Container,
+  Badge,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
@@ -44,7 +45,17 @@ function Navbar() {
       <ElevationScroll>
         <AppBar position="fixed">
           <Container>
-            <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Toolbar
+              disableGutters
+              label="cosopum"
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                paddingX: 0,
+                marginX: 0,
+              }}
+            >
               <Link to="/" className="navLink">
                 <Typography>LOGUITO</Typography>
               </Link>
@@ -88,12 +99,20 @@ function Navbar() {
                       onClick={() => setIsCartOpen(true)}
                       sx={{ cursor: "pointer" }}
                     >
-                      <ShoppingCartIcon
-                        sx={{ paddingTop: 0.1, marginLeft: 2 }}
-                        className="hover navLink"
-                        color="background"
-                      />
-                      <Box
+                      <Badge
+                        badgeContent={cartQty}
+                        color="secondary"
+                        max={99}
+                        overlap="circular"
+                      >
+                        <ShoppingCartIcon
+                          sx={{ paddingTop: 0.1, marginLeft: 2 }}
+                          className="hover navLink"
+                          color="background"
+                        />
+                      </Badge>
+
+                      {/* <Box
                         display="flex"
                         justifyContent="center"
                         alignItems="center"
@@ -110,7 +129,7 @@ function Navbar() {
                         }}
                       >
                         {cartQty}
-                      </Box>
+                      </Box> */}
                     </Box>
                   </Box>
                 </>

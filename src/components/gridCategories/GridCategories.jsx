@@ -35,7 +35,7 @@ const GridCategories = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <Grid container spacing={1} sx={{ width: "75%" }}>
+      <Grid container spacing={1} sx={{ width: "100%" }}>
         {categories.map((category, index) => {
           let image = require(`../../assets/images/${category.imageName}`);
           return (

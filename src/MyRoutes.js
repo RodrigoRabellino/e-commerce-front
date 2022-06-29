@@ -2,8 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import DashBoard from "./components/admin/dashboard/DashBoard";
 import GridCategories from "./components/gridCategories/GridCategories";
 import HomePage from "./components/homePage/HomePage";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
 import SignIn from "./components/login/SignIn";
 import SignUp from "./components/login/SignUp";
 import ProductDetail from "./components/productDetail/ProductDetail";
@@ -15,7 +13,7 @@ import CheckOut from "./components/checkout/CheckOut";
 import AddressForm from "./components/addressForm/AddressForm";
 import ReviewForm from "./components/reviewForm/ReviewForm";
 import PaymentForm from "./components/paymentForm/PaymentForm.jsx";
-import ContactUs from "./components/ContactUs/ContactUs"
+import ContactUs from "./components/ContactUs/ContactUs";
 
 const MyRoutes = ({ type }) => {
   if (type === "admin") {
@@ -42,7 +40,7 @@ const MyRoutes = ({ type }) => {
       <Route path="/reviewForm" element={<ReviewForm />} />
       <Route path="/paymentForm" element={<PaymentForm />} />
       <Route path="/paymentConfirmation" element={<PaymentForm />} />
-      <Route path="/contactUs" element={<ContactUs/>} />
+      <Route path="/contactUs" element={<ContactUs />} />
     </Routes>
   );
 };

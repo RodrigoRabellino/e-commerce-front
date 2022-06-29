@@ -130,7 +130,7 @@ function Footer() {
               </FormControl>
             </Grid>
           </Grid>
-          <Divider sx={{ marginX: "2rem" }} />
+          <Divider sx={{ marginY: "2rem" }} />
 
           <Grid container spacing={4}>
             <Grid item xs={12} sm={4}>
