@@ -9,6 +9,7 @@ import {
   IconButton,
   Paper,
   Divider,
+  Container,
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -19,10 +20,14 @@ function AboutUs() {
     ":hover": { transition: "0.2s" },
   };
   const cardStyles = {
+    transition: "0.2s",
     width: "200px",
     height: "200px",
-    ":hover": { transition: "0.2s", background: "#BF8832" },
-    boxShadow: "0 5px 10px 0",
+    boxShadow: "3px 3px 5px 0 rgb(0,0,0, 0.22)",
+    ":hover": {
+      transition: "0.5s",
+      boxShadow: "3px 3px 5px 0 rgb(0,0,0, 0.44)",
+    },
   };
   return (
     <>
@@ -34,7 +39,7 @@ function AboutUs() {
           alignItems: "center",
           justifyContent: "center",
           width: "100%",
-          marginTop: "80px",
+          marginTop: "64px",
         }}
       >
         <Stack
@@ -138,7 +143,7 @@ function AboutUs() {
         sx={{
           fontSize: "30px",
           fontWeight: "bold",
-          marginBottom: "15px",
+          marginBottom: "20px",
           marginTop: "20px",
           color: "#8C5032",
         }}
@@ -146,68 +151,79 @@ function AboutUs() {
       >
         About Us
       </Typography>
-      <hr />
-      <Typography
-        sx={{ fontSize: "15px", marginBottom: "30px", margin: "40px" }}
-        variant="h5"
-      >
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
-        distinctio maxime sint praesentium dolorem illum, quo alias odit
-        aspernatur minima soluta reiciendis earum natus porro atque fugit
-        debitis sit velit.Lorem ipsum dolor sit amet consectetur, adipisicing
-        elit. Obcaecati distinctio maxime sint praesentium dolorem illum, quo
-        alias odit aspernatur minima soluta reiciendis earum natus porro atque
-        fugit debitis sit velit.Lorem ipsum dolor sit amet consectetur,
-        adipisicing elit. Obcaecati distinctio maxime sint praesentium dolorem
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
-        distinctio maxime sint praesentium dolorem illum, quo alias odit
-        aspernatur minima soluta reiciendis earum natus porro atque fugit
-        debitis sit velit.Lorem ipsum dolor sit amet consectetur, adipisicing
-        elit. Obcaecati distinctio maxime sint praesentium dolorem illum, quo
-        alias odit aspernatur minima soluta reiciendis earum natus porro atque
-        fugit debitis sit velit.Lorem ipsum dolor sit amet consectetur,
-        adipisicing elit. Obcaecati distinctio maxime sint praesentium dolorem
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: "15px",
-          fontWeight: "bold",
-          marginLeft: "780px",
-          marginTop: "50px",
-          textDecoration: "underline",
-        }}
-      >
-        Accede como cliente usando las siguientes credenciales:
-      </Typography>
-      <Typography sx={{ marginLeft: "780px", fontSize: "13px" }}>
-        Email:/Password:
-      </Typography>
-      <Typography sx={{ marginLeft: "780px", fontSize: "13px" }}>
-        O dirígete a la página de ADMIN para tener acceso total al CRUD.
-      </Typography>
-      <Typography
-        sx={{
-          marginLeft: "780px",
-          fontSize: "13px",
-          fontWeight: "bold",
-        }}
-      >
-        Para una mejor experiencia, por favor resetear la base de datos:
-      </Typography>
-      <Button
-        sx={{ marginLeft: "810px", marginTop: "35px", marginBottom: "35px" }}
-        variant="contained"
-      >
-        Reset DataBase
-      </Button>
       <Divider />
-      <Box
+      <Container sx={{ paddingY: "2rem" }}>
+        <Typography fontSize="15px" textAlign="start" variant="h5">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
+          distinctio maxime sint praesentium dolorem illum, quo alias odit
+          aspernatur minima soluta reiciendis earum natus porro atque fugit
+          debitis sit velit.Lorem ipsum dolor sit amet consectetur, adipisicing
+          elit. Obcaecati distinctio maxime sint praesentium dolorem illum, quo
+          alias odit aspernatur minima soluta reiciendis earum natus porro atque
+          fugit debitis sit velit.Lorem ipsum dolor sit amet consectetur,
+          adipisicing elit. Obcaecati distinctio maxime sint praesentium dolorem
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
+          distinctio maxime sint praesentium dolorem illum, quo alias odit
+          aspernatur minima soluta reiciendis earum natus porro atque fugit
+          debitis sit velit.Lorem ipsum dolor sit amet consectetur, adipisicing
+          elit. Obcaecati distinctio maxime sint praesentium dolorem illum, quo
+          alias odit aspernatur minima soluta reiciendis earum natus porro atque
+          fugit debitis sit velit.Lorem ipsum dolor sit amet consectetur,
+          adipisicing elit. Obcaecati distinctio maxime sint praesentium dolorem
+        </Typography>
+      </Container>
+      <Container
         sx={{
           display: "flex",
-          width: "100%",
-          justifyContent: "space-evenly",
+          flexDirection: "column",
+          alignItems: "flex-end",
+          pb: "2rem",
+        }}
+      >
+        <Box>
+          <Typography
+            sx={{
+              fontSize: "15px",
+              fontWeight: "bold",
+              textDecoration: "underline",
+            }}
+          >
+            Accede como cliente usando las siguientes credenciales:
+          </Typography>
+          <Typography sx={{ fontSize: "13px" }}>
+            Email:user@user.com / Password:1234
+          </Typography>
+          <Typography sx={{ fontSize: "13px" }}>
+            O dirígete a la página de ADMIN para tener acceso total al CRUD.
+          </Typography>
+          <Button
+            sx={{
+              color: "#7B8723",
+            }}
+            onClick={() => {
+              window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
+            }}
+          >
+            ADMIN
+          </Button>
+          <Typography
+            sx={{
+              fontSize: "13px",
+              fontWeight: "bold",
+            }}
+          >
+            Para una mejor experiencia, por favor resetear la base de datos:
+          </Typography>
+          <Button variant="outlined">Reset DataBase</Button>
+        </Box>
+      </Container>
+      <Divider />
+      <Container
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
           marginBottom: "30px",
-          marginTop: "20px",
+          marginTop: "30px",
         }}
       >
         <Card sx={cardStyles}>
@@ -218,11 +234,10 @@ function AboutUs() {
             >
               Challenges
             </Typography>
-            <hr />
+            <Divider />
 
             <Typography variant="body2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
-              <br />
             </Typography>
           </CardContent>
         </Card>
@@ -238,7 +253,6 @@ function AboutUs() {
 
             <Typography variant="body2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
-              <br />
             </Typography>
           </CardContent>
         </Card>
@@ -258,7 +272,7 @@ function AboutUs() {
             </Typography>
           </CardContent>
         </Card>
-      </Box>
+      </Container>
     </>
   );
 }
