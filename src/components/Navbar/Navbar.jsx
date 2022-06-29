@@ -42,7 +42,10 @@ function Navbar() {
   return (
     <>
       <ElevationScroll>
-        <AppBar position="fixed">
+        <AppBar
+          position="fixed"
+          sx={{ borderBottom: `1px solid ${theme.palette.primary.light}` }}
+        >
           <Container>
             <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
               <Link to="/" className="navLink">

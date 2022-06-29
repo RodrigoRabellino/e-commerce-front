@@ -41,6 +41,16 @@ const StorePage = () => {
     getProducts(page);
   }, [page]);
 
+  const categoryBtnStyles = {
+    bgcolor: "primary.main",
+    border: `thick double ${theme.palette.primary.light}`,
+    borderRadius: "15px",
+    color: "white",
+    "&:hover": {
+      color: "primary",
+    },
+  };
+
   return (
     <Grid container>
       <Grid
@@ -66,52 +76,41 @@ const StorePage = () => {
           </Typography>
           <Stack marginTop="1rem" spacing={2}>
             <Button
+              sx={{ ...categoryBtnStyles }}
               onClick={() => setCategorySelected("All Products")}
-              color="primary"
-              variant={
-                categorySelected === "All Products" ? "contained" : "outlined"
-              }
-              sx={{ borderRadius: "15px" }}
+              variant="contained"
             >
               All Products
             </Button>
             <Button
+              sx={{ ...categoryBtnStyles }}
               onClick={() => setCategorySelected("Guitars")}
-              color="primary"
-              variant={
-                categorySelected === "Guitars" ? "contained" : "outlined"
-              }
+              variant="contained"
               elevation={0}
-              sx={{ borderRadius: "15px" }}
             >
               Guitars
             </Button>
             <Button
+              sx={{ ...categoryBtnStyles }}
               onClick={() => setCategorySelected("Basses")}
-              color="primary"
-              variant={categorySelected === "Basses" ? "contained" : "outlined"}
+              variant="contained"
               elevation={0}
-              sx={{ borderRadius: "15px" }}
             >
               Bass
             </Button>
             <Button
+              sx={{ ...categoryBtnStyles }}
               onClick={() => setCategorySelected("Amps")}
-              color="primary"
-              variant={categorySelected === "Amps" ? "contained" : "outlined"}
+              variant="contained"
               elevation={0}
-              sx={{ borderRadius: "15px" }}
             >
               Amps
             </Button>
             <Button
+              sx={{ ...categoryBtnStyles }}
               onClick={() => setCategorySelected("Accessories")}
-              color="primary"
-              variant={
-                categorySelected === "Accessories" ? "contained" : "outlined"
-              }
+              variant="contained"
               elevation={0}
-              sx={{ borderRadius: "15px" }}
             >
               Accessories
             </Button>

@@ -55,11 +55,18 @@ function ProductDetail() {
   };
 
   return (
-    <Container maxWidth="lg">
+    <Container
+      maxWidth="lg"
+      sx={{
+        position: "relative",
+        mt: "4rem",
+        borderLeft: `1px solid ${theme.palette.primary.light}`,
+        borderRight: `1px solid ${theme.palette.primary.light}`,
+      }}
+    >
       <Grid
         container
         sx={{
-          marginTop: "80px",
           p: 1,
         }}
       >
@@ -170,6 +177,9 @@ function ProductDetail() {
                   sx={{
                     border: `2px solid ${theme.palette.primary.light}`,
                     flexGrow: "1",
+                    "&:hover": {
+                      border: `2px solid ${theme.palette.primary.light}`,
+                    },
                   }}
                 >
                   <Typography
