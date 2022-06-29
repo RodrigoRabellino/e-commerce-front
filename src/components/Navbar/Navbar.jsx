@@ -103,9 +103,10 @@ function Navbar() {
                           bottom: "5px",
                           width: "15px",
                           height: "15px",
+                          border: `1px solid ${theme.palette.primary.light}`,
                           borderRadius: "100%",
                           fontSize: "12px",
-                          backgroundColor: theme.palette.primary.dark,
+                          backgroundColor: "secondary.main",
                         }}
                       >
                         {cartQty}

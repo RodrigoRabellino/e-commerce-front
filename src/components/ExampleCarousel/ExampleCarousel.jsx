@@ -26,8 +26,12 @@ function ExampleCarousel({ selectedProduct }) {
           ) : (
             productImages.map((img, i) => (
               <Box
+                className="carouselBox"
                 key={`img-${i}`}
-                sx={{ maxWidth: "400px", maxHeight: "600px" }}
+                sx={{
+                  width: "400px",
+                  margin: "auto",
+                }}
               >
                 <img
                   srcSet={img}

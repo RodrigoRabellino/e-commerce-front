@@ -6,15 +6,25 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Drawer, Box, Typography, Button, Grid, useTheme } from "@mui/material";
 
 import { useSelector, useDispatch } from "react-redux";
-import { removeItemCart, addItemToCart } from "../../Redux/cart/slice";
+import {
+  addItemToCart,
+  deleteItemCart,
+  addOneQty,
+  removeOneQty,
+} from "../../Redux/cart/slice";
 
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const dispatch = useDispatch();
-  const removeFromCart = (cartItem) => {
-    dispatch(removeItemCart(cartItem));
+  const addOneToCart = (item) => {
+    dispatch(addOneQty(item));
   };
-  const addToCart = (cartItem) => {
-    dispatch(addItemToCart(cartItem));
+
+  const removeOneFromCart = (item) => {
+    dispatch(removeOneQty(item));
+  };
+
+  const deleteFromCart = (item) => {
+    dispatch(deleteItemCart(item));
   };
 
   const cart = useSelector((state) => state.cart);
@@ -136,7 +146,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                                 },
                               }}
                               fontSize="small"
-                              onClick={() => removeFromCart(item)}
+                              onClick={() => removeOneFromCart(item)}
                             />
                           </Typography>
                           <Typography variant="span" color="primary">
@@ -151,7 +161,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                                 },
                               }}
                               fontSize="small"
-                              onClick={() => addToCart(item)}
+                              onClick={() => addOneToCart(item)}
                             />
                           </Typography>
                         </Grid>
@@ -170,7 +180,6 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                       >
                         <Box textAlign="end">
                           <DeleteIcon
-                            onClick={() => removeFromCart(item)}
                             sx={{
                               color: "#8C5032",
                               "&:hover": {
@@ -178,6 +187,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                                 color: theme.palette.primary.dark,
                               },
                             }}
+                            onClick={() => deleteFromCart(item)}
                           />
                         </Box>
                         <Box display="flex" justifyContent="space-between">
