@@ -45,7 +45,9 @@ function Navbar() {
       <ElevationScroll>
         <AppBar
           position="fixed"
-          sx={{ borderBottom: `1px solid ${theme.palette.primary.light}` }}
+          sx={{
+            borderBottom: `1px solid ${theme.palette.primary.light}`,
+          }}
         >
           <Container>
             <Toolbar
