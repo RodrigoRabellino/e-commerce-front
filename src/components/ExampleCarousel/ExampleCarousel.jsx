@@ -8,7 +8,6 @@ function ExampleCarousel({ selectedProduct }) {
     <Box
       sx={{
         display: "flex",
-        height: "430px",
         justifyContent: "center",
         alignContent: "center",
       }}
@@ -28,10 +27,14 @@ function ExampleCarousel({ selectedProduct }) {
             productImages.map((img, i) => (
               <Box
                 className="carouselBox"
+                display="flex"
+                alignItems="center"
                 key={`img-${i}`}
                 sx={{
-                  width: "430px",
+                  width: { md: "100%", xs: "80%" },
+                  height: { md: "430px", xs: "300px" },
                   margin: "auto",
+                  p: 5,
                 }}
               >
                 <img

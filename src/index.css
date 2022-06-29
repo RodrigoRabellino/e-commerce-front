@@ -7,10 +7,16 @@
 body {
   background-color: #FCFAF6;
   font-family: "Raleway", sans-serif;
+  font-family: 'Neuton', serif;
+  font-family: 'Saira Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: "Raleway", sans-serif;
+}
+
+.number{
+  font-family: "font-family: 'Source Code Pro', monospace;";
 }

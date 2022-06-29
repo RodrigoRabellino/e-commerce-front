@@ -192,10 +192,12 @@ const ModuleView = ({ product, handleNavigate }) => {
         }
         subheader={
           <Typography
+            className="number"
             sx={{ width: "100%" }}
             color="primary"
+            fontSize="1.2rem"
             fontWeight="500"
-            variant="subtitle2"
+            variant="p"
           >{`U$S ${price}`}</Typography>
         }
       />

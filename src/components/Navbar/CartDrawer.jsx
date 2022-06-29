@@ -149,7 +149,11 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                               onClick={() => removeOneFromCart(item)}
                             />
                           </Typography>
-                          <Typography variant="span" color="primary">
+                          <Typography
+                            variant="span"
+                            color="primary"
+                            className="number"
+                          >
                             x {item.qty}
                           </Typography>
                           <Typography variant="span" color="primary">
@@ -190,7 +194,11 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                             onClick={() => deleteFromCart(item)}
                           />
                         </Box>
-                        <Box display="flex" justifyContent="space-between">
+                        <Box
+                          display="flex"
+                          justifyContent="space-between"
+                          alignItems="center"
+                        >
                           <Typography
                             variant="p"
                             component="span"
@@ -203,6 +211,8 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                             component="span"
                             align="center"
                             color="primary"
+                            className="number"
+                            fontSize="1.2rem"
                           >
                             {item.price * item.qty}
                           </Typography>
@@ -213,13 +223,19 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                 );
               })}
               <Grid container p={1} columnSpacing={2} justifyContent="flex-end">
-                <Grid item>
+                <Grid item sx={{ display: "flex", alignItems: "center" }}>
                   <Typography variant="h6" ms={5} color="primary">
                     Total:
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography variant="h6" color="primary">
+                  <Typography
+                    variant="p"
+                    fontSize="1.5rem"
+                    fontWeight="700"
+                    color="primary"
+                    className="number"
+                  >
                     {" "}
                     $ {cartTotal}
                   </Typography>

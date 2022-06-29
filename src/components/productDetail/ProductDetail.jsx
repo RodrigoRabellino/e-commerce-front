@@ -57,7 +57,6 @@ function ProductDetail() {
 
   return (
     <Container
-      maxWidth="lg"
       sx={{
         position: "relative",
         mt: "4rem",
@@ -69,11 +68,12 @@ function ProductDetail() {
       <CssBaseline />
       <Grid
         container
+        justifyContent="center"
         sx={{
           p: 1,
         }}
       >
-        <Grid item xs={7} justifyContent="center">
+        <Grid item xs={12} md={7} justifyContent="center">
           {Object.entries(selectedProduct).length === 0 ? (
             <CircularProgress />
           ) : (
@@ -81,8 +81,8 @@ function ProductDetail() {
               <ExampleCarousel selectedProduct={selectedProduct} />
               <Box
                 sx={{
-                  display: "flex",
-                  marginTop: "50px",
+                  display: { md: "flex", xs: "none" },
+                  marginTop: "64px",
                   justifyContent: "center",
                 }}
               >
@@ -104,17 +104,23 @@ function ProductDetail() {
         </Grid>
         <Grid
           container
-          xs={5}
+          xs={12}
+          md={5}
           height="100%"
           display="flex"
           flexDirection="column"
           rowSpacing={2}
           justifyContent="space-between"
-          alignItems="flex-start"
-          textAlign="left"
+          sx={{ alignItems: { md: "flex-start", xs: "center" } }}
         >
           <Grid item xs={12}>
-            <Typography sx={{ fontSize: "40px" }} variant="h3">
+            <Typography
+              sx={{
+                fontSize: { xs: "30px", lg: "40px" },
+                textAlign: { md: "left", xs: "center" },
+              }}
+              variant="h3"
+            >
               {selectedProduct.name}
             </Typography>
           </Grid>
@@ -124,13 +130,19 @@ function ProductDetail() {
             xs={12}
             display="flex"
             flexDirection="column"
-            justifyContent="flex-end"
+            sx={{ textAlign: { xs: "center", md: "start" }, width: "100%" }}
           >
             <Typography>Stock: {selectedProduct.stock}</Typography>
             <Typography variant="h6" color="secondary">
               Product Available
             </Typography>
-            <Box display="flex" alignItems="center">
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "center", md: "start" },
+                // textAlign: { xs: "center", md: "start" },
+              }}
+            >
               <LocalShippingOutlinedIcon sx={{ color: "secondary.main" }} />
               <Typography variant="body2" ml="5px">
                 Delivers today if you order{" "}
@@ -147,10 +159,22 @@ function ProductDetail() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} display="flex">
+          <Grid
+            item
+            xs={12}
+            sx={{
+              display: "flex",
+              textAlign: { xs: "center", md: "flex-start" },
+            }}
+          >
             <Typography variant="h6" flex="1">
               Price: U$S{" "}
-              <Typography variant="h4" component="span">
+              <Typography
+                variant="p"
+                fontSize="2rem"
+                component="span"
+                className="number"
+              >
                 {selectedProduct.price}
               </Typography>
             </Typography>
@@ -160,11 +184,13 @@ function ProductDetail() {
             display="flex"
             flexDirection="column"
             justifyContent="space-evenly"
-            alignItems="flex-start"
+            sx={{ alignItems: { md: "flex-start", xs: "center" } }}
             rowSpacing={1}
           >
             <Box>
-              <ButtonGroup sx={{ display: "flex", mb: "0.5rem" }}>
+              <ButtonGroup
+                sx={{ display: "flex", mb: "0.5rem", height: "2.5rem" }}
+              >
                 <Button
                   variant="contained"
                   sx={{
@@ -186,10 +212,12 @@ function ProductDetail() {
                   }}
                 >
                   <Typography
+                    className="number"
+                    variant="p"
                     value={1}
                     sx={{
-                      fontWeight: "600",
-                      fontSize: "1.2rem",
+                      fontWeight: "400",
+                      fontSize: "1.3rem",
                       padding: "0 12px",
                     }}
                   >
@@ -210,6 +238,7 @@ function ProductDetail() {
               </ButtonGroup>
               <Button
                 sx={{
+                  height: "2.5rem",
                   mb: "1rem",
                   width: "100%",
                   borderRadius: "15px",
@@ -260,7 +289,7 @@ function ProductDetail() {
               </Link>
             </Typography>
           </Grid>
-          <Grid item mb="1rem">
+          <Grid item mb="1rem" sx={{ textAlign: "start" }}>
             <Typography variant="body1">
               {selectedProduct.description}
             </Typography>
