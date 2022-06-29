@@ -44,7 +44,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
   return (
     <>
       <Box sx={{ height: "100%" }}>
-        <Typography mt="10px" variant="h6">
+        <Typography mt="20px" fontWeight="600" variant="h5">
           Shipping Address
         </Typography>
         <Box
@@ -112,7 +112,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
                 <TextField
                   variant="standard"
                   fullWidth
-                  label="Address Line2"
+                  label="Address Line 2"
                   size="small"
                   value={value}
                   onChange={onChange}
@@ -146,7 +146,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
                 <TextField
                   variant="standard"
                   fullWidth
-                  label="State/Region"
+                  label="State/Province/Region"
                   size="small"
                   value={value}
                   onChange={onChange}
@@ -163,7 +163,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
                 <TextField
                   variant="standard"
                   fullWidth
-                  label="Zip/PostalCode"
+                  label="Zip/Postal Code"
                   size="small"
                   value={value}
                   onChange={onChange}
@@ -190,8 +190,8 @@ function AddressForm({ handleNext, setDatos, datos }) {
               )}
             />
 
-            <Box display="flex" justifyContent="space-evenly">
-              <FormGroup>
+            <Box display="flex" justifyContent="space-between">
+              <FormGroup mt="10px">
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
                   label="Use this address for payment details"
@@ -200,8 +200,8 @@ function AddressForm({ handleNext, setDatos, datos }) {
               <Button
                 type="submit"
                 sx={{
-                  fontWeight: "600",
                   ...buttonStyles,
+                  mt: "160px",
                 }}
                 variant="contained"
               >

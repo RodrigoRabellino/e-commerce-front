@@ -31,8 +31,8 @@ function ReviewForm({ handleNext, handleBack, datos }) {
           alignItems: "center",
         }}
       >
-        <Box sx={{ height: "100%" }}>
-          <Typography mt="10px" variant="h6">
+        <Box sx={{ height: "100%", width: "100%" }}>
+          <Typography mt="20px" fontWeight="600" variant="h6">
             Review your order
           </Typography>
           <Box
@@ -91,7 +91,10 @@ function ReviewForm({ handleNext, handleBack, datos }) {
             sx={{ display: "flex", justifyContent: "space-evenly", mt: "20px" }}
           >
             {/* <ListItem sx={{ mb: "25px" }}>Free Shipping</ListItem> */}
-            <ListItem variant="h4" sx={{ mb: "20px", ml: "40px" }}>
+            <ListItem
+              variant="h4"
+              sx={{ mb: "20px", ml: "40px", fontWeight: "500" }}
+            >
               Total
             </ListItem>
             <ListItem sx={{ display: "flex", justifyContent: "space-evenly" }}>
@@ -118,7 +121,8 @@ function ReviewForm({ handleNext, handleBack, datos }) {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent: "space-between",
+              mt: "200px",
             }}
           >
             <Button

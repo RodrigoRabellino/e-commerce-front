@@ -10,7 +10,7 @@ import PaymentForm from "../paymentForm/PaymentForm";
 import ReviewForm from "../reviewForm/ReviewForm";
 import AddressForm from "../addressForm/AddressForm";
 import PaymentConfirmation from "../PaymentConfirmation/paymentConfirmation";
-import { useForm } from "react-hook-form";
+
 // import total from "../Accounting/Total";
 
 export default function CheckOut() {

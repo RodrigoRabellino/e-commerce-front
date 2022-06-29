@@ -14,6 +14,7 @@ import AddressForm from "./components/addressForm/AddressForm";
 import ReviewForm from "./components/reviewForm/ReviewForm";
 import PaymentForm from "./components/paymentForm/PaymentForm.jsx";
 import ContactUs from "./components/ContactUs/ContactUs";
+import PaymentConfirmation from "./components/PaymentConfirmation/paymentConfirmation";
 
 const MyRoutes = ({ type }) => {
   if (type === "admin") {
@@ -39,7 +40,7 @@ const MyRoutes = ({ type }) => {
       <Route path="/addressForm" element={<AddressForm />} />
       <Route path="/reviewForm" element={<ReviewForm />} />
       <Route path="/paymentForm" element={<PaymentForm />} />
-      <Route path="/paymentConfirmation" element={<PaymentForm />} />
+      <Route path="/paymentConfirmation" element={<PaymentConfirmation />} />
       <Route path="/contactUs" element={<ContactUs />} />
     </Routes>
   );

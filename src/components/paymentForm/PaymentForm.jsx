@@ -14,7 +14,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
-
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 function PaymentForm({ handleNext, handleBack }) {
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
@@ -37,14 +37,15 @@ function PaymentForm({ handleNext, handleBack }) {
   const enviarDatos = (event) => {
     event.preventDefault();
   };
+
   return (
     <>
       <Box
         sx={{
+          width: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: "flex-start",
         }}
       >
         <Box sx={{ height: "100%" }}>
@@ -52,13 +53,37 @@ function PaymentForm({ handleNext, handleBack }) {
             fontWeight="600"
             variant="h5"
             sx={{
-              fontWeight: "600",
-              mt: "10px",
               variant: "h5",
+              fontWeight: "600",
+              mt: "20px",
             }}
           >
             Payment Method
           </Typography>
+          <Typography
+            fontWeight="400"
+            mt="20px"
+            variant="h6"
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              mb: "20px",
+              width: "100%",
+            }}
+          >
+            Credit Card
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            mb: "20px",
+          }}
+        >
+          <img src={require("../../assets/images/credit-card-logo.png")} />
+          <img src={require("../../assets/images/Paypal logo.png")} />
         </Box>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -130,24 +155,22 @@ function PaymentForm({ handleNext, handleBack }) {
             )}
           />
 
+          <FormGroup mt="10px">
+            <FormControlLabel
+              control={<Checkbox defaultChecked />}
+              label="Remember Credit Card for next time"
+            />
+          </FormGroup>
           <Box
             sx={{
               display: "flex",
-              flexDirection: "row",
+              justifyContent: "space-between",
+              mt: "200px",
             }}
           >
-            <FormGroup>
-              <FormControlLabel
-                control={<Checkbox defaultChecked />}
-                label="Remember Credit Card for next time"
-              />
-            </FormGroup>
-
             <Button
               sx={{
                 ...buttonStyles,
-                display: "flex",
-                justifyContent: "space-evenly",
               }}
               variant="contained"
               href="#contained-buttons"
@@ -155,15 +178,12 @@ function PaymentForm({ handleNext, handleBack }) {
             >
               Back
             </Button>
-            <Button
-              sx={{ fontWeight: "600", ...buttonStyles }}
-              variant="contained"
-              type="submit"
-            >
+            <Button sx={{ ...buttonStyles }} variant="contained" type="submit">
               Next
             </Button>
+          </Box>
 
-            {/* <Box
+          {/* <Box
             sx={{
               display: "flex",
               justifyContent: "flex-start",
@@ -172,7 +192,6 @@ function PaymentForm({ handleNext, handleBack }) {
               marginRight: "15px",
             }}
           > */}
-          </Box>
         </form>
       </Box>
     </>
