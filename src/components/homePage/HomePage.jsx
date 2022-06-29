@@ -4,7 +4,6 @@ import { fetchStarredProducts } from "../../services/apiServices";
 import GridCategories from "../gridCategories/GridCategories";
 import MyCarousel from "./MyCarousel";
 import { useTheme } from "@emotion/react";
-import MyCarousel from "./MyCarousel";
 
 import "./HomePage.css";
 

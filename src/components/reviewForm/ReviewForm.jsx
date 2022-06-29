@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   FormHelperText,
@@ -13,10 +13,12 @@ import {
   Button,
   ListItem,
 } from "@mui/material";
+import { useSelector } from "react-redux";
 
 // import Total from "../Accounting/Total";
 
-function ReviewForm({ handleNext, handleBack }) {
+function ReviewForm({ handleNext, handleBack, datos }) {
+  // const order = useSelector(state=>state.order)
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
@@ -29,7 +31,7 @@ function ReviewForm({ handleNext, handleBack }) {
           alignItems: "center",
         }}
       >
-        <Box sx={{ boxShadow: "0 5px 10px 0", width: "50%" }}>
+        <Box sx={{ height: "100%" }}>
           <Typography mt="10px" variant="h6">
             Review your order
           </Typography>
@@ -108,32 +110,28 @@ function ReviewForm({ handleNext, handleBack }) {
               Payment Details
             </Typography>
             <Typography>Card Type: Visa</Typography>
-            <Typography>Card Holder: Mr.Steve Jefferson</Typography>
-            <Typography>Card Number: XXXX-XXXX-XXXX 1234</Typography>
-            <Typography>Expired Date:10/25</Typography>
+            {/* <Typography>{datos.name}</Typography> */}
+            {/* <Typography>{datos.cardNumber}</Typography>
+            <Typography>{datos.expiredDate}</Typography>
+            <Typography>{datos.cvv}</Typography> */}
           </Box>
           <Box
             sx={{
-              marginTop: "200px",
               display: "flex",
               justifyContent: "flex-end",
-              mb: "20px",
-              mr: "13px",
             }}
           >
             <Button
-              sx={{ fontWeight: "600", mr: "10px", ...buttonStyles }}
+              sx={{ fontWeight: "600", ...buttonStyles }}
               variant="contained"
-              href="#contained-buttons"
-              onClick={handleBack}
+              type="submit"
             >
               Back
             </Button>
             <Button
+              type="submit"
               sx={{ fontWeight: "600", ...buttonStyles }}
               variant="contained"
-              href="#contained-buttons"
-              onClick={handleNext}
             >
               Place order
             </Button>
