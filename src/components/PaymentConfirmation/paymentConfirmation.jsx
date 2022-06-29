@@ -15,7 +15,7 @@ function PaymentConfirmation({ handleBack }) {
           alignItems: "center",
         }}
       >
-        <Box sx={{ width: "50%", boxShadow: "0 5px 10px 0" }}>
+        <Box sx={{ height: "100%" }}>
           <Typography fontWeight="600" mt="20px" mb="20px" variant="h6">
             Thank you for your order.
           </Typography>

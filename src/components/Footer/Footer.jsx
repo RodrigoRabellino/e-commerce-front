@@ -23,8 +23,9 @@ function Footer() {
       <Box
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
-        bgcolor="black"
-        color="white"
+        bgcolor="#ab832a"
+        color="#F2DBB8"
+        height="50%"
       >
         <Container maxWidth="lg">
           <Grid container spacing={4} paddingBottom={14}>

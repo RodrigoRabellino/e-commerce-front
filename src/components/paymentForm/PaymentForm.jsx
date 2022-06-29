@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   FormHelperText,
@@ -11,85 +11,144 @@ import {
   FormControlLabel,
   FormGroup,
   Button,
+  TextField,
 } from "@mui/material";
+import { useForm, Controller } from "react-hook-form";
 
 function PaymentForm({ handleNext, handleBack }) {
+  const { register, handleSubmit, control } = useForm({
+    defaultValues: {
+      name: "",
+      cardNumber: "",
+      expiredDate: "",
+      CVV: "",
+    },
+  });
+
+  const onSubmit = (d) => handleNext();
+  const handleInputChange = (event) => {
+    // console.log(event.target.value);
+    // console.log(event.target.name);
+  };
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
+
+  const enviarDatos = (event) => {
+    event.preventDefault();
+  };
   return (
     <>
-      <Container
+      <Box
         sx={{
-          mt: "100px",
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Box sx={{ boxShadow: "0 5px 10px 0", width: "50%" }}>
-          <Typography fontWeight="600" mt="10px" variant="h5">
+        <Box sx={{ height: "100%" }}>
+          <Typography
+            fontWeight="600"
+            variant="h5"
+            sx={{
+              fontWeight: "600",
+              mt: "10px",
+              variant: "h5",
+            }}
+          >
             Payment Method
           </Typography>
-          <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-            <FormControl>
-              <InputLabel htmlFor="Name" />
-              <InputLabel />
-              <Input id="name" type="text" aria-describedby="name-helper" />
-              <FormHelperText id="name-helper">Name on card*</FormHelperText>
-            </FormControl>
+        </Box>
 
-            <FormControl>
-              <InputLabel htmlFor="CardNumber" />
-              <InputLabel />
-              <Input
-                id="Lastname"
-                type="number"
-                aria-describedby="Lastname-helper"
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            control={control}
+            name={"name"}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+                variant="standard"
+                fullWidth
+                label="Name*"
+                size="small"
+                value={value}
+                onChange={onChange}
+                type="text"
+                aria-describedby="name-helper"
               />
-              <FormHelperText id="Lastname-helper">Card Number*</FormHelperText>
-            </FormControl>
-          </Box>
+            )}
+          />
 
-          <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-            <FormControl>
-              <InputLabel htmlFor="Name" />
-              <InputLabel />
-              <Input id="name" type="text" aria-describedby="name-helper" />
-              <FormHelperText id="name-helper">Expired Date*</FormHelperText>
-            </FormControl>
-
-            <FormControl>
-              <InputLabel htmlFor="CardNumber" />
-              <InputLabel />
-              <Input
-                id="Lastname"
-                type="number"
-                aria-describedby="Lastname-helper"
+          <Controller
+            control={control}
+            name={"cardNumber"}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+                variant="standard"
+                fullWidth
+                label="CardNumber*"
+                size="small"
+                value={value}
+                onChange={onChange}
+                type="text"
+                aria-describedby="cardNumber-helper"
               />
-              <FormHelperText id="Lastname-helper">CVV*</FormHelperText>
-            </FormControl>
-          </Box>
-          <Box sx={{ float: "right", mt: "30px" }}>
+            )}
+          />
+
+          <Controller
+            control={control}
+            name={"expiredDate"}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+                variant="standard"
+                fullWidth
+                label="ExpiredDate*"
+                size="small"
+                value={value}
+                onChange={onChange}
+                type="text"
+                aria-describedby="expiredDate-helper"
+              />
+            )}
+          />
+
+          <Controller
+            control={control}
+            name={"cvv"}
+            render={({ field: { onChange, value } }) => (
+              <TextField
+                variant="standard"
+                fullWidth
+                label="CVV*"
+                size="small"
+                value={value}
+                onChange={onChange}
+                type="number"
+                aria-describedby="cvv-helper"
+              />
+            )}
+          />
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
             <FormGroup>
               <FormControlLabel
                 control={<Checkbox defaultChecked />}
                 label="Remember Credit Card for next time"
               />
             </FormGroup>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              mt: "150px",
-              mr: "10px",
-              ml: "10px",
-              mb: "20px",
-            }}
-          >
+
             <Button
-              sx={{ ...buttonStyles }}
+              sx={{
+                ...buttonStyles,
+                display: "flex",
+                justifyContent: "space-evenly",
+              }}
               variant="contained"
               href="#contained-buttons"
               onClick={handleBack}
@@ -99,8 +158,7 @@ function PaymentForm({ handleNext, handleBack }) {
             <Button
               sx={{ fontWeight: "600", ...buttonStyles }}
               variant="contained"
-              href="#contained-buttons"
-              onClick={handleNext}
+              type="submit"
             >
               Next
             </Button>
@@ -115,8 +173,8 @@ function PaymentForm({ handleNext, handleBack }) {
             }}
           > */}
           </Box>
-        </Box>
-      </Container>
+        </form>
+      </Box>
     </>
   );
 }

@@ -1,5 +1,6 @@
-import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -9,11 +10,20 @@ import PaymentForm from "../paymentForm/PaymentForm";
 import ReviewForm from "../reviewForm/ReviewForm";
 import AddressForm from "../addressForm/AddressForm";
 import PaymentConfirmation from "../PaymentConfirmation/paymentConfirmation";
+import { useForm } from "react-hook-form";
 // import total from "../Accounting/Total";
 
 export default function CheckOut() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  const [activeStep, setActiveStep] = useState(0);
+  const [skipped, setSkipped] = useState(new Set());
+
+  const [datos, setDatos] = useState({
+    name: "",
+    cardNumber: "",
+    expiredDate: "",
+    CVV: "",
+    address: "",
+  });
 
   const steps = [
     "Shipping Address",
@@ -21,17 +31,49 @@ export default function CheckOut() {
     "Review your order",
     "PaymentConfirmation",
   ];
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
 
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
   function getForms(step) {
     switch (step) {
       case 0:
-        return <AddressForm handleNext={handleNext} />;
+        return (
+          <AddressForm
+            handleNext={handleNext}
+            data={datos}
+            setData={setDatos}
+          />
+        );
       case 1:
-        return <PaymentForm handleNext={handleNext} handleBack={handleBack} />;
+        return (
+          <PaymentForm
+            handleNext={handleNext}
+            handleBack={handleBack}
+            data={datos}
+            setData={setDatos}
+          />
+        );
       case 2:
-        return <ReviewForm handleNext={handleNext} handleBack={handleBack} />;
+        return (
+          <ReviewForm
+            handleNext={handleNext}
+            handleBack={handleBack}
+            data={datos}
+            setData={setDatos}
+          />
+        );
       case 3:
-        return <PaymentConfirmation handleBack={handleBack} />;
+        return (
+          <PaymentConfirmation
+            handleBack={handleBack}
+            data={datos}
+            setData={setDatos}
+          />
+        );
       default:
         return <h1>No more steps available</h1>;
     }
@@ -43,21 +85,6 @@ export default function CheckOut() {
 
   const isStepSkipped = (step) => {
     return skipped.has(step);
-  };
-
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleSkip = () => {
@@ -82,55 +109,36 @@ export default function CheckOut() {
   return (
     <Box
       sx={{
-        width: "100%",
+        width: "100vw",
         height: "100vh",
-        mt: "65px",
         p: "0.65rem",
+        mt: "64px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <Stepper activeStep={activeStep}>
-        {steps.map((step, index) => {
-          return (
-            <Step key={step}>
-              {" "}
-              <StepLabel>{step}</StepLabel>{" "}
-            </Step>
-          );
-        })}
-      </Stepper>
-      <Box sx={{ pt: "15px" }}>{getForms(activeStep)}</Box>
-
-      <Box>
-        {activeStep === steps.length ? (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <Box sx={{ flex: "1 1 auto" }} />
-              <Button onClick={handleReset}>Reset</Button>
-            </Box>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            {/* <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <Button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
-                Back
-              </Button> */}
-            {/* <Box sx={{ flex: "1 1 auto" }} />
-
-              <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
-            </Box> */}
-          </React.Fragment>
-        )}
-      </Box>
+      <Paper
+        elevation={4}
+        sx={{
+          backgroundColor: "white",
+          p: "1.5rem",
+          width: "900px",
+          height: "90%",
+        }}
+      >
+        <Stepper activeStep={activeStep}>
+          {steps.map((step, index) => {
+            return (
+              <Step key={step}>
+                <StepLabel>{step}</StepLabel>
+              </Step>
+            );
+          })}
+        </Stepper>
+        {getForms(activeStep)}
+      </Paper>
     </Box>
   );
 }
