@@ -31,8 +31,8 @@ function ExampleCarousel({ selectedProduct }) {
                 alignItems="center"
                 key={`img-${i}`}
                 sx={{
-                  width: { md: "100%", xs: "80%" },
-                  height: { md: "430px", xs: "300px" },
+                  width: { md: "80%", xs: "80%" },
+                  height: { md: "80%", xs: "80%" },
                   margin: "auto",
                   p: 5,
                 }}

@@ -59,7 +59,7 @@ function ProductDetail() {
     <Container
       sx={{
         position: "relative",
-        mt: "4rem",
+        mt: "64px",
         borderLeft: `1px solid ${theme.palette.primary.light}`,
         borderRight: `1px solid ${theme.palette.primary.light}`,
         backgroundColor: "white",
@@ -102,28 +102,18 @@ function ProductDetail() {
             </>
           )}
         </Grid>
-        <Grid
-          container
-          xs={12}
-          md={5}
-          height="100%"
-          display="flex"
-          flexDirection="column"
-          rowSpacing={2}
-          justifyContent="space-between"
-          sx={{ alignItems: { md: "flex-start", xs: "center" } }}
-        >
-          <Grid item xs={12}>
-            <Typography
-              sx={{
-                fontSize: { xs: "30px", lg: "40px" },
-                textAlign: { md: "left", xs: "center" },
-              }}
-              variant="h3"
-            >
-              {selectedProduct.name}
-            </Typography>
-          </Grid>
+
+        <Grid item xs={12} md={5}>
+          <Typography
+            sx={{
+              fontSize: { xs: "30px", lg: "40px" },
+              textAlign: { md: "left", xs: "center" },
+            }}
+            variant="h3"
+          >
+            {selectedProduct.name}
+          </Typography>
+          {/* </Grid> */}
 
           <Grid
             item
@@ -140,7 +130,7 @@ function ProductDetail() {
               sx={{
                 display: "flex",
                 justifyContent: { xs: "center", md: "start" },
-                // textAlign: { xs: "center", md: "start" },
+                textAlign: { xs: "center", md: "start" },
               }}
             >
               <LocalShippingOutlinedIcon sx={{ color: "secondary.main" }} />
@@ -164,19 +154,19 @@ function ProductDetail() {
             xs={12}
             sx={{
               display: "flex",
+              justifyContent: { md: "start", xs: "center" },
+              alignItems: "center",
               textAlign: { xs: "center", md: "flex-start" },
             }}
           >
-            <Typography variant="h6" flex="1">
-              Price: U$S{" "}
-              <Typography
-                variant="p"
-                fontSize="2rem"
-                component="span"
-                className="number"
-              >
-                {selectedProduct.price}
-              </Typography>
+            <Typography variant="h6">Price: U$S </Typography>
+            <Typography
+              variant="p"
+              fontSize="2rem"
+              component="span"
+              className="number"
+            >
+              {selectedProduct.price}
             </Typography>
           </Grid>
           <Grid

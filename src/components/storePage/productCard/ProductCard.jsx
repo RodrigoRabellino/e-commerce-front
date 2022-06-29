@@ -56,7 +56,7 @@ const ListView = ({ product, handleNavigate }) => {
   return (
     <>
       <Grid
-        m={1}
+        mb={2}
         container
         onClick={handleNavigate}
         elevation={1}
@@ -65,12 +65,12 @@ const ListView = ({ product, handleNavigate }) => {
           ...cardStyle,
           boxShadow:
             " 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
-          width: "100%",
+          width: "99%",
           height: "180px",
           backgroundColor: "white",
         }}
       >
-        <Grid item xs={3} sx={{ height: "100%" }}>
+        <Grid item xs={4} md={2} sx={{ height: "100%", p: { md: 2, xs: 1 } }}>
           <img
             srcSet={imgUrl}
             alt={name}
@@ -85,8 +85,9 @@ const ListView = ({ product, handleNavigate }) => {
         </Grid>
         <Grid
           item
-          px={5}
-          xs={9}
+          ps={2}
+          md={10}
+          xs={8}
           display="flex"
           flexDirection="column"
           justifyContent="space-between"

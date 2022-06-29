@@ -44,7 +44,8 @@ const StorePage = () => {
 
   const categoryBtnStyles = {
     marginY: "8px",
-    width: "30%",
+    width: { md: "30%", xs: "45%" },
+    height: "2.5rem",
     bgcolor: "primary.main",
     border: `1px solid ${theme.palette.primary.light}`,
     borderRadius: "15px",
@@ -154,7 +155,7 @@ const StorePage = () => {
               endMessage={null}
               style={{ paddingTop: "1rem" }}
             >
-              <Grid container width="100%" justifyContent="space-between">
+              <Grid container width="100%" justifyContent="space-around">
                 {products.map((product) => {
                   return (
                     <ProductCard
