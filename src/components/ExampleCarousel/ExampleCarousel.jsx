@@ -8,6 +8,7 @@ function ExampleCarousel({ selectedProduct }) {
     <Box
       sx={{
         display: "flex",
+        height: "430px",
         justifyContent: "center",
         alignContent: "center",
       }}
@@ -29,7 +30,7 @@ function ExampleCarousel({ selectedProduct }) {
                 className="carouselBox"
                 key={`img-${i}`}
                 sx={{
-                  width: "400px",
+                  width: "430px",
                   margin: "auto",
                 }}
               >
