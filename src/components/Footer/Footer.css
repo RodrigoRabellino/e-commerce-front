@@ -1,24 +1,24 @@
-.suscribe[type=text]{
-    width:100%;
-    border:2px solid #aaa;
-    border-radius:4px;
-    margin:8px 0;
-    outline:none;
-    padding:8px;
-    box-sizing:border-box;
-    transition:.3s;
-  }
-  
-  .suscribe[type=text]:focus{
-    border-color:#BF8832;
-    box-shadow:0 0 8px 0 #BF8832;
-  }
+.subscribe[type="text"] {
+  width: 100%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 8px 0;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
 
-  .footerLink {
-    text-decoration: none;
-    color: #BF8832;
-  }
-  
-  .footerLink:hover{
-    color: #8C5032;
-  }
+.subscribe[type="text"]:focus {
+  border-color: #bf8832;
+  box-shadow: 0 0 8px 0 #bf8832;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: #bf8832;
+}
+
+.footerLink:hover {
+  color: #8c5032;
+}

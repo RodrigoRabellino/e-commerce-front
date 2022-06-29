@@ -136,14 +136,18 @@ function Footer() {
                   subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing
                   elit. Quos blanditiis tenetur
                 </Typography>
-                <input className="suscribe" type="text" placeholder="Enter Your Email" />
-                <Button  variant="contained" color="primary">
+                <input
+                  className="subscribe"
+                  type="text"
+                  placeholder="Enter Your Email"
+                />
+                <Button variant="contained" color="primary">
                   Send
                 </Button>
               </FormControl>
             </Grid>
           </Grid>
-          <Divider></Divider>
+          <Divider />
 
           <Grid container spacing={4} paddingTop={4}>
             <Grid item xs={12} sm={4}>
@@ -153,7 +157,7 @@ function Footer() {
                 pb={{ xs: 1, sm: 4 }}
                 pl={{ xs: 3, sm: 6 }}
               >
-                &reg;{new Date().getFullYear()} nombredelnegocio
+                &reg;2022 Guitarrero
               </Box>
             </Grid>
 
@@ -182,7 +186,7 @@ function Footer() {
               <Box
                 textAlign="right"
                 pt={{ xs: 1, sm: 4 }}
-                pb={{ xs: 1, sm: 4 }}
+                pb={{ xs: 1, sm: 1 }}
                 pr={{ xs: 3, sm: 6 }}
               >
                 by: grupo:3(nombres)
