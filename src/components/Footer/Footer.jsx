@@ -21,41 +21,37 @@ function Footer() {
   return (
     <>
       <Box
-        px={{ xs: 3, sm: 10 }}
-        py={{ xs: 5, sm: 10 }}
-        bgcolor="#ab832a"
+        label="cosopum"
+        padding="2.5rem"
+        paddingBottom="2rem"
+        bgcolor="#000000"
         color="#F2DBB8"
         height="50%"
       >
         <Container maxWidth="lg">
-          <Grid container spacing={4} paddingBottom={14}>
+          <Grid container spacing={4}>
             <Grid item xs={12} sm={3}>
               <Box textAlign="left" variant="h1" marginBottom={3}>
                 <Link to="/" className="footerLink">
-                  LOGUITO
+                  GUITARRERO
                 </Link>
               </Box>
-              <Typography
-                variant="subtitle1"
-                borderBottom={0}
-                textAlign="left"
-                color="primary"
-                fontWeight={700}
-              >
-                Contact
-              </Typography>
-              <Box>
-                <Box href="" color="inherit" textAlign="left" marginTop={1}>
-                  pepe.leia@hackacademy.com
-                </Box>
-              </Box>
-              <Box>
-                <Box href="" color="inherit" textAlign="left">
-                  Cel:55523156
-                </Box>
+              <Box textAlign="left">
+                <Typography
+                  sx={{
+                    cursor: "pointer",
+                    fontWeight: "600",
+                    textDecoration: "none",
+                    color: "#7B8723",
+                  }}
+                  onClick={() => {
+                    window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
+                  }}
+                >
+                  ADMIN
+                </Typography>
               </Box>
             </Grid>
-
             <Grid item xs={12} sm={3}>
               <Typography
                 variant="subtitle1"
@@ -79,7 +75,7 @@ function Footer() {
 
               <Box marginTop={2}>
                 <Box href="" color="inherit" textAlign="left">
-                  P. Sherman, calle Falsa, 123
+                  742 Evergreen Terrace
                 </Box>
               </Box>
               <Box>
@@ -88,7 +84,6 @@ function Footer() {
                 </Box>
               </Box>
             </Grid>
-
             <Grid item xs={12} sm={3}>
               <Typography
                 variant="subtitle1"
@@ -97,27 +92,22 @@ function Footer() {
                 color="primary"
                 fontWeight={700}
               >
-                Store
+                Contact
               </Typography>
-              <Box textAlign="left" marginTop={1}>
-                <Link to="/" className="footerLink">
-                  HOME
-                </Link>
+              <Box>
+                <Box href="" color="inherit" textAlign="left" marginTop={1}>
+                  pepe.leia@hackacademy.com
+                </Box>
               </Box>
-              <Box textAlign="left">
-                <Link to="/store" className="footerLink">
-                  SHOP
-                </Link>
-              </Box>
-              <Box textAlign="left">
-                <Link to="/admin" className="footerLink">
-                  ADMIN
-                </Link>
+              <Box>
+                <Box href="" color="inherit" textAlign="left">
+                  Cel:55523156
+                </Box>
               </Box>
             </Grid>
 
             <Grid item xs={12} sm={3}>
-              <FormControl variant="standard">
+              <FormControl variant="standard" fullWidth>
                 <Typography
                   variant="h5"
                   gutterBottom
@@ -127,18 +117,10 @@ function Footer() {
                 >
                   Suscribe for More
                 </Typography>
-                <Divider></Divider>
-                <Typography
-                  variant="subtitle1"
-                  gutterBottom
-                  component="div"
-                  textAlign="left"
-                >
-                  subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit. Quos blanditiis tenetur
-                </Typography>
+                <Divider />
+
                 <input
-                  className="suscribe"
+                  className="subscribe"
                   type="text"
                   placeholder="Enter Your Email"
                 />
@@ -148,26 +130,14 @@ function Footer() {
               </FormControl>
             </Grid>
           </Grid>
-          <Divider></Divider>
+          <Divider sx={{ marginX: "2rem" }} />
 
-          <Grid container spacing={4} paddingTop={4}>
+          <Grid container spacing={4}>
             <Grid item xs={12} sm={4}>
-              <Box
-                textAlign="left"
-                pt={{ xs: 1, sm: 4 }}
-                pb={{ xs: 1, sm: 4 }}
-                pl={{ xs: 3, sm: 6 }}
-              >
-                &reg;{new Date().getFullYear()} nombredelnegocio
-              </Box>
+              <Box textAlign="left">&reg;2022 Guitarrero</Box>
             </Grid>
-
             <Grid item xs={12} sm={4}>
-              <Box
-                textAlign="center"
-                pt={{ xs: 1, sm: 4 }}
-                pb={{ xs: 1, sm: 4 }}
-              >
+              <Box textAlign="center">
                 <Link to="/" className="footerLink">
                   <InstagramIcon />
                 </Link>
@@ -182,16 +152,8 @@ function Footer() {
                 </Link>
               </Box>
             </Grid>
-
             <Grid item xs={12} sm={4}>
-              <Box
-                textAlign="right"
-                pt={{ xs: 1, sm: 4 }}
-                pb={{ xs: 1, sm: 4 }}
-                pr={{ xs: 3, sm: 6 }}
-              >
-                by: grupo:3(nombres)
-              </Box>
+              <Box textAlign="right">by: grupo:3(nombres)</Box>
             </Grid>
           </Grid>
         </Container>
