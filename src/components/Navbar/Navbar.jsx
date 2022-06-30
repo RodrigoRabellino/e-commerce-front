@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Box,
   AppBar,
@@ -12,11 +12,14 @@ import {
   useScrollTrigger,
   Container,
   Badge,
+  Avatar,
+  IconButton,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
 import CartDrawer from "./CartDrawer";
 import "./NavBar.css";
+import { logOutUserReducer } from "../../Redux/user/slice";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -30,6 +33,8 @@ function ElevationScroll(props) {
 }
 
 function Navbar() {
+  const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const [value, setValue] = useState();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const theme = useTheme();
@@ -39,6 +44,17 @@ function Navbar() {
   cart.forEach((item) => {
     cartQty += item.qty;
   });
+
+  const handleLogOut = () => dispatch(logOutUserReducer());
+
+  const stringAvatar = (firstName, lastName) => {
+    return {
+      sx: {
+        bgcolor: "#eaeaea",
+      },
+      children: `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`,
+    };
+  };
 
   const navStyles = {
     fontSize: "0.9rem",
@@ -101,14 +117,31 @@ function Navbar() {
                       </Link>
                     </Typography>
                   </Box>
-                  <Box display="flex" justifyContent="space-between">
-                    <Box>
-                      <Typography variant="button" sx={{ ...navStyles }}>
-                        <Link to="/signin" className="hover navLink">
-                          Login
-                        </Link>
-                      </Typography>
-                    </Box>
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    {Object.entries(user).length === 0 ? (
+                      <>
+                        <Box>
+                          <Typography variant="button" sx={{ ...navStyles }}>
+                            <Link to="/signin" className="hover navLink">
+                              Login
+                            </Link>
+                          </Typography>
+                        </Box>
+                      </>
+                    ) : (
+                      <>
+                        <IconButton size="small" onClick={handleLogOut}>
+                          <Avatar
+                            {...stringAvatar(user.firstName, user.lastName)}
+                          />
+                        </IconButton>
+                      </>
+                    )}
+
                     <Box
                       display="flex"
                       onClick={() => setIsCartOpen(true)}
