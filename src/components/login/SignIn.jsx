@@ -17,10 +17,15 @@ import Typography from "@mui/material/Typography";
 import { useTheme } from "@emotion/react";
 import { validationSchema } from "./validationSchema";
 import { useFormik } from "formik";
+import { loginUserReducer } from "../../Redux/user/slice";
 import { loginUser } from "../../services/loginServices";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export default function SignIn() {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const [error, setError] = useState(false);
   const categoryBtnStyles = {
     bgcolor: "primary.main",
     border: `1px solid ${theme.palette.primary.light}`,
@@ -32,8 +37,10 @@ export default function SignIn() {
   };
 
   const handleLogin = async ({ email, password }) => {
+    setError(false);
     const response = await loginUser(email, password);
-    console.log(response);
+    if (Object.entries(response).length === 0) return setError(true);
+    dispatch(loginUserReducer(response));
   };
 
   const formik = useFormik({
@@ -136,11 +143,21 @@ export default function SignIn() {
                   }
                   helperText={formik.touched.password && formik.errors.password}
                 />
+                {error ? (
+                  <>
+                    <Typography textAlign="center" sx={{ color: "red" }}>
+                      Invalid Email or Password
+                    </Typography>
+                  </>
+                ) : (
+                  <></>
+                )}
                 <FormControlLabel
                   sx={{ color: "black" }}
                   control={<Checkbox value="remember" color="secondary" />}
                   label="Remember me"
                 />
+
                 <Box className="butonsingin">
                   <Button
                     fullWidth

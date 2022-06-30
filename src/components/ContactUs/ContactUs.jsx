@@ -1,19 +1,13 @@
-<<<<<<< Updated upstream
-const ContactUs = () => {
-  return;
-};
-=======
 import {
   Container,
   Divider,
   Grid,
   Typography,
   Box,
-
   Card,
   CardContent,
   TextField,
-  Button
+  Button,
 } from "@mui/material";
 import React from "react";
 import imgGuitarStore from "../../assets/images/guitarscontactUs.webp";
@@ -25,7 +19,6 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-
 
 function ContactUs() {
   return (
@@ -53,60 +46,64 @@ function ContactUs() {
               Get in Touch
             </Typography>
             <Box paddingTop="0.5rem">
-            <Card  sx={{maxWidth:450, margin:"0 auto",padding:"20px 5px",}}>
-              <CardContent>
-              <form>
-                <Grid container spacing={1}>
-                  <Grid xs={12} sm={6} item>
-                    <TextField
-                      label="First Name"
-                      placeholder="Enter First Name"
-                      variant="outlined"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid xs={12} sm={6} item>
-                    <TextField
-                      label="Last Name"
-                      placeholder="Enter Last Name"
-                      variant="outlined"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid xs={12}  item>
-                  <TextField
-                      type="email"
-                      label="Email"
-                      placeholder="Enter Email"
-                      variant="outlined"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid xs={12}  item>
-                  <TextField
-                      multiline
-                      rows={4}
-                      label="Message"
-                      placeholder="Type your message here"
-                      variant="outlined"
-                      fullWidth
-                      required
-                    />
-                  </Grid>
-                  <Grid xs={12}  item>
-                     <Button variant="contained" color="primary" fullWidth>Submit</Button>
-                  </Grid>
-                </Grid>
-                </form>
-              </CardContent>
-            </Card>
+              <Card
+                sx={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}
+              >
+                <CardContent>
+                  <form>
+                    <Grid container spacing={1}>
+                      <Grid xs={12} sm={6} item>
+                        <TextField
+                          label="First Name"
+                          placeholder="Enter First Name"
+                          variant="outlined"
+                          fullWidth
+                          required
+                        />
+                      </Grid>
+                      <Grid xs={12} sm={6} item>
+                        <TextField
+                          label="Last Name"
+                          placeholder="Enter Last Name"
+                          variant="outlined"
+                          fullWidth
+                          required
+                        />
+                      </Grid>
+                      <Grid xs={12} item>
+                        <TextField
+                          type="email"
+                          label="Email"
+                          placeholder="Enter Email"
+                          variant="outlined"
+                          fullWidth
+                          required
+                        />
+                      </Grid>
+                      <Grid xs={12} item>
+                        <TextField
+                          multiline
+                          rows={4}
+                          label="Message"
+                          placeholder="Type your message here"
+                          variant="outlined"
+                          fullWidth
+                          required
+                        />
+                      </Grid>
+                      <Grid xs={12} item>
+                        <Button variant="contained" color="primary" fullWidth>
+                          Submit
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </form>
+                </CardContent>
+              </Card>
             </Box>
           </Grid>
 
-          <Grid item xs={8} >
+          <Grid item xs={8}>
             <Typography
               variant="h5"
               fontWeight={700}
@@ -196,6 +193,5 @@ function ContactUs() {
     </>
   );
 }
->>>>>>> Stashed changes
 
 export default ContactUs;
