@@ -36,3 +36,14 @@ export const fetchCategories = async () => {
     return error;
   }
 };
+
+export const fetchUser = async (id, accessToken) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/user/${id}?accessToken=${accessToken}`
+    );
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};

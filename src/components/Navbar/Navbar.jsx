@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Box,
@@ -19,7 +19,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
 import CartDrawer from "./CartDrawer";
 import "./NavBar.css";
-import { logOutUserReducer } from "../../Redux/user/slice";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -34,7 +33,7 @@ function ElevationScroll(props) {
 
 function Navbar() {
   const user = useSelector((store) => store.user);
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [value, setValue] = useState();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const theme = useTheme();
@@ -44,8 +43,6 @@ function Navbar() {
   cart.forEach((item) => {
     cartQty += item.qty;
   });
-
-  const handleLogOut = () => dispatch(logOutUserReducer());
 
   const stringAvatar = (firstName, lastName) => {
     return {
@@ -134,7 +131,12 @@ function Navbar() {
                       </>
                     ) : (
                       <>
-                        <IconButton size="small" onClick={handleLogOut}>
+                        <IconButton
+                          size="small"
+                          onClick={() =>
+                            navigate("/userpage", { replace: false })
+                          }
+                        >
                           <Avatar
                             {...stringAvatar(user.firstName, user.lastName)}
                           />
