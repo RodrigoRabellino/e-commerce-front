@@ -45,7 +45,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
     <>
       <Box sx={{ height: "100%" }}>
         <Typography mt="20px" fontWeight="600" variant="h5">
-          Shipping Address
+          Shipping Details
         </Typography>
         <Box
           sx={{
@@ -190,18 +190,15 @@ function AddressForm({ handleNext, setDatos, datos }) {
               )}
             />
 
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="flex-end"
-              sx={{ height: "100%" }}
-            >
+            <Box display="flex">
               <FormGroup mt="10px">
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
                   label="Use this address for payment details"
                 />
               </FormGroup>
+            </Box>
+            <Box display="flex" justifyContent="flex-end" paddingTop="80px">
               <Button
                 type="submit"
                 sx={{
