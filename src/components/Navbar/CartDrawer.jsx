@@ -41,6 +41,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
 
   const handleCheckOut = () => {
     dispatch(createOrderReducer({ cart }));
+    setIsCartOpen(false);
     navigate("/checkout", { replace: false });
   };
 
