@@ -17,9 +17,13 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import "./aboutUs.css";
 
 const AboutUs = () => {
+  const avatarBoxStyle = {
+    width: { md: "150px", sm: "120px", xs: "90px" },
+    height: { md: "150px", sm: "120px", xs: "90px" },
+  };
   const avatarStyles = {
-    height: "190px",
-    width: "190px",
+    height: "100%",
+    width: "100%",
     ":hover": { transition: "0.2s" },
   };
   const cardStyles = {
@@ -44,22 +48,15 @@ const AboutUs = () => {
       >
         <Stack
           className="about-opacity-bg"
+          justifyContent="center"
           sx={{
-            display: "flex",
-            width: "80%",
             alignItems: "center",
-            justifyContent: "center",
           }}
           direction="row"
-          spacing={4}
+          spacing={2}
+          flexWrap="wrap"
         >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
+          <Box sx={{ ...avatarBoxStyle }}>
             <Avatar
               sx={avatarStyles}
               alt="Remy Sharp"
@@ -76,9 +73,7 @@ const AboutUs = () => {
           </Box>
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
+              ...avatarBoxStyle,
             }}
           >
             <Avatar
@@ -97,9 +92,7 @@ const AboutUs = () => {
           </Box>
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
+              ...avatarBoxStyle,
             }}
           >
             <Avatar
@@ -118,9 +111,7 @@ const AboutUs = () => {
           </Box>
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
+              ...avatarBoxStyle,
             }}
           >
             <Avatar
