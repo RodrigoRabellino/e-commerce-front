@@ -222,13 +222,17 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                   </div>
                 );
               })}
-              <Grid container p={1} columnSpacing={2} justifyContent="flex-end">
+              <Grid
+                container
+                p={1}
+                columnSpacing={2}
+                justifyContent="space-between"
+                alignItems="center"
+              >
                 <Grid item sx={{ display: "flex", alignItems: "center" }}>
                   <Typography variant="h6" ms={5} color="primary">
                     Total:
                   </Typography>
-                </Grid>
-                <Grid item>
                   <Typography
                     variant="p"
                     fontSize="1.5rem"
@@ -239,6 +243,29 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                     {" "}
                     $ {cartTotal}
                   </Typography>
+                </Grid>
+                <Grid item sx={{ display: "flex", alignItems: "center" }}>
+                  <Button
+                    sx={{
+                      height: "2.5rem",
+                      // mb: "1rem",
+                      width: "100%",
+                      borderRadius: "15px",
+                      border: `2px solid ${theme.palette.primary.light}`,
+                      onClick={()}
+                    }}
+                    variant="contained"
+                  >
+                    <Typography
+                      variant="p"
+                      sx={{
+                        fontSize: "1rem",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Add to cart
+                    </Typography>
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>

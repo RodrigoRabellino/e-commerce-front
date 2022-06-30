@@ -190,7 +190,12 @@ function AddressForm({ handleNext, setDatos, datos }) {
               )}
             />
 
-            <Box display="flex" justifyContent="space-between">
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-end"
+              sx={{ height: "100%" }}
+            >
               <FormGroup mt="10px">
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
@@ -201,7 +206,6 @@ function AddressForm({ handleNext, setDatos, datos }) {
                 type="submit"
                 sx={{
                   ...buttonStyles,
-                  mt: "160px",
                 }}
                 variant="contained"
               >
