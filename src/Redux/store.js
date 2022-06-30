@@ -13,7 +13,7 @@ import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 import userReducer from "./user/slice";
 import cartReducer from "./cart/slice";
-import adminReducer from "./admin/slice";
+import orderReducer from "./order/slice";
 import { combineReducers } from "redux";
 
 const persistConfig = {
@@ -25,7 +25,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   cart: cartReducer,
   user: userReducer,
-  admin: adminReducer,
+  order: orderReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
