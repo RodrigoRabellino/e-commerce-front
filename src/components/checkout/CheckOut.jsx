@@ -52,23 +52,15 @@ export default function CheckOut() {
         width: "100vw",
         height: "100vh",
         maxHeight: "1000px",
-        p: "0.65rem",
         mt: "64px",
+        paddingTop: "2rem",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "start",
         alignItems: "center",
       }}
     >
-      <Paper
-        elevation={4}
-        sx={{
-          backgroundColor: "white",
-          p: "1.5rem",
-          width: "900px",
-          height: "90%",
-        }}
-      >
+      <Box width="900px" marginBottom="1rem">
         <Stepper activeStep={activeStep}>
           {steps.map((step, index) => {
             return (
@@ -78,6 +70,15 @@ export default function CheckOut() {
             );
           })}
         </Stepper>
+      </Box>
+      <Paper
+        sx={{
+          borderRadius: "15px",
+          backgroundColor: "white",
+          p: "2rem",
+          width: "900px",
+        }}
+      >
         {getForms(activeStep)}
       </Paper>
     </Box>

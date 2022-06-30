@@ -79,8 +79,14 @@ function PaymentForm({ handleNext, handleBack }) {
             mb: "20px",
           }}
         >
-          <img src={require("../../assets/images/credit-card-logo.png")} />
-          <img src={require("../../assets/images/Paypal logo.png")} />
+          <img
+            srcSet={require("../../assets/images/credit-card-logo.png")}
+            alt={"cardLog0"}
+          />
+          <img
+            srcSet={require("../../assets/images/Paypal logo.png")}
+            alt={"cardLog0"}
+          />
         </Box>
 
         <form onSubmit={handleSubmit(onSubmit)}>
