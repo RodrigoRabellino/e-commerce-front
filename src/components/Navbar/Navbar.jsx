@@ -91,7 +91,7 @@ function Navbar() {
                       </Link>
                     </Typography>
                     <Typography variant="button" sx={{ ...navStyles }}>
-                      <Link to="/" className="navLink">
+                      <Link to="/contactUs" className="navLink">
                         Contact Us
                       </Link>
                     </Typography>
