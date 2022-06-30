@@ -12,9 +12,12 @@ import {
   addOneQty,
   removeOneQty,
 } from "../../Redux/cart/slice";
+import { createOrderReducer } from "../../Redux/order/slice";
+import { useNavigate } from "react-router-dom";
 
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const addOneToCart = (item) => {
     dispatch(addOneQty(item));
   };
@@ -28,12 +31,18 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   };
 
   const cart = useSelector((state) => state.cart);
+
   let cartTotal = 0;
   cart.forEach((item) => {
     cartTotal += item.qty * item.price;
   });
 
   const theme = useTheme();
+
+  const handleCheckOut = () => {
+    dispatch(createOrderReducer({ cart }));
+    navigate("/checkout", { replace: false });
+  };
 
   return (
     <>
@@ -252,8 +261,8 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                       width: "100%",
                       borderRadius: "15px",
                       border: `2px solid ${theme.palette.primary.light}`,
-                      onClick={()}
                     }}
+                    onClick={handleCheckOut}
                     variant="contained"
                   >
                     <Typography
@@ -263,7 +272,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                         fontWeight: "700",
                       }}
                     >
-                      Add to cart
+                      Checkout
                     </Typography>
                   </Button>
                 </Grid>
