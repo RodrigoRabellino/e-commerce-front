@@ -10,6 +10,7 @@ import {
   Paper,
   Divider,
   Container,
+  Grid,
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -127,6 +128,7 @@ const AboutUs = () => {
               alt="Remy Sharp"
               srcSet={require("../../assets/images/woman1.webp")}
             />
+
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <IconButton aria-label="LinkedInIcon" sx={{ color: "white" }}>
                 <LinkedInIcon />
@@ -138,51 +140,34 @@ const AboutUs = () => {
           </Box>
         </Stack>
       </Box>
-
-      <Typography
-        sx={{
-          fontSize: "30px",
-          fontWeight: "bold",
-          marginBottom: "20px",
-          marginTop: "20px",
-          color: "#8C5032",
-        }}
-        variant="h4"
-      >
-        About Us
-      </Typography>
-      <Divider />
       <Box>
-        <Container sx={{ paddingY: "2rem" }}>
-          <Typography fontSize="15px" textAlign="start" variant="h5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
-            distinctio maxime sint praesentium dolorem illum, quo alias odit
-            aspernatur minima soluta reiciendis earum natus porro atque fugit
-            debitis sit velit.Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Obcaecati distinctio maxime sint praesentium
-            dolorem illum, quo alias odit aspernatur minima soluta reiciendis
-            earum natus porro atque fugit debitis sit velit.Lorem ipsum dolor
-            sit amet consectetur, adipisicing elit. Obcaecati distinctio maxime
-            sint praesentium dolorem Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Obcaecati distinctio maxime sint praesentium
-            dolorem illum, quo alias odit aspernatur minima soluta reiciendis
-            earum natus porro atque fugit debitis sit velit.Lorem ipsum dolor
-            sit amet consectetur, adipisicing elit. Obcaecati distinctio maxime
-            sint praesentium dolorem illum, quo alias odit aspernatur minima
-            soluta reiciendis earum natus porro atque fugit debitis sit
-            velit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Obcaecati distinctio maxime sint praesentium dolorem
-          </Typography>
-        </Container>
-        <Container
+        <Typography
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
-            pb: "2rem",
+            fontSize: "30px",
+            fontWeight: "bold",
+            marginBottom: "20px",
+            marginTop: "20px",
+            color: "#8C5032",
           }}
+          variant="h4"
         >
-          <Box>
+          About Us
+        </Typography>
+      </Box>
+      <Divider />
+      <Container>
+        <Grid container>
+          <Grid item xs={7}>
+            <Typography fontSize="15px" textAlign="start" variant="h5">
+              Este proyecto se encuentra enfocado en la realización de la
+              entrega final del Bootcamp. Lorem ipsum, dolor sit amet
+              consectetur adipisicing elit. Accusantium voluptatem vel commodi
+              aspernatur nemo eos dolores eius cumque? Vero laudantium
+              molestiae, perspiciatis id quam beatae laborum unde odit iste
+              animi.
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
             <Typography
               sx={{
                 fontSize: "15px",
@@ -217,9 +202,9 @@ const AboutUs = () => {
               Para una mejor experiencia, por favor resetear la base de datos:
             </Typography>
             <Button variant="outlined">Reset DataBase</Button>
-          </Box>
-        </Container>
-      </Box>
+          </Grid>
+        </Grid>
+      </Container>
       <Divider />
       <Container
         sx={{
