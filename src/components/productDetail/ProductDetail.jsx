@@ -117,6 +117,7 @@ function ProductDetail() {
 
           <Grid
             item
+            mt={5}
             xs={12}
             display="flex"
             flexDirection="column"
@@ -171,6 +172,7 @@ function ProductDetail() {
           </Grid>
           <Grid
             item
+            mb={5}
             display="flex"
             flexDirection="column"
             justifyContent="space-evenly"
@@ -279,7 +281,7 @@ function ProductDetail() {
               </Link>
             </Typography>
           </Grid>
-          <Grid item mb="1rem" sx={{ textAlign: "start" }}>
+          <Grid item sx={{ textAlign: "start" }} mb={5}>
             <Typography variant="body1">
               {selectedProduct.description}
             </Typography>

@@ -15,6 +15,9 @@ import {
 import { NavLink } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@emotion/react";
+import { validationSchema } from "./validationSchema";
+import { useFormik } from "formik";
+import { loginUser } from "../../services/loginServices";
 
 export default function SignIn() {
   const theme = useTheme();
@@ -27,6 +30,21 @@ export default function SignIn() {
       color: "primary",
     },
   };
+
+  const handleLogin = async ({ email, password }) => {
+    const response = await loginUser(email, password);
+    console.log(response);
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email: "foobar@example.com",
+      password: "foobar",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => handleLogin(values),
+  });
+
   return (
     <>
       <Container justifyContent="center">
@@ -90,22 +108,33 @@ export default function SignIn() {
                 Sign in
               </Typography>
               <Divider></Divider>
-              <Box component="form" color="white" noValidate sx={{ mt: 1 }}>
+              <form onSubmit={formik.handleSubmit}>
                 <TextField
                   margin="normal"
                   fullWidth
                   name="email"
-                  id="standard-basic"
+                  id="email"
                   label="Enter your Email"
                   variant="standard"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  error={formik.touched.email && Boolean(formik.errors.email)}
+                  helperText={formik.touched.email && formik.errors.email}
                 />
                 <TextField
                   margin="normal"
                   fullWidth
-                  name="email"
-                  id="standard-basic"
+                  name="password"
+                  type="password"
+                  id="password"
                   label="Enter your Password"
                   variant="standard"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                  }
+                  helperText={formik.touched.password && formik.errors.password}
                 />
                 <FormControlLabel
                   sx={{ color: "black" }}
@@ -115,6 +144,7 @@ export default function SignIn() {
                 <Box className="butonsingin">
                   <Button
                     fullWidth
+                    type="submit"
                     variant="contained"
                     sx={{ ...categoryBtnStyles }}
                   >
@@ -199,7 +229,7 @@ export default function SignIn() {
                     </span>
                   </button>
                 </Box>
-              </Box>
+              </form>
             </Box>
           </Grid>
         </Grid>

@@ -2,8 +2,9 @@ import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 export const loginUser = async (email, password) => {
+  const body = { email, password };
   try {
-    const response = await axios.post(`${API_URL}/login/user`);
+    const response = await axios.post(`${API_URL}/login/user`, body);
     return response.data;
   } catch (error) {
     console.log("error in loginAdmin", error);
