@@ -1,11 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  Input,
   Box,
-  Container,
   Typography,
   Checkbox,
   FormControlLabel,
@@ -14,22 +9,32 @@ import {
   TextField,
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { updateOrderReducer } from "../../Redux/order/slice";
 
-function AddressForm({ handleNext, setDatos, datos }) {
+function AddressForm({ handleNext }) {
+  const dispatch = useDispatch();
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
-  console.log(handleNext);
-  const handleNextForm = (d) => {
-    console.log(d);
-    console.log("entre a handleNextForm");
-    // setDatos();
+  // const [data, setData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   address: "",
+  //   city: "",
+  //   state: "",
+  //   zip: "",
+  //   country: "",
+  // });
+
+  const handleNextForm = (data) => {
+    dispatch(updateOrderReducer({ ...data }));
     handleNext();
   };
 
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
-      name: "",
+      firstName: "",
       lastName: "",
       addressLine: "",
       addressLine2: "",
@@ -39,8 +44,6 @@ function AddressForm({ handleNext, setDatos, datos }) {
       country: "",
     },
   });
-  const onSubmit = (d) => handleNext();
-
   return (
     <>
       <Box sx={{ height: "100%" }}>
@@ -53,18 +56,18 @@ function AddressForm({ handleNext, setDatos, datos }) {
             justifyContent: "space-evenly",
           }}
         >
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(handleNextForm)}>
             <Controller
+              rules={{ required: true }}
               control={control}
-              name={"name"}
-              render={({ field: { onChange, value } }) => (
+              name={"firstName"}
+              render={({ field }) => (
                 <TextField
                   variant="standard"
                   fullWidth
                   label="Name*"
                   size="small"
-                  value={value}
-                  onChange={onChange}
+                  {...field}
                   type="text"
                   aria-describedby="name-helper"
                 />
@@ -72,6 +75,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
             />
 
             <Controller
+              rules={{ required: true, min: 3 }}
               control={control}
               name={"lastName"}
               render={({ field: { onChange, value } }) => (
@@ -89,6 +93,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
             />
 
             <Controller
+              rules={{ required: true, min: 3 }}
               control={control}
               name={"addressLine"}
               render={({ field: { onChange, value } }) => (
@@ -123,6 +128,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
             />
 
             <Controller
+              rules={{ required: true, min: 3 }}
               control={control}
               name={"city"}
               render={({ field: { onChange, value } }) => (
@@ -140,6 +146,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
             />
 
             <Controller
+              rules={{ required: true, min: 3 }}
               control={control}
               name={"state"}
               render={({ field: { onChange, value } }) => (
@@ -157,6 +164,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
             />
 
             <Controller
+              rules={{ required: true, min: 3 }}
               control={control}
               name={"zip"}
               render={({ field: { onChange, value } }) => (
@@ -174,6 +182,7 @@ function AddressForm({ handleNext, setDatos, datos }) {
             />
 
             <Controller
+              rules={{ required: true, min: 3 }}
               control={control}
               name={"country"}
               render={({ field: { onChange, value } }) => (

@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  Input,
   Box,
-  Container,
   Typography,
   Checkbox,
   FormControlLabel,
@@ -13,9 +8,10 @@ import {
   Button,
   TextField,
 } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import { useForm, Controller } from "react-hook-form";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 function PaymentForm({ handleNext, handleBack }) {
+  const [isLoading, setIsLoading] = useState(false);
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
       name: "",
@@ -25,18 +21,19 @@ function PaymentForm({ handleNext, handleBack }) {
     },
   });
 
-  const onSubmit = (d) => handleNext();
-  const handleInputChange = (event) => {
-    // console.log(event.target.value);
-    // console.log(event.target.name);
+  const onSubmit = (d) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      // handleNext();
+    }, 2000);
   };
+
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
 
-  const enviarDatos = (event) => {
-    event.preventDefault();
-  };
+  const enviarDatos = (event) => {};
 
   return (
     <>
@@ -178,9 +175,14 @@ function PaymentForm({ handleNext, handleBack }) {
             >
               Back
             </Button>
-            <Button sx={{ ...buttonStyles }} variant="contained" type="submit">
+            <LoadingButton
+              loading={isLoading}
+              sx={{ ...buttonStyles }}
+              variant="contained"
+              type="submit"
+            >
               Next
-            </Button>
+            </LoadingButton>
           </Box>
 
           {/* <Box

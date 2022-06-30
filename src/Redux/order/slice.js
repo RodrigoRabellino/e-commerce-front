@@ -7,11 +7,8 @@ const orderSlice = createSlice({
     createOrderReducer(state, action) {
       return { ...action.payload };
     },
-    updateOrderReducer: {
-      reducer: (state, action) => {
-        return { ...action.payload };
-      },
-      prepare: (state, action) => {},
+    updateOrderReducer(state, action) {
+      return { ...state, shippingDetails: { ...action.payload } };
     },
     deleteOrderReducer(state, action) {
       console.log("delete order", action.payload);
@@ -20,5 +17,6 @@ const orderSlice = createSlice({
   },
 });
 
-export const { createOrderReducer, deleteOrderReducer } = orderSlice.actions;
+export const { createOrderReducer, deleteOrderReducer, updateOrderReducer } =
+  orderSlice.actions;
 export default orderSlice.reducer;

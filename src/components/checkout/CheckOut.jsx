@@ -51,6 +51,7 @@ export default function CheckOut() {
       sx={{
         width: "100vw",
         height: "100vh",
+        maxHeight: "1000px",
         p: "0.65rem",
         mt: "64px",
         display: "flex",
