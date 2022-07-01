@@ -8,6 +8,7 @@ import {
   CardContent,
   TextField,
   Button,
+  CssBaseline,
 } from "@mui/material";
 import React from "react";
 import imgGuitarStore from "../../assets/images/guitarscontactUs.webp";
@@ -23,6 +24,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 function ContactUs() {
   return (
     <>
+      <CssBaseline />
       <Container>
         <Typography
           variant="h3"
@@ -34,25 +36,29 @@ function ContactUs() {
           <Divider sx={{ color: "primary" }}>Contact Us</Divider>
         </Typography>
 
-        <Grid container spacing={2} columns={16}>
-          <Grid item xs={12} sm={8}>
+        <Grid container spacing={2} columns={16} sx={{ paddingTop: "2rem" }}>
+          <Grid item xs={16} md={8}>
             <Typography
               variant="h5"
               fontWeight={700}
               color="primary"
               alignItems="center"
-              paddingTop="2rem"
             >
               Get in Touch
             </Typography>
             <Box paddingTop="0.5rem">
               <Card
-                sx={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}
+                sx={{
+                  maxWidth: 450,
+                  margin: "0 auto",
+                  padding: "20px 5px",
+                  backgroundColor: "white",
+                }}
               >
                 <CardContent>
                   <form>
                     <Grid container spacing={1}>
-                      <Grid xs={12} sm={6} item>
+                      <Grid xs={12} md={6} item>
                         <TextField
                           label="First Name"
                           placeholder="Enter First Name"
@@ -61,7 +67,7 @@ function ContactUs() {
                           required
                         />
                       </Grid>
-                      <Grid xs={12} sm={6} item>
+                      <Grid xs={12} md={6} item>
                         <TextField
                           label="Last Name"
                           placeholder="Enter Last Name"
@@ -103,29 +109,51 @@ function ContactUs() {
             </Box>
           </Grid>
 
-          <Grid item xs={8}>
-            <Typography
-              variant="h5"
-              fontWeight={700}
-              color="primary"
-              alignItems="center"
-              paddingTop="2rem"
+          <Grid
+            item
+            xs={16}
+            md={8}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight={700}
+                color="primary"
+                alignItems="center"
+              >
+                About Usdas loremipusum
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                fontWeight={700}
+                alignItems="center"
+                paddingTop="0.3rem"
+              >
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+              </Typography>
+            </Box>
+
+            <Divider />
+            <Box sx={{ width: { xs: "80%" } }}>
+              <img
+                srcSet={imgGuitarStore}
+                alt=""
+                className="imgcontactUs"
+              ></img>
+            </Box>
+            <Divider />
+            <Grid
+              container
+              columns={16}
+              mb={5}
+              sx={{ width: { xs: "80%", md: "100%" } }}
             >
-              About Usdas loremipusum
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              fontWeight={700}
-              alignItems="center"
-              paddingTop="0.3rem"
-            >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy
-            </Typography>
-            <Divider></Divider>
-            <img srcSet={imgGuitarStore} alt="" className="imgcontactUs"></img>
-            <Divider></Divider>
-            <Grid container spacing={2} columns={16}>
               <Grid item xs={1}>
                 <LocationOnIcon sx={{ paddingTop: "0.3rem" }} />
               </Grid>
@@ -167,7 +195,7 @@ function ContactUs() {
                 <LocalPhoneIcon sx={{ paddingTop: "0.3rem" }} />
               </Grid>
 
-              <Grid item xs={7}>
+              <Grid item xs={7} sx={{ textAlign: "left" }}>
                 <Typography variant="subtitle1" fontWeight={700}>
                   pepe.leia@hackacademy.com
                 </Typography>
@@ -179,7 +207,7 @@ function ContactUs() {
                 >
                   55523156
                 </Typography>
-                <Box paddingTop="1.4rem" paddingBottom="5rem">
+                <Box paddingTop="1.4rem" sx={{ display: "flex" }}>
                   <InstagramIcon sx={{ marginRight: "0.6rem" }} />
                   <GitHubIcon sx={{ marginRight: "0.6rem" }} />
                   <TwitterIcon sx={{ marginRight: "0.6rem" }} />
