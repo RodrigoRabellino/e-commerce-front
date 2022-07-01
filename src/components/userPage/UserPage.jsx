@@ -60,7 +60,9 @@ const UserPage = () => {
     >
       <Container sx={{ display: "flex" }}>
         <Box>
-          <Typography variant="h4">Welcome {user.firstName} </Typography>
+          <Typography variant="h4" display="flex">
+            Welcome {user.firstName}{" "}
+          </Typography>
         </Box>
         <Box display="flex" marginTop="2rem">
           <Box width="25%" height="100%">
@@ -110,7 +112,46 @@ export const ResumePage = ({ user }) => {
   );
 };
 export const OrdersPage = () => {
-  return <div>OrdersPage</div>;
+  return (
+    <>
+      <Box sx={{ textAlign: "left", pl: "100px" }}>
+        <Typography variant="h5">Order ID: 223346789</Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography color="grey" pt="10px">
+            Order Date:July 07, 2022
+          </Typography>
+          <Typography pt="10px" pb="10px" color="">
+            Estimated delivery:July 08, 2022
+          </Typography>
+        </Box>
+      </Box>
+      <Divider sx={{ ml: "100px" }} />
+      <Box display="flex" justifyContent="space-between" pt="10px" pb="10px">
+        <Typography variant="h5" textAlign="left" pl="100px">
+          Items List
+        </Typography>
+        <Typography variant="h5">Price Details </Typography>
+      </Box>
+
+      <Divider sx={{ ml: "100px" }} />
+      <Box display="flex" justifyContent="space-between" flexDirection="row">
+        <Box display="flex" flexDirection="column">
+          <Typography variant="h6" textAlign="left" pl="100px">
+            Payment
+          </Typography>
+          <Typography textAlign="left" pl="100px">
+            Visa **67
+          </Typography>
+        </Box>
+        <Box display="flex" alignSelf="flex-end" flexDirection="column">
+          <Typography variant="h6">Delivery</Typography>
+          <Typography> 857 Main St</Typography>
+          <Typography>Dallas, USA</Typography>
+          <Typography>23-456-890</Typography>
+        </Box>
+      </Box>
+    </>
+  );
 };
 export const WishListPage = () => {
   return (
