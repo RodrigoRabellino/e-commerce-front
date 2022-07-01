@@ -11,6 +11,7 @@ import {
   Divider,
   Container,
   Grid,
+  CssBaseline,
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -27,6 +28,7 @@ const AboutUs = () => {
     ":hover": { transition: "0.2s" },
   };
   const cardStyles = {
+    backgroundColor: "white",
     transition: "0.2s",
     width: "200px",
     height: "200px",
@@ -38,6 +40,7 @@ const AboutUs = () => {
   };
   return (
     <>
+      <CssBaseline />
       <Box
         className="about-page"
         sx={{
@@ -147,7 +150,7 @@ const AboutUs = () => {
       </Box>
       <Divider />
       <Container>
-        <Grid container>
+        <Grid container p={5}>
           <Grid item xs={7}>
             <Typography fontSize="15px" textAlign="start" variant="h5">
               Este proyecto se encuentra enfocado en la realización de la
@@ -161,6 +164,7 @@ const AboutUs = () => {
           <Grid item xs={5}>
             <Typography
               sx={{
+                mb: "1rem",
                 fontSize: "15px",
                 fontWeight: "bold",
                 textDecoration: "underline",
@@ -188,6 +192,7 @@ const AboutUs = () => {
               sx={{
                 fontSize: "13px",
                 fontWeight: "bold",
+                mb: "1rem",
               }}
             >
               Para una mejor experiencia, por favor resetear la base de datos:
