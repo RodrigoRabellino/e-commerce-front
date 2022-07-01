@@ -262,6 +262,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                       width: "100%",
                       borderRadius: "15px",
                       border: `2px solid ${theme.palette.primary.light}`,
+                      // onClick={()}
                     }}
                     onClick={handleCheckOut}
                     variant="contained"

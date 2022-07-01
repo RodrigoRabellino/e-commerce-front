@@ -95,6 +95,7 @@ export default function SignIn() {
             component={Paper}
             elevation={6}
             square
+            sx={{ backgroundColor: "white" }}
           >
             <Box
               sx={{
