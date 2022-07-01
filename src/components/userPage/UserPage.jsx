@@ -120,12 +120,14 @@ export const OrdersPage = () => {
   return (
     <>
       <Box sx={{ textAlign: "left", pl: "100px" }}>
-        <Typography variant="h5">Order ID: 223346789</Typography>
+        <Typography variant="h5" fontFamily="number">
+          Order ID: 223346789
+        </Typography>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography color="grey" pt="10px">
+          <Typography color="grey" pt="10px" fontFamily="number">
             Order Date:July 07, 2022
           </Typography>
-          <Typography pt="10px" pb="10px" color="">
+          <Typography pt="10px" pb="10px" color="" fontFamily="number">
             Estimated delivery:July 08, 2022
           </Typography>
         </Box>
@@ -144,15 +146,15 @@ export const OrdersPage = () => {
           <Typography variant="h6" textAlign="left" pl="100px">
             Payment
           </Typography>
-          <Typography textAlign="left" pl="100px">
+          <Typography textAlign="left" pl="100px" fontFamily="number">
             Visa **67
           </Typography>
         </Box>
         <Box display="flex" alignSelf="flex-end" flexDirection="column">
           <Typography variant="h6">Delivery</Typography>
-          <Typography> 857 Main St</Typography>
+          <Typography fontFamily="number"> 857 Main St</Typography>
           <Typography>Dallas, USA</Typography>
-          <Typography>23-456-890</Typography>
+          <Typography fontFamily="number">23-456-890</Typography>
         </Box>
       </Box>
     </>
