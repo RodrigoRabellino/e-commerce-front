@@ -12,7 +12,7 @@ import {
   Grid,
   Container,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@emotion/react";
 import { validationSchema } from "./validationSchema";
@@ -26,6 +26,7 @@ export default function SignIn() {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const categoryBtnStyles = {
     bgcolor: "primary.main",
     border: `1px solid ${theme.palette.primary.light}`,
@@ -41,6 +42,7 @@ export default function SignIn() {
     const response = await loginUser(email, password);
     if (Object.entries(response).length === 0) return setError(true);
     dispatch(loginUserReducer(response));
+    navigate("/", { replace: true });
   };
 
   const formik = useFormik({

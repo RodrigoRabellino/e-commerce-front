@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import { fetchUser } from "../../services/apiServices";
 import { Logout } from "@mui/icons-material";
 import { logOutUserReducer } from "../../Redux/user/slice";
+import { useNavigate } from "react-router-dom";
 
 const UserPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { _id, accessToken } = useSelector((store) => store.user);
   const [user, setUser] = useState({});
   const [activeTab, setActiveTab] = useState("resume");
@@ -21,7 +23,10 @@ const UserPage = () => {
     getUser();
   }, [_id, accessToken]);
 
-  const handleLogOut = () => dispatch(logOutUserReducer());
+  const handleLogOut = () => {
+    dispatch(logOutUserReducer());
+    navigate("/", { replace: "true" });
+  };
 
   const getTab = (selectTab) => {
     switch (selectTab) {
