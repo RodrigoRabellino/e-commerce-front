@@ -10,8 +10,16 @@ import {
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useForm, Controller } from "react-hook-form";
+import MySnackBar from "../snackBar/MySnackBar";
+
 function PaymentForm({ handleNext, handleBack }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [showSnack, setShowSnack] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+  const [snackSeverity, setSnackSeverity] = useState("info");
+
+  const handleCloseSnack = () => setShowSnack(false);
+
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
       name: "",
@@ -23,6 +31,8 @@ function PaymentForm({ handleNext, handleBack }) {
 
   const onSubmit = (d) => {
     setIsLoading(true);
+    setShowSnack(true);
+    setSnackMessage("Payment accepted");
     setTimeout(() => {
       setIsLoading(false);
       handleNext();
@@ -188,17 +198,13 @@ function PaymentForm({ handleNext, handleBack }) {
               Next
             </LoadingButton>
           </Box>
-
-          {/* <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-start",
-              mt: "150px",
-              mb: "10px",
-              marginRight: "15px",
-            }}
-          > */}
         </form>
+        <MySnackBar
+          open={showSnack}
+          message={snackMessage}
+          handleClose={handleCloseSnack}
+          severity={snackSeverity}
+        />
       </Box>
     </>
   );

@@ -1,17 +1,55 @@
 import React, { useState } from "react";
-import { Box, Container, Typography, Button, ListItem } from "@mui/material";
+import { Box, Container, Typography, Button } from "@mui/material";
 import { useSelector } from "react-redux";
+import { postNewOrder } from "../../services/apiServices";
+import MySnackBar from "../snackBar/MySnackBar";
+import { useNavigate } from "react-router-dom";
+import { LoadingButton } from "@mui/lab";
 
 function ReviewForm({ handleNext, handleBack }) {
   const order = useSelector((state) => state.order);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
+  const { _id, accessToken } = useSelector((state) => state.user);
+  const [isLoading, setIsLoading] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(1000);
+  const [showSnack, setShowSnack] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+  const [snackSeverity, setSnackSeverity] = useState("info");
+
+  const handleOpenSnack = () => setShowSnack(true);
+  const handleCloseSnack = () => setShowSnack(false);
+
+  const handleNewOrder = async () => {
+    setIsLoading(true);
+    const response = await postNewOrder(_id, accessToken, order, totalPrice);
+    if (Object.entries(response).length === 0) {
+      setSnackMessage("unknown error occurred");
+      setSnackSeverity("error");
+      setShowSnack(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        return navigate("/userpage", { replace: true });
+      }, 2000);
+    }
+    setSnackMessage("Order confirmed");
+    setSnackSeverity("success");
+    setShowSnack(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      return navigate("/userpage", { replace: true });
+    }, 2000);
+  };
 
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
 
   try {
-    console.log(order.cart[0]);
+    for (let i = 0; i < order.cart.length; i++) {
+      let price = order.cart[i].price * order.cart[i].qty;
+      console.log("price x qty", price);
+    }
   } catch (e) {
     console.log(e);
   }
@@ -40,43 +78,32 @@ function ReviewForm({ handleNext, handleBack }) {
                   bgColor="#eaeaea"
                   justifyContent="space-between"
                 >
-                  <Typography>{product.name}</Typography>
+                  <Typography>{`${product.qty}-${product.name}`}</Typography>
                   <Typography>U$S{product.price}</Typography>
                 </Box>
               );
             })}
           </Box>
-
-          <Box
-            sx={{ display: "flex", justifyContent: "space-evenly", mt: "20px" }}
-          >
-            {/* <ListItem sx={{ mb: "25px" }}>Free Shipping</ListItem> */}
-            <ListItem
-              variant="h4"
-              sx={{ mb: "20px", ml: "40px", fontWeight: "500" }}
-            >
-              Total
-            </ListItem>
-            <ListItem sx={{ display: "flex", justifyContent: "space-evenly" }}>
-              $20000
-            </ListItem>
+          <Box display="flex" marginTop="1rem" justifyContent="end">
+            <Box display="flex" justifyContent="space-between" width="50%">
+              <Typography fontWeight="600">Total:</Typography>
+              <Typography fontWeight="600">U$Sver que pasa</Typography>
+            </Box>
           </Box>
-          <Box sx={{ float: "left" }}>
-            <Typography variant="h6" fontWeight="600">
-              Shipping
+          <Box sx={{ marginY: "1rem" }}>
+            <Typography variant="h6">Address</Typography>
+            <Typography>
+              {order.shippingDetails.addressLine}
+              {order.shippingDetails.addressLine2}
             </Typography>
-            <Typography>Ave. Texas Dr 1234,</Typography>
-            <Typography>Dallas,tx,99999, USA</Typography>
-          </Box>
-          <Box sx={{ m: "20px", float: "right", marginBottom: "50px" }}>
-            <Typography variant="h6" fontWeight="600">
-              Payment Details
+            <Typography>
+              {order.shippingDetails.state}, {order.shippingDetails.city}
             </Typography>
-            <Typography>Card Type: Visa</Typography>
           </Box>
           <Box
             sx={{
               display: "flex",
+              justifyContent: "end",
             }}
           >
             <Button
@@ -94,15 +121,22 @@ function ReviewForm({ handleNext, handleBack }) {
             >
               Back
             </Button>
-            <Button
-              type="submit"
+            <LoadingButton
+              loading={isLoading}
+              onClick={handleNewOrder}
               sx={{ fontWeight: "600", ...buttonStyles }}
               variant="contained"
             >
               Place order
-            </Button>
+            </LoadingButton>
           </Box>
         </Box>
+        <MySnackBar
+          open={showSnack}
+          message={snackMessage}
+          handleClose={handleCloseSnack}
+          severity={snackSeverity}
+        />
       </Container>
     </>
   );
