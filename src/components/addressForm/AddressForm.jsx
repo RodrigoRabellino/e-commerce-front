@@ -204,14 +204,14 @@ function AddressForm({ handleNext }) {
                 )}
               />
             </Box>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Use this address for payment details"
+              />
+            </FormGroup>
 
-            <Box display="flex" marginTop="2rem" justifyContent="space-between">
-              <FormGroup>
-                <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Use this address for payment details"
-                />
-              </FormGroup>
+            <Box display="flex" justifyContent="end">
               <Button
                 type="submit"
                 sx={{

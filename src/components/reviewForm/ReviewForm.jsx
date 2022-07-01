@@ -1,27 +1,21 @@
 import React, { useState } from "react";
-import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  Input,
-  Box,
-  Container,
-  Typography,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  Button,
-  ListItem,
-} from "@mui/material";
+import { Box, Container, Typography, Button, ListItem } from "@mui/material";
 import { useSelector } from "react-redux";
 
-// import Total from "../Accounting/Total";
+function ReviewForm({ handleNext, handleBack }) {
+  const order = useSelector((state) => state.order);
+  const [totalPrice, setTotalPrice] = useState(0);
 
-function ReviewForm({ handleNext, handleBack, datos }) {
-  // const order = useSelector(state=>state.order)
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
+
+  try {
+    console.log(order.cart[0]);
+  } catch (e) {
+    console.log(e);
+  }
+
   return (
     <>
       <Container
@@ -32,61 +26,27 @@ function ReviewForm({ handleNext, handleBack, datos }) {
         }}
       >
         <Box sx={{ height: "100%", width: "100%" }}>
-          <Typography mt="20px" fontWeight="600" variant="h6">
-            Review your order
+          <Typography fontWeight="600" variant="h5">
+            Review your Order
           </Typography>
-          <Box
-            sx={{
-              mt: "30px",
-              ml: "40px",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-              }}
-            >
-              <ListItem>Product 1</ListItem>
-              <ListItem
-                sx={{ display: "flex", justifyContent: "space-evenly" }}
-              >
-                $1000
-              </ListItem>
-            </Box>
-
-            <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-              <ListItem>Product 2</ListItem>
-              <ListItem
-                sx={{ display: "flex", justifyContent: "space-evenly" }}
-              >
-                $1000
-              </ListItem>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-              <ListItem>Product 3</ListItem>
-              <ListItem
-                sx={{ display: "flex", justifyContent: "space-evenly" }}
-              >
-                $6000
-              </ListItem>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-              <ListItem>Product 4</ListItem>
-              <ListItem
-                sx={{ display: "flex", justifyContent: "space-evenly" }}
-              >
-                $2500
-              </ListItem>
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-              <ListItem>Product 5</ListItem>
-              <ListItem
-                sx={{ display: "flex", justifyContent: "space-evenly" }}
-              >
-                $4000
-              </ListItem>
-            </Box>
+          <Box display="flex" flexDirection="column" marginTop="1rem">
+            {order.cart.map((product) => {
+              return (
+                <Box
+                  key={product._id}
+                  display="flex"
+                  width="100%"
+                  marginBottom="0.65rem"
+                  bgColor="#eaeaea"
+                  justifyContent="space-between"
+                >
+                  <Typography>{product.name}</Typography>
+                  <Typography>U$S{product.price}</Typography>
+                </Box>
+              );
+            })}
           </Box>
+
           <Box
             sx={{ display: "flex", justifyContent: "space-evenly", mt: "20px" }}
           >
@@ -101,7 +61,7 @@ function ReviewForm({ handleNext, handleBack, datos }) {
               $20000
             </ListItem>
           </Box>
-          <Box sx={{ float: "left", m: "20px" }}>
+          <Box sx={{ float: "left" }}>
             <Typography variant="h6" fontWeight="600">
               Shipping
             </Typography>
@@ -113,22 +73,24 @@ function ReviewForm({ handleNext, handleBack, datos }) {
               Payment Details
             </Typography>
             <Typography>Card Type: Visa</Typography>
-            {/* <Typography>{datos.name}</Typography> */}
-            {/* <Typography>{datos.cardNumber}</Typography>
-            <Typography>{datos.expiredDate}</Typography>
-            <Typography>{datos.cvv}</Typography> */}
           </Box>
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
-              mt: "200px",
             }}
           >
             <Button
-              sx={{ fontWeight: "600", ...buttonStyles }}
-              variant="contained"
-              type="submit"
+              sx={{
+                transition: "0.2",
+                marginRight: "1rem",
+                ":hover": {
+                  transition: "0.2",
+                  color: "#ab832a",
+                  backgroundColor: "rgb(171,131,42, 0.1)",
+                },
+              }}
+              variant="text"
+              onClick={handleBack}
             >
               Back
             </Button>

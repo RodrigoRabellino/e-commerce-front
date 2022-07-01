@@ -25,8 +25,8 @@ function PaymentForm({ handleNext, handleBack }) {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      // handleNext();
-    }, 2000);
+      handleNext();
+    }, 2500);
   };
 
   const buttonStyles = {
@@ -45,33 +45,23 @@ function PaymentForm({ handleNext, handleBack }) {
           justifyContent: "flex-start",
         }}
       >
-        <Box sx={{ height: "100%" }}>
-          <Typography
-            fontWeight="600"
-            variant="h5"
-            sx={{
-              variant: "h5",
-              fontWeight: "600",
-              mt: "20px",
-            }}
-          >
-            Payment Method
-          </Typography>
+        <Typography fontWeight="600" variant="h5">
+          Payment Method
+        </Typography>
+        <Box>
           <Typography
             fontWeight="400"
-            mt="20px"
             variant="h6"
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              mb: "20px",
+              mb: "10px",
               width: "100%",
             }}
           >
             Credit Card
           </Typography>
         </Box>
-
         <Box
           sx={{
             display: "flex",
@@ -95,6 +85,7 @@ function PaymentForm({ handleNext, handleBack }) {
             name={"name"}
             render={({ field: { onChange, value } }) => (
               <TextField
+                disabled={isLoading}
                 variant="standard"
                 fullWidth
                 label="Name*"
@@ -112,6 +103,7 @@ function PaymentForm({ handleNext, handleBack }) {
             name={"cardNumber"}
             render={({ field: { onChange, value } }) => (
               <TextField
+                disabled={isLoading}
                 variant="standard"
                 fullWidth
                 label="CardNumber*"
@@ -123,42 +115,44 @@ function PaymentForm({ handleNext, handleBack }) {
               />
             )}
           />
+          <Box display="flex" marginTop="1rem" justifyContent="space-between">
+            <Controller
+              control={control}
+              name={"expiredDate"}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  disabled={isLoading}
+                  variant="standard"
+                  sx={{ width: "48%" }}
+                  label="ExpiredDate*"
+                  size="small"
+                  value={value}
+                  onChange={onChange}
+                  type="text"
+                  aria-describedby="expiredDate-helper"
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name={"cvv"}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  disabled={isLoading}
+                  variant="standard"
+                  sx={{ width: "48%" }}
+                  label="CVV*"
+                  size="small"
+                  value={value}
+                  onChange={onChange}
+                  type="number"
+                  aria-describedby="cvv-helper"
+                />
+              )}
+            />
+          </Box>
 
-          <Controller
-            control={control}
-            name={"expiredDate"}
-            render={({ field: { onChange, value } }) => (
-              <TextField
-                variant="standard"
-                fullWidth
-                label="ExpiredDate*"
-                size="small"
-                value={value}
-                onChange={onChange}
-                type="text"
-                aria-describedby="expiredDate-helper"
-              />
-            )}
-          />
-
-          <Controller
-            control={control}
-            name={"cvv"}
-            render={({ field: { onChange, value } }) => (
-              <TextField
-                variant="standard"
-                fullWidth
-                label="CVV*"
-                size="small"
-                value={value}
-                onChange={onChange}
-                type="number"
-                aria-describedby="cvv-helper"
-              />
-            )}
-          />
-
-          <FormGroup mt="10px">
+          <FormGroup>
             <FormControlLabel
               control={<Checkbox defaultChecked />}
               label="Remember Credit Card for next time"
@@ -167,16 +161,20 @@ function PaymentForm({ handleNext, handleBack }) {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
-              mt: "200px",
+              justifyContent: "end",
             }}
           >
             <Button
               sx={{
-                ...buttonStyles,
+                transition: "0.2",
+                marginRight: "1rem",
+                ":hover": {
+                  transition: "0.2",
+                  color: "#ab832a",
+                  backgroundColor: "rgb(171,131,42, 0.1)",
+                },
               }}
-              variant="contained"
-              href="#contained-buttons"
+              variant="text"
               onClick={handleBack}
             >
               Back
