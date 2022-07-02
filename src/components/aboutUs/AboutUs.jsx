@@ -151,11 +151,27 @@ const AboutUs = () => {
           <Grid item xs={7}>
             <Typography fontSize="15px" textAlign="start" variant="h5">
               Este proyecto se encuentra enfocado en la realización de la
-              entrega final del Bootcamp. Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Accusantium voluptatem vel commodi
-              aspernatur nemo eos dolores eius cumque? Vero laudantium
-              molestiae, perspiciatis id quam beatae laborum unde odit iste
-              animi.
+              entrega final del curso del Coding Bootcamp de Hack Academy. Se
+              llevó a cabo durante 3 semanas, donde cada integrante le dedicó un
+              aproximado de 190 horas. Se organiza en 3 partes, la primera es la
+              interfaz de usuario donde los posibles clientes pueden visualizar
+              los productos a la venta, acceder a listados filtrados por
+              categoría, agregar y quitar productos del carrito, completar la
+              orden una vez logueados y acceder a la lista de compras
+              realizadas. La segunda parte consiste en un panel de control para
+              los administradores del sitio. Aquí se puede ver, crear, editar y
+              eliminar productos, categorías y administradores. También se puede
+              editar el estado de las órdenes y ver el detalle de las mismas.
+              Por último tenemos una API REST, encargada de recibir y enviar la
+              información solicitada, almacenándola en la base de datos. Nuestro
+              objetivo era crear una tienda luthier de guitarras y accesorios
+              donde el cliente fácilmente pudiera ingresar, seleccionar un
+              producto de excelente calidad, añadirlo al carrito de compras,
+              procesar el pago. También le dimos la posibilidad de ingresar al
+              histórico de pedidos realizados. El concepto de diseño, paleta de
+              colores, detalles y funcionalidades son todas inspiradas en ideas
+              impartidas por el equipo de trabajo referenciandónos en
+              instrumentos músicales tales como la guitarra criolla.
             </Typography>
           </Grid>
           <Grid item xs={5}>
