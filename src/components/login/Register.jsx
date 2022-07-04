@@ -19,14 +19,31 @@ import { registerUser } from "../../services/registerServices";
 import { loginUserReducer } from "../../Redux/user/slice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Register() {
   const theme = useTheme();
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleRegister = async ({ firstName, lastName, email, password }) => {
-    const response = await registerUser(firstName, lastName, email, password);
+  const handleRegister = async ({
+    firstName,
+    lastName,
+    email,
+    password,
+    address,
+  }) => {
+    setError(false);
+    const response = await registerUser(
+      firstName,
+      lastName,
+      email,
+      password,
+      address
+    );
+    if (Object.entries(response).length === 0) return setError(true);
+
     dispatch(loginUserReducer(response));
     navigate("/", { replace: true });
   };
@@ -37,8 +54,9 @@ export default function Register() {
       lastName: "",
       email: "",
       password: "",
+      address: "",
     },
-    // validationSchema: validationSchema,
+    validationSchema: validationSchema,
     onSubmit: (values) => handleRegister(values),
   });
 
@@ -53,18 +71,8 @@ export default function Register() {
   };
   return (
     <>
-      <Container>
-        <Grid
-          container
-          component="main"
-          className="borderform"
-          sx={{
-            height: "100vh",
-
-            marginTop: "13rem",
-            marginBottom: "4rem",
-          }}
-        >
+      <Container sx={{ paddingY: "2rem", mt: "64px" }}>
+        <Grid container component="main" className="borderform">
           <CssBaseline />
 
           <Grid
@@ -74,33 +82,30 @@ export default function Register() {
             md={5}
             className="gradientbg"
             component={Paper}
-            elevation={6}
+            elevation={3}
             square
             backgroundColor="white"
           >
             <Box
               sx={{
-                my: 8,
+                my: 3,
                 mx: 4,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
               }}
             >
-              <Box>LOGUITO</Box>
-
               <Typography component="h1" variant="h5">
                 Sign Up
               </Typography>
-              <Divider></Divider>
               <form onSubmit={formik.handleSubmit}>
-                <Box color="white">
+                <Box>
                   <TextField
                     margin="normal"
                     fullWidth
                     name="firstName"
                     id="firstName"
-                    label="Enter your FirstName"
+                    label="First Name"
                     variant="standard"
                     value={formik.values.firstName}
                     onChange={formik.handleChange}
@@ -117,7 +122,7 @@ export default function Register() {
                     fullWidth
                     name="lastName"
                     id="lastName"
-                    label="Enter your LastName"
+                    label="Last Name"
                     variant="standard"
                     value={formik.values.lastName}
                     onChange={formik.handleChange}
@@ -143,6 +148,7 @@ export default function Register() {
                   <TextField
                     margin="normal"
                     fullWidth
+                    type="password"
                     name="password"
                     id="password"
                     label="Enter your Password"
@@ -156,12 +162,34 @@ export default function Register() {
                       formik.touched.password && formik.errors.password
                     }
                   />
-
+                  <TextField
+                    margin="normal"
+                    fullWidth
+                    name="address"
+                    id="address"
+                    label="Enter your address"
+                    variant="standard"
+                    value={formik.values.address}
+                    onChange={formik.handleChange}
+                    error={
+                      formik.touched.address && Boolean(formik.errors.address)
+                    }
+                    helperText={formik.touched.address && formik.errors.address}
+                  />
+                  <Box height="3rem" display="flex" alignItems="center">
+                    {error ? (
+                      <Typography sx={{ color: "red" }}>
+                        Email already exist
+                      </Typography>
+                    ) : (
+                      <></>
+                    )}
+                  </Box>
                   <Button
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ ...categoryBtnStyles, mt: "2rem" }}
+                    sx={{ ...categoryBtnStyles }}
                   >
                     Sign Up
                   </Button>
