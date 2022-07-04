@@ -33,6 +33,7 @@ export default function Register() {
     email,
     password,
     address,
+    phone,
   }) => {
     setError(false);
     const response = await registerUser(
@@ -40,7 +41,8 @@ export default function Register() {
       lastName,
       email,
       password,
-      address
+      address,
+      phone
     );
     if (Object.entries(response).length === 0) return setError(true);
 
@@ -55,6 +57,7 @@ export default function Register() {
       email: "",
       password: "",
       address: "",
+      phone: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => handleRegister(values),
@@ -144,6 +147,19 @@ export default function Register() {
                     onChange={formik.handleChange}
                     error={formik.touched.email && Boolean(formik.errors.email)}
                     helperText={formik.touched.email && formik.errors.email}
+                  />
+                  <TextField
+                    margin="normal"
+                    fullWidth
+                    name="phone"
+                    id="phone"
+                    type="number"
+                    label="Enter your phone"
+                    variant="standard"
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
+                    error={formik.touched.phone && Boolean(formik.errors.phone)}
+                    helperText={formik.touched.phone && formik.errors.phone}
                   />
                   <TextField
                     margin="normal"

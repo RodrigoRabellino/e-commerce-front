@@ -6,9 +6,10 @@ export const registerUser = async (
   lastName,
   email,
   password,
-  address
+  address,
+  phone
 ) => {
-  const body = { firstName, lastName, email, password, address };
+  const body = { firstName, lastName, email, password, address, phone };
   try {
     const response = await axios.post(`${API_URL}/user`, body);
     return response.data;
