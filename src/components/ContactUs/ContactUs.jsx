@@ -195,21 +195,14 @@ function ContactUs() {
                 <LocalPhoneIcon sx={{ paddingTop: "0.3rem" }} />
               </Grid>
 
-<<<<<<< HEAD
-              <Grid item xs={7}>
-                <Typography variant="subtitle1" fontWeight={700} textAlign="left">
-                  pepe.leia@ha.com
-=======
               <Grid item xs={7} sx={{ textAlign: "left" }}>
                 <Typography variant="subtitle1" fontWeight={700}>
                   pepe.leia@hackacademy.com
->>>>>>> a672e97da567378fccdbdaecaa42f7796465b04a
                 </Typography>
                 <Typography
                   variant="subtitle1"
                   fontWeight={700}
                   textAlign="left"
-                  
                 >
                   55523156
                 </Typography>
