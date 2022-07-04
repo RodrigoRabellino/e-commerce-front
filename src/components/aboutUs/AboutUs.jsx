@@ -139,8 +139,6 @@ const AboutUs = () => {
               id="rodriPhoto1"
               src={hover1 ? rodriPhoto2 : rodriPhoto1}
               className="AvatarRodri"
-              sx={avatarStyles}
-              alt="Rodri Photo"
               onMouseOver={() => setHover1(true)}
               onMouseOut={() => setHover1(false)}
             />
@@ -204,7 +202,13 @@ const AboutUs = () => {
       </Box>
       <Container>
         <Divider />
-        <Typography textAlign="start" fontSize="15px" variant="h5" pt="10px">
+        <Typography
+          textAlign="start"
+          fontSize="18px"
+          lineHeight="1.5rem"
+          variant="h5"
+          pt="10px"
+        >
           We are a multidisciplinary team of 4 members, who have different
           academic backgrounds as well as extensive experience in our respective
           previous fields. Despite of these past studies not having anything
@@ -229,7 +233,13 @@ const AboutUs = () => {
       </Box>
       <Container>
         <Divider />
-        <Typography textAlign="start" fontSize="15px" variant="h5" pt="10px">
+        <Typography
+          textAlign="start"
+          lineHeight="1.5rem"
+          fontSize="18px"
+          variant="h5"
+          pt="10px"
+        >
           This e-commerce site is oriented to create the final Hack Academy
           Bootcamp project. We've worked intensively during 3 weeks, each member
           dedicated around 190 hours. Our first step, was to do a brainstorming
@@ -242,13 +252,37 @@ const AboutUs = () => {
           own ideas. The spanish guitar was the main inspiration element to
           design this web experience.
         </Typography>
+        <Box display="flex">
+          <Box justifyContent="flex-start">
+            <img
+              mt="50px"
+              height="600px"
+              srcSet={require("../../assets/images/MERe-commerce.png")}
+            />
+          </Box>
+          <Box flexDirection="column" pt="50px">
+            <p fontSize="16px" lineHeight="1.5rem" textAlign="left">
+              1-User Interface: Clients can login, navigate the site, browse
+              product categories and add or delete items from the shopping cart.
+              They can also pay the order and delivery it (simulation mode).
+              Finally, once they've finished the shopping process, they can also
+              review their order history.
+            </p>
 
-        <img
-          display="flex"
-          justifyContent="flex-start"
-          width="30%"
-          srcSet={require("../../assets/images/MERe-commerce.png")}
-        />
+            <p lineHeight="1.5rem" textAlign="left">
+              2- Admin Site: This is where administrators have the controls to
+              manage the site. They can view, create, edit and delete products,
+              categories and admins. In addition to this, they can also check
+              order details and edit order status.
+            </p>
+
+            <p lineHeight="1.5rem" textAlign="left">
+              3-API Rest: This site is in charge of receiving and sending the
+              requested information.
+            </p>
+          </Box>
+        </Box>
+
         <Divider />
       </Container>
       {/* <Paper>
@@ -331,15 +365,15 @@ const AboutUs = () => {
                 </ListItem>
                 <ListItem>Mongoose</ListItem>
                 <ListItem>
-                  <svg viewBox="0 0 35 24" xmlns="http://www.w3.org/2000/svg">
+                  {/* <svg viewBox="0 0 35 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.634 16.504c.87-.075 1.543-.84 1.5-1.754-.047-.914-.796-1.648-1.709-1.648h-.061a1.71 1.71 0 00-1.648 1.769c.03.479.226.869.494 1.153-1.048 2.038-2.621 3.536-5.005 4.795-1.603.838-3.296 1.154-4.944.93-1.378-.195-2.456-.81-3.116-1.799-.988-1.499-1.078-3.116-.255-4.734.6-1.17 1.499-2.023 2.099-2.443a9.96 9.96 0 01-.42-1.543C-.868 14.408-.416 18.752.932 20.805c1.004 1.498 3.057 2.456 5.304 2.456.6 0 1.23-.044 1.843-.194 3.897-.749 6.848-3.086 8.541-6.532zm5.348-3.746c-2.32-2.728-5.738-4.226-9.634-4.226h-.51c-.253-.554-.837-.899-1.498-.899h-.045c-.943 0-1.678.81-1.647 1.753.03.898.794 1.648 1.708 1.648h.074a1.69 1.69 0 001.499-1.049h.555c2.309 0 4.495.674 6.488 1.992 1.527 1.005 2.622 2.323 3.237 3.897.538 1.288.509 2.547-.045 3.597-.855 1.647-2.294 2.517-4.196 2.517-1.199 0-2.367-.375-2.967-.644-.36.298-.96.793-1.394 1.093 1.318.598 2.652.943 3.94.943 2.922 0 5.094-1.647 5.919-3.236.898-1.798.824-4.824-1.47-7.416zM6.49 17.042c.03.899.793 1.648 1.708 1.648h.06a1.688 1.688 0 001.648-1.768c0-.9-.779-1.647-1.693-1.647h-.06c-.06 0-.15 0-.226.029-1.243-2.098-1.768-4.347-1.572-6.772.12-1.828.72-3.417 1.797-4.735.9-1.124 2.593-1.68 3.747-1.708 3.236-.061 4.585 3.971 4.689 5.574l1.498.45C17.741 3.197 14.686.62 11.764.62 9.02.62 6.49 2.613 5.47 5.535 4.077 9.43 4.991 13.177 6.7 16.174c-.15.195-.24.539-.21.868z"></path>
-                  </svg>
+                  </svg> */}
                   Redux
                 </ListItem>
               </Box>
               <Box>
                 <ListItem>
-                  <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
                     role="img"
@@ -352,20 +386,20 @@ const AboutUs = () => {
                       fill="currentColor"
                       d="M24 18.588a1.529 1.529 0 0 1-1.895-.72l-3.45-4.771l-.5-.667l-4.003 5.444a1.466 1.466 0 0 1-1.802.708l5.158-6.92l-4.798-6.251a1.595 1.595 0 0 1 1.9.666l3.576 4.83l3.596-4.81a1.435 1.435 0 0 1 1.788-.668L21.708 7.9l-2.522 3.283a.666.666 0 0 0 0 .994l4.804 6.412zM.002 11.576l.42-2.075c1.154-4.103 5.858-5.81 9.094-3.27c1.895 1.489 2.368 3.597 2.275 5.973H1.116C.943 16.447 4.005 19.009 7.92 17.7a4.078 4.078 0 0 0 2.582-2.876c.207-.666.548-.78 1.174-.588a5.417 5.417 0 0 1-2.589 3.957a6.272 6.272 0 0 1-7.306-.933a6.575 6.575 0 0 1-1.64-3.858c0-.235-.08-.455-.134-.666A88.33 88.33 0 0 1 0 11.577zm1.127-.286h9.654c-.06-3.076-2.001-5.258-4.59-5.278c-2.882-.04-4.944 2.094-5.071 5.264z"
                     ></path>
-                  </svg>
+                  </svg> */}
                   Express
                 </ListItem>
                 <ListItem>
-                  <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 1400 512"
                   >
                     <path d="M224 508c-6.7 0-13.5-1.8-19.4-5.2l-61.7-36.5c-9.2-5.2-4.7-7-1.7-8 12.3-4.3 14.8-5.2 27.9-12.7 1.4-.8 3.2-.5 4.6.4l47.4 28.1c1.7 1 4.1 1 5.7 0l184.7-106.6c1.7-1 2.8-3 2.8-5V149.3c0-2.1-1.1-4-2.9-5.1L226.8 37.7c-1.7-1-4-1-5.7 0L36.6 144.3c-1.8 1-2.9 3-2.9 5.1v213.1c0 2 1.1 4 2.9 4.9l50.6 29.2c27.5 13.7 44.3-2.4 44.3-18.7V167.5c0-3 2.4-5.3 5.4-5.3h23.4c2.9 0 5.4 2.3 5.4 5.3V378c0 36.6-20 57.6-54.7 57.6-10.7 0-19.1 0-42.5-11.6l-48.4-27.9C8.1 389.2.7 376.3.7 362.4V149.3c0-13.8 7.4-26.8 19.4-33.7L204.6 9c11.7-6.6 27.2-6.6 38.8 0l184.7 106.7c12 6.9 19.4 19.8 19.4 33.7v213.1c0 13.8-7.4 26.7-19.4 33.7L243.4 502.8c-5.9 3.4-12.6 5.2-19.4 5.2zm149.1-210.1c0-39.9-27-50.5-83.7-58-57.4-7.6-63.2-11.5-63.2-24.9 0-11.1 4.9-25.9 47.4-25.9 37.9 0 51.9 8.2 57.7 33.8.5 2.4 2.7 4.2 5.2 4.2h24c1.5 0 2.9-.6 3.9-1.7s1.5-2.6 1.4-4.1c-3.7-44.1-33-64.6-92.2-64.6-52.7 0-84.1 22.2-84.1 59.5 0 40.4 31.3 51.6 81.8 56.6 60.5 5.9 65.2 14.8 65.2 26.7 0 20.6-16.6 29.4-55.5 29.4-48.9 0-59.6-12.3-63.2-36.6-.4-2.6-2.6-4.5-5.3-4.5h-23.9c-3 0-5.3 2.4-5.3 5.3 0 31.1 16.9 68.2 97.8 68.2 58.4-.1 92-23.2 92-63.4z"></path>
-                  </svg>
+                  </svg> */}
                   Node.js
                 </ListItem>
                 <ListItem>
-                  <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="1.2em"
                     height="1.2em"
@@ -391,7 +425,7 @@ const AboutUs = () => {
                         <path d="M96.2985,112.9395l1.806,-13.373l13.27267,2.41875l23.65,32.551l-15.07867,10.95425z"></path>
                       </g>
                     </g>
-                  </svg>
+                  </svg> */}
                   Json Web Token
                 </ListItem>
                 <ListItem>Material UI</ListItem>
