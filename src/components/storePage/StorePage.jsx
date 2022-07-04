@@ -3,6 +3,7 @@ import {
   Button,
   CssBaseline,
   Grid,
+  Pagination,
   Paper,
   Stack,
   ToggleButton,
@@ -25,21 +26,25 @@ const StorePage = () => {
   const [viewDisplay, setViewDisplay] = useState("module");
 
   const theme = useTheme();
-  const handleNextPage = () => {
-    //setPage((prev) => prev++);
-    console.log("handlemore");
-  };
 
   const handleToggleView = (newValue) => {
     console.log(newValue);
   };
 
+  // useEffect(() => {
+  //   const getProducts = async (numPage) => {
+  //     const resp = await fetchProducts(numPage);
+  //     setProducts((prev) => [...prev, ...resp]);
+  //   };
+  //   getProducts(page);
+  // }, [page]);
+
   useEffect(() => {
-    const getProducts = async (numPage) => {
-      const resp = await fetchProducts(numPage);
-      setProducts((prev) => [...prev, ...resp]);
+    const getProducts = async () => {
+      const resp = await fetchProducts(page);
+      setProducts([...resp]);
     };
-    getProducts(page);
+    getProducts();
   }, [page]);
 
   const categoryBtnStyles = {
@@ -58,8 +63,11 @@ const StorePage = () => {
   return (
     <Container>
       <CssBaseline />
-      <Grid container sx={{ position: "relative", top: "64px" }}>
-        <Grid item xs={12} my={2}>
+      <Grid
+        container
+        sx={{ position: "relative", top: "64px", marginBottom: "10vh" }}
+      >
+        <Grid item xs={12}>
           <Box my={2}>
             <Typography variant="h4" color={theme.palette.primary.main}>
               Categories
@@ -146,7 +154,7 @@ const StorePage = () => {
           </Box>
 
           <Box>
-            <InfiniteScroll
+            {/* <InfiniteScroll
               dataLength={products.length}
               next={() => handleNextPage()}
               hasMore={true}
@@ -154,20 +162,28 @@ const StorePage = () => {
               scrollThreshold={0.95}
               endMessage={null}
               style={{ paddingTop: "1rem" }}
-            >
-              <Grid container width="100%" justifyContent="space-around">
-                {products.map((product) => {
-                  return (
-                    <ProductCard
-                      key={product._id}
-                      product={product}
-                      display={viewDisplay}
-                      onClick={() => console.log(product)}
-                    />
-                  );
-                })}
-              </Grid>
-            </InfiniteScroll>
+            > */}
+            <Grid container width="100%" justifyContent="space-between">
+              {products.map((product) => {
+                return (
+                  <ProductCard
+                    key={product._id}
+                    product={product}
+                    display={viewDisplay}
+                    onClick={() => console.log(product)}
+                  />
+                );
+              })}
+            </Grid>
+            {/* </InfiniteScroll> */}
+            <Box display="flex" justifyContent="center">
+              <Pagination
+                page={page}
+                count={10}
+                shape="rounded"
+                onChange={(e) => setPage(parseInt(e.target.textContent))}
+              />
+            </Box>
           </Box>
         </Grid>
       </Grid>

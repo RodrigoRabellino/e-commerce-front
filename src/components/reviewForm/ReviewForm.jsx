@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { Box, Container, Typography, Button } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postNewOrder } from "../../services/apiServices";
 import MySnackBar from "../snackBar/MySnackBar";
 import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
+import { emptyCart } from "../../Redux/cart/slice";
 
 function ReviewForm({ handleNext, handleBack }) {
   const order = useSelector((state) => state.order);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { _id, accessToken } = useSelector((state) => state.user);
+  const cart = useSelector((state) => state.cart);
+
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(1000);
   const [showSnack, setShowSnack] = useState(false);
@@ -18,6 +22,7 @@ function ReviewForm({ handleNext, handleBack }) {
 
   const handleOpenSnack = () => setShowSnack(true);
   const handleCloseSnack = () => setShowSnack(false);
+  console.log(order);
 
   const handleNewOrder = async () => {
     setIsLoading(true);
@@ -26,8 +31,10 @@ function ReviewForm({ handleNext, handleBack }) {
       setSnackMessage("unknown error occurred");
       setSnackSeverity("error");
       setShowSnack(true);
+
       setTimeout(() => {
         setIsLoading(false);
+
         return navigate("/userpage", { replace: true });
       }, 2000);
     }
@@ -37,9 +44,12 @@ function ReviewForm({ handleNext, handleBack }) {
 
     setTimeout(() => {
       setIsLoading(false);
+      dispatch(emptyCart(""));
       return navigate("/userpage", { replace: true });
     }, 2000);
   };
+
+  let total = 0;
 
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
@@ -48,11 +58,8 @@ function ReviewForm({ handleNext, handleBack }) {
   try {
     for (let i = 0; i < order.cart.length; i++) {
       let price = order.cart[i].price * order.cart[i].qty;
-      console.log("price x qty", price);
     }
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 
   return (
     <>
@@ -78,16 +85,29 @@ function ReviewForm({ handleNext, handleBack }) {
                   bgColor="#eaeaea"
                   justifyContent="space-between"
                 >
-                  <Typography>{`${product.qty}-${product.name}`}</Typography>
-                  <Typography>U$S{product.price}</Typography>
+                  <Typography
+                    sx={{ fontFamily: "number" }}
+                  >{`${product.qty}-${product.name}`}</Typography>
+                  <Typography sx={{ fontFamily: "number" }}>
+                    U$S {product.price}
+                  </Typography>
                 </Box>
               );
             })}
           </Box>
           <Box display="flex" marginTop="1rem" justifyContent="end">
             <Box display="flex" justifyContent="space-between" width="50%">
-              <Typography fontWeight="600">Total:</Typography>
-              <Typography fontWeight="600">U$Sver que pasa</Typography>
+              <Typography fontWeight="600" fontSize="1.3rem">
+                Total:
+              </Typography>
+              <Typography
+                fontWeight="600"
+                fontSize="1.3rem"
+                sx={{ fontFamily: "number" }}
+              >
+                {order.cart.forEach((item) => (total += item.qty * item.price))}
+                U$S {total}
+              </Typography>
             </Box>
           </Box>
           <Box sx={{ marginY: "1rem" }}>

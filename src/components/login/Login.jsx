@@ -5,17 +5,28 @@ import {
   Divider,
   CssBaseline,
   TextField,
+  FormControlLabel,
+  Checkbox,
   Paper,
   Box,
   Grid,
+  Container,
 } from "@mui/material";
-
+import { NavLink, useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import { Container } from "@mui/system";
 import { useTheme } from "@emotion/react";
+import { validationSchema } from "./validationSchema";
+import { useFormik } from "formik";
+import { loginUserReducer } from "../../Redux/user/slice";
+import { loginUser } from "../../services/loginServices";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export default function Login() {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const categoryBtnStyles = {
     bgcolor: "primary.main",
     border: `1px solid ${theme.palette.primary.light}`,
@@ -25,22 +36,57 @@ export default function Login() {
       color: "primary",
     },
   };
+
+  const handleLogin = async ({ email, password }) => {
+    setError(false);
+    const response = await loginUser(email, password);
+    if (Object.entries(response).length === 0) return setError(true);
+    dispatch(loginUserReducer(response));
+    navigate("/welcome", { replace: true });
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email: "user@user.com",
+      password: "12345678",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => handleLogin(values),
+  });
+
   return (
     <>
-      <Container>
+      <Container justifyContent="center">
         <Grid
           container
           component="main"
           className="borderform"
           sx={{
             height: "100vh",
-
+            width: "100%",
             marginTop: "13rem",
             marginBottom: "4rem",
           }}
         >
           <CssBaseline />
-          <Box></Box>
+          <Grid
+            className="background-guitar"
+            item
+            xs={false}
+            sm={6}
+            md={7}
+            sx={{
+              backgroundImage:
+                "url(https://img.wallpapersafari.com/tablet/2560/1700/29/66/N7iGLn.jpg)",
+              backgroundRepeat: "no-repeat",
+              backgroundColor: (t) =>
+                t.palette.mode === "light"
+                  ? t.palette.grey[70]
+                  : t.palette.grey[900],
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
 
           <Grid
             item
@@ -51,6 +97,7 @@ export default function Login() {
             component={Paper}
             elevation={6}
             square
+            sx={{ backgroundColor: "white" }}
           >
             <Box
               sx={{
@@ -63,51 +110,76 @@ export default function Login() {
             >
               <Box>LOGUITO</Box>
 
-              <Typography component="h1" variant="h5">
-                Sign Up
+              <Typography
+                component="h1"
+                variant="h5"
+                color={theme.palette.primary.main}
+              >
+                Sign in
               </Typography>
               <Divider></Divider>
-              <Box component="form" color="white" noValidate sx={{ mt: 1 }}>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  name="firstname"
-                  id="standard-basic"
-                  label="Enter your FirstName"
-                  variant="standard"
-                />
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  name="lastname"
-                  id="standard-basic"
-                  label="Enter your LastName"
-                  variant="standard"
-                />
+              <form onSubmit={formik.handleSubmit}>
                 <TextField
                   margin="normal"
                   fullWidth
                   name="email"
-                  id="standard-basic"
+                  id="email"
                   label="Enter your Email"
                   variant="standard"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  error={formik.touched.email && Boolean(formik.errors.email)}
+                  helperText={formik.touched.email && formik.errors.email}
                 />
                 <TextField
                   margin="normal"
                   fullWidth
                   name="password"
-                  id="standard-basic"
+                  type="password"
+                  id="password"
                   label="Enter your Password"
                   variant="standard"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                  }
+                  helperText={formik.touched.password && formik.errors.password}
+                />
+                {error ? (
+                  <>
+                    <Typography textAlign="center" sx={{ color: "red" }}>
+                      Invalid Email or Password
+                    </Typography>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <FormControlLabel
+                  sx={{ color: "black" }}
+                  control={<Checkbox value="remember" color="secondary" />}
+                  label="Remember me"
                 />
 
-                <Button
-                  fullWidth
-                  variant="contained"
-                  sx={{ ...categoryBtnStyles, mt: "2rem" }}
-                >
-                  Sign Up
-                </Button>
+                <Box className="butonsingin">
+                  <Button
+                    fullWidth
+                    type="submit"
+                    variant="contained"
+                    sx={{ ...categoryBtnStyles }}
+                  >
+                    Sign In
+                  </Button>
+                </Box>
+                <NavLink to="/register" style={{ textDecoration: "none" }}>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    sx={{ ...categoryBtnStyles }}
+                  >
+                    Sign Up
+                  </Button>
+                </NavLink>
 
                 <Divider sx={{ paddingTop: "2rem", color: "black" }}>
                   OR
@@ -177,28 +249,9 @@ export default function Login() {
                     </span>
                   </button>
                 </Box>
-              </Box>
+              </form>
             </Box>
           </Grid>
-          <Grid
-            className="background-guitar"
-            item
-            xs={false}
-            sm={6}
-            md={7}
-            sx={{
-              backgroundImage:
-                "url(https://wallpaperboat.com/wp-content/uploads/2019/04/electric-guitar-003.jpg)",
-
-              backgroundRepeat: "no-repeat",
-              backgroundColor: (t) =>
-                t.palette.mode === "light"
-                  ? t.palette.grey[70]
-                  : t.palette.grey[900],
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
         </Grid>
       </Container>
     </>
