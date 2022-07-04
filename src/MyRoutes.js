@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import DashBoard from "./components/admin/dashboard/DashBoard";
 import GridCategories from "./components/gridCategories/GridCategories";
 import HomePage from "./components/homePage/HomePage";
-import SignIn from "./components/login/SignIn";
-import SignUp from "./components/login/SignUp";
+import Login from "./components/login/Login";
+import Register from "./components/login/Register";
 import ProductDetail from "./components/productDetail/ProductDetail";
 import AboutUs from "./components/aboutUs/AboutUs";
 import StorePage from "./components/storePage/StorePage";
@@ -36,8 +36,8 @@ const MyRoutes = ({ type }) => {
       <Route path="/categories" element={<GridCategories />} />
       <Route path="/store" element={<StorePage />} />
       <Route path="/productCarousel" element={<ProductCarousel />} />
-      <Route path="/signin" element={<SignIn />} />
-      <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/checkout" element={<CheckOut />} />
       <Route path="/addressForm" element={<AddressForm />} />
       <Route path="/reviewForm" element={<ReviewForm />} />
