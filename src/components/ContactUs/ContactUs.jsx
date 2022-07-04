@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-const ContactUs = () => {
-  return;
-};
-=======
 import {
   Container,
   Divider,
@@ -53,7 +48,7 @@ function ContactUs() {
               Get in Touch
             </Typography>
             <Box paddingTop="0.5rem">
-            <Card  sx={{maxWidth:450, margin:"0 auto",padding:"20px 5px",}}>
+            <Card color="#ffff" sx={{maxWidth:450, margin:"0 auto",padding:"20px 5px",}}>
               <CardContent>
               <form>
                 <Grid container spacing={1}>
@@ -171,14 +166,14 @@ function ContactUs() {
               </Grid>
 
               <Grid item xs={7}>
-                <Typography variant="subtitle1" fontWeight={700}>
-                  pepe.leia@hackacademy.com
+                <Typography variant="subtitle1" fontWeight={700} textAlign="left">
+                  pepe.leia@ha.com
                 </Typography>
                 <Typography
                   variant="subtitle1"
                   fontWeight={700}
                   textAlign="left"
-                  paddingLeft="0.3rem"
+                  
                 >
                   55523156
                 </Typography>
@@ -196,6 +191,5 @@ function ContactUs() {
     </>
   );
 }
->>>>>>> Stashed changes
 
 export default ContactUs;

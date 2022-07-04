@@ -96,7 +96,7 @@ function Footer() {
               </Typography>
               <Box>
                 <Box href="" color="inherit" textAlign="left" marginTop={1}>
-                  pepe.leia@hackacademy.com
+                  pepe.leia@ha.com
                 </Box>
               </Box>
               <Box>
