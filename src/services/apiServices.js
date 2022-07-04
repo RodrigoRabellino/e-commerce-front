@@ -36,3 +36,27 @@ export const fetchCategories = async () => {
     return error;
   }
 };
+
+export const fetchUser = async (id, accessToken) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/user/${id}?accessToken=${accessToken}`
+    );
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const postNewOrder = async (id, accessToken, data, totalPrice) => {
+  const body = { ...data, totalPrice };
+  try {
+    const response = await axios.post(
+      `${API_URL}/order/${id}?accessToken=${accessToken}`,
+      body
+    );
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};

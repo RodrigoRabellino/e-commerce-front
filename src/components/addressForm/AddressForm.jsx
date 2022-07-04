@@ -1,11 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  Input,
   Box,
-  Container,
   Typography,
   Checkbox,
   FormControlLabel,
@@ -14,22 +9,32 @@ import {
   TextField,
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { updateOrderReducer } from "../../Redux/order/slice";
 
-function AddressForm({ handleNext, setDatos, datos }) {
+function AddressForm({ handleNext }) {
+  const dispatch = useDispatch();
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
-  console.log(handleNext);
-  const handleNextForm = (d) => {
-    console.log(d);
-    console.log("entre a handleNextForm");
-    // setDatos();
+  // const [data, setData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   address: "",
+  //   city: "",
+  //   state: "",
+  //   zip: "",
+  //   country: "",
+  // });
+
+  const handleNextForm = (data) => {
+    dispatch(updateOrderReducer({ ...data }));
     handleNext();
   };
 
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
-      name: "",
+      firstName: "",
       lastName: "",
       addressLine: "",
       addressLine2: "",
@@ -39,13 +44,11 @@ function AddressForm({ handleNext, setDatos, datos }) {
       country: "",
     },
   });
-  const onSubmit = (d) => handleNext();
-
   return (
     <>
-      <Box sx={{ height: "100%" }}>
-        <Typography mt="20px" fontWeight="600" variant="h5">
-          Shipping Address
+      <Box sx={{ height: "100%", width: "100%" }}>
+        <Typography fontWeight="600" variant="h5">
+          Shipping Details
         </Typography>
         <Box
           sx={{
@@ -53,42 +56,48 @@ function AddressForm({ handleNext, setDatos, datos }) {
             justifyContent: "space-evenly",
           }}
         >
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-              control={control}
-              name={"name"}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  variant="standard"
-                  fullWidth
-                  label="Name*"
-                  size="small"
-                  value={value}
-                  onChange={onChange}
-                  type="text"
-                  aria-describedby="name-helper"
-                />
-              )}
-            />
+          <form
+            onSubmit={handleSubmit(handleNextForm)}
+            style={{ width: "100%" }}
+          >
+            <Box display="flex" justifyContent="space-between">
+              <Controller
+                rules={{ required: true }}
+                control={control}
+                name={"firstName"}
+                render={({ field }) => (
+                  <TextField
+                    variant="standard"
+                    sx={{ width: "48%" }}
+                    label="Name*"
+                    size="small"
+                    {...field}
+                    type="text"
+                    aria-describedby="name-helper"
+                  />
+                )}
+              />
+              <Controller
+                rules={{ required: true, min: 3 }}
+                control={control}
+                name={"lastName"}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    variant="standard"
+                    sx={{ width: "48%" }}
+                    label="Last name*"
+                    size="small"
+                    value={value}
+                    onChange={onChange}
+                    type="text"
+                    aria-describedby="lastName-helper"
+                  />
+                )}
+              />
+            </Box>
 
             <Controller
-              control={control}
-              name={"lastName"}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  variant="standard"
-                  fullWidth
-                  label="Last name*"
-                  size="small"
-                  value={value}
-                  onChange={onChange}
-                  type="text"
-                  aria-describedby="lastName-helper"
-                />
-              )}
-            />
-
-            <Controller
+              rules={{ required: true, min: 3 }}
               control={control}
               name={"addressLine"}
               render={({ field: { onChange, value } }) => (
@@ -122,86 +131,91 @@ function AddressForm({ handleNext, setDatos, datos }) {
               )}
             />
 
-            <Controller
-              control={control}
-              name={"city"}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  variant="standard"
-                  fullWidth
-                  label="City"
-                  size="small"
-                  value={value}
-                  onChange={onChange}
-                  type="text"
-                  aria-describedby="city-helper"
-                />
-              )}
-            />
-
-            <Controller
-              control={control}
-              name={"state"}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  variant="standard"
-                  fullWidth
-                  label="State/Province/Region"
-                  size="small"
-                  value={value}
-                  onChange={onChange}
-                  type="text"
-                  aria-describedby="state"
-                />
-              )}
-            />
-
-            <Controller
-              control={control}
-              name={"zip"}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  variant="standard"
-                  fullWidth
-                  label="Zip/Postal Code"
-                  size="small"
-                  value={value}
-                  onChange={onChange}
-                  type="text"
-                  aria-describedby="zip"
-                />
-              )}
-            />
-
-            <Controller
-              control={control}
-              name={"country"}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  variant="standard"
-                  fullWidth
-                  label="Country"
-                  size="small"
-                  value={value}
-                  onChange={onChange}
-                  type="text"
-                  aria-describedby="country"
-                />
-              )}
-            />
+            <Box display="flex" justifyContent="space-between">
+              <Controller
+                rules={{ required: true, min: 3 }}
+                control={control}
+                name={"country"}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    variant="standard"
+                    sx={{ width: "48%" }}
+                    label="Country"
+                    size="small"
+                    value={value}
+                    onChange={onChange}
+                    type="text"
+                    aria-describedby="country"
+                  />
+                )}
+              />
+              <Controller
+                rules={{ required: true, min: 3 }}
+                control={control}
+                name={"city"}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    variant="standard"
+                    sx={{ width: "48%" }}
+                    label="City"
+                    size="small"
+                    value={value}
+                    onChange={onChange}
+                    type="text"
+                    aria-describedby="city-helper"
+                  />
+                )}
+              />
+            </Box>
 
             <Box display="flex" justifyContent="space-between">
-              <FormGroup mt="10px">
-                <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Use this address for payment details"
-                />
-              </FormGroup>
+              <Controller
+                rules={{ required: true, min: 3 }}
+                control={control}
+                name={"state"}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    variant="standard"
+                    sx={{ width: "48%" }}
+                    label="State/Province/Region"
+                    size="small"
+                    value={value}
+                    onChange={onChange}
+                    type="text"
+                    aria-describedby="state"
+                  />
+                )}
+              />
+              <Controller
+                rules={{ required: true, min: 3 }}
+                control={control}
+                name={"zip"}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    variant="standard"
+                    sx={{ width: "48%" }}
+                    label="Zip/Postal Code"
+                    size="small"
+                    value={value}
+                    onChange={onChange}
+                    type="text"
+                    aria-describedby="zip"
+                  />
+                )}
+              />
+            </Box>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Use this address for payment details"
+              />
+            </FormGroup>
+
+            <Box display="flex" justifyContent="end">
               <Button
                 type="submit"
                 sx={{
                   ...buttonStyles,
-                  mt: "160px",
                 }}
                 variant="contained"
               >

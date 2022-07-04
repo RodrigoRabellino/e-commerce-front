@@ -12,9 +12,12 @@ import {
   addOneQty,
   removeOneQty,
 } from "../../Redux/cart/slice";
+import { createOrderReducer } from "../../Redux/order/slice";
+import { useNavigate } from "react-router-dom";
 
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const addOneToCart = (item) => {
     dispatch(addOneQty(item));
   };
@@ -28,12 +31,19 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   };
 
   const cart = useSelector((state) => state.cart);
+
   let cartTotal = 0;
   cart.forEach((item) => {
     cartTotal += item.qty * item.price;
   });
 
   const theme = useTheme();
+
+  const handleCheckOut = () => {
+    dispatch(createOrderReducer({ cart }));
+    setIsCartOpen(false);
+    navigate("/checkout", { replace: false });
+  };
 
   return (
     <>
@@ -222,13 +232,17 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                   </div>
                 );
               })}
-              <Grid container p={1} columnSpacing={2} justifyContent="flex-end">
+              <Grid
+                container
+                p={1}
+                columnSpacing={2}
+                justifyContent="space-between"
+                alignItems="center"
+              >
                 <Grid item sx={{ display: "flex", alignItems: "center" }}>
                   <Typography variant="h6" ms={5} color="primary">
                     Total:
                   </Typography>
-                </Grid>
-                <Grid item>
                   <Typography
                     variant="p"
                     fontSize="1.5rem"
@@ -239,6 +253,30 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                     {" "}
                     $ {cartTotal}
                   </Typography>
+                </Grid>
+                <Grid item sx={{ display: "flex", alignItems: "center" }}>
+                  <Button
+                    sx={{
+                      height: "2.5rem",
+                      // mb: "1rem",
+                      width: "100%",
+                      borderRadius: "15px",
+                      border: `2px solid ${theme.palette.primary.light}`,
+                      // onClick={()}
+                    }}
+                    onClick={handleCheckOut}
+                    variant="contained"
+                  >
+                    <Typography
+                      variant="p"
+                      sx={{
+                        fontSize: "1rem",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Checkout
+                    </Typography>
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>

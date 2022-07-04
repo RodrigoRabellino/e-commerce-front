@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  Input,
   Box,
-  Container,
   Typography,
   Checkbox,
   FormControlLabel,
@@ -13,9 +8,18 @@ import {
   Button,
   TextField,
 } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import { useForm, Controller } from "react-hook-form";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import MySnackBar from "../snackBar/MySnackBar";
+
 function PaymentForm({ handleNext, handleBack }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [showSnack, setShowSnack] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+  const [snackSeverity, setSnackSeverity] = useState("info");
+
+  const handleCloseSnack = () => setShowSnack(false);
+
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
       name: "",
@@ -25,18 +29,21 @@ function PaymentForm({ handleNext, handleBack }) {
     },
   });
 
-  const onSubmit = (d) => handleNext();
-  const handleInputChange = (event) => {
-    // console.log(event.target.value);
-    // console.log(event.target.name);
+  const onSubmit = (d) => {
+    setIsLoading(true);
+    setShowSnack(true);
+    setSnackMessage("Payment accepted");
+    setTimeout(() => {
+      setIsLoading(false);
+      handleNext();
+    }, 2500);
   };
+
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
 
-  const enviarDatos = (event) => {
-    event.preventDefault();
-  };
+  const enviarDatos = (event) => {};
 
   return (
     <>
@@ -48,33 +55,23 @@ function PaymentForm({ handleNext, handleBack }) {
           justifyContent: "flex-start",
         }}
       >
-        <Box sx={{ height: "100%" }}>
-          <Typography
-            fontWeight="600"
-            variant="h5"
-            sx={{
-              variant: "h5",
-              fontWeight: "600",
-              mt: "20px",
-            }}
-          >
-            Payment Method
-          </Typography>
+        <Typography fontWeight="600" variant="h5">
+          Payment Method
+        </Typography>
+        <Box>
           <Typography
             fontWeight="400"
-            mt="20px"
             variant="h6"
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              mb: "20px",
+              mb: "10px",
               width: "100%",
             }}
           >
             Credit Card
           </Typography>
         </Box>
-
         <Box
           sx={{
             display: "flex",
@@ -82,8 +79,14 @@ function PaymentForm({ handleNext, handleBack }) {
             mb: "20px",
           }}
         >
-          <img src={require("../../assets/images/credit-card-logo.png")} />
-          <img src={require("../../assets/images/Paypal logo.png")} />
+          <img
+            srcSet={require("../../assets/images/credit-card-logo.png")}
+            alt={"cardLog0"}
+          />
+          <img
+            srcSet={require("../../assets/images/Paypal logo.png")}
+            alt={"cardLog0"}
+          />
         </Box>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -92,6 +95,7 @@ function PaymentForm({ handleNext, handleBack }) {
             name={"name"}
             render={({ field: { onChange, value } }) => (
               <TextField
+                disabled={isLoading}
                 variant="standard"
                 fullWidth
                 label="Name*"
@@ -109,6 +113,7 @@ function PaymentForm({ handleNext, handleBack }) {
             name={"cardNumber"}
             render={({ field: { onChange, value } }) => (
               <TextField
+                disabled={isLoading}
                 variant="standard"
                 fullWidth
                 label="CardNumber*"
@@ -120,42 +125,44 @@ function PaymentForm({ handleNext, handleBack }) {
               />
             )}
           />
+          <Box display="flex" marginTop="1rem" justifyContent="space-between">
+            <Controller
+              control={control}
+              name={"expiredDate"}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  disabled={isLoading}
+                  variant="standard"
+                  sx={{ width: "48%" }}
+                  label="ExpiredDate*"
+                  size="small"
+                  value={value}
+                  onChange={onChange}
+                  type="text"
+                  aria-describedby="expiredDate-helper"
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name={"cvv"}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  disabled={isLoading}
+                  variant="standard"
+                  sx={{ width: "48%" }}
+                  label="CVV*"
+                  size="small"
+                  value={value}
+                  onChange={onChange}
+                  type="number"
+                  aria-describedby="cvv-helper"
+                />
+              )}
+            />
+          </Box>
 
-          <Controller
-            control={control}
-            name={"expiredDate"}
-            render={({ field: { onChange, value } }) => (
-              <TextField
-                variant="standard"
-                fullWidth
-                label="ExpiredDate*"
-                size="small"
-                value={value}
-                onChange={onChange}
-                type="text"
-                aria-describedby="expiredDate-helper"
-              />
-            )}
-          />
-
-          <Controller
-            control={control}
-            name={"cvv"}
-            render={({ field: { onChange, value } }) => (
-              <TextField
-                variant="standard"
-                fullWidth
-                label="CVV*"
-                size="small"
-                value={value}
-                onChange={onChange}
-                type="number"
-                aria-describedby="cvv-helper"
-              />
-            )}
-          />
-
-          <FormGroup mt="10px">
+          <FormGroup>
             <FormControlLabel
               control={<Checkbox defaultChecked />}
               label="Remember Credit Card for next time"
@@ -164,35 +171,40 @@ function PaymentForm({ handleNext, handleBack }) {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
-              mt: "200px",
+              justifyContent: "end",
             }}
           >
             <Button
               sx={{
-                ...buttonStyles,
+                transition: "0.2",
+                marginRight: "1rem",
+                ":hover": {
+                  transition: "0.2",
+                  color: "#ab832a",
+                  backgroundColor: "rgb(171,131,42, 0.1)",
+                },
               }}
-              variant="contained"
-              href="#contained-buttons"
+              variant="text"
               onClick={handleBack}
             >
               Back
             </Button>
-            <Button sx={{ ...buttonStyles }} variant="contained" type="submit">
+            <LoadingButton
+              loading={isLoading}
+              sx={{ ...buttonStyles }}
+              variant="contained"
+              type="submit"
+            >
               Next
-            </Button>
+            </LoadingButton>
           </Box>
-
-          {/* <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-start",
-              mt: "150px",
-              mb: "10px",
-              marginRight: "15px",
-            }}
-          > */}
         </form>
+        <MySnackBar
+          open={showSnack}
+          message={snackMessage}
+          handleClose={handleCloseSnack}
+          severity={snackSeverity}
+        />
       </Box>
     </>
   );

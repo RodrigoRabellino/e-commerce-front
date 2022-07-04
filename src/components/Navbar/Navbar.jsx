@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Box,
   AppBar,
@@ -12,6 +12,8 @@ import {
   useScrollTrigger,
   Container,
   Badge,
+  Avatar,
+  IconButton,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
@@ -30,6 +32,8 @@ function ElevationScroll(props) {
 }
 
 function Navbar() {
+  const user = useSelector((store) => store.user);
+  const navigate = useNavigate();
   const [value, setValue] = useState();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const theme = useTheme();
@@ -39,6 +43,15 @@ function Navbar() {
   cart.forEach((item) => {
     cartQty += item.qty;
   });
+
+  const stringAvatar = (firstName, lastName) => {
+    return {
+      sx: {
+        bgcolor: "#eaeaea",
+      },
+      children: `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`,
+    };
+  };
 
   const navStyles = {
     fontSize: "0.9rem",
@@ -72,7 +85,19 @@ function Navbar() {
               }}
             >
               <Link to="/" className="navLink">
-                <Typography>LOGUITO</Typography>
+                <Typography>
+                  {" "}
+                  <img
+                    style={{
+                      width: "25px",
+                      // position: "relative",
+                      // transform: "rotate(25deg)",
+                    }}
+                    srcSet={require("../../assets/images/guitarreroWithe.png")}
+                    alt={"cardLog0"}
+                  />
+                  Guitarrero Store
+                </Typography>
               </Link>
               {isMatch ? (
                 <>
@@ -101,14 +126,36 @@ function Navbar() {
                       </Link>
                     </Typography>
                   </Box>
-                  <Box display="flex" justifyContent="space-between">
-                    <Box>
-                      <Typography variant="button" sx={{ ...navStyles }}>
-                        <Link to="/signin" className="hover navLink">
-                          Login
-                        </Link>
-                      </Typography>
-                    </Box>
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    {Object.entries(user).length === 0 ? (
+                      <>
+                        <Box>
+                          <Typography variant="button" sx={{ ...navStyles }}>
+                            <Link to="/signin" className="hover navLink">
+                              Login
+                            </Link>
+                          </Typography>
+                        </Box>
+                      </>
+                    ) : (
+                      <>
+                        <IconButton
+                          size="small"
+                          onClick={() =>
+                            navigate("/userpage", { replace: false })
+                          }
+                        >
+                          <Avatar
+                            {...stringAvatar(user.firstName, user.lastName)}
+                          />
+                        </IconButton>
+                      </>
+                    )}
+
                     <Box
                       display="flex"
                       onClick={() => setIsCartOpen(true)}

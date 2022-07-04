@@ -12,15 +12,21 @@ import {
   Grid,
   Container,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@emotion/react";
 import { validationSchema } from "./validationSchema";
 import { useFormik } from "formik";
+import { loginUserReducer } from "../../Redux/user/slice";
 import { loginUser } from "../../services/loginServices";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export default function SignIn() {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const categoryBtnStyles = {
     bgcolor: "primary.main",
     border: `1px solid ${theme.palette.primary.light}`,
@@ -32,14 +38,17 @@ export default function SignIn() {
   };
 
   const handleLogin = async ({ email, password }) => {
+    setError(false);
     const response = await loginUser(email, password);
-    console.log(response);
+    if (Object.entries(response).length === 0) return setError(true);
+    dispatch(loginUserReducer(response));
+    navigate("/", { replace: true });
   };
 
   const formik = useFormik({
     initialValues: {
-      email: "foobar@example.com",
-      password: "foobar",
+      email: "user@user.com",
+      password: "12345678",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => handleLogin(values),
@@ -88,6 +97,7 @@ export default function SignIn() {
             component={Paper}
             elevation={6}
             square
+            sx={{ backgroundColor: "white" }}
           >
             <Box
               sx={{
@@ -136,11 +146,21 @@ export default function SignIn() {
                   }
                   helperText={formik.touched.password && formik.errors.password}
                 />
+                {error ? (
+                  <>
+                    <Typography textAlign="center" sx={{ color: "red" }}>
+                      Invalid Email or Password
+                    </Typography>
+                  </>
+                ) : (
+                  <></>
+                )}
                 <FormControlLabel
                   sx={{ color: "black" }}
                   control={<Checkbox value="remember" color="secondary" />}
                   label="Remember me"
                 />
+
                 <Box className="butonsingin">
                   <Button
                     fullWidth
