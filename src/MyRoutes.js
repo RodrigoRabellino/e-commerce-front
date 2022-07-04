@@ -15,8 +15,9 @@ import ReviewForm from "./components/reviewForm/ReviewForm";
 import PaymentForm from "./components/paymentForm/PaymentForm.jsx";
 import ContactUs from "./components/ContactUs/ContactUs";
 import PaymentConfirmation from "./components/PaymentConfirmation/paymentConfirmation";
-import Profile from "./components/Profile/Profile"
+import Profile from "./components/Profile/Profile";
 import UserPage from "./components/userPage/UserPage";
+import Welcome from "./components/login/Welcome";
 
 const MyRoutes = ({ type }) => {
   if (type === "admin") {
@@ -44,8 +45,9 @@ const MyRoutes = ({ type }) => {
       <Route path="/paymentForm" element={<PaymentForm />} />
       <Route path="/paymentConfirmation" element={<PaymentConfirmation />} />
       <Route path="/contactUs" element={<ContactUs />} />
-      <Route path="/profile" element={<Profile/>}/>
+      <Route path="/profile" element={<Profile />} />
       <Route path="/userPage" element={<UserPage />} />
+      <Route path="/welcome" element={<Welcome />} />
     </Routes>
   );
 };

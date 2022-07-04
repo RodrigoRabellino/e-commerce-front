@@ -42,7 +42,7 @@ export default function Login() {
     const response = await loginUser(email, password);
     if (Object.entries(response).length === 0) return setError(true);
     dispatch(loginUserReducer(response));
-    navigate("/", { replace: true });
+    navigate("/welcome", { replace: true });
   };
 
   const formik = useFormik({
