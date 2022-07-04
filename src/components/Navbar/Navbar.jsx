@@ -85,7 +85,19 @@ function Navbar() {
               }}
             >
               <Link to="/" className="navLink">
-                <Typography>LOGUITO</Typography>
+                <Typography>
+                  {" "}
+                  <img
+                    style={{
+                      width: "25px",
+                      // position: "relative",
+                      // transform: "rotate(25deg)",
+                    }}
+                    srcSet={require("../../assets/images/guitarreroWithe.png")}
+                    alt={"cardLog0"}
+                  />
+                  Guitarrero Store
+                </Typography>
               </Link>
               {isMatch ? (
                 <>
