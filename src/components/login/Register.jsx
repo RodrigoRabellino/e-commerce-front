@@ -141,7 +141,7 @@ export default function Register() {
                     fullWidth
                     name="email"
                     id="email"
-                    label="Enter your Email"
+                    label="Email"
                     variant="standard"
                     value={formik.values.email}
                     onChange={formik.handleChange}
@@ -154,7 +154,7 @@ export default function Register() {
                     name="phone"
                     id="phone"
                     type="number"
-                    label="Enter your phone"
+                    label="Phone"
                     variant="standard"
                     value={formik.values.phone}
                     onChange={formik.handleChange}
@@ -167,7 +167,7 @@ export default function Register() {
                     type="password"
                     name="password"
                     id="password"
-                    label="Enter your Password"
+                    label="Password"
                     variant="standard"
                     value={formik.values.password}
                     onChange={formik.handleChange}

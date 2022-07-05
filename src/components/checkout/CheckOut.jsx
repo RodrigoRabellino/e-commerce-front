@@ -9,8 +9,6 @@ import ReviewForm from "../reviewForm/ReviewForm";
 import AddressForm from "../addressForm/AddressForm";
 import PaymentConfirmation from "../PaymentConfirmation/paymentConfirmation";
 
-// import total from "../Accounting/Total";
-
 export default function CheckOut() {
   const [activeStep, setActiveStep] = useState(0);
 

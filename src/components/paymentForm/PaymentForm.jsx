@@ -9,6 +9,9 @@ import {
   TextField,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useForm, Controller } from "react-hook-form";
 import MySnackBar from "../snackBar/MySnackBar";
 
@@ -17,22 +20,25 @@ function PaymentForm({ handleNext, handleBack }) {
   const [showSnack, setShowSnack] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("info");
+  const [dateExpired, setDateExpired] = useState(null);
 
   const handleCloseSnack = () => setShowSnack(false);
 
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
       name: "",
-      cardNumber: "",
+      cardNumber: "66777677676678",
       expiredDate: "",
-      CVV: "",
+      CVV: "323",
     },
   });
 
   const onSubmit = (d) => {
     setIsLoading(true);
-    setShowSnack(true);
-    setSnackMessage("Payment accepted");
+    setTimeout(() => {
+      setSnackMessage("Payment accepted");
+      setShowSnack(true);
+    }, 1000);
     setTimeout(() => {
       setIsLoading(false);
       handleNext();
@@ -42,8 +48,6 @@ function PaymentForm({ handleNext, handleBack }) {
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
-
-  const enviarDatos = (event) => {};
 
   return (
     <>
@@ -125,22 +129,44 @@ function PaymentForm({ handleNext, handleBack }) {
               />
             )}
           />
-          <Box display="flex" marginTop="1rem" justifyContent="space-between">
+          <Box
+            display="flex"
+            marginTop="1rem"
+            justifyContent="space-between"
+            alignItems="center"
+          >
             <Controller
               control={control}
               name={"expiredDate"}
               render={({ field: { onChange, value } }) => (
-                <TextField
-                  disabled={isLoading}
-                  variant="standard"
-                  sx={{ width: "48%" }}
-                  label="ExpiredDate*"
-                  size="small"
-                  value={value}
-                  onChange={onChange}
-                  type="text"
-                  aria-describedby="expiredDate-helper"
-                />
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DatePicker
+                    minDate={new Date()}
+                    maxDate={new Date("2034-01-01T00:00:00.000")}
+                    label="Expire Date"
+                    views={["month", "year"]}
+                    value={dateExpired}
+                    onChange={(newValue) => setDateExpired(newValue)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        variant="standard"
+                        sx={{ width: "48%" }}
+                      />
+                    )}
+                  />
+                </LocalizationProvider>
+                // <TextField
+                //   disabled={isLoading}
+                //   variant="standard"
+                //   sx={{ width: "48%" }}
+                //   label="ExpiredDate*"
+                //   size="small"
+                //   value={value}
+                //   onChange={onChange}
+                //   type="text"
+                //   aria-describedby="expiredDate-helper"
+                // />
               )}
             />
             <Controller

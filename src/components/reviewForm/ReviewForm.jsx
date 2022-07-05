@@ -15,27 +15,25 @@ function ReviewForm({ handleNext, handleBack }) {
   const cart = useSelector((state) => state.cart);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(1000);
   const [showSnack, setShowSnack] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("info");
 
   const handleOpenSnack = () => setShowSnack(true);
   const handleCloseSnack = () => setShowSnack(false);
-  console.log(order);
+
+  let total = 0;
 
   const handleNewOrder = async () => {
     setIsLoading(true);
-    const response = await postNewOrder(_id, accessToken, order, totalPrice);
-    if (Object.entries(response).length === 0) {
+    const response = await postNewOrder(_id, accessToken, order, total);
+    if (response.status !== 201) {
       setSnackMessage("unknown error occurred");
       setSnackSeverity("error");
       setShowSnack(true);
 
       setTimeout(() => {
         setIsLoading(false);
-
-        return navigate("/userpage", { replace: true });
       }, 2000);
     }
     setSnackMessage("Order confirmed");
@@ -45,22 +43,14 @@ function ReviewForm({ handleNext, handleBack }) {
     setTimeout(() => {
       setIsLoading(false);
       dispatch(emptyCart(""));
-      return navigate("/userpage", { replace: true });
+      handleNext();
+      // return navigate("/userpage", { replace: true });
     }, 2000);
   };
-
-  let total = 0;
 
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
-
-  try {
-    for (let i = 0; i < order.cart.length; i++) {
-      let price = order.cart[i].price * order.cart[i].qty;
-    }
-  } catch (e) {}
-
   return (
     <>
       <Container
