@@ -495,7 +495,7 @@ const AboutUs = () => {
         mt="30px"
         mb="20px"
       >
-        <Box>
+        <Box sx={{ textAlign: "left" }}>
           <Typography variant="h5">Credentials</Typography>
 
           <Typography
@@ -527,9 +527,7 @@ const AboutUs = () => {
           </Typography>
 
           <Button
-            sx={{
-              color: "#7B8723",
-            }}
+            sx={{ color: "#7B8723" }}
             onClick={() => {
               window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
             }}
