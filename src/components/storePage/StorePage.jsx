@@ -11,36 +11,50 @@ import {
   Popover,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../../services/apiServices";
+import {
+  fetchProducts,
+  fetchProductsByCategory,
+} from "../../services/apiServices";
 import { ViewList, ViewModule } from "@mui/icons-material";
 import ProductCard from "./productCard/ProductCard";
 import { Container } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
-import { showProducts } from "../../Redux/products/slice";
+import { useParams } from "react-router-dom";
 
 const StorePage = () => {
   const [page, setPage] = useState(1);
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [prodCount, setProdCount] = useState(0);
   const [categorySelected, setCategorySelected] = useState("All Products");
   const [viewDisplay, setViewDisplay] = useState("module");
 
-  const dispatch = useDispatch();
   const theme = useTheme();
 
   const handleToggleView = (newValue) => {
     console.log(newValue);
   };
 
-  useEffect(() => {
-    const getProducts = async () => {
-      const resp = await fetchProducts(page);
-      dispatch(showProducts([...resp]));
-    };
-    getProducts();
-  }, [page]);
+  const params = useParams();
 
-  const products = useSelector((state) => state.products);
-  console.log(products.length);
+  useEffect(() => {
+    const getAllProducts = async () => {
+      const data = await fetchProducts(page);
+      setProducts(data.products);
+      setProdCount(data.count);
+    };
+
+    const getProductsByCategory = async () => {
+      const data = await fetchProductsByCategory(params.categoryName, page);
+      console.log("data", data);
+      setProducts(data.products);
+      setProdCount(data.count);
+    };
+    if (params.categoryName === "allproducts") {
+      getAllProducts();
+    } else {
+      getProductsByCategory();
+    }
+  }, [params.categoryName, page]);
 
   const categoryBtnStyles = {
     marginY: "8px",
@@ -62,61 +76,6 @@ const StorePage = () => {
         container
         sx={{ position: "relative", top: "64px", marginBottom: "10vh" }}
       >
-        {/* <Grid item xs={12}>
-          <Box my={2}>
-            <Typography variant="h4" color={theme.palette.primary.main}>
-              Categories
-            </Typography>
-          </Box>
-          <Box
-            mb={2}
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-            }}
-          >
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("All Products")}
-              variant="contained"
-            >
-              All Products
-            </Button>
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("Guitars")}
-              variant="contained"
-              elevation={0}
-            >
-              Guitars
-            </Button>
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("Basses")}
-              variant="contained"
-              elevation={0}
-            >
-              Bass
-            </Button>
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("Amps")}
-              variant="contained"
-              elevation={0}
-            >
-              Amps
-            </Button>
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("Accessories")}
-              variant="contained"
-              elevation={0}
-            >
-              Accessories
-            </Button>
-          </Box>
-        </Grid> */}
         <Grid item xs={12}>
           <Box
             display="flex"
@@ -161,11 +120,10 @@ const StorePage = () => {
                 );
               })}
             </Grid>
-
             <Box display="flex" justifyContent="center">
               <Pagination
                 page={page}
-                count={4}
+                count={Math.ceil(prodCount / 10)}
                 shape="rounded"
                 onChange={(e) => setPage(parseInt(e.target.textContent))}
               />

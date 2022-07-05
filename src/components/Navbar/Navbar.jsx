@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Box,
@@ -24,7 +24,6 @@ import {
   fetchProducts,
   fetchProductsByCategory,
 } from "../../services/apiServices";
-import { showProducts } from "../../Redux/products/slice";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -69,14 +68,7 @@ function Navbar() {
   }, []);
 
   const handleAllProducts = async () => {
-    navigate("/store");
-  };
-
-  const handleCategorySelect = async (category) => {
-    setCategorySelect(category);
-    const response = await fetchProductsByCategory(category._id);
-    dispatch(showProducts(response));
-    navigate("/store");
+    const response = await fetchProducts(page);
   };
 
   const stringAvatar = (firstName, lastName) => {
@@ -125,7 +117,6 @@ function Navbar() {
             >
               <Link to="/" className="navLink">
                 <Typography>
-                  {" "}
                   <img
                     style={{
                       width: "25px",
@@ -138,6 +129,7 @@ function Navbar() {
                   Guitarrero Store
                 </Typography>
               </Link>
+
               {isMatch ? (
                 <>
                   <DrawerNav />
@@ -171,47 +163,52 @@ function Navbar() {
                     >
                       <Box px={2} pt={1} sx={{ backgroundColor: "white" }}>
                         <Box pb={1} key={1}>
-                          {" "}
-                          <Typography
-                            variant="p"
-                            fontSize="14px"
-                            fontWeight="500"
-                            onClick={() => {
-                              handleAllProducts();
-                            }}
-                            sx={{
-                              borderBottom: "thick double white",
-                              transition: "0.2s",
-                              "&:hover": {
-                                cursor: "pointer",
-                                borderBottom: `thick double ${theme.palette.primary.main}`,
-                              },
-                            }}
-                          >
-                            ALL PRODUCTS
-                          </Typography>
+                          <Link to={`/store/allproducts`} className="navLink">
+                            <Typography
+                              color="primary"
+                              variant="p"
+                              fontSize="14px"
+                              fontWeight="500"
+                              onClick={() => {
+                                handleAllProducts();
+                              }}
+                              sx={{
+                                borderBottom: "thick double white",
+                                transition: "0.2s",
+                                "&:hover": {
+                                  cursor: "pointer",
+                                  borderBottom: `thick double ${theme.palette.primary.main}`,
+                                },
+                              }}
+                            >
+                              ALL PRODUCTS
+                            </Typography>
+                          </Link>
                         </Box>
                         {categories.map((category) => {
                           return (
                             <Box pb={1} key={category._id}>
-                              <Typography
-                                variant="p"
-                                fontSize="14px"
-                                fontWeight="500"
-                                onClick={() => {
-                                  handleCategorySelect(category);
-                                }}
-                                sx={{
-                                  borderBottom: "thick double white",
-                                  transition: "0.2s",
-                                  "&:hover": {
-                                    cursor: "pointer",
-                                    borderBottom: `thick double ${theme.palette.primary.main}`,
-                                  },
-                                }}
+                              <Link
+                                to={`/store/${category.name}`}
+                                className="navLink"
                               >
-                                {category.name.toUpperCase()}
-                              </Typography>
+                                <Typography
+                                  color="primary"
+                                  variant="p"
+                                  fontSize="14px"
+                                  fontWeight="500"
+                                  sx={{
+                                    borderBottom: "thick double white",
+                                    transition: "0.2s",
+                                    "&:hover": {
+                                      cursor: "pointer",
+                                      borderBottom: `thick double ${theme.palette.primary.main}`,
+                                    },
+                                  }}
+                                >
+                                  {category.name.toUpperCase()}
+                                </Typography>
+                              </Link>
                             </Box>
                           );
                         })}
