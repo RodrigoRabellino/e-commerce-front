@@ -6,13 +6,13 @@ import MySnackBar from "../snackBar/MySnackBar";
 import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
 import { emptyCart } from "../../Redux/cart/slice";
+import { createOrderReducer } from "../../Redux/order/slice";
 
-function ReviewForm({ handleNext, handleBack }) {
+function ReviewForm({ handleNext, handleBack, setOrder }) {
   const order = useSelector((state) => state.order);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { _id, accessToken } = useSelector((state) => state.user);
-  const cart = useSelector((state) => state.cart);
 
   const [isLoading, setIsLoading] = useState(false);
   const [showSnack, setShowSnack] = useState(false);
@@ -27,7 +27,8 @@ function ReviewForm({ handleNext, handleBack }) {
   const handleNewOrder = async () => {
     setIsLoading(true);
     const response = await postNewOrder(_id, accessToken, order, total);
-    if (response.status !== 201) {
+    console.log(response);
+    if (response.status !== "confirmed") {
       setSnackMessage("unknown error occurred");
       setSnackSeverity("error");
       setShowSnack(true);
@@ -35,6 +36,7 @@ function ReviewForm({ handleNext, handleBack }) {
       setTimeout(() => {
         setIsLoading(false);
       }, 2000);
+      return;
     }
     setSnackMessage("Order confirmed");
     setSnackSeverity("success");
@@ -43,6 +45,7 @@ function ReviewForm({ handleNext, handleBack }) {
     setTimeout(() => {
       setIsLoading(false);
       dispatch(emptyCart(""));
+      setOrder(response);
       handleNext();
       // return navigate("/userpage", { replace: true });
     }, 2000);

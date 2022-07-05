@@ -1,20 +1,21 @@
 import React from "react";
 import { Box, Paper, Typography, Button } from "@mui/material";
 
-function PaymentConfirmation({ handleBack }) {
+function PaymentConfirmation({ order }) {
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
-
+  const orderName = order._id;
   return (
     <>
       <Box>
-        <Typography fontWeight="600" variant="h6">
+        <Typography fontWeight="600" variant="h5">
           Thank you for your order.
         </Typography>
-        <Typography variant="h6">
-          Your order number is #9809870.We have emailed you an order
-          confirmation.We will notify you when your order has been delivered.
+        <Typography variant="h6" marginBottom="2rem">
+          {`Your order number is  #${orderName.substring(0, 10)}. 
+          We have emailed you an order
+          confirmation.We will notify you when your order has been delivered.`}
         </Typography>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "center" }}>

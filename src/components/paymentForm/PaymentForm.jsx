@@ -29,7 +29,7 @@ function PaymentForm({ handleNext, handleBack }) {
       name: "",
       cardNumber: "66777677676678",
       expiredDate: "",
-      CVV: "323",
+      cvv: "323",
     },
   });
 
@@ -92,7 +92,11 @@ function PaymentForm({ handleNext, handleBack }) {
             alt={"cardLog0"}
           />
         </Box>
-
+        <Box>
+          <Typography>
+            This is a example form, please not enter your credit card number.
+          </Typography>
+        </Box>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
             control={control}
@@ -144,7 +148,7 @@ function PaymentForm({ handleNext, handleBack }) {
                     minDate={new Date()}
                     maxDate={new Date("2034-01-01T00:00:00.000")}
                     label="Expire Date"
-                    views={["month", "year"]}
+                    views={["year", "month"]}
                     value={dateExpired}
                     onChange={(newValue) => setDateExpired(newValue)}
                     renderInput={(params) => (
@@ -156,17 +160,6 @@ function PaymentForm({ handleNext, handleBack }) {
                     )}
                   />
                 </LocalizationProvider>
-                // <TextField
-                //   disabled={isLoading}
-                //   variant="standard"
-                //   sx={{ width: "48%" }}
-                //   label="ExpiredDate*"
-                //   size="small"
-                //   value={value}
-                //   onChange={onChange}
-                //   type="text"
-                //   aria-describedby="expiredDate-helper"
-                // />
               )}
             />
             <Controller
