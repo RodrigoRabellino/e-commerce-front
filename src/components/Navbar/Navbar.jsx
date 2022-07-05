@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -6,7 +6,6 @@ import {
   AppBar,
   Typography,
   Toolbar,
-  Grid,
   useMediaQuery,
   useTheme,
   useScrollTrigger,
@@ -14,11 +13,18 @@ import {
   Badge,
   Avatar,
   IconButton,
+  Popover,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
 import CartDrawer from "./CartDrawer";
 import "./NavBar.css";
+import {
+  fetchCategories,
+  fetchProducts,
+  fetchProductsByCategory,
+} from "../../services/apiServices";
+import { showProducts } from "../../Redux/products/slice";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -33,16 +39,44 @@ function ElevationScroll(props) {
 
 function Navbar() {
   const user = useSelector((store) => store.user);
-  const navigate = useNavigate();
-  const [value, setValue] = useState();
+  const cart = useSelector((state) => state.cart);
+  const products = useSelector((state) => state.products);
+  const [categories, setCategories] = useState([]);
+  const [categorySelect, setCategorySelect] = useState([]);
+  const [anchor, setAnchor] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const openPopover = (e) => {
+    setAnchor(e.currentTarget);
+  };
+
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  const cart = useSelector((state) => state.cart);
   let cartQty = 0;
   cart.forEach((item) => {
     cartQty += item.qty;
   });
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const response = await fetchCategories();
+      setCategories(response.data);
+    };
+    getCategories();
+  }, []);
+
+  const handleAllProducts = async () => {
+    const response = await fetchProducts();
+    dispatch(showProducts(response));
+  };
+
+  const handleCategorySelect = async (category) => {
+    setCategorySelect(category);
+    const response = await fetchProductsByCategory(category._id);
+    dispatch(showProducts(response.data));
+    navigate("/store");
+  };
 
   const stringAvatar = (firstName, lastName) => {
     return {
@@ -110,11 +144,74 @@ function Navbar() {
                     justifyContent="space-between"
                     width="35%"
                   >
-                    <Typography variant="button" sx={{ ...navStyles }}>
-                      <Link to="/store" className="navLink">
-                        All Products
-                      </Link>
+                    <Typography
+                      onClick={openPopover}
+                      variant="button"
+                      sx={{ ...navStyles, "&:hover": { cursor: "pointer" } }}
+                    >
+                      Categories
                     </Typography>
+                    <Popover
+                      open={Boolean(anchor)}
+                      onClose={() => setAnchor(null)}
+                      anchorEl={anchor}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "center",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "center",
+                      }}
+                    >
+                      <Box px={2} pt={1} sx={{ backgroundColor: "white" }}>
+                        <Box pb={1} key={1}>
+                          {" "}
+                          <Typography
+                            variant="p"
+                            fontSize="14px"
+                            fontWeight="500"
+                            onClick={() => {
+                              handleAllProducts();
+                            }}
+                            sx={{
+                              borderBottom: "thick double white",
+                              transition: "0.2s",
+                              "&:hover": {
+                                cursor: "pointer",
+                                borderBottom: `thick double ${theme.palette.primary.main}`,
+                              },
+                            }}
+                          >
+                            All Products
+                          </Typography>
+                        </Box>
+                        {categories.map((category) => {
+                          return (
+                            <Box pb={1} key={category._id}>
+                              <Typography
+                                variant="p"
+                                fontSize="14px"
+                                fontWeight="500"
+                                onClick={() => {
+                                  handleCategorySelect(category);
+                                }}
+                                sx={{
+                                  borderBottom: "thick double white",
+                                  transition: "0.2s",
+                                  "&:hover": {
+                                    cursor: "pointer",
+                                    borderBottom: `thick double ${theme.palette.primary.main}`,
+                                  },
+                                }}
+                              >
+                                {category.name.toUpperCase()}
+                              </Typography>
+                            </Box>
+                          );
+                        })}
+                      </Box>
+                    </Popover>
                     <Typography variant="button" sx={{ ...navStyles }}>
                       <Link to="/contactUs" className="navLink">
                         Contact Us
