@@ -45,6 +45,7 @@ function Navbar() {
   const [categorySelect, setCategorySelect] = useState([]);
   const [anchor, setAnchor] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [navbar, setNavbar] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const openPopover = (e) => {
@@ -97,15 +98,19 @@ function Navbar() {
     },
   };
 
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+  window.addEventListener("scroll", changeBackground);
+
   return (
     <>
       <ElevationScroll>
-        <AppBar
-          position="fixed"
-          sx={{
-            borderBottom: `1px solid ${theme.palette.primary.light}`,
-          }}
-        >
+        <AppBar className={navbar ? 'color:#ab832a' : 'appbartransparent'}>
           <Container>
             <Toolbar
               disableGutters
