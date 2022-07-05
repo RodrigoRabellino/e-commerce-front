@@ -15,7 +15,8 @@ import { fetchProducts } from "../../services/apiServices";
 import { ViewList, ViewModule } from "@mui/icons-material";
 import ProductCard from "./productCard/ProductCard";
 import { Container } from "@mui/system";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { showProducts } from "../../Redux/products/slice";
 
 const StorePage = () => {
   const [page, setPage] = useState(1);
@@ -23,6 +24,7 @@ const StorePage = () => {
   const [categorySelected, setCategorySelected] = useState("All Products");
   const [viewDisplay, setViewDisplay] = useState("module");
 
+  const dispatch = useDispatch();
   const theme = useTheme();
 
   const handleToggleView = (newValue) => {
@@ -32,12 +34,13 @@ const StorePage = () => {
   useEffect(() => {
     const getProducts = async () => {
       const resp = await fetchProducts(page);
-      // setProducts([...resp]);
+      dispatch(showProducts([...resp]));
     };
     getProducts();
   }, [page]);
 
   const products = useSelector((state) => state.products);
+  console.log(products.length);
 
   const categoryBtnStyles = {
     marginY: "8px",

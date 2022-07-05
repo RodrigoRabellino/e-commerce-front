@@ -46,6 +46,7 @@ function Navbar() {
   const [anchor, setAnchor] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [navbar, setNavbar] = useState(false);
+  const [page, setPage] = useState(1);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const openPopover = (e) => {
@@ -62,20 +63,19 @@ function Navbar() {
   useEffect(() => {
     const getCategories = async () => {
       const response = await fetchCategories();
-      setCategories(response.data);
+      setCategories(response);
     };
     getCategories();
   }, []);
 
   const handleAllProducts = async () => {
-    const response = await fetchProducts();
-    dispatch(showProducts(response));
+    navigate("/store");
   };
 
   const handleCategorySelect = async (category) => {
     setCategorySelect(category);
     const response = await fetchProductsByCategory(category._id);
-    dispatch(showProducts(response.data));
+    dispatch(showProducts(response));
     navigate("/store");
   };
 
@@ -110,7 +110,7 @@ function Navbar() {
   return (
     <>
       <ElevationScroll>
-        <AppBar className={navbar ? 'color:#ab832a' : 'appbartransparent'}>
+        <AppBar className={navbar ? "color:#ab832a" : "appbartransparent"}>
           <Container>
             <Toolbar
               disableGutters
@@ -188,7 +188,7 @@ function Navbar() {
                               },
                             }}
                           >
-                            All Products
+                            ALL PRODUCTS
                           </Typography>
                         </Box>
                         {categories.map((category) => {
