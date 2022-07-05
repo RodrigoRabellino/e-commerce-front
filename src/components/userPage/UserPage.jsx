@@ -1,9 +1,16 @@
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import { Container } from "react-bootstrap";
+import {
+  Box,
+  Button,
+  Divider,
+  Stack,
+  Typography,
+  Container,
+  IconButton,
+} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchUser } from "../../services/apiServices";
-import { Logout } from "@mui/icons-material";
+import { Edit, Logout } from "@mui/icons-material";
 import { logOutUserReducer } from "../../Redux/user/slice";
 import { useNavigate } from "react-router-dom";
 
@@ -57,62 +64,68 @@ const UserPage = () => {
     },
   ];
   return (
-    <Box
-      width="100vw"
-      height="100vh"
-      marginTop="64px"
-      sx={{ paddingY: "2rem" }}
-    >
-      <Container sx={{ display: "flex" }}>
-        <Box>
-          <Typography variant="h4" display="flex">
-            Welcome {user.firstName}{" "}
-          </Typography>
+    <Container sx={{ marginTop: "64px", py: "2rem" }}>
+      <Box display="flex">
+        <Box width="25%" position="sticky" top="85px">
+          <Stack spacing={2}>
+            {itemsList.map((item) => {
+              return (
+                <Button
+                  onClick={() => setActiveTab(item.value)}
+                  sx={{ borderRadius: "15px" }}
+                  disableElevation
+                  variant={activeTab === item.value ? "contained" : "outlined"}
+                  key={item.value}
+                >
+                  {item.label}
+                </Button>
+              );
+            })}
+            <Divider />
+            <Button
+              onClick={handleLogOut}
+              sx={{ borderRadius: "15px" }}
+              disableElevation
+            >
+              <Logout /> LogOut
+            </Button>
+          </Stack>
         </Box>
-        <Box display="flex" marginTop="2rem">
-          <Box width="25%" height="100%">
-            <Stack spacing={2}>
-              {itemsList.map((item) => {
-                return (
-                  <Button
-                    onClick={() => setActiveTab(item.value)}
-                    sx={{ borderRadius: "15px" }}
-                    disableElevation
-                    variant={
-                      activeTab === item.value ? "contained" : "outlined"
-                    }
-                    key={item.value}
-                  >
-                    {item.label}
-                  </Button>
-                );
-              })}
-              <Divider />
-              <Button
-                onClick={handleLogOut}
-                sx={{ borderRadius: "15px" }}
-                disableElevation
-              >
-                <Logout /> LogOut
-              </Button>
-            </Stack>
-          </Box>
-          <Box width="75%" height="100%" display="flex" flexDirection="column">
-            {getTab(activeTab)}
-          </Box>
+        <Box
+          width="100%"
+          height="100%"
+          display="flex"
+          flexDirection="column"
+          pl="2rem"
+        >
+          {getTab(activeTab)}
         </Box>
-      </Container>
-    </Box>
+      </Box>
+    </Container>
   );
 };
 
 export const ResumePage = ({ user }) => {
-  const { firstName, lastName, email } = user;
+  const { firstName, lastName, email, address, phone } = user;
   return (
     <Box>
-      <Typography>{firstName}</Typography>
-      <Typography>{lastName}</Typography>
-      <Typography>{email}</Typography>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Typography variant="h3">{`Welcome ${firstName} ${lastName}`}</Typography>
+        <IconButton>
+          <Edit />
+        </IconButton>
+      </Box>
+      <Box pt="2rem">
+        <Typography variant="h6" textAlign="start">
+          {email}
+        </Typography>
+        <Typography variant="h6" textAlign="start">
+          {address}
+        </Typography>
+        <Typography variant="h6" textAlign="start">
+          {phone}
+        </Typography>
+      </Box>
     </Box>
   );
 };
