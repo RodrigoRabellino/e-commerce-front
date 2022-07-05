@@ -45,7 +45,10 @@ const AboutUs = () => {
   const cardStyles = {
     backgroundColor: "white",
     transition: "0.2s",
-    width: "300px",
+    width: "100%",
+    marginBottom: "1rem",
+    maxWidth: "300px",
+    minWidth: "250px",
     height: "300px",
     boxShadow: "3px 3px 5px 0 rgb(0,0,0, 0.22)",
     ":hover": {
@@ -203,7 +206,7 @@ const AboutUs = () => {
       <Container>
         <Divider />
         <Grid container>
-          <Grid item sm={6} md={6}>
+          <Grid item xs={12} md={6}>
             <Typography
               textAlign="start"
               fontSize="18px"
@@ -216,7 +219,7 @@ const AboutUs = () => {
               respective previous fields.
             </Typography>
           </Grid>
-          <Grid item sm={6} md={6}>
+          <Grid item xs={12} md={6}>
             <Typography
               textAlign="start"
               lineHeight="1.5rem"
@@ -226,7 +229,7 @@ const AboutUs = () => {
             >
               Despite of these past studies not having anything related between
               them, we have currently created strong ties to pursue & achieve
-              our main goal, to get better in the IT Development world. This
+              our main goal: to get better in the IT Development world. This
               will help us renew our job careers sharing knowledge, ideas, etc.
             </Typography>
           </Grid>
@@ -249,7 +252,7 @@ const AboutUs = () => {
       <Container>
         <Divider />
         <Grid container>
-          <Grid item xs={6} md={6}>
+          <Grid item xs={12} md={6}>
             <Typography
               textAlign="start"
               fontSize="18px"
@@ -265,7 +268,7 @@ const AboutUs = () => {
               implemented in Trello.
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={6}>
             <Typography
               textAlign="start"
               lineHeight="1.5rem"
@@ -273,7 +276,7 @@ const AboutUs = () => {
               variant="h5"
               pt="10px"
             >
-              The project was divided in the following areas: 1-User Interface,
+              The app was divided in the following projects: 1-User Interface,
               2-Admin Site, 3-API Rest. Our main purpose was to create our own
               brand. We designed the color palette inspired by wood and natural
               elements. All details and functionalities implemented were the
@@ -285,21 +288,22 @@ const AboutUs = () => {
       </Container>
       <Container>
         <Grid container mt="50px" mb="20px">
-          <Grid items sx={6} md={6}>
+          <Grid items xs={12} md={6}>
             <img
-              height="600px"
+              alt="merEcommerceFront"
+              width="100%"
               srcSet={require("../../assets/images/MERe-commerce.png")}
             />
           </Grid>
 
-          <Grid items display="flex" flexDirection="column" xs={6} sm={6}>
+          <Grid items display="flex" flexDirection="column" xs={12} md={6}>
             <Typography fontSize="16px" lineHeight="1.5rem" textAlign="left">
               <Typography fontWeight="600" fontSize="18px">
                 1-User Interface:
-              </Typography>{" "}
+              </Typography>
               Clients can login, navigate the site, browse product categories
               and add or delete items from the shopping cart. They can also pay
-              the order and delivery it (simulation mode). Finally, once they've
+              the order and deliver it (simulation mode). Finally, once they've
               finished the shopping process, they can also review their order
               history.
             </Typography>
@@ -307,7 +311,7 @@ const AboutUs = () => {
             <Typography lineHeight="1.5rem" fontSize="16px" textAlign="left">
               <Typography fontWeight="600" fontSize="18px">
                 2- Admin Site:
-              </Typography>{" "}
+              </Typography>
               This is where administrators have the controls to manage the site.
               They can view, create, edit and delete products, categories and
               admins. In addition to this, they can also check order details and
@@ -326,17 +330,18 @@ const AboutUs = () => {
       </Container>
 
       <Container>
-        <Divider />
-        <Grid
-          Container
+        <Divider
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginBottom: "30px",
-            marginTop: "30px",
+            my: "30px",
           }}
+        />
+        <Grid
+          justifyContent="center"
+          container
+          rowSpacing={{ xs: 0, md: 2 }}
+          columnSpacing={2}
         >
-          <Grid item xs={12} sm={8} md={4}>
+          <Grid item xs={12} md={4} display="flex" justifyContent="center">
             <Card sx={cardStyles}>
               <CardContent>
                 <Typography
@@ -358,7 +363,7 @@ const AboutUs = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={8} md={4}>
+          <Grid item xs={12} md={4} display="flex" justifyContent="center">
             <Card sx={cardStyles}>
               <CardContent>
                 <Typography
@@ -380,7 +385,7 @@ const AboutUs = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={8} md={4}>
+          <Grid item xs={12} md={4} display="flex" justifyContent="center">
             <Card sx={cardStyles}>
               <CardContent>
                 <Typography
@@ -474,80 +479,80 @@ const AboutUs = () => {
                       </g>
                     </g>
                   </svg> */}
-                      Json Web Token
+                      JWToken
                     </ListItem>
                     <ListItem>Material UI</ListItem>
 
-                    <ListItem>Among others...</ListItem>
+                    <ListItem>others...</ListItem>
                   </Box>
                 </Box>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
+        <Grid
+          container
+          marginY="2rem"
+          justifyContent={{ md: "flex-end", xs: "center" }}
+        >
+          <Grid item xs={12} md={4} display="flex" justifyContent="center">
+            <Box textAlign="left">
+              <Typography variant="h5">Credentials</Typography>
+              <Typography
+                sx={{
+                  mb: "1rem",
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  textAlign: "left",
+                }}
+              >
+                For full access use the following credentials:
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  pb: "10px",
+                }}
+              >
+                Email: user@user.com / Password:1234
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                }}
+              >
+                Access to the CRUD - ADMIN site
+              </Typography>
+
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{
+                  color: "#7B8723",
+                  my: "1rem",
+                }}
+                onClick={() => {
+                  window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
+                }}
+              >
+                ADMIN
+              </Button>
+              <Typography
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: "bold",
+                  mb: "1rem",
+                }}
+              >
+                For a better experience, please reset the database:
+              </Typography>
+              <Button variant="outlined">Reset DataBase</Button>
+            </Box>
+          </Grid>
+        </Grid>
       </Container>
-
-      <Box
-        width="90%"
-        display="flex"
-        alignItems="flex-end"
-        flexDirection="column"
-        mt="30px"
-        mb="20px"
-      >
-        <Box>
-          <Typography variant="h5">Credentials</Typography>
-
-          <Typography
-            sx={{
-              mb: "1rem",
-              fontSize: "15px",
-              fontWeight: "bold",
-              textAlign: "left",
-            }}
-          >
-            For full access use the following credentials:
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "13px",
-              fontWeight: "600",
-              pb: "10px",
-            }}
-          >
-            Email: user@user.com / Password:1234
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "15px",
-              fontWeight: "bold",
-            }}
-          >
-            Access to the CRUD - ADMIN site
-          </Typography>
-
-          <Button
-            sx={{
-              color: "#7B8723",
-            }}
-            onClick={() => {
-              window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
-            }}
-          >
-            ADMIN
-          </Button>
-          <Typography
-            sx={{
-              fontSize: "13px",
-              fontWeight: "bold",
-              mb: "1rem",
-            }}
-          >
-            For a better experience, please reset the database:
-          </Typography>
-          <Button variant="outlined">Reset DataBase</Button>
-        </Box>
-      </Box>
     </>
   );
 };
