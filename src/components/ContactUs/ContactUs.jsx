@@ -195,15 +195,13 @@ function ContactUs() {
                 <LocalPhoneIcon sx={{ paddingTop: "0.3rem" }} />
               </Grid>
 
-<<<<<<< Updated upstream
-              <Grid item xs={7} sx={{ textAlign: "left" }}>
-                <Typography variant="subtitle1" fontWeight={700}>
-                  pepe.leia@hackacademy.com
-=======
               <Grid item xs={7}>
-                <Typography variant="subtitle1" fontWeight={700} textAlign="left">
+                <Typography
+                  variant="subtitle1"
+                  fontWeight={700}
+                  textAlign="left"
+                >
                   pepe.leia@ha.com
->>>>>>> Stashed changes
                 </Typography>
                 <Typography
                   variant="subtitle1"

@@ -1,10 +1,12 @@
 import React from "react";
 import { Box, Paper, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function PaymentConfirmation({ order }) {
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
+  const navigate = useNavigate();
   const orderName = order._id;
   return (
     <>
@@ -70,8 +72,9 @@ function PaymentConfirmation({ order }) {
             ...buttonStyles,
           }}
           variant="contained"
+          onClick={() => navigate("/", { replace: true })}
         >
-          Profile
+          Finish
         </Button>
       </Box>
     </>
