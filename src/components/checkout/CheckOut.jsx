@@ -9,16 +9,15 @@ import ReviewForm from "../reviewForm/ReviewForm";
 import AddressForm from "../addressForm/AddressForm";
 import PaymentConfirmation from "../PaymentConfirmation/paymentConfirmation";
 
-// import total from "../Accounting/Total";
-
 export default function CheckOut() {
   const [activeStep, setActiveStep] = useState(0);
+  const [orderCreated, setOrderCreated] = useState({});
 
   const steps = [
     "Shipping Address",
     "Payment Details",
     "Review your order",
-    "PaymentConfirmation",
+    "Order Confirmation",
   ];
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -34,9 +33,15 @@ export default function CheckOut() {
       case 1:
         return <PaymentForm handleNext={handleNext} handleBack={handleBack} />;
       case 2:
-        return <ReviewForm handleNext={handleNext} handleBack={handleBack} />;
+        return (
+          <ReviewForm
+            handleNext={handleNext}
+            handleBack={handleBack}
+            setOrder={setOrderCreated}
+          />
+        );
       case 3:
-        return <PaymentConfirmation handleBack={handleBack} />;
+        return <PaymentConfirmation order={orderCreated} />;
       default:
         return <h1>No more steps available</h1>;
     }

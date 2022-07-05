@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -17,22 +16,13 @@ function AddressForm({ handleNext }) {
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
-  // const [data, setData] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   address: "",
-  //   city: "",
-  //   state: "",
-  //   zip: "",
-  //   country: "",
-  // });
 
   const handleNextForm = (data) => {
     dispatch(updateOrderReducer({ ...data }));
     handleNext();
   };
 
-  const { register, handleSubmit, control } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",

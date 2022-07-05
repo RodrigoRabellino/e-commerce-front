@@ -21,8 +21,17 @@ export const fetchStarredProducts = async () => {
 
 export const fetchOneProduct = async (id) => {
   try {
-    const response = axios.get(`${API_URL}/product/${id}`);
+    const response = await axios.get(`${API_URL}/product/${id}`);
     return response;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchProductsByCategory = async (id) => {
+  try {
+    const response = await axios.get(`${API_URL}/product/category/${id}`);
+    return response.data;
   } catch (error) {
     return error;
   }
@@ -30,8 +39,8 @@ export const fetchOneProduct = async (id) => {
 
 export const fetchCategories = async () => {
   try {
-    const response = axios.get(`${API_URL}/category`);
-    return response;
+    const response = await axios.get(`${API_URL}/category`);
+    return response.data;
   } catch (error) {
     return error;
   }

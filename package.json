@@ -13,6 +13,7 @@
     "@mui/lab": "^5.0.0-alpha.87",
     "@mui/material": "^5.8.5",
     "@mui/styled-engine-sc": "^5.8.0",
+    "@mui/x-date-pickers": "^5.0.0-alpha.7",
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",

@@ -6,37 +6,37 @@ import MySnackBar from "../snackBar/MySnackBar";
 import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
 import { emptyCart } from "../../Redux/cart/slice";
+import { createOrderReducer } from "../../Redux/order/slice";
 
-function ReviewForm({ handleNext, handleBack }) {
+function ReviewForm({ handleNext, handleBack, setOrder }) {
   const order = useSelector((state) => state.order);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { _id, accessToken } = useSelector((state) => state.user);
-  const cart = useSelector((state) => state.cart);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(1000);
   const [showSnack, setShowSnack] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("info");
 
   const handleOpenSnack = () => setShowSnack(true);
   const handleCloseSnack = () => setShowSnack(false);
-  console.log(order);
+
+  let total = 0;
 
   const handleNewOrder = async () => {
     setIsLoading(true);
-    const response = await postNewOrder(_id, accessToken, order, totalPrice);
-    if (Object.entries(response).length === 0) {
+    const response = await postNewOrder(_id, accessToken, order, total);
+    console.log(response);
+    if (response.status !== "confirmed") {
       setSnackMessage("unknown error occurred");
       setSnackSeverity("error");
       setShowSnack(true);
 
       setTimeout(() => {
         setIsLoading(false);
-
-        return navigate("/userpage", { replace: true });
       }, 2000);
+      return;
     }
     setSnackMessage("Order confirmed");
     setSnackSeverity("success");
@@ -45,22 +45,15 @@ function ReviewForm({ handleNext, handleBack }) {
     setTimeout(() => {
       setIsLoading(false);
       dispatch(emptyCart(""));
-      return navigate("/userpage", { replace: true });
+      setOrder(response);
+      handleNext();
+      // return navigate("/userpage", { replace: true });
     }, 2000);
   };
-
-  let total = 0;
 
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
-
-  try {
-    for (let i = 0; i < order.cart.length; i++) {
-      let price = order.cart[i].price * order.cart[i].qty;
-    }
-  } catch (e) {}
-
   return (
     <>
       <Container

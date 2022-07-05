@@ -4,48 +4,43 @@ import {
   CssBaseline,
   Grid,
   Pagination,
-  Paper,
-  Stack,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
   useTheme,
+  Popover,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../services/apiServices";
 import { ViewList, ViewModule } from "@mui/icons-material";
-import InfiniteScroll from "react-infinite-scroll-component";
-import LoadingSkeleton from "./loadingSkeleton/LoadingSkeleton";
 import ProductCard from "./productCard/ProductCard";
 import { Container } from "@mui/system";
+import { useDispatch, useSelector } from "react-redux";
+import { showProducts } from "../../Redux/products/slice";
 
 const StorePage = () => {
   const [page, setPage] = useState(1);
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [categorySelected, setCategorySelected] = useState("All Products");
   const [viewDisplay, setViewDisplay] = useState("module");
 
+  const dispatch = useDispatch();
   const theme = useTheme();
 
   const handleToggleView = (newValue) => {
     console.log(newValue);
   };
 
-  // useEffect(() => {
-  //   const getProducts = async (numPage) => {
-  //     const resp = await fetchProducts(numPage);
-  //     setProducts((prev) => [...prev, ...resp]);
-  //   };
-  //   getProducts(page);
-  // }, [page]);
-
   useEffect(() => {
     const getProducts = async () => {
       const resp = await fetchProducts(page);
-      setProducts([...resp]);
+      dispatch(showProducts([...resp]));
     };
     getProducts();
   }, [page]);
+
+  const products = useSelector((state) => state.products);
+  console.log(products.length);
 
   const categoryBtnStyles = {
     marginY: "8px",
@@ -67,7 +62,7 @@ const StorePage = () => {
         container
         sx={{ position: "relative", top: "64px", marginBottom: "10vh" }}
       >
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Box my={2}>
             <Typography variant="h4" color={theme.palette.primary.main}>
               Categories
@@ -121,13 +116,13 @@ const StorePage = () => {
               Accessories
             </Button>
           </Box>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12}>
           <Box
             display="flex"
             alignItems="center"
             justifyContent="space-between"
-            marginBottom="1rem"
+            my="1rem"
             sx={{
               width: "100%",
               borderBottom: `solid 1px ${theme.palette.primary.main}`,
@@ -154,15 +149,6 @@ const StorePage = () => {
           </Box>
 
           <Box>
-            {/* <InfiniteScroll
-              dataLength={products.length}
-              next={() => handleNextPage()}
-              hasMore={true}
-              loader={<LoadingSkeleton />}
-              scrollThreshold={0.95}
-              endMessage={null}
-              style={{ paddingTop: "1rem" }}
-            > */}
             <Grid container width="100%" justifyContent="space-between">
               {products.map((product) => {
                 return (
@@ -175,11 +161,11 @@ const StorePage = () => {
                 );
               })}
             </Grid>
-            {/* </InfiniteScroll> */}
+
             <Box display="flex" justifyContent="center">
               <Pagination
                 page={page}
-                count={10}
+                count={4}
                 shape="rounded"
                 onChange={(e) => setPage(parseInt(e.target.textContent))}
               />

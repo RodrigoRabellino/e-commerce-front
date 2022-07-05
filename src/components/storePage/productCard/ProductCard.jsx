@@ -101,29 +101,24 @@ const ListView = ({ product, handleNavigate }) => {
           >
             {name}
           </Typography>
-          <Grid
-            item
-            display="flex"
-            sx={{ height: "100%" }}
-            alignItems="flex-end"
-          >
-            <Grid item xs={10}>
+          <Grid item display="flex" sx={{ height: "100%" }} alignItems="center">
+            <Grid item xs={10} sx={{ textAlign: "left" }}>
               <Typography
                 sx={{
                   textOverflow: "ellipsis",
                   overflow: "hidden",
                   height: "4rem",
                 }}
-                component="p"
-                variant="subtitle2"
-                align="left"
+                variant="p"
                 color="primary"
               >
-                {description.substring(0, 140)}...
+                {description.substring(0, 250)}...
               </Typography>
             </Grid>
             <Grid item xs={2}>
               <Typography
+                fontFamily="number"
+                fontSize="1.2rem"
                 fontWeight="500"
                 color="primary"
               >{`$ ${price}`}</Typography>

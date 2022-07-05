@@ -21,6 +21,7 @@ import { loginUserReducer } from "../../Redux/user/slice";
 import { loginUser } from "../../services/loginServices";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { loginValidationSchema } from "./loginValidationSchema";
 
 export default function Login() {
   const theme = useTheme();
@@ -50,7 +51,7 @@ export default function Login() {
       email: "user@user.com",
       password: "12345678",
     },
-    validationSchema: validationSchema,
+    validationSchema: loginValidationSchema,
     onSubmit: (values) => handleLogin(values),
   });
 
