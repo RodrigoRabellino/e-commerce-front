@@ -102,11 +102,11 @@ const HomePage = () => {
         <Container>
           <Grid
             container
-            p={2}
+            py={2}
             sx={{ paddingBottom: "5rem" }}
             justifyContent="center"
           >
-            <Grid item sm={8} md={6}>
+            <Grid item sm={12} md={12}>
               <Typography
                 variant="h3"
                 color={theme.palette.primary.dark}
