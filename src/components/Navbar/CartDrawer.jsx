@@ -14,10 +14,12 @@ import {
 } from "../../Redux/cart/slice";
 import { createOrderReducer } from "../../Redux/order/slice";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [canCheckout, setCanCheckout] = useState(true);
   const addOneToCart = (item) => {
     dispatch(addOneQty(item));
   };
@@ -44,6 +46,19 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
     setIsCartOpen(false);
     navigate("/checkout", { replace: false });
   };
+
+  useEffect(() => {
+    const canCheckout = () => {
+      cart.map((item) => {
+        if (item.qty <= item.stock) {
+          setCanCheckout(true);
+        } else {
+          setCanCheckout(false);
+        }
+      });
+    };
+    canCheckout();
+  }, cart);
 
   return (
     <>
@@ -258,14 +273,12 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                   <Button
                     sx={{
                       height: "2.5rem",
-                      // mb: "1rem",
                       width: "100%",
                       borderRadius: "15px",
                       border: `2px solid ${theme.palette.primary.light}`,
-                      // onClick={()}
                     }}
                     onClick={handleCheckOut}
-                    variant="contained"
+                    variant={canCheckout ? "contained" : "disabled"}
                   >
                     <Typography
                       variant="p"
@@ -278,6 +291,17 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                     </Typography>
                   </Button>
                 </Grid>
+                {!canCheckout ? (
+                  <Grid item xs={12} display="flex" justifyContent="end" mt={1}>
+                    <Box sx={{ width: "35%" }}>
+                      <Typography variant="body2" color="red">
+                        {" "}
+                        Sorry, but you can't purchase more items than there is
+                        stock of it!
+                      </Typography>
+                    </Box>
+                  </Grid>
+                ) : null}
               </Grid>
             </Grid>
           )}
