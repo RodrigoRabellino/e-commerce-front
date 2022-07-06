@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
-import "./MyCarousel.css"
+import "./MyCarousel.css";
 import {
   Paper,
   Button,
@@ -16,12 +16,8 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-
-import { Card } from "react-bootstrap";
-import { Box } from "@mui/system";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../Redux/cart/slice";
-import Slider from "react-slick";
 
 function MyCarousel({ starredProducts }) {
   return (
@@ -37,14 +33,13 @@ function MyCarousel({ starredProducts }) {
   );
 }
 
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 
 function Item(props) {
   const theme = useTheme();
@@ -53,33 +48,19 @@ function Item(props) {
     dispatch(addItemToCart(item));
   };
   return (
-          
     <div>
-    <h2> Single Item</h2>
-    <Slider {...settings}>
-      <div>
-        <img
-           src={props.item.imgUrl[0]}
-          alt={props.item.name}
-          className="imgcarouselitems"
-        />
-      </div>
-   
-    </Slider>
-  </div>
+      <h2> Single Item</h2>
+      <Slider {...settings}>
+        <div>
+          <img
+            src={props.item.imgUrl[0]}
+            alt={props.item.name}
+            className="imgcarouselitems"
+          />
+        </div>
+      </Slider>
+    </div>
 
-
-
-
-
-
-
-
-   
-   
-   
-   
-   
     /*  <Card>
       <CardHeader
         title={props.item.name}
