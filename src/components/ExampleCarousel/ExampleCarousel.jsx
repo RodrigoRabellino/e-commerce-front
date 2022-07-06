@@ -9,7 +9,8 @@ function ExampleCarousel({ selectedProduct }) {
       sx={{
         display: "flex",
         justifyContent: "center",
-        alignContent: "center",
+        alignitems: "center",
+        height: "35rem",
       }}
     >
       {Object.entries(selectedProduct) === 0 ? (
@@ -19,6 +20,9 @@ function ExampleCarousel({ selectedProduct }) {
           indicators={false}
           sx={{
             width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
           }}
         >
           {productImages.length === 0 ? (
