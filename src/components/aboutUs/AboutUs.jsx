@@ -29,10 +29,16 @@ import { fontWeight } from "@mui/system";
 import rodriPhoto1 from "../../assets/images/Rodri1.jpeg";
 import rodriPhoto2 from "../../assets/images/Rodri2.jpeg";
 import { Javascript } from "@mui/icons-material";
+import sebaPhoto1 from "../../assets/images/seba.jpeg";
+import sebaPhoto2 from "../../assets/images/Seba2.jpeg";
+import juanPhoto1 from "../../assets/images/JuanBlanco1.jpg";
+import juanPhoto2 from "../../assets/images/JuanBlanco2.jpg";
 
 const AboutUs = () => {
   const [hover, setHover] = useState(false);
   const [hover1, setHover1] = useState(false);
+  const [touch, setTouch] = useState(false);
+  const [touch1, setTouch1] = useState(false);
   const avatarBoxStyle = {
     width: { md: "150px", sm: "120px", xs: "90px" },
     height: { md: "150px", sm: "120px", xs: "90px" },
@@ -105,12 +111,19 @@ const AboutUs = () => {
           <Box
             sx={{
               ...avatarBoxStyle,
+              cursor: "pointer",
             }}
           >
             <Avatar
+              id="sebaPhoto1"
+              src={touch ? sebaPhoto2 : sebaPhoto1}
+              className="AvatarSeba"
               sx={avatarStyles}
-              alt="Remy Sharp"
-              srcSet={require("../../assets/images/seba.jpeg")}
+              alt="Seba Photo"
+              onMouseOver={() => setTouch(true)}
+              onMouseOut={() => setTouch(false)}
+
+              // srcSet={require("../../assets/images/soleCampos1.jpg")}
             />
             <Box pt="10px">
               <Typography color="white">Sebastián Sosa</Typography>
@@ -131,6 +144,7 @@ const AboutUs = () => {
           <Box
             sx={{
               ...avatarBoxStyle,
+              cursor: "pointer",
             }}
           >
             <Avatar
@@ -161,12 +175,17 @@ const AboutUs = () => {
           <Box
             sx={{
               ...avatarBoxStyle,
+              cursor: "pointer",
             }}
           >
             <Avatar
               sx={avatarStyles}
-              alt="Juan Arede Photo"
-              srcSet={require("../../assets/images/woman1.webp")}
+              alt="Juan photo"
+              id="JuanPhoto1"
+              src={touch1 ? juanPhoto2 : juanPhoto1}
+              className="AvatarRodri"
+              onMouseOver={() => setTouch1(true)}
+              onMouseOut={() => setTouch1(false)}
             />
             <Box pt="10px">
               <Typography color="white">Juan Arede</Typography>
@@ -287,7 +306,7 @@ const AboutUs = () => {
         <Grid container mt="50px" mb="20px">
           <Grid items sx={6} md={6}>
             <img
-              height="600px"
+              height="100%"
               srcSet={require("../../assets/images/MERe-commerce.png")}
             />
           </Grid>
