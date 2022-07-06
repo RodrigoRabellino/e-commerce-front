@@ -223,7 +223,11 @@ function ProductDetail() {
                     border: `2px solid ${theme.palette.primary.light}`,
                     flexGrow: "1",
                   }}
-                  onClick={() => setQty((prev) => (prev += 1))}
+                  onClick={() =>
+                    qty < selectedProduct.stock
+                      ? setQty((prev) => (prev += 1))
+                      : null
+                  }
                 >
                   <AddCircleOutlineIcon />
                 </Button>
