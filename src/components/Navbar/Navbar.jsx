@@ -44,7 +44,7 @@ function Navbar() {
   const [categorySelect, setCategorySelect] = useState([]);
   const [anchor, setAnchor] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [navbar, setNavbar] = useState(false);
+  const [navbarScroll, setNavbarScroll] = useState(false);
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -52,6 +52,8 @@ function Navbar() {
     setAnchor(e.currentTarget);
   };
 
+   
+ 
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   let cartQty = 0;
@@ -80,6 +82,19 @@ function Navbar() {
     };
   };
 
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      console.log("cambiando-color")
+      setNavbarScroll(true);
+    } else {
+      setNavbarScroll(false);
+    }
+  };
+  window.addEventListener("scroll", changeBackground);
+
+  
+ 
+
   const navStyles = {
     fontSize: "0.9rem",
     fontWeight: "500",
@@ -90,19 +105,11 @@ function Navbar() {
     },
   };
 
-  const changeBackground = () => {
-    if (window.scrollY >= 80) {
-      setNavbar(true);
-    } else {
-      setNavbar(false);
-    }
-  };
-  window.addEventListener("scroll", changeBackground);
 
   return (
     <>
       <ElevationScroll>
-        <AppBar className={navbar ? "color:#ab832a" : "appbartransparent"}>
+        <AppBar sx={navbarScroll ? {backgroundColor:"#ab832a",transition:"0.3s"} : {backgroundColor:"transparent", boxShadow:0,transition:"0.3s"}}>
           <Container>
             <Toolbar
               disableGutters
@@ -113,6 +120,7 @@ function Navbar() {
                 justifyContent: "space-between",
                 paddingX: 0,
                 marginX: 0,
+                
               }}
             >
               <Link to="/" className="navLink">

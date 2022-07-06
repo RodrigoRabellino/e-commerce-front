@@ -1,131 +1,86 @@
 import React from "react";
-import Carousel from "react-material-ui-carousel";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
+
+import { Slide } from "react-slideshow-image";
 import "./MyCarousel.css";
-import {
-  Paper,
-  Button,
-  Grid,
-  CardHeader,
-  Avatar,
-  IconButton,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import { useDispatch } from "react-redux";
-import { addItemToCart } from "../../Redux/cart/slice";
+import "react-slideshow-image/dist/styles.css";
 
-function MyCarousel({ starredProducts }) {
-  return (
-    <Carousel
-      sx={{
-        borderRadius: "15px",
-      }}
-    >
-      {starredProducts.map((item, i) => (
-        <Item key={i} item={item} />
-      ))}
-    </Carousel>
-  );
-}
+import { Box } from "@mui/system";
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
+const properties = {
+  duration: 1000,
+  autoplay: false,
+  indicators: false,
+  cssClass: "mySlider",
+  responsive: [
+    {
+      breakpoint: 1500,
+      settings: {
+        slidesToShow: 7,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 1300,
+      settings: {
+        slidesToShow: 6,
+        slidesToScroll: 3,
+      },
+    },
+
+    {
+      breakpoint: 1100,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 350,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
-function Item(props) {
-  const theme = useTheme();
-  const dispatch = useDispatch();
-  const addToCart = (item) => {
-    dispatch(addItemToCart(item));
-  };
-  return (
-    <div>
-      <h2> Single Item</h2>
-      <Slider {...settings}>
-        <div>
-          <img
-            src={props.item.imgUrl[0]}
-            alt={props.item.name}
-            className="imgcarouselitems"
-          />
-        </div>
-      </Slider>
-    </div>
+function MyCarousel({ starredProducts }) {
+  if (starredProducts.length === 0) return <></>;
 
-    /*  <Card>
-      <CardHeader
-        title={props.item.name}
-        sx={{
-          backgroundColor: theme.palette.primary.main,
-          color: "white",
-        }}
-      />
-      <Grid
-        item
-        width="100%"
-        height={250}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <CardMedia
-          sx={{ objectFit: "contain", height: "90%", margin: "auto" }}
-          component="img"
-          image={props.item.imgUrl[0]}
-          alt={props.item.name}
-        />
-      </Grid>
-      <CardContent
-        sx={{
-          backgroundColor: theme.palette.primary.main,
-          height: "90px",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-        }}
-      >
-        <Typography variant="p" color="white">
-          {props.item.description}
-        </Typography>
-      </CardContent>
-      <CardActions
-        sx={{
-          backgroundColor: theme.palette.primary.main,
-          borderEndEndRadius: "15px",
-          borderEndStartRadius: "15px",
-        }}
-      >
-        <Grid container>
-          <Box flex={1}>
-            {" "}
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon sx={{ color: theme.palette.primary.dark }} />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon sx={{ color: theme.palette.primary.dark }} />
-            </IconButton>
-          </Box>
-          <Box flex={1}>
-            <Button
-              variant="contained"
-              onClick={() => addToCart(props.item)}
-              sx={{ backgroundColor: theme.palette.primary.dark }}
+  return (
+    <Box
+      sx={{
+        backgroundColor: "white",
+        boxShadow: 1,
+        borderRadius: "10px",
+        padding: 2,
+      }}
+    >
+      <Slide {...properties} slidesToShow={3}>
+        {starredProducts.map((item, i) => {
+          return (
+            <Box
+              key={item._id}
+              sx={{
+                height: "300px",
+                width: "200px",
+                display: "flex",
+                justifyContent: "center",
+              }}
             >
-              Add to cart
-            </Button>
-          </Box>
-        </Grid>
-      </CardActions>
-    </Card> */
+              <img srcSet={item.imgUrl[0]} alt="" />
+            </Box>
+          );
+        })}
+      </Slide>
+    </Box>
   );
 }
 
