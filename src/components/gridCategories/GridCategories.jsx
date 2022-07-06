@@ -1,5 +1,6 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, CssBaseline, Grid, Typography } from "@mui/material";
 import "./gridCategories.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const GridCategories = () => {
   const categories = [
@@ -28,6 +29,7 @@ const GridCategories = () => {
       imageName: "accessories.png",
     },
   ];
+
   return (
     <Box
       width="100%"
@@ -57,60 +59,81 @@ const GridCategories = () => {
 };
 
 const CategoryButton = ({ imgUri, categoryName }) => {
+  const navigate = useNavigate();
   return (
-    <Box>
-      <Box
-        position="relative"
-        display="flex"
-        justifyContent="center"
-        alignContent="center"
-      >
+    <>
+      <CssBaseline />
+      <Box>
         <Box
-          sx={{
-            height: "175px",
-            width: "100%",
-          }}
-        >
-          <img srcSet={imgUri} alt="" className="img_back_button" />
-        </Box>
-        <Box
-          position="absolute"
+          position="relative"
           display="flex"
           justifyContent="center"
           alignContent="center"
-          width="100%"
-          height="100%"
-          sx={{
-            transition: "0.3s",
-            background: "rgb(191,136,50, 0.22)",
-            backdropFilter: "blur(5px)",
-
-            ":hover": {
-              backdropFilter: "blur(0px)",
-              transition: "0.3s",
-              background: "transparent",
-            },
-          }}
+          onClick={() =>
+            navigate(
+              `/store/${categoryName.replace(
+                categoryName[0],
+                categoryName[0].toLowerCase()
+              )}`
+            )
+          }
+          sx={{ "&:hover": { cursor: "pointer" } }}
         >
-          <Button
-            fullWidth
+          <Box
+            sx={{
+              height: "175px",
+              width: "100%",
+            }}
+          >
+            <img srcSet={imgUri} alt="" className="img_back_button" />
+          </Box>
+          <Box
+            position="absolute"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            width="100%"
+            height="100%"
             sx={{
               transition: "0.3s",
-              color: "white",
+              background: "rgb(191,136,50, 0.22)",
+              backdropFilter: "blur(5px)",
+
               ":hover": {
+                backdropFilter: "blur(0px)",
                 transition: "0.3s",
-                color: "#f2dbb8",
-                transform: "translateY(-5px)",
+                background: "transparent",
               },
             }}
           >
-            <Typography variant="button" fontWeight="700" fontSize="25px">
-              {categoryName}
-            </Typography>
-          </Button>
+            {/* <Link
+              style={{ textDecoration: "none" }}
+              to={`/store/${categoryName.replace(
+                categoryName[0],
+                categoryName[0].toLowerCase()
+              )}`}
+            > */}
+            <Button
+              fullWidth
+              sx={{
+                transition: "0.3s",
+                color: "white",
+                ":hover": {
+                  transition: "0.3s",
+                  color: "#f2dbb8",
+                  transform: "translateY(-5px)",
+                },
+              }}
+            >
+              <Typography variant="button" fontWeight="700" fontSize="25px">
+                {categoryName}
+              </Typography>
+            </Button>
+            {/* </Link> */}
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 
