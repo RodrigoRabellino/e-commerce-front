@@ -21,11 +21,11 @@ const GridCategories = () => {
       imageName: "bass.png",
     },
     {
-      name: "Amps",
+      name: "Amplifier",
       imageName: "amps.png",
     },
     {
-      name: "Accessories",
+      name: "Accesories",
       imageName: "accessories.png",
     },
   ];

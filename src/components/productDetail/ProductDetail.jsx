@@ -53,27 +53,29 @@ function ProductDetail() {
   const carouselImgStyles = {
     width: "100px",
     marginLeft: "10px",
+    objectFit: "contain",
   };
 
   return (
     <Container
       sx={{
-        position: "relative",
-        mt: "64px",
-        borderLeft: `1px solid ${theme.palette.primary.light}`,
-        borderRight: `1px solid ${theme.palette.primary.light}`,
+        mt: 13,
+        border: `1px solid ${theme.palette.primary.light}`,
         backgroundColor: "white",
+        p: 3,
+        mb: 5,
       }}
     >
       <CssBaseline />
-      <Grid
-        container
-        justifyContent="center"
-        sx={{
-          p: 1,
-        }}
-      >
-        <Grid item xs={12} md={7} justifyContent="center">
+      <Grid container justifyContent="center" sx={{}}>
+        <Grid
+          item
+          xs={12}
+          md={7}
+          display="flex"
+          flexDirection="column"
+          justifyContent="space-between"
+        >
           {Object.entries(selectedProduct).length === 0 ? (
             <CircularProgress />
           ) : (
@@ -82,7 +84,6 @@ function ProductDetail() {
               <Box
                 sx={{
                   display: { md: "flex", xs: "none" },
-                  marginTop: "64px",
                   justifyContent: "center",
                 }}
               >
@@ -285,7 +286,7 @@ function ProductDetail() {
               </Link>
             </Typography>
           </Grid>
-          <Grid item sx={{ textAlign: "start" }} mb={5}>
+          <Grid item sx={{ textAlign: "start" }}>
             <Typography variant="body1">
               {selectedProduct.description}
             </Typography>

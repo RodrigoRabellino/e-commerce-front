@@ -36,6 +36,7 @@ const StorePage = () => {
   };
 
   const params = useParams();
+
   const categoryName = () => {
     if (
       params.categoryName === "electric" ||
@@ -85,7 +86,6 @@ const StorePage = () => {
 
     const getProductsByCategory = async () => {
       const data = await fetchProductsByCategory(params.categoryName, page);
-      console.log("data", data);
       setProducts(data.products);
       setProdCount(data.count);
     };
@@ -165,7 +165,6 @@ const StorePage = () => {
                       key={product._id}
                       product={product}
                       display={viewDisplay}
-                      onClick={() => console.log(product)}
                     />
                   );
                 })}
