@@ -35,6 +35,25 @@ const StorePage = () => {
   };
 
   const params = useParams();
+  const categoryName = () => {
+    if (
+      params.categoryName === "electric" ||
+      params.categoryName === "acoustic" ||
+      params.categoryName === "bass"
+    ) {
+      return (
+        params.categoryName.replace(
+          params.categoryName[0],
+          params.categoryName[0].toUpperCase()
+        ) + " Guitars"
+      );
+    }
+    return params.categoryName.replace(
+      params.categoryName[0],
+      params.categoryName[0].toUpperCase()
+    );
+  };
+  categoryName();
 
   useEffect(() => {
     const getAllProducts = async () => {
@@ -51,8 +70,11 @@ const StorePage = () => {
     };
     if (params.categoryName === "allproducts") {
       getAllProducts();
+      setCategorySelected("All Products");
     } else {
       getProductsByCategory();
+
+      setCategorySelected(categoryName);
     }
   }, [params.categoryName, page]);
 
