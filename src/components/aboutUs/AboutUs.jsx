@@ -509,67 +509,69 @@ const AboutUs = () => {
             </Card>
           </Grid>
         </Grid>
+        <Grid
+          container
+          marginY="2rem"
+          justifyContent={{ md: "flex-end", xs: "center" }}
+        >
+          <Grid item xs={12} md={4} display="flex" justifyContent="center">
+            <Box textAlign="left">
+              <Typography variant="h5">Credentials</Typography>
+              <Typography
+                sx={{
+                  mb: "1rem",
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  textAlign: "left",
+                }}
+              >
+                For full access use the following credentials:
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  pb: "10px",
+                }}
+              >
+                Email: user@user.com / Password:1234
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                }}
+              >
+                Access to the CRUD - ADMIN site
+              </Typography>
+
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{
+                  color: "#7B8723",
+                  my: "1rem",
+                }}
+                onClick={() => {
+                  window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
+                }}
+              >
+                ADMIN
+              </Button>
+              <Typography
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: "bold",
+                  mb: "1rem",
+                }}
+              >
+                For a better experience, please reset the database:
+              </Typography>
+              <Button variant="outlined">Reset DataBase</Button>
+            </Box>
+          </Grid>
+        </Grid>
       </Container>
-
-      <Box
-        width="90%"
-        display="flex"
-        alignItems="flex-end"
-        flexDirection="column"
-        mt="30px"
-        mb="20px"
-      >
-        <Box sx={{ textAlign: "left" }}>
-          <Typography variant="h5">Credentials</Typography>
-
-          <Typography
-            sx={{
-              mb: "1rem",
-              fontSize: "15px",
-              fontWeight: "bold",
-              textAlign: "left",
-            }}
-          >
-            For full access use the following credentials:
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "13px",
-              fontWeight: "600",
-              pb: "10px",
-            }}
-          >
-            Email: user@user.com / Password:1234
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: "15px",
-              fontWeight: "bold",
-            }}
-          >
-            Access to the CRUD - ADMIN site
-          </Typography>
-
-          <Button
-            sx={{ color: "#7B8723" }}
-            onClick={() => {
-              window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
-            }}
-          >
-            ADMIN
-          </Button>
-          <Typography
-            sx={{
-              fontSize: "13px",
-              fontWeight: "bold",
-              mb: "1rem",
-            }}
-          >
-            For a better experience, please reset the database:
-          </Typography>
-          <Button variant="outlined">Reset DataBase</Button>
-        </Box>
-      </Box>
     </>
   );
 };
