@@ -169,7 +169,7 @@ export const OrdersPage = ({ user }) => {
         } = order;
         const qrText = {
           name: `${user.firstName} ${user.lastName}}`,
-          orderId: _id.substring(0, 10),
+          orderId: _id,
           total: totalPrice.toString(),
         };
         return (
