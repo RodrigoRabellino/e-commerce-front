@@ -9,6 +9,8 @@ import {
   TextField,
   Button,
   CssBaseline,
+  Paper,
+  Alert,
 } from "@mui/material";
 import React from "react";
 import imgGuitarStore from "../../assets/images/guitarscontactUs.webp";
@@ -20,8 +22,37 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { AddTask } from "@mui/icons-material";
+import { useState } from "react";
+import Snackbar from "@mui/material/Snackbar";
 
 function ContactUs() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setSubject("");
+    setMessage("");
+  };
+
   return (
     <>
       <CssBaseline />
@@ -31,195 +62,254 @@ function ContactUs() {
           fontWeight={700}
           color="primary"
           alignItems="center"
-          paddingTop="5rem"
+          paddingY="5rem"
         >
-          <Divider sx={{ color: "primary" }}>Contact Us</Divider>
+          Contact Us
         </Typography>
-
-        <Grid container spacing={2} columns={16} sx={{ paddingTop: "2rem" }}>
-          <Grid item xs={16} md={8}>
-            <Typography
-              variant="h5"
-              fontWeight={700}
-              color="primary"
-              alignItems="center"
+        <Paper
+          sx={{
+            backgroundColor: "white",
+            boxShadow: "2px 2px 2px 2px rgb(0,0,0, 0.22)",
+            ":hover": {
+              transition: "0.5s",
+              boxShadow: "3px 3px 3px 3px rgb(0,0,0, 0.44)",
+            },
+            mb: "100px",
+          }}
+        >
+          <Grid container spacing={2} columns={16} sx={{ paddingTop: "2rem" }}>
+            <Grid
+              item
+              xs={16}
+              md={8}
+              display="flex"
+              flexDirection="column"
+              justifyContent="flex-start"
             >
-              Get in Touch
-            </Typography>
-            <Box paddingTop="0.5rem">
-              <Card
+              <Box paddingTop="0.5rem" paddingLeft="1rem" textAlign="left">
+                <Typography
+                  variant="h5"
+                  pb="0.5rem"
+                  fontWeight={700}
+                  color="primary"
+                >
+                  Get in Touch
+                </Typography>
+
+                <form
+                  onSubmit={handleSubmit}
+                  display="flex"
+                  justifyContent="flex-start"
+                >
+                  <Grid container spacing={1}>
+                    <Grid xs={12} md={6} item>
+                      <TextField
+                        id="firstName"
+                        name="firstName"
+                        label="First Name"
+                        placeholder="Enter First Name"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                      />
+                    </Grid>
+                    <Grid xs={12} md={6} item>
+                      <TextField
+                        id="lastName"
+                        name="lastName"
+                        label="Last Name"
+                        placeholder="Enter Last Name"
+                        variant="outlined"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        fullWidth
+                        required
+                      />
+                    </Grid>
+                    <Grid xs={12} item>
+                      <TextField
+                        id="email"
+                        name="email"
+                        type="email"
+                        label="Email"
+                        placeholder="Enter Email"
+                        variant="outlined"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        fullWidth
+                        required
+                      />
+                    </Grid>
+                    <Grid xs={12} item>
+                      <TextField
+                        id="subject"
+                        name="subject"
+                        label="Subject"
+                        placeholder="Subject"
+                        variant="outlined"
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                        fullWidth
+                        required
+                      />
+                    </Grid>
+                    <Grid xs={12} item>
+                      <TextField
+                        multiline
+                        rows={4}
+                        id="message"
+                        name="message"
+                        label="Message"
+                        placeholder="Type your message here"
+                        variant="outlined"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        fullWidth
+                        required
+                      />
+                    </Grid>
+                    <Grid xs={12} item>
+                      <Button
+                        onClick={handleClick}
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                      >
+                        Submit
+                      </Button>
+                      <Snackbar
+                        open={open}
+                        autoHideDuration={6000}
+                        onClose={handleClose}
+                      >
+                        <Alert
+                          onClose={handleClose}
+                          severity="success"
+                          sx={{ width: "100%" }}
+                        >
+                          Your message has been sent! Thank you.
+                        </Alert>
+                      </Snackbar>
+                    </Grid>
+                  </Grid>
+                </form>
+              </Box>
+            </Grid>
+
+            <Grid
+              item
+              xs={16}
+              md={8}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <Box
                 sx={{
-                  maxWidth: 450,
-                  margin: "0 auto",
-                  padding: "20px 5px",
-                  backgroundColor: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "start",
+                  alignItems: "start",
+                  py: "0.5rem",
+                  pr: "1rem",
                 }}
               >
-                <CardContent>
-                  <form>
-                    <Grid container spacing={1}>
-                      <Grid xs={12} md={6} item>
-                        <TextField
-                          label="First Name"
-                          placeholder="Enter First Name"
-                          variant="outlined"
-                          fullWidth
-                          required
-                        />
-                      </Grid>
-                      <Grid xs={12} md={6} item>
-                        <TextField
-                          label="Last Name"
-                          placeholder="Enter Last Name"
-                          variant="outlined"
-                          fullWidth
-                          required
-                        />
-                      </Grid>
-                      <Grid xs={12} item>
-                        <TextField
-                          type="email"
-                          label="Email"
-                          placeholder="Enter Email"
-                          variant="outlined"
-                          fullWidth
-                          required
-                        />
-                      </Grid>
-                      <Grid xs={12} item>
-                        <TextField
-                          multiline
-                          rows={4}
-                          label="Message"
-                          placeholder="Type your message here"
-                          variant="outlined"
-                          fullWidth
-                          required
-                        />
-                      </Grid>
-                      <Grid xs={12} item>
-                        <Button variant="contained" color="primary" fullWidth>
-                          Submit
-                        </Button>
-                      </Grid>
-                    </Grid>
-                  </form>
-                </CardContent>
-              </Card>
-            </Box>
-          </Grid>
+                <Typography variant="h5" fontWeight={700} color="primary">
+                  Contact Information
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  textAlign="left"
+                  paddingTop="0.2rem"
+                  fontWeight="700"
+                >
+                  We'd love to hear from you.
+                </Typography>
+                <Box display="flex">
+                  <Typography
+                    variant="subtitle2"
+                    paddingTop="0.3rem"
+                    textAlign="left"
+                  >
+                    Whether you’re curious about features, a free trial, or even
+                    press—we’re ready to answer any and all questions.
+                  </Typography>
+                </Box>
+              </Box>
 
-          <Grid
-            item
-            xs={16}
-            md={8}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Box>
-              <Typography
-                variant="h5"
-                fontWeight={700}
-                color="primary"
-                alignItems="center"
+              <Divider sx={{ mr: "1rem" }} />
+              <Box sx={{ pr: "1rem", width: { xs: "100%" } }}>
+                <img
+                  srcSet={imgGuitarStore}
+                  alt=""
+                  className="imgcontactUs"
+                ></img>
+              </Box>
+              <Divider sx={{ mr: "1rem" }} />
+              <Grid
+                container
+                columns={16}
+                mb={5}
+                sx={{
+                  width: { xs: "80%", md: "100%" },
+                }}
               >
-                About Usdas loremipusum
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                fontWeight={700}
-                alignItems="center"
-                paddingTop="0.3rem"
-              >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-              </Typography>
-            </Box>
+                <Box sx={{ display: "flex", width: "100%", ml: "-12px" }}>
+                  <Grid item xs={1}>
+                    <LocationOnIcon sx={{ paddingTop: "0.3rem" }} />
+                  </Grid>
+                  <Grid item xs={7}>
+                    <Typography
+                      variant="subtitle1"
+                      textAlign="left"
+                      paddingTop="0.3rem"
+                    ></Typography>
+                    <Typography variant="subtitle1" textAlign="left">
+                      Open: 9:00-18:00
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      textAlign="left"
+                      paddingTop="1rem"
+                    >
+                      742 Evergreen Terrace
+                    </Typography>
+                    <Typography variant="subtitle1" textAlign="left">
+                      Open: 9:00-18:00
+                    </Typography>
+                  </Grid>
 
-            <Divider />
-            <Box sx={{ width: { xs: "80%" } }}>
-              <img
-                srcSet={imgGuitarStore}
-                alt=""
-                className="imgcontactUs"
-              ></img>
-            </Box>
-            <Divider />
-            <Grid
-              container
-              columns={16}
-              mb={5}
-              sx={{ width: { xs: "80%", md: "100%" } }}
-            >
-              <Grid item xs={1}>
-                <LocationOnIcon sx={{ paddingTop: "0.3rem" }} />
-              </Grid>
-              <Grid item xs={7}>
-                <Typography
-                  variant="subtitle1"
-                  fontWeight={700}
-                  textAlign="left"
-                  paddingTop="0.3rem"
-                >
-                  P. Sherman, calle Wallaby, 42
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  fontWeight={700}
-                  textAlign="left"
-                >
-                  Open: 9:00-18:00
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  fontWeight={700}
-                  textAlign="left"
-                  paddingTop="1rem"
-                >
-                  742 Evergreen Terrace
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  fontWeight={700}
-                  textAlign="left"
-                >
-                  Open: 9:00-18:00
-                </Typography>
-              </Grid>
+                  <Grid item xs={1}>
+                    <EmailIcon sx={{ paddingTop: "0.3rem" }} />
+                    <LocalPhoneIcon sx={{ paddingTop: "0.3rem" }} />
+                  </Grid>
 
-              <Grid item xs={1}>
-                <EmailIcon sx={{ paddingTop: "0.3rem" }} />
-                <LocalPhoneIcon sx={{ paddingTop: "0.3rem" }} />
-              </Grid>
-
-              <Grid item xs={7}>
-                <Typography
-                  variant="subtitle1"
-                  fontWeight={700}
-                  textAlign="left"
-                >
-                  pepe.leia@ha.com
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  fontWeight={700}
-                  textAlign="left"
-                >
-                  55523156
-                </Typography>
-                <Box paddingTop="1.4rem" sx={{ display: "flex" }}>
-                  <InstagramIcon sx={{ marginRight: "0.6rem" }} />
-                  <GitHubIcon sx={{ marginRight: "0.6rem" }} />
-                  <TwitterIcon sx={{ marginRight: "0.6rem" }} />
-                  <LinkedInIcon />
+                  <Grid item xs={7}>
+                    <Typography variant="subtitle1" textAlign="left">
+                      Guitarrero@ha.com
+                    </Typography>
+                    <Typography variant="subtitle1" textAlign="left">
+                      55523156
+                    </Typography>
+                    <Box
+                      paddingTop="1.4rem"
+                      sx={{ display: "flex", justifyContent: "space-between" }}
+                    >
+                      <InstagramIcon />
+                      <GitHubIcon />
+                      <TwitterIcon />
+                      <LinkedInIcon />
+                    </Box>
+                  </Grid>
                 </Box>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </Paper>
       </Container>
     </>
   );

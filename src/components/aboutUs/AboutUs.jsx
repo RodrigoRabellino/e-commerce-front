@@ -29,10 +29,16 @@ import { fontWeight } from "@mui/system";
 import rodriPhoto1 from "../../assets/images/Rodri1.jpeg";
 import rodriPhoto2 from "../../assets/images/Rodri2.jpeg";
 import { Javascript } from "@mui/icons-material";
+import sebaPhoto1 from "../../assets/images/seba.jpeg";
+import sebaPhoto2 from "../../assets/images/Seba2.jpeg";
+import juanPhoto1 from "../../assets/images/JuanBlanco1.jpg";
+import juanPhoto2 from "../../assets/images/JuanBlanco2.jpg";
 
 const AboutUs = () => {
   const [hover, setHover] = useState(false);
   const [hover1, setHover1] = useState(false);
+  const [touch, setTouch] = useState(false);
+  const [touch1, setTouch1] = useState(false);
   const avatarBoxStyle = {
     width: { md: "150px", sm: "120px", xs: "90px" },
     height: { md: "150px", sm: "120px", xs: "90px" },
@@ -108,12 +114,19 @@ const AboutUs = () => {
           <Box
             sx={{
               ...avatarBoxStyle,
+              cursor: "pointer",
             }}
           >
             <Avatar
+              id="sebaPhoto1"
+              src={touch ? sebaPhoto2 : sebaPhoto1}
+              className="AvatarSeba"
               sx={avatarStyles}
-              alt="Remy Sharp"
-              srcSet={require("../../assets/images/seba.jpeg")}
+              alt="Seba Photo"
+              onMouseOver={() => setTouch(true)}
+              onMouseOut={() => setTouch(false)}
+
+              // srcSet={require("../../assets/images/soleCampos1.jpg")}
             />
             <Box pt="10px">
               <Typography color="white">Sebastián Sosa</Typography>
@@ -134,6 +147,7 @@ const AboutUs = () => {
           <Box
             sx={{
               ...avatarBoxStyle,
+              cursor: "pointer",
             }}
           >
             <Avatar
@@ -164,12 +178,17 @@ const AboutUs = () => {
           <Box
             sx={{
               ...avatarBoxStyle,
+              cursor: "pointer",
             }}
           >
             <Avatar
               sx={avatarStyles}
-              alt="Juan Arede Photo"
-              srcSet={require("../../assets/images/woman1.webp")}
+              alt="Juan photo"
+              id="JuanPhoto1"
+              src={touch1 ? juanPhoto2 : juanPhoto1}
+              className="AvatarRodri"
+              onMouseOver={() => setTouch1(true)}
+              onMouseOut={() => setTouch1(false)}
             />
             <Box pt="10px">
               <Typography color="white">Juan Arede</Typography>
@@ -290,8 +309,12 @@ const AboutUs = () => {
         <Grid container mt="50px" mb="20px">
           <Grid items xs={12} md={6}>
             <img
+<<<<<<< HEAD
+              height="100%"
+=======
               alt="merEcommerceFront"
               width="100%"
+>>>>>>> f3c00793cc441bb17972d65b3c675b372f5ec827
               srcSet={require("../../assets/images/MERe-commerce.png")}
             />
           </Grid>
@@ -490,6 +513,69 @@ const AboutUs = () => {
             </Card>
           </Grid>
         </Grid>
+<<<<<<< HEAD
+      </Container>
+
+      <Box
+        width="90%"
+        display="flex"
+        alignItems="flex-end"
+        flexDirection="column"
+        mt="30px"
+        mb="20px"
+      >
+        <Box sx={{ textAlign: "left" }}>
+          <Typography variant="h5">Credentials</Typography>
+
+          <Typography
+            sx={{
+              mb: "1rem",
+              fontSize: "15px",
+              fontWeight: "bold",
+              textAlign: "left",
+            }}
+          >
+            For full access use the following credentials:
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "13px",
+              fontWeight: "600",
+              pb: "10px",
+            }}
+          >
+            Email: user@user.com / Password:1234
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "15px",
+              fontWeight: "bold",
+            }}
+          >
+            Access to the CRUD - ADMIN site
+          </Typography>
+
+          <Button
+            sx={{ color: "#7B8723" }}
+            onClick={() => {
+              window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
+            }}
+          >
+            ADMIN
+          </Button>
+          <Typography
+            sx={{
+              fontSize: "13px",
+              fontWeight: "bold",
+              mb: "1rem",
+            }}
+          >
+            For a better experience, please reset the database:
+          </Typography>
+          <Button variant="outlined">Reset DataBase</Button>
+        </Box>
+      </Box>
+=======
         <Grid
           container
           marginY="2rem"
@@ -553,6 +639,7 @@ const AboutUs = () => {
           </Grid>
         </Grid>
       </Container>
+>>>>>>> f3c00793cc441bb17972d65b3c675b372f5ec827
     </>
   );
 };
