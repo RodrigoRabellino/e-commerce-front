@@ -13,12 +13,14 @@ import { fetchStarredProducts } from "../../services/apiServices";
 import GridCategories from "../gridCategories/GridCategories";
 import MyCarousel from "./MyCarousel";
 import { useTheme } from "@emotion/react";
+import { useNavigate } from "react-router-dom";
 
 import "./HomePage.css";
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
   const theme = useTheme();
+  const navigate = useNavigate();
   const categoryBtnStyles = {
     bgcolor: "primary.main",
     border: `1px solid ${theme.palette.primary.light}`,
@@ -44,23 +46,25 @@ const HomePage = () => {
         <Box className="opacity-bg"></Box>
         <Box className="content-bg">
           <Box
-            sx={{ height: "100%" }}
+            sx={{ height: "100%", width: "100%" }}
             className="title-text"
             display="flex"
             flexDirection="column"
             JustifyContent="center"
+            alignItems="center"
           >
-            <Typography variant="h2" sx={{ color: "white" }}>
-              lorem ipsum
+            <Typography variant="h4" noWrap sx={{ color: "white" }}>
+              One click away from a life of music.
             </Typography>
-            <Typography variant="subtitle1" sx={{ color: "white" }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy
-            </Typography>
+
             <Box sx={{ paddingTop: "2rem" }}>
-              {/* <Button variant="contained" sx={{ ...categoryBtnStyles }}>
-                Contact Us
-              </Button> */}
+              <Button
+                onClick={() => navigate("/store/allproducts")}
+                variant="contained"
+                disableElevation
+              >
+                Shop Now
+              </Button>
             </Box>
           </Box>
           <Box className="arrow-down"></Box>

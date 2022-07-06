@@ -28,7 +28,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  width: 500px;
+
   height: 320px;
 }
 
@@ -114,7 +114,7 @@
 
 .iconsvg {
   width: 7rem;
-  padding:1rem;
+  padding: 1rem;
   margin: 0;
 }
 

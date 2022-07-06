@@ -153,7 +153,13 @@ function Footer() {
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box textAlign="right">by: grupo:3(nombres)</Box>
+              <Box display="flex">
+                <Typography>By:</Typography>
+                <Typography varaint="body2">Sebastián Sosa</Typography>
+                <Typography varaint="body2">Juan Arede</Typography>
+                <Typography varaint="body2">Rodrigo Rabellino</Typography>
+                <Typography varaint="body2">Soledad Campos</Typography>
+              </Box>
             </Grid>
           </Grid>
         </Container>

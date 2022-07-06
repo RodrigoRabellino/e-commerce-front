@@ -48,6 +48,11 @@ const AboutUs = () => {
     width: "100%",
     ":hover": { transition: "0.2s" },
   };
+
+  const linkStyles = {
+    transition: "0.2s",
+    ":hover": { transition: "0.2s", transform: "translateY(-5px)" },
+  };
   const cardStyles = {
     backgroundColor: "white",
     transition: "0.2s",
@@ -98,12 +103,18 @@ const AboutUs = () => {
             <Box pt="10px">
               <Typography color="white">Soledad Campos</Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <IconButton aria-label="LinkedInIcon" sx={{ color: "white" }}>
+                <IconButton
+                  aria-label="LinkedInIcon"
+                  sx={{ color: "white", ...linkStyles }}
+                >
                   <a href="https://www.linkedin.com/in/soledad-campos-arellano/">
                     <LinkedInIcon className="logoLinkedin" />
                   </a>
                 </IconButton>
-                <IconButton aria-label="GitHubIcon" sx={{ color: "white" }}>
+                <IconButton
+                  aria-label="GitHubIcon"
+                  sx={{ color: "white", ...linkStyles }}
+                >
                   <a href="https://github.com/SoleDalia">
                     <GitHubIcon className="logoGithub" />
                   </a>
@@ -131,12 +142,18 @@ const AboutUs = () => {
             <Box pt="10px">
               <Typography color="white">Sebastián Sosa</Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <IconButton aria-label="LinkedInIcon" sx={{ color: "white" }}>
+                <IconButton
+                  aria-label="LinkedInIcon"
+                  sx={{ color: "white", ...linkStyles }}
+                >
                   <a href="https://www.linkedin.com/in/sebastian-sosa-cinotti/">
                     <LinkedInIcon className="logoLinkedin" />
                   </a>
                 </IconButton>
-                <IconButton aria-label="GitHubIcon" sx={{ color: "white" }}>
+                <IconButton
+                  aria-label="GitHubIcon"
+                  sx={{ color: "white", ...linkStyles }}
+                >
                   <a href="https://github.com/1986SebastianSosa">
                     <GitHubIcon className="logoGithub" />
                   </a>
@@ -162,12 +179,18 @@ const AboutUs = () => {
             <Box pt="10px">
               <Typography color="white">Rodrigo Rabellino</Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <IconButton aria-label="LinkedInIcon" sx={{ color: "white" }}>
+                <IconButton
+                  aria-label="LinkedInIcon"
+                  sx={{ color: "white", ...linkStyles }}
+                >
                   <a href="https://www.linkedin.com/in/rodrigorabellino/">
                     <LinkedInIcon className="logoLinkedin" />
                   </a>
                 </IconButton>
-                <IconButton aria-label="GitHubIcon" sx={{ color: "white" }}>
+                <IconButton
+                  aria-label="GitHubIcon"
+                  sx={{ color: "white", ...linkStyles }}
+                >
                   <a href="https://github.com/RodrigoRabellino">
                     <GitHubIcon className="logoGithub" />
                   </a>
@@ -193,13 +216,22 @@ const AboutUs = () => {
             <Box pt="10px">
               <Typography color="white">Juan Arede</Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <IconButton aria-label="LinkedInIcon" sx={{ color: "white" }}>
-                  <a href="https://www.linkedin.com/in/juanarede/">
+                <IconButton
+                  aria-label="LinkedInIcon"
+                  sx={{ color: "white", ...linkStyles }}
+                >
+                  <a
+                    href="https://www.linkedin.com/in/juanarede/"
+                    target="_blank"
+                  >
                     <LinkedInIcon className="logoLinkedin" />
                   </a>
                 </IconButton>
-                <IconButton aria-label="GitHubIcon" sx={{ color: "white" }}>
-                  <a href="https://github.com/juanarede">
+                <IconButton
+                  aria-label="GitHubIcon"
+                  sx={{ color: "white", ...linkStyles }}
+                >
+                  <a href="https://github.com/juanarede" target="_blank">
                     <GitHubIcon className="logoGithub" />
                   </a>
                 </IconButton>
@@ -307,7 +339,7 @@ const AboutUs = () => {
       </Container>
       <Container>
         <Grid container mt="50px" mb="20px">
-          <Grid items xs={12} md={6}>
+          <Grid items pr={3} xs={12} md={6}>
             <img
               alt="merEcommerceFront"
               width="100%"

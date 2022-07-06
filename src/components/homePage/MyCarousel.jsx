@@ -61,6 +61,7 @@ function MyCarousel({ starredProducts }) {
         boxShadow: 1,
         borderRadius: "10px",
         padding: 2,
+        width: "100%",
       }}
     >
       <Slide {...properties} slidesToShow={3}>
