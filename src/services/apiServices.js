@@ -28,9 +28,11 @@ export const fetchOneProduct = async (id) => {
   }
 };
 
-export const fetchProductsByCategory = async (id) => {
+export const fetchProductsByCategory = async (categoryName, page) => {
   try {
-    const response = await axios.get(`${API_URL}/product/category/${id}`);
+    const response = await axios.get(
+      `${API_URL}/product/category/${categoryName}?page=${page}`
+    );
     return response.data;
   } catch (error) {
     return error;

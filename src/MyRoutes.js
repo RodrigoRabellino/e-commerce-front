@@ -35,7 +35,7 @@ const MyRoutes = ({ type }) => {
       <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/categories" element={<GridCategories />} />
-      <Route path="/store" element={<StorePage />} />
+      <Route path="/store/:categoryName" element={<StorePage />} />
       <Route path="/productCarousel" element={<ProductCarousel />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

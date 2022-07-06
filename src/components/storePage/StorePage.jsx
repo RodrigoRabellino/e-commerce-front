@@ -11,36 +11,93 @@ import {
   Popover,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../../services/apiServices";
+import {
+  fetchProducts,
+  fetchProductsByCategory,
+} from "../../services/apiServices";
 import { ViewList, ViewModule } from "@mui/icons-material";
 import ProductCard from "./productCard/ProductCard";
 import { Container } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
-import { showProducts } from "../../Redux/products/slice";
+import { useParams } from "react-router-dom";
+import "./StorePage.css";
 
 const StorePage = () => {
   const [page, setPage] = useState(1);
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [prodCount, setProdCount] = useState(0);
   const [categorySelected, setCategorySelected] = useState("All Products");
   const [viewDisplay, setViewDisplay] = useState("module");
 
-  const dispatch = useDispatch();
   const theme = useTheme();
 
   const handleToggleView = (newValue) => {
     console.log(newValue);
   };
 
-  useEffect(() => {
-    const getProducts = async () => {
-      const resp = await fetchProducts(page);
-      dispatch(showProducts([...resp]));
-    };
-    getProducts();
-  }, [page]);
+  const params = useParams();
+  const categoryName = () => {
+    if (
+      params.categoryName === "electric" ||
+      params.categoryName === "acoustic" ||
+      params.categoryName === "bass"
+    ) {
+      return (
+        params.categoryName.replace(
+          params.categoryName[0],
+          params.categoryName[0].toUpperCase()
+        ) + " Guitars"
+      );
+    }
+    return params.categoryName.replace(
+      params.categoryName[0],
+      params.categoryName[0].toUpperCase()
+    );
+  };
+  categoryName();
 
-  const products = useSelector((state) => state.products);
-  console.log(products.length);
+  const categoryHeader = () => {
+    switch (params.categoryName) {
+      case "allproducts":
+        return "https://i.ibb.co/j3DW9S1/header-all-1.jpg";
+
+      case "accesories":
+        return "https://i.ibb.co/ZgcqdYh/header-accesories-2.webp";
+      case "effects":
+        return "https://i.ibb.co/85tKwLs/header-pedals-2.jpg";
+      case "bass":
+        return "https://i.ibb.co/vP0mBvP/header-bass-3.jpg";
+      case "electric":
+        return "https://i.ibb.co/kDd2DYm/header-guitar-2.webp";
+      case "acoustic":
+        return "https://i.ibb.co/6gkZ2yr/header-guitar-3.webp";
+      case "amplifier":
+        return "https://i.ibb.co/bLjyJbf/header-amp-1.jpg";
+    }
+  };
+
+  useEffect(() => {
+    const getAllProducts = async () => {
+      const data = await fetchProducts(page);
+      setProducts(data.products);
+      setProdCount(data.count);
+    };
+
+    const getProductsByCategory = async () => {
+      const data = await fetchProductsByCategory(params.categoryName, page);
+      console.log("data", data);
+      setProducts(data.products);
+      setProdCount(data.count);
+    };
+    if (params.categoryName === "allproducts") {
+      getAllProducts();
+      setCategorySelected("All Products");
+    } else {
+      getProductsByCategory();
+
+      setCategorySelected(categoryName);
+    }
+  }, [params.categoryName, page]);
 
   const categoryBtnStyles = {
     marginY: "8px",
@@ -56,124 +113,76 @@ const StorePage = () => {
   };
 
   return (
-    <Container>
+    <>
       <CssBaseline />
       <Grid
         container
         sx={{ position: "relative", top: "64px", marginBottom: "10vh" }}
       >
-        {/* <Grid item xs={12}>
-          <Box my={2}>
-            <Typography variant="h4" color={theme.palette.primary.main}>
-              Categories
-            </Typography>
-          </Box>
-          <Box
-            mb={2}
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-            }}
-          >
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("All Products")}
-              variant="contained"
-            >
-              All Products
-            </Button>
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("Guitars")}
-              variant="contained"
-              elevation={0}
-            >
-              Guitars
-            </Button>
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("Basses")}
-              variant="contained"
-              elevation={0}
-            >
-              Bass
-            </Button>
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("Amps")}
-              variant="contained"
-              elevation={0}
-            >
-              Amps
-            </Button>
-            <Button
-              sx={{ ...categoryBtnStyles }}
-              onClick={() => setCategorySelected("Accessories")}
-              variant="contained"
-              elevation={0}
-            >
-              Accessories
-            </Button>
-          </Box>
-        </Grid> */}
-        <Grid item xs={12}>
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-            my="1rem"
-            sx={{
-              width: "100%",
-              borderBottom: `solid 1px ${theme.palette.primary.main}`,
-            }}
-          >
-            <Typography variant="h3" color={theme.palette.primary.main}>
-              {categorySelected}
-            </Typography>
-
-            <ToggleButtonGroup
-              size="small"
-              exclusive
-              color="primary"
-              value={viewDisplay}
-              onChange={(e, newValue) => setViewDisplay(newValue)}
-            >
-              <ToggleButton value="module">
-                <ViewModule fontSize="small" />
-              </ToggleButton>
-              <ToggleButton value="list">
-                <ViewList fontSize="small" />
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </Box>
-
-          <Box>
-            <Grid container width="100%" justifyContent="space-between">
-              {products.map((product) => {
-                return (
-                  <ProductCard
-                    key={product._id}
-                    product={product}
-                    display={viewDisplay}
-                    onClick={() => console.log(product)}
-                  />
-                );
-              })}
-            </Grid>
-
-            <Box display="flex" justifyContent="center">
-              <Pagination
-                page={page}
-                count={4}
-                shape="rounded"
-                onChange={(e) => setPage(parseInt(e.target.textContent))}
-              />
-            </Box>
-          </Box>
+        <Grid item xs={12} className="heading">
+          <img src={categoryHeader()} alt="" />
         </Grid>
+        <Box className="opacity-bg"></Box>
       </Grid>
-    </Container>
+      <Container>
+        <Grid container>
+          <Grid item xs={12}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              my="1rem"
+              sx={{
+                width: "100%",
+                borderBottom: `solid 1px ${theme.palette.primary.main}`,
+              }}
+            >
+              <Typography variant="h3" color={theme.palette.primary.main}>
+                {categorySelected}
+              </Typography>
+
+              <ToggleButtonGroup
+                size="small"
+                exclusive
+                color="primary"
+                value={viewDisplay}
+                onChange={(e, newValue) => setViewDisplay(newValue)}
+              >
+                <ToggleButton value="module">
+                  <ViewModule fontSize="small" />
+                </ToggleButton>
+                <ToggleButton value="list">
+                  <ViewList fontSize="small" />
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
+
+            <Box>
+              <Grid container width="100%" justifyContent="space-between">
+                {products.map((product) => {
+                  return (
+                    <ProductCard
+                      key={product._id}
+                      product={product}
+                      display={viewDisplay}
+                      onClick={() => console.log(product)}
+                    />
+                  );
+                })}
+              </Grid>
+              <Box display="flex" justifyContent="center">
+                <Pagination
+                  page={page}
+                  count={Math.ceil(prodCount / 10)}
+                  shape="rounded"
+                  onChange={(e) => setPage(parseInt(e.target.textContent))}
+                />
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </>
   );
 };
 
