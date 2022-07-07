@@ -10,7 +10,7 @@ import {
   Button,
 } from "@mui/material";
 
-import "./Footer.css";
+import "./footer.css";
 
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
