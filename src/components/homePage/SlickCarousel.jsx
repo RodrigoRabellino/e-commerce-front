@@ -8,9 +8,11 @@ import { useTheme } from "@emotion/react";
 import { addItemToCart } from "../../Redux/cart/slice";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const SlickCarousel = ({ starredProducts }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const addToCart = (product) => {
     dispatch(addItemToCart({ ...product, qty: 1 }));
   };
@@ -72,7 +74,11 @@ const SlickCarousel = ({ starredProducts }) => {
     <Slider {...settings}>
       {starredProducts.map((product) => {
         return (
-          <Box className="carouselBox" key={product.name}>
+          <Box
+            className="carouselBox"
+            key={product.name}
+            onClick={() => navigate(`/product/${product._id}`)}
+          >
             <Box p={1}>
               <img src={product.imgUrl[0]} alt={product.name} />
             </Box>
