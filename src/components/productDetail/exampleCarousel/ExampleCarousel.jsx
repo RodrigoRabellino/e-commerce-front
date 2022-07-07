@@ -3,6 +3,7 @@ import Carousel from "react-material-ui-carousel";
 import { Paper, Box, CircularProgress } from "@mui/material";
 
 function ExampleCarousel({ selectedProduct }) {
+  const pathImageUrl = process.env.REACT_APP_IMAGE_HOSTING_URL;
   const productImages = selectedProduct.imgUrl;
   return (
     <Box
@@ -42,7 +43,8 @@ function ExampleCarousel({ selectedProduct }) {
                 }}
               >
                 <img
-                  srcSet={img}
+                  alt="guitar"
+                  srcSet={pathImageUrl + img}
                   style={{ width: "100%", objectFit: "cover" }}
                 />
               </Box>

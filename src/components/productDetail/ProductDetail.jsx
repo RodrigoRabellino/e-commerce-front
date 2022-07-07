@@ -29,6 +29,7 @@ function ProductDetail() {
   const { id } = useParams();
   const [selectedProduct, setSelectedProduct] = useState({});
   const [qty, setQty] = useState(1);
+  const pathImageUrl = process.env.REACT_APP_IMAGE_HOSTING_URL;
 
   useEffect(() => {
     const getProduct = async () => {
@@ -65,7 +66,7 @@ function ProductDetail() {
       }}
     >
       <CssBaseline />
-      <Grid container justifyContent="center" sx={{}}>
+      <Grid container justifyContent="center">
         <Grid
           item
           xs={12}
@@ -86,15 +87,18 @@ function ProductDetail() {
                 }}
               >
                 <img
-                  src={selectedProduct.imgUrl[0]}
+                  alt={`${selectedProduct.name}`}
+                  srcSet={pathImageUrl + selectedProduct.imgUrl[0]}
                   style={{ ...carouselImgStyles }}
                 />
                 <img
-                  src={selectedProduct.imgUrl[1]}
+                  alt={`${selectedProduct.name}`}
+                  srcSet={pathImageUrl + selectedProduct.imgUrl[1]}
                   style={{ ...carouselImgStyles }}
                 />
                 <img
-                  src={selectedProduct.imgUrl[2]}
+                  alt={`${selectedProduct.name}`}
+                  srcSet={pathImageUrl + selectedProduct.imgUrl[2]}
                   style={{ ...carouselImgStyles }}
                 />
               </Box>

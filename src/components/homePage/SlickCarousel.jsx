@@ -74,6 +74,9 @@ const SlickCarousel = ({ starredProducts }) => {
   return (
     <Slider {...settings}>
       {starredProducts.map((product) => {
+        const imageUrl =
+          process.env.REACT_APP_IMAGE_HOSTING_URL + product.imgUrl[0];
+        console.log(imageUrl);
         return (
           <Box
             className="carouselBox"
@@ -81,7 +84,14 @@ const SlickCarousel = ({ starredProducts }) => {
             onClick={() => navigate(`/product/${product._id}`)}
           >
             <Box p={1}>
-              <img src={product.imgUrl[0]} alt={product.name} />
+              <img
+                src={
+                  !product.imgUrl[0]
+                    ? require("../../assets/images/img-placeholder.png")
+                    : imageUrl
+                }
+                alt={product.name}
+              />
             </Box>
             <Box>
               <Typography

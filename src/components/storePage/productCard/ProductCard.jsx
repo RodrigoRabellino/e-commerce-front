@@ -52,7 +52,6 @@ const ListView = ({ product, handleNavigate }) => {
       border: `thick double ${theme.palette.primary.main}`,
     },
   };
-
   return (
     <>
       <Grid
@@ -72,7 +71,7 @@ const ListView = ({ product, handleNavigate }) => {
       >
         <Grid item xs={4} md={2} sx={{ height: "100%", p: { md: 2, xs: 1 } }}>
           <img
-            srcSet={imgUrl}
+            srcSet={process.env.REACT_APP_IMAGE_HOSTING_URL + imgUrl[0]}
             alt={name}
             style={{
               borderRadius: "5px",
@@ -163,7 +162,7 @@ const ModuleView = ({ product, handleNavigate }) => {
     >
       <CardMedia p={1} sx={{ height: "170px" }}>
         <img
-          srcSet={imgUrl}
+          srcSet={process.env.REACT_APP_IMAGE_HOSTING_URL + imgUrl[0]}
           alt={name}
           style={{
             borderRadius: "5px",

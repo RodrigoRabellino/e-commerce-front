@@ -106,7 +106,7 @@ const StorePage = () => {
       <Grid container sx={{ marginBottom: "10vh" }}>
         <Grid item xs={12} className="heading">
           <img
-            src={categoryHeader()}
+            srcSet={categoryHeader()}
             alt=""
             style={{ boxShadow: "inset 0px 54px 51px -6px rgba(0,0,0,0.64)" }}
           />
