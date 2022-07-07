@@ -33,6 +33,7 @@ import sebaPhoto1 from "../../assets/images/seba.jpeg";
 import sebaPhoto2 from "../../assets/images/Seba2.jpeg";
 import juanPhoto1 from "../../assets/images/JuanBlanco1.jpg";
 import juanPhoto2 from "../../assets/images/JuanBlanco2.jpg";
+import { subTitleStyles, titleStyles } from "./../muiStyles/muiStyles";
 
 const AboutUs = () => {
   const [hover, setHover] = useState(false);
@@ -40,8 +41,8 @@ const AboutUs = () => {
   const [touch, setTouch] = useState(false);
   const [touch1, setTouch1] = useState(false);
   const avatarBoxStyle = {
-    width: { md: "150px", sm: "120px", xs: "90px" },
-    height: { md: "150px", sm: "120px", xs: "90px" },
+    width: { md: "150px", sm: "120px", xs: "75px" },
+    height: { md: "150px", sm: "120px", xs: "75px" },
   };
   const avatarStyles = {
     height: "100%",
@@ -50,7 +51,13 @@ const AboutUs = () => {
   };
 
   const linkStyles = {
+    height: "2rem",
     transition: "0.2s",
+    p: 0,
+    px: "5px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     ":hover": { transition: "0.2s", transform: "translateY(-5px)" },
   };
   const cardStyles = {
@@ -75,7 +82,6 @@ const AboutUs = () => {
         sx={{
           height: "400px",
           width: "100%",
-          marginTop: "64px",
         }}
       >
         <Stack
@@ -101,7 +107,12 @@ const AboutUs = () => {
               // srcSet={require("../../assets/images/soleCampos1.jpg")}
             />
             <Box pt="10px">
-              <Typography color="white">Soledad Campos</Typography>
+              <Typography color="white">
+                Soledad{" "}
+                <Typography sx={{ display: { xs: "none", md: "inline" } }}>
+                  Campos
+                </Typography>
+              </Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <IconButton
                   aria-label="LinkedInIcon"
@@ -140,7 +151,12 @@ const AboutUs = () => {
               // srcSet={require("../../assets/images/soleCampos1.jpg")}
             />
             <Box pt="10px">
-              <Typography color="white">Sebastián Sosa</Typography>
+              <Typography color="white">
+                Sebastián{" "}
+                <Typography sx={{ display: { xs: "none", md: "inline" } }}>
+                  Sosa
+                </Typography>
+              </Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <IconButton
                   aria-label="LinkedInIcon"
@@ -177,7 +193,12 @@ const AboutUs = () => {
               onMouseOut={() => setHover1(false)}
             />
             <Box pt="10px">
-              <Typography color="white">Rodrigo Rabellino</Typography>
+              <Typography color="white">
+                Rodrigo{" "}
+                <Typography sx={{ display: { xs: "none", md: "inline" } }}>
+                  Rabellino
+                </Typography>
+              </Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <IconButton
                   aria-label="LinkedInIcon"
@@ -214,7 +235,12 @@ const AboutUs = () => {
               onMouseOut={() => setTouch1(false)}
             />
             <Box pt="10px">
-              <Typography color="white">Juan Arede</Typography>
+              <Typography color="white">
+                Juan{" "}
+                <Typography sx={{ display: { xs: "none", md: "inline" } }}>
+                  Arede
+                </Typography>
+              </Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <IconButton
                   aria-label="LinkedInIcon"
@@ -243,19 +269,17 @@ const AboutUs = () => {
       <Box>
         <Typography
           sx={{
-            fontSize: "30px",
-            fontWeight: "bold",
+            ...titleStyles,
             marginBottom: "20px",
             marginTop: "20px",
           }}
-          variant="h4"
         >
           About Us
         </Typography>
       </Box>
       <Container>
         <Divider />
-        <Grid container>
+        <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             <Typography
               textAlign="start"
@@ -266,7 +290,9 @@ const AboutUs = () => {
             >
               We are a multidisciplinary team of 4 members, who have different
               academic backgrounds as well as extensive experience in our
-              respective previous fields.
+              respective previous fields, which includes sound designing,
+              acting, adinistrative work and entrepreneurial persuits in the
+              fashion industry.
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -288,12 +314,10 @@ const AboutUs = () => {
 
       <Typography
         sx={{
-          fontSize: "30px",
-          fontWeight: "bold",
+          ...titleStyles,
           marginBottom: "20px",
           marginTop: "30px",
         }}
-        variant="h4"
       >
         About Our Project
       </Typography>
@@ -337,7 +361,7 @@ const AboutUs = () => {
       </Container>
       <Container>
         <Grid container mt="50px" mb="20px">
-          <Grid items pr={3} xs={12} md={6}>
+          <Grid item pr={3} xs={12} md={6}>
             <img
               alt="merEcommerceFront"
               width="100%"
@@ -345,9 +369,9 @@ const AboutUs = () => {
             />
           </Grid>
 
-          <Grid items display="flex" flexDirection="column" xs={12} md={6}>
+          <Grid item display="flex" flexDirection="column" xs={12} md={6}>
             <Typography fontSize="16px" lineHeight="1.5rem" textAlign="left">
-              <Typography fontWeight="600" fontSize="18px">
+              <Typography fontWeight="600" fontSize="18px" component="span">
                 1-User Interface:
               </Typography>
               Clients can login, navigate the site, browse product categories
@@ -358,7 +382,7 @@ const AboutUs = () => {
             </Typography>
 
             <Typography lineHeight="1.5rem" fontSize="16px" textAlign="left">
-              <Typography fontWeight="600" fontSize="18px">
+              <Typography fontWeight="600" fontSize="18px" component="span">
                 2- Admin Site:
               </Typography>
               This is where administrators have the controls to manage the site.
@@ -368,7 +392,7 @@ const AboutUs = () => {
             </Typography>
 
             <Typography lineHeight="1.5rem" textAlign="left" fontSize="16px">
-              <Typography fontWeight="600" fontSize="18px">
+              <Typography fontWeight="600" fontSize="18px" component="span">
                 3-API Rest:
               </Typography>
               This site is in charge of receiving and sending the requested
@@ -384,12 +408,7 @@ const AboutUs = () => {
             my: "30px",
           }}
         />
-        <Grid
-          justifyContent="center"
-          container
-          rowSpacing={{ xs: 0, md: 2 }}
-          columnSpacing={2}
-        >
+        <Grid justifyContent="center" container columnSpacing={2}>
           <Grid item xs={12} md={4} display="flex" justifyContent="center">
             <Card sx={cardStyles}>
               <CardContent>

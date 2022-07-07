@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Box,
@@ -19,11 +19,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
 import CartDrawer from "./CartDrawer";
 import "./NavBar.css";
-import {
-  fetchCategories,
-  fetchProducts,
-  fetchProductsByCategory,
-} from "../../services/apiServices";
+import { fetchCategories, fetchProducts } from "../../services/apiServices";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -89,6 +85,8 @@ function Navbar() {
   };
   window.addEventListener("scroll", changeBackground);
 
+  const pathName = window.location.pathname;
+
   const navStyles = {
     fontSize: "0.9rem",
     fontWeight: "500",
@@ -98,6 +96,19 @@ function Navbar() {
       borderBottom: `2px solid ${theme.palette.primary.light}`,
     },
   };
+
+  const notTransparentNav = [
+    "login",
+    "register",
+    "contactus",
+    "userpage",
+    "contact",
+    "product",
+  ];
+
+  const renderTransparentNav = notTransparentNav.includes(
+    pathName.substring(1).split("/")[0]
+  );
 
   return (
     <>
@@ -111,7 +122,9 @@ function Navbar() {
                   width: "100%",
                 }
               : {
-                  backgroundColor: "transparent",
+                  backgroundColor: renderTransparentNav
+                    ? "#ab832a"
+                    : "transparent",
                   boxShadow: 0,
                   transition: "0.3s",
                   width: "100%",
@@ -230,7 +243,7 @@ function Navbar() {
                       </Box>
                     </Popover>
                     <Typography variant="button" sx={{ ...navStyles }}>
-                      <Link to="/contactUs" className="navLink">
+                      <Link to="/contact" className="navLink">
                         Contact Us
                       </Link>
                     </Typography>

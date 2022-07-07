@@ -46,6 +46,7 @@ function App() {
               position: "fixed",
               top: "75vh",
               right: "-5rem",
+              zIndex: "100",
               transition: "0.3s",
               "&:hover": {
                 transition: "0.3s",

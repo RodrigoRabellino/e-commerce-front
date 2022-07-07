@@ -21,6 +21,7 @@ import { Container } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./StorePage.css";
+import { titleStyles } from "../muiStyles/muiStyles";
 
 const StorePage = () => {
   const [page, setPage] = useState(1);
@@ -99,28 +100,16 @@ const StorePage = () => {
     }
   }, [params.categoryName, page]);
 
-  const categoryBtnStyles = {
-    marginY: "8px",
-    width: { md: "30%", xs: "45%" },
-    height: "2.5rem",
-    bgcolor: "primary.main",
-    border: `1px solid ${theme.palette.primary.light}`,
-    borderRadius: "15px",
-    color: "white",
-    "&:hover": {
-      color: "primary",
-    },
-  };
-
   return (
     <>
       <CssBaseline />
-      <Grid
-        container
-        sx={{ position: "relative", top: "64px", marginBottom: "10vh" }}
-      >
+      <Grid container sx={{ marginBottom: "10vh" }}>
         <Grid item xs={12} className="heading">
-          <img src={categoryHeader()} alt="" />
+          <img
+            src={categoryHeader()}
+            alt=""
+            style={{ boxShadow: "inset 0px 54px 51px -6px rgba(0,0,0,0.64)" }}
+          />
         </Grid>
         <Box className="opacity-bg"></Box>
       </Grid>
@@ -137,7 +126,11 @@ const StorePage = () => {
                 borderBottom: `solid 1px ${theme.palette.text.secondary}`,
               }}
             >
-              <Typography variant="h3" color={theme.palette.text.primary}>
+              <Typography
+                variant="h3"
+                color={theme.palette.text.primary}
+                sx={titleStyles}
+              >
                 {categorySelected}
               </Typography>
 

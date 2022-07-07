@@ -25,6 +25,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { AddTask } from "@mui/icons-material";
 import { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
+import { titleStyles } from "../muiStyles/muiStyles";
 
 function ContactUs() {
   const [firstName, setFirstName] = useState("");
@@ -68,9 +69,9 @@ function ContactUs() {
       <Container>
         <Typography
           variant="h3"
-          fontWeight={700}
           alignItems="center"
           paddingY="5rem"
+          sx={titleStyles}
         >
           Contact Us
         </Typography>
@@ -100,11 +101,7 @@ function ContactUs() {
                   Get in Touch
                 </Typography>
 
-                <form
-                  onSubmit={handleSubmit}
-                  display="flex"
-                  justifyContent="flex-start"
-                >
+                <form onSubmit={handleSubmit}>
                   <Grid container spacing={1}>
                     <Grid xs={12} md={6} item>
                       <TextField

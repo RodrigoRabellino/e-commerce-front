@@ -1,6 +1,7 @@
 .heading{
   width:100%;
   height:500px;
+  background: rgb(0, 0, 0);
 }
 
 .heading img{
@@ -8,6 +9,8 @@
   height:500px;
   object-fit: cover;
   object-position:center;
+  
+  filter: opacity(50%);
 }
 
 .heading .opacityBg {
