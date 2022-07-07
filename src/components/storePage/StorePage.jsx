@@ -64,9 +64,9 @@ const StorePage = () => {
         return "https://i.ibb.co/j3DW9S1/header-all-1.jpg";
 
       case "accesories":
-        return "https://i.ibb.co/ZgcqdYh/header-accesories-2.webp";
+        return "https://i.ibb.co/LJBrFsL/header-accesories-2.webp";
       case "effects":
-        return "https://i.ibb.co/85tKwLs/header-pedals-2.jpg";
+        return "https://i.ibb.co/1YCWdgd/header-effects-2.jpg";
       case "bass":
         return "https://i.ibb.co/vP0mBvP/header-bass-3.jpg";
       case "electric":

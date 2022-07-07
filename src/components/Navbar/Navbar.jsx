@@ -14,6 +14,8 @@ import {
   Avatar,
   IconButton,
   Popover,
+  Collapse,
+  Stack,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
@@ -42,6 +44,8 @@ function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [navbarScroll, setNavbarScroll] = useState(false);
   const [page, setPage] = useState(1);
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const openPopover = (e) => {
@@ -165,78 +169,113 @@ function Navbar() {
                     width="35%"
                   >
                     <Typography
-                      onClick={openPopover}
                       variant="button"
                       className="navStyles"
-                      // sx={{ ...navStyles, "&:hover": { cursor: "pointer" } }}
+                      onClick={() => setCategoriesOpen((prev) => !prev)}
                     >
                       Categories
                     </Typography>
-                    <Popover
-                      open={Boolean(anchor)}
-                      onClose={() => setAnchor(null)}
-                      anchorEl={anchor}
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "center",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "center",
+                    <Collapse
+                      in={categoriesOpen}
+                      unmountOnExit
+                      sx={{
+                        px: "2rem",
+                        pt: "1rem",
+                        position: "absolute",
+                        top: "64px",
+                        left: "31%",
+                        backgroundColor: "rgba(171, 131, 42,0.8)",
+                        borderRadius: "15px",
+                        backdropFilter: "blur(3px)",
                       }}
                     >
-                      <Box px={2} pt={1} sx={{ backgroundColor: "white" }}>
-                        <Box pb={1} key={1}>
-                          <Link to={`/store/allproducts`} className="navLink">
-                            <Typography
-                              color="primary"
-                              variant="p"
-                              fontSize="14px"
-                              fontWeight="500"
-                              onClick={() => {
-                                handleAllProducts();
-                              }}
-                            >
-                              ALL PRODUCTS
-                            </Typography>
-                          </Link>
-                        </Box>
-                        {categories.map((category) => {
-                          return (
-                            <Box pb={1} key={category._id}>
-                              <Link
-                                to={`/store/${category.name}`}
-                                className="navLink"
-                              >
-                                <Typography
-                                  color="primary"
-                                  variant="p"
-                                  fontSize="14px"
-                                  fontWeight="500"
-                                  sx={{
-                                    borderBottom: "thick double white",
-                                    transition: "0.2s",
-                                    "&:hover": {
-                                      cursor: "pointer",
-                                      borderBottom: `thick double ${theme.palette.primary.main}`,
-                                    },
-                                  }}
-                                >
-                                  {category.name.toUpperCase()}
-                                </Typography>
-                              </Link>
-                            </Box>
-                          );
-                        })}
-                      </Box>
-                    </Popover>
+                      <Stack>
+                        <Typography
+                          variant="button"
+                          className="navStyles"
+                          onClick={() => {
+                            navigate("/store/allproducts");
+                            setOpenDrawer(false);
+                          }}
+                        >
+                          {" "}
+                          ALL PRODUCTS
+                        </Typography>
+                        <Typography
+                          variant="button"
+                          className="navStyles"
+                          onClick={() => {
+                            navigate("/store/accesories");
+                            setOpenDrawer(false);
+                          }}
+                        >
+                          {" "}
+                          ACCESORIES
+                        </Typography>
+                        <Typography
+                          variant="button"
+                          className="navStyles"
+                          onClick={() => {
+                            navigate("/store/effects");
+                            setOpenDrawer(false);
+                          }}
+                        >
+                          {" "}
+                          EFFECTS
+                        </Typography>
+                        <Typography
+                          variant="button"
+                          className="navStyles"
+                          onClick={() => {
+                            navigate("/store/bass");
+                            setOpenDrawer(false);
+                          }}
+                        >
+                          {" "}
+                          BASS
+                        </Typography>
+                        <Typography
+                          variant="button"
+                          className="navStyles"
+                          onClick={() => {
+                            navigate("/store/electric");
+                            setOpenDrawer(false);
+                          }}
+                        >
+                          {" "}
+                          ELECTRIC
+                        </Typography>
+                        <Typography
+                          variant="button"
+                          className="navStyles"
+                          onClick={() => {
+                            navigate("/store/acoustic");
+                            setOpenDrawer(false);
+                          }}
+                        >
+                          {" "}
+                          ACOUSTIC
+                        </Typography>
+                        <Typography
+                          variant="button"
+                          className="navStyles"
+                          onClick={() => {
+                            navigate("/store/amplifier");
+                            setOpenDrawer(false);
+                          }}
+                        >
+                          {" "}
+                          AMPLIFIER
+                        </Typography>
+                      </Stack>
+                    </Collapse>
                     <Typography variant="button">
-                      <Link to="/contact" className="navLink">
+                      <Link to="/contact" className="navLink navStyles">
                         Contact
                       </Link>
                     </Typography>
                     <Typography variant="button">
-                      <Link to="/about" className="navLink">
+                      <Link to="/about" className="navLink navStyles">
                         About
                       </Link>
                     </Typography>

@@ -4,6 +4,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
 body {
   background-color: #fcfaf6;
   font-family: "Raleway", sans-serif;
@@ -20,5 +28,3 @@ code {
 .number {
   font-family: "font-family: 'Source Code Pro', monospace;";
 }
-
-

@@ -251,15 +251,17 @@ const HomePage = () => {
 
       <Box className="marqueebutom">
         <p className="giftext">
-          Get $85.00 in Bonus Bucks in Fender Player Stratocaster - Tidepool
-          with Maple Fingerboard in you buy within the next 48hs!
-        </p>
-        <p className="giftext" style={{ animationDelay: "5s" }}>
-          Stay put for the incoming selection of PRS and Marshall products
-        </p>
-        <p className="giftext" style={{ animationDelay: "10s" }}>
-          $60 Bundle Savings in Fishman Loudbox mini BT Songwriter Package with
-          Microphone, Stand & Cable!
+          <span style={{ display: "inline-block", marginRight: "20%" }}>
+            Get $85.00 in Bonus Bucks in Fender Player Stratocaster
+          </span>
+          <span style={{ display: "inline-block", marginRight: "20%" }}>
+            Tidepool with Maple Fingerboard in you buy within the next 48hs!
+          </span>
+          <span style={{ display: "inline-block", marginRight: "20%" }}>
+            Stay put for the incoming selection of PRS and Marshall products $60
+            Bundle Savings in Fishman Loudbox mini BT Songwriter Package with
+            Microphone, Stand & Cable!
+          </span>
         </p>
       </Box>
     </>

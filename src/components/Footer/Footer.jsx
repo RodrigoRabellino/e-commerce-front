@@ -23,147 +23,140 @@ function Footer() {
   };
 
   return (
-    <Box sx={{ position: "relative", height: "100vh" }}>
-      <Box
-        label="cosopum"
-        padding="2.5rem"
-        paddingBottom="2rem"
-        bgcolor="#000000"
-        color="#F2DBB8"
-        sx={{
-          position: "absolute",
-          bottom: "0",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <Container maxWidth="lg">
-          <Grid container spacing={4}>
-            <Grid item xs={12} sm={3}>
-              <Box textAlign="left" variant="h1" marginBottom={3}>
-                <Link to="/" className="footerLink">
-                  GUITARRERO
-                </Link>
-              </Box>
-              <Box textAlign="left">
-                <Typography
-                  sx={{
-                    cursor: "pointer",
-                    fontWeight: "600",
-                    textDecoration: "none",
-                    color: "#7B8723",
-                  }}
-                  onClick={() => {
-                    window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
-                  }}
-                >
-                  ADMIN
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={3}>
+    <Box
+      label="cosopum"
+      padding="2.5rem"
+      paddingBottom="2rem"
+      bgcolor="#000000"
+      color="#F2DBB8"
+      sx={{ mt: "auto" }}
+    >
+      <Container maxWidth="lg">
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={3}>
+            <Box textAlign="left" variant="h1" marginBottom={3}>
+              <Link to="/" className="footerLink">
+                GUITARRERO
+              </Link>
+            </Box>
+            <Box textAlign="left">
               <Typography
-                variant="subtitle1"
-                borderBottom={0}
+                sx={{
+                  cursor: "pointer",
+                  fontWeight: "600",
+                  textDecoration: "none",
+                  color: "#7B8723",
+                }}
+                onClick={() => {
+                  window.open(process.env.REACT_APP_ADMIN_URL, "_blank");
+                }}
+              >
+                ADMIN
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <Typography
+              variant="subtitle1"
+              borderBottom={0}
+              textAlign="left"
+              color="primary"
+              fontWeight={700}
+            >
+              Locals
+            </Typography>
+            <Box marginTop={1}>
+              <Box color="inherit" textAlign="left">
+                P. Sherman, calle Wallaby, 42
+              </Box>
+            </Box>
+            <Box>
+              <Box href="" color="inherit" textAlign="left">
+                Open: 9:00-18:00
+              </Box>
+            </Box>
+
+            <Box marginTop={2}>
+              <Box href="" color="inherit" textAlign="left">
+                742 Evergreen Terrace
+              </Box>
+            </Box>
+            <Box>
+              <Box href="" color="inherit" textAlign="left">
+                Open: 9:00-18:00
+              </Box>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <Typography
+              variant="subtitle1"
+              borderBottom={0}
+              textAlign="left"
+              color="primary"
+              fontWeight={700}
+            >
+              Contact
+            </Typography>
+            <Box>
+              <Box href="" color="inherit" textAlign="left" marginTop={1}>
+                pepe.leia@ha.com
+              </Box>
+            </Box>
+            <Box>
+              <Box href="" color="inherit" textAlign="left">
+                Cel:55523156
+              </Box>
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} sm={3}>
+            <FormControl variant="standard" fullWidth>
+              <Typography
+                variant="h5"
+                gutterBottom
+                component="div"
                 textAlign="left"
                 color="primary"
-                fontWeight={700}
               >
-                Locals
+                Suscribe for More
               </Typography>
-              <Box marginTop={1}>
-                <Box color="inherit" textAlign="left">
-                  P. Sherman, calle Wallaby, 42
-                </Box>
-              </Box>
-              <Box>
-                <Box href="" color="inherit" textAlign="left">
-                  Open: 9:00-18:00
-                </Box>
-              </Box>
+              <Divider />
 
-              <Box marginTop={2}>
-                <Box href="" color="inherit" textAlign="left">
-                  742 Evergreen Terrace
-                </Box>
-              </Box>
-              <Box>
-                <Box href="" color="inherit" textAlign="left">
-                  Open: 9:00-18:00
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <Typography
-                variant="subtitle1"
-                borderBottom={0}
-                textAlign="left"
-                color="primary"
-                fontWeight={700}
-              >
-                Contact
-              </Typography>
-              <Box>
-                <Box href="" color="inherit" textAlign="left" marginTop={1}>
-                  pepe.leia@ha.com
-                </Box>
-              </Box>
-              <Box>
-                <Box href="" color="inherit" textAlign="left">
-                  Cel:55523156
-                </Box>
-              </Box>
-            </Grid>
-
-            <Grid item xs={12} sm={3}>
-              <FormControl variant="standard" fullWidth>
-                <Typography
-                  variant="h5"
-                  gutterBottom
-                  component="div"
-                  textAlign="left"
-                  color="primary"
-                >
-                  Suscribe for More
-                </Typography>
-                <Divider />
-
-                <input
-                  className="subscribe"
-                  type="text"
-                  placeholder="Enter Your Email"
-                />
-                <Button variant="contained" color="primary">
-                  Send
-                </Button>
-              </FormControl>
-            </Grid>
+              <input
+                className="subscribe"
+                type="text"
+                placeholder="Enter Your Email"
+              />
+              <Button variant="contained" color="primary">
+                Send
+              </Button>
+            </FormControl>
           </Grid>
-          <Divider sx={{ marginY: "2rem" }} />
+        </Grid>
+        <Divider sx={{ marginY: "2rem" }} />
 
-          <Grid container spacing={4}>
-            <Grid item xs={12} sm={4}>
-              <Box textAlign="left">&reg;2022 Guitarrero</Box>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Box textAlign="center">
-                <Link to="/" className="footerLink">
-                  <InstagramIcon sx={iconStyles} />
-                </Link>
-                <Link to="/" className="footerLink">
-                  <GitHubIcon sx={iconStyles} />
-                </Link>
-                <Link to="/" className="footerLink">
-                  <TwitterIcon sx={iconStyles} />
-                </Link>
-                <Link to="/" className="footerLink">
-                  <LinkedInIcon sx={iconStyles} />
-                </Link>
-              </Box>
-            </Grid>
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={4}>
+            <Box textAlign="left">&reg;2022 Guitarrero</Box>
           </Grid>
-        </Container>
-      </Box>
+          <Grid item xs={12} sm={4}>
+            <Box textAlign="center">
+              <Link to="/" className="footerLink">
+                <InstagramIcon sx={iconStyles} />
+              </Link>
+              <Link to="/" className="footerLink">
+                <GitHubIcon sx={iconStyles} />
+              </Link>
+              <Link to="/" className="footerLink">
+                <TwitterIcon sx={iconStyles} />
+              </Link>
+              <Link to="/" className="footerLink">
+                <LinkedInIcon sx={iconStyles} />
+              </Link>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
     </Box>
   );
 }

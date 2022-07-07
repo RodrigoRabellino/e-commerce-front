@@ -4,53 +4,53 @@
 }
 
 .navStyles {
-  font-size:1rem;
+  font-size: 1rem;
   font-weight: 500;
   transition: 0.2s;
-  
+  border-bottom: 2px solid rgba(242, 219, 184, 0);
+  margin-bottom: 1rem;
 }
 
-.navStyles:hover{
-  border-bottom: 2px solid #F2DBB8;
-  cursor:pointer;
+.navStyles:hover {
+  border-bottom: 2px solid rgba(242, 219, 184, 1);
+  cursor: pointer;
 }
 
-.hamburguerNavStyles{
-  margin-bottom:2rem;
-  font-size:1rem;
+.hamburguerNavStyles {
+  font-size: 1rem;
   font-weight: 500;
   transition: 0.2s;
-  border-bottom: 2px solid #FCFAF6;
+  border-bottom: 2px solid rgba(242, 219, 184, 0);
 }
 
-.hamburguerNavStyles:hover{
-  border-bottom: 2px solid #ab832a;
-  cursor:pointer;
+.hamburguerNavStyles:hover {
+  border-bottom: 2px solid rgba(242, 219, 184, 1);
+  cursor: pointer;
 }
 
-.navLink:hover{
+.navLink:hover {
   color: white;
 }
 
-.logo{
-  transition:0.2s;
+.logo {
+  transition: 0.2s;
 }
 
-.logo:hover{
-  transition:0.2s;
-transform:rotate(45deg);
-cursor: pointer;
+.logo:hover {
+  transition: 0.2s;
+  transform: rotate(45deg);
+  cursor: pointer;
 }
 
-.cartCounter{
-  position: 'relative'
+.cartCounter {
+  position: "relative";
 }
-#drawer{
+#drawer {
   background-color: white;
 }
-.appbartransparent{
+.appbartransparent {
   background: transparent;
 }
-.appbarsolid{
+.appbarsolid {
   background: #ab832a;
 }

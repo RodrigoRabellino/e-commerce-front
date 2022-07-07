@@ -1,13 +1,39 @@
+import { Box, Fab } from "@mui/material";
 import React from "react";
 import Footer from "../components/footer/Footer";
 import Navbar from "../components/navbar/Navbar";
 import MyRoutes from "../MyRoutes";
+import NavigationIcon from "@mui/icons-material/Navigation";
+import { useNavigate } from "react-router-dom";
 
 const UserMain = () => {
+  const navigate = useNavigate();
   return (
     <>
-      <Navbar />
-      <MyRoutes type="user" />
+      <main>
+        <Navbar />
+        <Box
+          sx={{
+            "& > :not(style)": { m: 1 },
+            position: "fixed",
+            top: "75vh",
+            right: "-5rem",
+            zIndex: "100",
+            transition: "0.3s",
+            "&:hover": {
+              transition: "0.3s",
+              right: 0,
+            },
+          }}
+          onClick={() => navigate("/about")}
+        >
+          <Fab variant="extended" color="secondary" aria-label="add">
+            <NavigationIcon sx={{ mr: 1 }} />
+            About
+          </Fab>
+        </Box>
+        <MyRoutes type="user" />
+      </main>
       <Footer />
     </>
   );

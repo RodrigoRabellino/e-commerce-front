@@ -68,7 +68,7 @@ function DrawerNav() {
             {Object.entries(user).length === 0 ? (
               <Typography
                 variant="button"
-                className="hamburguerNavStyles"
+                className="navStyles"
                 fontWeight="700"
                 onClick={() => navigate("/login")}
               >
@@ -91,7 +91,7 @@ function DrawerNav() {
 
             <Typography
               variant="button"
-              className="hamburguerNavStyles"
+              className="navStyles"
               fontWeight="700"
               onClick={() => setCategoriesOpen((prev) => !prev)}
             >
@@ -102,7 +102,7 @@ function DrawerNav() {
               <Stack>
                 <Typography
                   variant="button"
-                  className="hamburguerNavStyles"
+                  className="navStyles"
                   onClick={() => {
                     navigate("/store/allproducts");
                     setOpenDrawer(false);
@@ -113,7 +113,7 @@ function DrawerNav() {
                 </Typography>
                 <Typography
                   variant="button"
-                  className="hamburguerNavStyles"
+                  className="navStyles"
                   onClick={() => {
                     navigate("/store/accesories");
                     setOpenDrawer(false);
@@ -124,7 +124,7 @@ function DrawerNav() {
                 </Typography>
                 <Typography
                   variant="button"
-                  className="hamburguerNavStyles"
+                  className="navStyles"
                   onClick={() => {
                     navigate("/store/effects");
                     setOpenDrawer(false);
@@ -135,7 +135,7 @@ function DrawerNav() {
                 </Typography>
                 <Typography
                   variant="button"
-                  className="hamburguerNavStyles"
+                  className="navStyles"
                   onClick={() => {
                     navigate("/store/bass");
                     setOpenDrawer(false);
@@ -146,7 +146,7 @@ function DrawerNav() {
                 </Typography>
                 <Typography
                   variant="button"
-                  className="hamburguerNavStyles"
+                  className="navStyles"
                   onClick={() => {
                     navigate("/store/electric");
                     setOpenDrawer(false);
@@ -157,7 +157,7 @@ function DrawerNav() {
                 </Typography>
                 <Typography
                   variant="button"
-                  className="hamburguerNavStyles"
+                  className="navStyles"
                   onClick={() => {
                     navigate("/store/acoustic");
                     setOpenDrawer(false);
@@ -168,7 +168,7 @@ function DrawerNav() {
                 </Typography>
                 <Typography
                   variant="button"
-                  className="hamburguerNavStyles"
+                  className="navStyles"
                   onClick={() => {
                     navigate("/store/amplifier");
                     setOpenDrawer(false);
@@ -182,7 +182,7 @@ function DrawerNav() {
 
             <Typography
               variant="button"
-              className="hamburguerNavStyles"
+              className="navStyles"
               fontWeight="700"
               onClick={() => {
                 navigate("/contact");
@@ -195,7 +195,7 @@ function DrawerNav() {
 
             <Typography
               variant="button"
-              className="hamburguerNavStyles"
+              className="navStyles"
               fontWeight="700"
               onClick={() => {
                 navigate("/about");
