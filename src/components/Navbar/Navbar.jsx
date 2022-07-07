@@ -104,6 +104,8 @@ function Navbar() {
     "userpage",
     "contact",
     "product",
+    "checkout",
+    "welcome",
   ];
 
   const renderTransparentNav = notTransparentNav.includes(

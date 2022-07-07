@@ -7,7 +7,7 @@ import StepLabel from "@mui/material/StepLabel";
 import PaymentForm from "../paymentForm/PaymentForm";
 import ReviewForm from "../reviewForm/ReviewForm";
 import AddressForm from "../addressForm/AddressForm";
-import PaymentConfirmation from "../PaymentConfirmation/paymentConfirmation";
+import PaymentConfirmation from "../paymentConfirmation/paymentConfirmation";
 
 export default function CheckOut() {
   const [activeStep, setActiveStep] = useState(0);

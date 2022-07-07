@@ -1,8 +1,8 @@
 import React from "react";
 import { Slide } from "react-slideshow-image";
+import { Box } from "@mui/system";
 import "./MyCarousel.css";
 import "react-slideshow-image/dist/styles.css";
-import { Box } from "@mui/system";
 
 const properties = {
   duration: 1000,

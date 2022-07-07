@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { titleStyles, subTitleStyles } from "../muiStyles/muiStyles";
 
 import "./HomePage.css";
+import SlickCarousel from "./SlickCarousel";
 
 const HomePage = () => {
   const [starredProducts, setStarredProducts] = useState([]);
@@ -118,15 +119,14 @@ const HomePage = () => {
       </section>
 
       <section>
-        <Container>
-          <Grid
-            container
-            py={2}
-            sx={{ paddingBottom: "5rem" }}
-            justifyContent="center"
-          >
-            Carousel
-            {/* <Grid item sm={12} md={12}>
+        <Grid
+          container
+          py={2}
+          sx={{ paddingBottom: "5rem" }}
+          justifyContent="center"
+        >
+          <Grid item xs={12}>
+            <Box>
               <Typography
                 variant="h3"
                 color={theme.palette.text.primary}
@@ -134,10 +134,22 @@ const HomePage = () => {
               >
                 Our Featured Products
               </Typography>
-              <MyCarousel starredProducts={starredProducts} />
-            </Grid> */}
+            </Box>
+            <Box
+              py={1}
+              sx={{
+                backgroundColor: "white",
+                borderBottom: `1px solid ${theme.palette.primary.light}`,
+                borderTop: `1px solid ${theme.palette.primary.light}`,
+              }}
+            >
+              {<SlickCarousel starredProducts={starredProducts} />}
+            </Box>
+            {/* <MyCarousel starredProducts={starredProducts} /> */}
           </Grid>
+        </Grid>
 
+        <Container>
           <Box>
             <Grid container paddingBottom={3}>
               <Grid item xs={12} sm={4} className="iconsvg">

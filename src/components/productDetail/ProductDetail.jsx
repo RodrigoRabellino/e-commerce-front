@@ -1,3 +1,4 @@
+import "./quantityItems.css";
 import {
   Grid,
   Typography,
@@ -8,28 +9,24 @@ import {
   CircularProgress,
   ButtonGroup,
   CssBaseline,
-  IconButton,
 } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
-
-import ExampleCarousel from "../ExampleCarousel/ExampleCarousel";
-import { useSelector } from "react-redux";
+import ExampleCarousel from "./exampleCarousel/ExampleCarousel";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchOneProduct } from "../../services/apiServices";
 import { useDispatch } from "react-redux";
 import { addItemToCart, addOneQty, removeOneQty } from "../../Redux/cart/slice";
-import "./quantityItems.css";
 import { useTheme } from "@emotion/react";
 
 function ProductDetail() {
   const theme = useTheme();
-  const { id } = useParams();
   const dispatch = useDispatch();
+  const { id } = useParams();
   const [selectedProduct, setSelectedProduct] = useState({});
   const [qty, setQty] = useState(1);
 
