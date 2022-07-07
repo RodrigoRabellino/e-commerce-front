@@ -8,6 +8,7 @@ import {
   CircularProgress,
   ButtonGroup,
   CssBaseline,
+  IconButton,
 } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
@@ -182,12 +183,14 @@ function ProductDetail() {
           >
             <Box>
               <ButtonGroup
+                disableElevation
                 sx={{ display: "flex", mb: "0.5rem", height: "2.5rem" }}
               >
                 <Button
+                  color="primary"
                   variant="contained"
                   sx={{
-                    borderRadius: "15px",
+                    borderRadius: "10px",
                     border: `2px solid ${theme.palette.primary.light}`,
                     flexGrow: "1",
                   }}
@@ -196,6 +199,7 @@ function ProductDetail() {
                   <RemoveCircleOutlineIcon />
                 </Button>
                 <Button
+                  color="primary"
                   sx={{
                     border: `2px solid ${theme.palette.primary.light}`,
                     flexGrow: "1",
@@ -218,9 +222,10 @@ function ProductDetail() {
                   </Typography>
                 </Button>
                 <Button
+                  color="primary"
                   variant="contained"
                   sx={{
-                    borderRadius: "15px",
+                    borderRadius: "10px",
                     border: `2px solid ${theme.palette.primary.light}`,
                     flexGrow: "1",
                   }}
@@ -234,15 +239,17 @@ function ProductDetail() {
                 </Button>
               </ButtonGroup>
               <Button
+                disableElevation
+                color="primary"
                 sx={{
-                  height: "2.5rem",
+                  p: 1.3,
                   mb: "1rem",
                   width: "100%",
-                  borderRadius: "15px",
+                  borderRadius: "10px",
                   border: `2px solid ${theme.palette.primary.light}`,
                 }}
-                variant="contained"
                 onClick={() => addToCart()}
+                variant="contained"
               >
                 <AddShoppingCartIcon />
                 <Typography

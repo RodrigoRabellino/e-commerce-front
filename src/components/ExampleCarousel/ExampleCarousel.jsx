@@ -22,6 +22,7 @@ function ExampleCarousel({ selectedProduct }) {
             width: "100%",
             height: "100%",
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
           }}
         >
@@ -30,7 +31,6 @@ function ExampleCarousel({ selectedProduct }) {
           ) : (
             productImages.map((img, i) => (
               <Box
-                className="carouselBox"
                 display="flex"
                 alignItems="center"
                 key={`img-${i}`}

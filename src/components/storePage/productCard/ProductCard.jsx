@@ -93,7 +93,7 @@ const ListView = ({ product, handleNavigate }) => {
           justifyContent="space-between"
         >
           <Typography
-            color="primary"
+            color={theme.palette.text.primary}
             fontWeight="500"
             variant="h6"
             textAlign="start"
@@ -110,7 +110,7 @@ const ListView = ({ product, handleNavigate }) => {
                   height: "4rem",
                 }}
                 variant="p"
-                color="primary"
+                color={theme.palette.text.primary}
               >
                 {description.substring(0, 250)}...
               </Typography>
@@ -120,7 +120,7 @@ const ListView = ({ product, handleNavigate }) => {
                 fontFamily="number"
                 fontSize="1.2rem"
                 fontWeight="500"
-                color="primary"
+                color={theme.palette.text.primary}
               >{`$ ${price}`}</Typography>
             </Grid>
           </Grid>
@@ -181,7 +181,7 @@ const ModuleView = ({ product, handleNavigate }) => {
             fontWeight="700"
             variant="body1"
             textAlign="center"
-            color="primary"
+            color={theme.palette.text.primary}
           >
             {name.substring(0, 14)}
           </Typography>
@@ -189,7 +189,7 @@ const ModuleView = ({ product, handleNavigate }) => {
         subheader={
           <Typography
             className="number"
-            sx={{ width: "100%" }}
+            sx={{ width: "100%", color: theme.palette.text.primary }}
             color="primary"
             fontSize="1.2rem"
             fontWeight="500"

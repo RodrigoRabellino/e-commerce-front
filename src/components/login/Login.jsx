@@ -111,13 +111,7 @@ export default function Login() {
             >
               <Box>LOGUITO</Box>
 
-              <Typography
-                component="h1"
-                variant="h5"
-                color={theme.palette.primary.main}
-              >
-                Sign in
-              </Typography>
+              <Typography variant="h4">Sign in</Typography>
               <Divider></Divider>
               <form onSubmit={formik.handleSubmit}>
                 <TextField
@@ -164,6 +158,7 @@ export default function Login() {
 
                 <Box className="butonsingin">
                   <Button
+                    disableElevation
                     fullWidth
                     type="submit"
                     variant="contained"
@@ -174,6 +169,7 @@ export default function Login() {
                 </Box>
                 <NavLink to="/register" style={{ textDecoration: "none" }}>
                   <Button
+                    disableElevation
                     fullWidth
                     variant="contained"
                     sx={{ ...categoryBtnStyles }}

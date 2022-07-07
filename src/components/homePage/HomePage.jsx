@@ -14,6 +14,7 @@ import GridCategories from "../gridCategories/GridCategories";
 import MyCarousel from "./MyCarousel";
 import { useTheme } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
+import { titleStyles, subTitleStyles } from "../muiStyles/muiStyles";
 
 import "./HomePage.css";
 
@@ -44,16 +45,31 @@ const HomePage = () => {
       <CssBaseline />
       <section className="start-page parallax-background" id="home">
         <Box className="opacity-bg"></Box>
-        <Box className="content-bg">
+        <Box
+          className="content-bg"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            JustifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Box
-            sx={{ height: "100%", width: "100%" }}
+            sx={{
+              height: "100%",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
             className="title-text"
-            display="flex"
-            flexDirection="column"
-            JustifyContent="center"
-            alignItems="center"
           >
-            <Typography variant="h4" noWrap sx={{ color: "white" }}>
+            <Typography
+              variant="h4"
+              noWrap
+              sx={{ color: "white", fontSize: { xs: "1rem", sm: "2rem" } }}
+            >
               One click away from a life of music.
             </Typography>
 
@@ -75,17 +91,16 @@ const HomePage = () => {
         <Container>
           <Box>
             <Typography
-              fontWeight="600"
               marginTop="50px"
-              variant="h3"
-              color={theme.palette.primary.main}
+              color={theme.palette.text.primary}
+              sx={titleStyles}
             >
               Music Inspires
             </Typography>
             <Typography
               variant="h5"
-              sx={{ marginTop: "20px" }}
-              color={theme.palette.primary.main}
+              sx={{ ...subTitleStyles, marginTop: "20px" }}
+              color={theme.palette.text.primary}
             >
               Life without playing music is inconceivable for me.
             </Typography>
@@ -110,16 +125,17 @@ const HomePage = () => {
             sx={{ paddingBottom: "5rem" }}
             justifyContent="center"
           >
-            <Grid item sm={12} md={12}>
+            Carousel
+            {/* <Grid item sm={12} md={12}>
               <Typography
                 variant="h3"
-                color={theme.palette.primary.dark}
+                color={theme.palette.text.primary}
                 sx={{ marginBottom: "2rem" }}
               >
                 Our Featured Products
               </Typography>
               <MyCarousel starredProducts={starredProducts} />
-            </Grid>
+            </Grid> */}
           </Grid>
 
           <Box>
@@ -144,9 +160,8 @@ const HomePage = () => {
                   Buy with card or cash
                 </Typography>
                 <Typography variant="subtitle1">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy
+                  We accept all credit and debit cards. We also offer our shop
+                  local card with awesome benefits and discounts!
                 </Typography>
               </Grid>
               {/* <Divider orientation="vertical" flexItem>
@@ -172,13 +187,19 @@ const HomePage = () => {
                   <path d="M507.219,275.177,466.234,185.01A42.749,42.749,0,0,0,427.4,160H352V128a32.035,32.035,0,0,0-32-32H53.333a32.035,32.035,0,0,0-32,32V256a10.667,10.667,0,1,0,21.333,0V128a10.679,10.679,0,0,1,10.667-10.667H320A10.679,10.679,0,0,1,330.667,128V298.667A10.681,10.681,0,0,1,320,309.333H192a10.667,10.667,0,0,0,0,21.333H320a32.035,32.035,0,0,0,32-32V181.333h75.4a21.381,21.381,0,0,1,19.422,12.505l4.013,8.828h-45.5A21.356,21.356,0,0,0,384,224v42.667A21.354,21.354,0,0,0,405.333,288h83.94a31.775,31.775,0,0,1,1.393,9.24v44.094A10.681,10.681,0,0,1,480,352H446.924a53.336,53.336,0,0,0-104.516,0H169.591a53.336,53.336,0,0,0-104.516,0H53.333a10.681,10.681,0,0,1-10.667-10.667V330.667a10.667,10.667,0,0,0,0-21.333h-32a10.667,10.667,0,0,0,0,21.333H21.333v10.667a32.035,32.035,0,0,0,32,32H65.076a53.336,53.336,0,0,0,104.516,0H342.409a53.336,53.336,0,0,0,104.516,0H480a32.035,32.035,0,0,0,32-32V297.24A52.9,52.9,0,0,0,507.219,275.177ZM117.333,394.667a32,32,0,1,1,32-32A32.035,32.035,0,0,1,117.333,394.667Zm277.333,0a32,32,0,1,1,32-32A32.035,32.035,0,0,1,394.667,394.667ZM405.333,224h55.194l19.393,42.667H405.333Z" />
                   <path d="M10.667,298.667H64a10.667,10.667,0,0,0,0-21.333H10.667a10.667,10.667,0,0,0,0,21.333Z" />
                 </svg>
-                <Typography variant="h5" fontWeight={700}>
+                <Typography
+                  variant="h5"
+                  color={theme.palette.text.primary}
+                  fontWeight={700}
+                >
                   Fast and safe shipping
                 </Typography>
-                <Typography variant="subtitle1">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy
+                <Typography
+                  color={theme.palette.text.primary}
+                  variant="subtitle1"
+                >
+                  Our delivery service is as fast as you have ever imagined. get
+                  your products at home within 72hs of buying
                 </Typography>
               </Grid>
               {/* <Divider orientation="vertical" flexItem>
@@ -196,13 +217,19 @@ const HomePage = () => {
                     fill="black"
                   />
                 </svg>
-                <Typography variant="h5" fontWeight={700}>
+                <Typography
+                  variant="h5"
+                  color={theme.palette.text.primary}
+                  fontWeight={700}
+                >
                   Protected Purchase
                 </Typography>
-                <Typography variant="subtitle1">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy
+                <Typography
+                  color={theme.palette.text.primary}
+                  variant="subtitle1"
+                >
+                  If there's any problem with your order transaction you will be
+                  reimbursed for 100% of your total purchase
                 </Typography>
               </Grid>
             </Grid>
@@ -213,8 +240,13 @@ const HomePage = () => {
       <Box className="marqueebutom">
         <span>
           <p className="giftext">
-            International shipping available [Free shipping]Lorem Ipsum is
-            simply dummy text of the printing and typesetting
+            Get $85.00 in Bonus Bucks in Fender Player Stratocaster - Tidepool
+            with Maple Fingerboard
+            <br />
+            $50.00 off in any Boss GA-FC GA Controller
+            <br />
+            $85 Bundle Savings in Fishman Loudbox mini BT Songwriter Package
+            with Microphone, Stand & Cable
           </p>
         </span>
       </Box>

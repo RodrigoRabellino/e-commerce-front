@@ -53,6 +53,15 @@ function ContactUs() {
     setMessage("");
   };
 
+  const iconStyles = {
+    transition: "0.2s",
+    ":hover": {
+      transition: "0.2s",
+      transform: "translateY(-5px)",
+      cursor: "pointer",
+    },
+  };
+
   return (
     <>
       <CssBaseline />
@@ -60,20 +69,15 @@ function ContactUs() {
         <Typography
           variant="h3"
           fontWeight={700}
-          color="primary"
           alignItems="center"
           paddingY="5rem"
         >
           Contact Us
         </Typography>
         <Paper
+          elevation={5}
           sx={{
             backgroundColor: "white",
-            boxShadow: "2px 2px 2px 2px rgb(0,0,0, 0.22)",
-            ":hover": {
-              transition: "0.5s",
-              boxShadow: "3px 3px 3px 3px rgb(0,0,0, 0.44)",
-            },
             mb: "100px",
           }}
         >
@@ -258,24 +262,19 @@ function ContactUs() {
                   width: { xs: "80%", md: "100%" },
                 }}
               >
-                <Box sx={{ display: "flex", width: "100%", ml: "-12px" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    width: "100%",
+                    ml: "-12px",
+                    paddingY: 1,
+                  }}
+                >
                   <Grid item xs={1}>
                     <LocationOnIcon sx={{ paddingTop: "0.3rem" }} />
                   </Grid>
                   <Grid item xs={7}>
-                    <Typography
-                      variant="subtitle1"
-                      textAlign="left"
-                      paddingTop="0.3rem"
-                    ></Typography>
                     <Typography variant="subtitle1" textAlign="left">
-                      Open: 9:00-18:00
-                    </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      textAlign="left"
-                      paddingTop="1rem"
-                    >
                       742 Evergreen Terrace
                     </Typography>
                     <Typography variant="subtitle1" textAlign="left">
@@ -299,10 +298,10 @@ function ContactUs() {
                       paddingTop="1.4rem"
                       sx={{ display: "flex", justifyContent: "space-between" }}
                     >
-                      <InstagramIcon />
-                      <GitHubIcon />
-                      <TwitterIcon />
-                      <LinkedInIcon />
+                      <InstagramIcon sx={iconStyles} />
+                      <GitHubIcon sx={iconStyles} />
+                      <TwitterIcon sx={iconStyles} />
+                      <LinkedInIcon sx={iconStyles} />
                     </Box>
                   </Grid>
                 </Box>

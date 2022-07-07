@@ -52,8 +52,6 @@ function Navbar() {
     setAnchor(e.currentTarget);
   };
 
-   
- 
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   let cartQty = 0;
@@ -84,7 +82,6 @@ function Navbar() {
 
   const changeBackground = () => {
     if (window.scrollY >= 80) {
-      console.log("cambiando-color")
       setNavbarScroll(true);
     } else {
       setNavbarScroll(false);
@@ -92,24 +89,35 @@ function Navbar() {
   };
   window.addEventListener("scroll", changeBackground);
 
-  
- 
-
   const navStyles = {
     fontSize: "0.9rem",
     fontWeight: "500",
     transition: "0.2s",
-    borderBottom: `thick double ${theme.palette.primary.main}`,
+    borderBottom: `2px solid ${theme.palette.primary.main}`,
     ":hover": {
-      borderBottom: `thick double ${theme.palette.primary.light}`,
+      borderBottom: `2px solid ${theme.palette.primary.light}`,
     },
   };
-
 
   return (
     <>
       <ElevationScroll>
-        <AppBar sx={navbarScroll ? {backgroundColor:"#ab832a",transition:"0.3s"} : {backgroundColor:"transparent", boxShadow:0,transition:"0.3s"}}>
+        <AppBar
+          sx={
+            navbarScroll
+              ? {
+                  backgroundColor: "#ab832a",
+                  transition: "0.3s",
+                  width: "100%",
+                }
+              : {
+                  backgroundColor: "transparent",
+                  boxShadow: 0,
+                  transition: "0.3s",
+                  width: "100%",
+                }
+          }
+        >
           <Container>
             <Toolbar
               disableGutters
@@ -120,7 +128,6 @@ function Navbar() {
                 justifyContent: "space-between",
                 paddingX: 0,
                 marginX: 0,
-                
               }}
             >
               <Link to="/" className="navLink">
@@ -228,8 +235,8 @@ function Navbar() {
                       </Link>
                     </Typography>
                     <Typography variant="button" sx={{ ...navStyles }}>
-                      <Link to="/aboutus" className="navLink">
-                        About Us
+                      <Link to="/about" className="navLink">
+                        About
                       </Link>
                     </Typography>
                   </Box>

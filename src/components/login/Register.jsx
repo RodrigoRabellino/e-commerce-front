@@ -98,9 +98,7 @@ export default function Register() {
                 alignItems: "center",
               }}
             >
-              <Typography component="h1" variant="h5">
-                Sign Up
-              </Typography>
+              <Typography variant="h4">Sign Up</Typography>
               <form onSubmit={formik.handleSubmit}>
                 <Box>
                   <TextField
@@ -202,6 +200,7 @@ export default function Register() {
                     )}
                   </Box>
                   <Button
+                    disableElevation
                     type="submit"
                     fullWidth
                     variant="contained"

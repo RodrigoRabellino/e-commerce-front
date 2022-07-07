@@ -1,9 +1,7 @@
 import React from "react";
-
 import { Slide } from "react-slideshow-image";
 import "./MyCarousel.css";
 import "react-slideshow-image/dist/styles.css";
-
 import { Box } from "@mui/system";
 
 const properties = {
@@ -31,21 +29,21 @@ const properties = {
       breakpoint: 1100,
       settings: {
         slidesToShow: 5,
-        slidesToScroll: 1,
+        slidesToScroll: 3,
       },
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToScroll: 3,
       },
     },
     {
       breakpoint: 350,
       settings: {
         slidesToShow: 5,
-        slidesToScroll: 1,
+        slidesToScroll: 3,
       },
     },
   ],
@@ -64,7 +62,7 @@ function MyCarousel({ starredProducts }) {
         width: "100%",
       }}
     >
-      <Slide {...properties} slidesToShow={3}>
+      <Slide {...properties}>
         {starredProducts.map((item, i) => {
           return (
             <Box

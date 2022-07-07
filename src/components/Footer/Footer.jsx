@@ -18,6 +18,10 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 function Footer() {
+  const iconStyles = {
+    ml: 1,
+  };
+
   return (
     <>
       <Box
@@ -27,6 +31,7 @@ function Footer() {
         bgcolor="#000000"
         color="#F2DBB8"
         height="50%"
+        sx={{ position: "absolute", width: "100%" }}
       >
         <Container maxWidth="lg">
           <Grid container spacing={4}>
@@ -139,26 +144,17 @@ function Footer() {
             <Grid item xs={12} sm={4}>
               <Box textAlign="center">
                 <Link to="/" className="footerLink">
-                  <InstagramIcon />
+                  <InstagramIcon sx={iconStyles} />
                 </Link>
                 <Link to="/" className="footerLink">
-                  <GitHubIcon />
+                  <GitHubIcon sx={iconStyles} />
                 </Link>
                 <Link to="/" className="footerLink">
-                  <TwitterIcon />
+                  <TwitterIcon sx={iconStyles} />
                 </Link>
                 <Link to="/" className="footerLink">
-                  <LinkedInIcon />
+                  <LinkedInIcon sx={iconStyles} />
                 </Link>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Box display="flex">
-                <Typography>By:</Typography>
-                <Typography varaint="body2">Sebastián Sosa</Typography>
-                <Typography varaint="body2">Juan Arede</Typography>
-                <Typography varaint="body2">Rodrigo Rabellino</Typography>
-                <Typography varaint="body2">Soledad Campos</Typography>
               </Box>
             </Grid>
           </Grid>

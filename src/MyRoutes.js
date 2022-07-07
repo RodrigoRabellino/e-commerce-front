@@ -33,7 +33,7 @@ const MyRoutes = ({ type }) => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/product/:id" element={<ProductDetail />} />
-      <Route path="/aboutUs" element={<AboutUs />} />
+      <Route path="/about" element={<AboutUs />} />
       <Route path="/categories" element={<GridCategories />} />
       <Route path="/store/:categoryName" element={<StorePage />} />
       <Route path="/productCarousel" element={<ProductCarousel />} />

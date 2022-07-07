@@ -271,6 +271,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                 </Grid>
                 <Grid item sx={{ display: "flex", alignItems: "center" }}>
                   <Button
+                    disableElevation
                     sx={{
                       height: "2.5rem",
                       width: "100%",
@@ -294,7 +295,11 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                 {!canCheckout ? (
                   <Grid item xs={12} display="flex" justifyContent="end" mt={1}>
                     <Box sx={{ width: "35%" }}>
-                      <Typography variant="body2" color="red">
+                      <Typography
+                        variant="body2"
+                        sx={{ fontWeight: 500 }}
+                        color="red"
+                      >
                         {" "}
                         Sorry, but you can't purchase more items than there is
                         stock of it!

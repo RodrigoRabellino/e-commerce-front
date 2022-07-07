@@ -134,10 +134,10 @@ const StorePage = () => {
               my="1rem"
               sx={{
                 width: "100%",
-                borderBottom: `solid 1px ${theme.palette.primary.main}`,
+                borderBottom: `solid 1px ${theme.palette.text.secondary}`,
               }}
             >
-              <Typography variant="h3" color={theme.palette.primary.main}>
+              <Typography variant="h3" color={theme.palette.text.primary}>
                 {categorySelected}
               </Typography>
 

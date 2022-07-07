@@ -247,7 +247,6 @@ const AboutUs = () => {
             fontWeight: "bold",
             marginBottom: "20px",
             marginTop: "20px",
-            color: "#8C5032",
           }}
           variant="h4"
         >
@@ -293,7 +292,6 @@ const AboutUs = () => {
           fontWeight: "bold",
           marginBottom: "20px",
           marginTop: "30px",
-          color: "#8C5032",
         }}
         variant="h4"
       >
