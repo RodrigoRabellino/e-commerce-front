@@ -44,7 +44,12 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const handleCheckOut = () => {
     dispatch(createOrderReducer({ cart }));
     setIsCartOpen(false);
-    navigate("/checkout", { replace: false });
+    navigate(
+      Object.entries(user).length === 0
+        ? "/login?routePath=checkout"
+        : "/checkout",
+      { replace: false }
+    );
   };
 
   useEffect(() => {

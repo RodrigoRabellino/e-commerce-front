@@ -12,10 +12,9 @@ import {
   Grid,
   Container,
 } from "@mui/material";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@emotion/react";
-import { validationSchema } from "./validationSchema";
 import { useFormik } from "formik";
 import { loginUserReducer } from "../../Redux/user/slice";
 import { loginUser } from "../../services/loginServices";
@@ -28,6 +27,9 @@ export default function Login() {
   const dispatch = useDispatch();
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const routePath = params.get("routePath");
+
   const categoryBtnStyles = {
     bgcolor: "primary.main",
     border: `1px solid ${theme.palette.primary.light}`,
@@ -43,7 +45,7 @@ export default function Login() {
     const response = await loginUser(email, password);
     if (Object.entries(response).length === 0) return setError(true);
     dispatch(loginUserReducer(response));
-    navigate("/welcome", { replace: true });
+    navigate(!routePath ? "/welcome" : `/${routePath}`, { replace: true });
   };
 
   const formik = useFormik({
@@ -57,15 +59,13 @@ export default function Login() {
 
   return (
     <>
-      <Container justifyContent="center">
+      <Container sx={{ paddingY: "2rem", mt: "64px" }}>
         <Grid
           container
           component="main"
           className="borderform"
           sx={{
-            height: "100vh",
             width: "100%",
-            marginTop: "13rem",
             marginBottom: "4rem",
           }}
         >
