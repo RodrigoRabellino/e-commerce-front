@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate } from "react-router-dom";
-import "./NavBar.css";
+import "./navBar.css";
 import { useSelector } from "react-redux";
 import { stringAvatar } from "./Navbar";
 import { useTheme } from "@emotion/react";
