@@ -25,6 +25,7 @@ const MyRoutes = ({ type }) => {
       <Route path="/contact" element={<ContactUs />} />
       <Route path="/userPage" element={<UserPage />} />
       <Route path="/welcome" element={<Welcome />} />
+      <Route path="/*" element={<HomePage />} />
     </Routes>
   );
 };

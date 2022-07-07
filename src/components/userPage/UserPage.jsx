@@ -8,6 +8,8 @@ import {
   IconButton,
   Paper,
   useMediaQuery,
+  Backdrop,
+  CircularProgress,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -34,9 +36,18 @@ const UserPage = () => {
   const [user, setUser] = useState({});
   const [activeTab, setActiveTab] = useState("resume");
   const mediaQuery650 = useMediaQuery("(max-width:650px)");
+
+  // if (_id.length === 0) {
+  //   return
+  // }
+
   useEffect(() => {
+    if (!_id) {
+      return navigate("/", { replace: true });
+    }
     const getUser = async () => {
       const response = await fetchUser(_id, accessToken);
+
       setUser(response);
     };
     getUser();
@@ -75,6 +86,18 @@ const UserPage = () => {
       value: "wishList",
     },
   ];
+
+  if (!_id) {
+    return (
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={true}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    );
+  }
+
   return (
     <Container sx={{ marginTop: "64px", py: "1rem" }}>
       <Box display="flex" flexDirection={mediaQuery650 ? "column" : "row"}>
