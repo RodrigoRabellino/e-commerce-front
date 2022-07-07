@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const Welcome = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  console.log(user);
   setTimeout(() => {
     return navigate("/", { replace: true });
   }, 3000);

@@ -8,10 +8,13 @@ import PaymentForm from "../paymentForm/PaymentForm";
 import ReviewForm from "../reviewForm/ReviewForm";
 import AddressForm from "../addressForm/AddressForm";
 import PaymentConfirmation from "../paymentConfirmation/paymentConfirmation";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckOut() {
   const [activeStep, setActiveStep] = useState(0);
   const [orderCreated, setOrderCreated] = useState({});
+  const user = useSelector((state) => state.user);
 
   const steps = [
     "Shipping Address",
@@ -26,6 +29,7 @@ export default function CheckOut() {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+
   function getForms(step) {
     switch (step) {
       case 0:

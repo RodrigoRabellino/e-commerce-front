@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
   const [canCheckout, setCanCheckout] = useState(true);
   const addOneToCart = (item) => {
     dispatch(addOneQty(item));
@@ -31,7 +32,6 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const deleteFromCart = (item) => {
     dispatch(deleteItemCart(item));
   };
-
   const cart = useSelector((state) => state.cart);
 
   let cartTotal = 0;

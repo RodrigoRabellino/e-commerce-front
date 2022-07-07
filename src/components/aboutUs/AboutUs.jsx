@@ -109,7 +109,10 @@ const AboutUs = () => {
             <Box pt="10px">
               <Typography color="white">
                 Soledad{" "}
-                <Typography sx={{ display: { xs: "none", md: "inline" } }}>
+                <Typography
+                  component="span"
+                  sx={{ display: { xs: "none", md: "inline" } }}
+                >
                   Campos
                 </Typography>
               </Typography>
@@ -153,7 +156,10 @@ const AboutUs = () => {
             <Box pt="10px">
               <Typography color="white">
                 Sebastián{" "}
-                <Typography sx={{ display: { xs: "none", md: "inline" } }}>
+                <Typography
+                  component="span"
+                  sx={{ display: { xs: "none", md: "inline" } }}
+                >
                   Sosa
                 </Typography>
               </Typography>
@@ -195,7 +201,10 @@ const AboutUs = () => {
             <Box pt="10px">
               <Typography color="white">
                 Rodrigo{" "}
-                <Typography sx={{ display: { xs: "none", md: "inline" } }}>
+                <Typography
+                  component="span"
+                  sx={{ display: { xs: "none", md: "inline" } }}
+                >
                   Rabellino
                 </Typography>
               </Typography>
@@ -237,7 +246,10 @@ const AboutUs = () => {
             <Box pt="10px">
               <Typography color="white">
                 Juan{" "}
-                <Typography sx={{ display: { xs: "none", md: "inline" } }}>
+                <Typography
+                  component="span"
+                  sx={{ display: { xs: "none", md: "inline" } }}
+                >
                   Arede
                 </Typography>
               </Typography>

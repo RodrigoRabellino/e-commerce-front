@@ -23,15 +23,19 @@ function Footer() {
   };
 
   return (
-    <>
+    <Box sx={{ position: "relative", height: "100vh" }}>
       <Box
         label="cosopum"
         padding="2.5rem"
         paddingBottom="2rem"
         bgcolor="#000000"
         color="#F2DBB8"
-        height="50%"
-        sx={{ position: "absolute", width: "100%" }}
+        sx={{
+          position: "absolute",
+          bottom: "0",
+          width: "100%",
+          height: "100%",
+        }}
       >
         <Container maxWidth="lg">
           <Grid container spacing={4}>
@@ -160,7 +164,7 @@ function Footer() {
           </Grid>
         </Container>
       </Box>
-    </>
+    </Box>
   );
 }
 

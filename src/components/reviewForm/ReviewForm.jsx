@@ -27,7 +27,6 @@ function ReviewForm({ handleNext, handleBack, setOrder }) {
   const handleNewOrder = async () => {
     setIsLoading(true);
     const response = await postNewOrder(_id, accessToken, order, total);
-    console.log(response);
     if (response.status !== "confirmed") {
       setSnackMessage("unknown error occurred");
       setSnackSeverity("error");

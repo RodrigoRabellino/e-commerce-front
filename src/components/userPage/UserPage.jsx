@@ -125,30 +125,31 @@ export const ResumePage = ({ user }) => {
   const { firstName, lastName, email, address, phone } = user;
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Typography variant="h3">{`Welcome ${firstName} ${lastName}`}</Typography>
-        <IconButton>
-          <Edit />
-        </IconButton>
-      </Box>
-      <Box pt="2rem">
-        <Typography variant="h6" textAlign="start">
-          <AlternateEmail /> {email}
-        </Typography>
-        <Typography variant="h6" textAlign="start">
-          <ContactMail /> {address}
-        </Typography>
-        <Typography variant="h6" textAlign="start">
-          <PhoneAndroid />
-          {phone}
-        </Typography>
+      <Box>
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Typography variant="h3">{`Welcome ${firstName} ${lastName}`}</Typography>
+          <IconButton>
+            <Edit />
+          </IconButton>
+        </Box>
+        <Box pt="2rem">
+          <Typography variant="h6" textAlign="start">
+            <AlternateEmail /> {email}
+          </Typography>
+          <Typography variant="h6" textAlign="start">
+            <ContactMail /> {address}
+          </Typography>
+          <Typography variant="h6" textAlign="start">
+            <PhoneAndroid />
+            {phone}
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );
 };
 export const OrdersPage = ({ user }) => {
   const ordersList = user.ordersHistory;
-  console.log(user);
 
   if (ordersList.length === 0)
     return (

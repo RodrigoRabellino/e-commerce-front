@@ -32,9 +32,9 @@ const StorePage = () => {
 
   const theme = useTheme();
 
-  const handleToggleView = (newValue) => {
-    console.log(newValue);
-  };
+  // const handleToggleView = (newValue) => {
+  //   console.log(newValue);
+  // };
 
   const params = useParams();
 

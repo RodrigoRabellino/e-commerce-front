@@ -210,8 +210,8 @@ const HomePage = () => {
                   color={theme.palette.text.primary}
                   variant="subtitle1"
                 >
-                  Our delivery service is as fast as you have ever imagined. get
-                  your products at home within 72hs of buying
+                  Our delivery service is as fast as you have ever imagined. Get
+                  your products at home within 72hs of purchase!
                 </Typography>
               </Grid>
               {/* <Divider orientation="vertical" flexItem>
@@ -241,7 +241,7 @@ const HomePage = () => {
                   variant="subtitle1"
                 >
                   If there's any problem with your order transaction you will be
-                  reimbursed for 100% of your total purchase
+                  reimbursed for 100% of your purchase total
                 </Typography>
               </Grid>
             </Grid>

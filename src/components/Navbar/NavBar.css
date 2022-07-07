@@ -3,8 +3,43 @@
   color: white;
 }
 
+.navStyles {
+  font-size:1rem;
+  font-weight: 500;
+  transition: 0.2s;
+  
+}
+
+.navStyles:hover{
+  border-bottom: 2px solid #F2DBB8;
+  cursor:pointer;
+}
+
+.hamburguerNavStyles{
+  margin-bottom:2rem;
+  font-size:1rem;
+  font-weight: 500;
+  transition: 0.2s;
+  border-bottom: 2px solid #FCFAF6;
+}
+
+.hamburguerNavStyles:hover{
+  border-bottom: 2px solid #ab832a;
+  cursor:pointer;
+}
+
 .navLink:hover{
   color: white;
+}
+
+.logo{
+  transition:0.2s;
+}
+
+.logo:hover{
+  transition:0.2s;
+transform:rotate(45deg);
+cursor: pointer;
 }
 
 .cartCounter{
@@ -18,5 +53,4 @@
 }
 .appbarsolid{
   background: #ab832a;
-
 }

@@ -70,7 +70,10 @@ function Navbar() {
   const stringAvatar = (firstName, lastName) => {
     return {
       sx: {
-        bgcolor: "#eaeaea",
+        backgroundColor: "#FCFAF6",
+        color: theme.palette.primary.main,
+        fontWeight: 500,
+        border: `1px solid ${theme.palette.primary.main}`,
       },
       children: `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`,
     };
@@ -86,16 +89,6 @@ function Navbar() {
   window.addEventListener("scroll", changeBackground);
 
   const pathName = window.location.pathname;
-
-  const navStyles = {
-    fontSize: "0.9rem",
-    fontWeight: "500",
-    transition: "0.2s",
-    borderBottom: `2px solid ${theme.palette.primary.main}`,
-    ":hover": {
-      borderBottom: `2px solid ${theme.palette.primary.light}`,
-    },
-  };
 
   const notTransparentNav = [
     "login",
@@ -174,7 +167,8 @@ function Navbar() {
                     <Typography
                       onClick={openPopover}
                       variant="button"
-                      sx={{ ...navStyles, "&:hover": { cursor: "pointer" } }}
+                      className="navStyles"
+                      // sx={{ ...navStyles, "&:hover": { cursor: "pointer" } }}
                     >
                       Categories
                     </Typography>
@@ -201,14 +195,6 @@ function Navbar() {
                               fontWeight="500"
                               onClick={() => {
                                 handleAllProducts();
-                              }}
-                              sx={{
-                                borderBottom: "thick double white",
-                                transition: "0.2s",
-                                "&:hover": {
-                                  cursor: "pointer",
-                                  borderBottom: `thick double ${theme.palette.primary.main}`,
-                                },
                               }}
                             >
                               ALL PRODUCTS
@@ -244,12 +230,12 @@ function Navbar() {
                         })}
                       </Box>
                     </Popover>
-                    <Typography variant="button" sx={{ ...navStyles }}>
+                    <Typography variant="button">
                       <Link to="/contact" className="navLink">
-                        Contact Us
+                        Contact
                       </Link>
                     </Typography>
-                    <Typography variant="button" sx={{ ...navStyles }}>
+                    <Typography variant="button">
                       <Link to="/about" className="navLink">
                         About
                       </Link>
@@ -263,7 +249,7 @@ function Navbar() {
                     {Object.entries(user).length === 0 ? (
                       <>
                         <Box>
-                          <Typography variant="button" sx={{ ...navStyles }}>
+                          <Typography variant="button">
                             <Link to="/login" className="hover navLink">
                               Login
                             </Link>
@@ -302,25 +288,6 @@ function Navbar() {
                           color="background"
                         />
                       </Badge>
-
-                      {/* <Box
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                        sx={{
-                          position: "relative",
-                          right: "13px",
-                          bottom: "5px",
-                          width: "15px",
-                          height: "15px",
-                          border: `1px solid ${theme.palette.primary.light}`,
-                          borderRadius: "100%",
-                          fontSize: "12px",
-                          backgroundColor: "secondary.main",
-                        }}
-                      >
-                        {cartQty}
-                      </Box> */}
                     </Box>
                   </Box>
                 </>
