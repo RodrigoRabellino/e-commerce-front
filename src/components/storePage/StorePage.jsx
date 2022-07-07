@@ -20,7 +20,7 @@ import ProductCard from "./productCard/ProductCard";
 import { Container } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import "./StorePage.css";
+import "./storePage.css";
 import { titleStyles } from "../muiStyles/muiStyles";
 
 const StorePage = () => {

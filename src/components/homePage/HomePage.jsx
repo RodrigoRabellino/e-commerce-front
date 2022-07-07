@@ -16,7 +16,7 @@ import { useTheme } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
 import { titleStyles, subTitleStyles } from "../muiStyles/muiStyles";
 
-import "./HomePage.css";
+import "./homePage.css";
 import SlickCarousel from "./SlickCarousel";
 
 const HomePage = () => {

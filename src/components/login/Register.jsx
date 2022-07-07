@@ -1,4 +1,4 @@
-import "./Login.css";
+import "./login.css";
 import { useFormik } from "formik";
 import { validationSchema } from "./validationSchema";
 

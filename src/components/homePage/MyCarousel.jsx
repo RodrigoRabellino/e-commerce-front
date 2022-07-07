@@ -1,7 +1,7 @@
 import React from "react";
 import { Slide } from "react-slideshow-image";
 import { Box } from "@mui/system";
-import "./MyCarousel.css";
+import "./myCarousel.css";
 import "react-slideshow-image/dist/styles.css";
 
 const properties = {
