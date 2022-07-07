@@ -170,10 +170,11 @@ function Navbar() {
                   >
                     <Typography
                       variant="button"
-                      className="navStyles"
                       onClick={() => setCategoriesOpen((prev) => !prev)}
                     >
-                      Categories
+                      <Link to="" className="navLink navStyles">
+                        Categories
+                      </Link>
                     </Typography>
                     <Collapse
                       in={categoriesOpen}

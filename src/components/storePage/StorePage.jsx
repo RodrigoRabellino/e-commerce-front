@@ -18,7 +18,6 @@ import {
 import { ViewList, ViewModule } from "@mui/icons-material";
 import ProductCard from "./productCard/ProductCard";
 import { Container } from "@mui/system";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./storePage.css";
 import { titleStyles } from "../muiStyles/muiStyles";
@@ -62,7 +61,6 @@ const StorePage = () => {
     switch (params.categoryName) {
       case "allproducts":
         return "https://i.ibb.co/j3DW9S1/header-all-1.jpg";
-
       case "accesories":
         return "https://i.ibb.co/LJBrFsL/header-accesories-2.webp";
       case "effects":
@@ -74,6 +72,8 @@ const StorePage = () => {
       case "acoustic":
         return "https://i.ibb.co/6gkZ2yr/header-guitar-3.webp";
       case "amplifier":
+        return "https://i.ibb.co/bLjyJbf/header-amp-1.jpg";
+      default:
         return "https://i.ibb.co/bLjyJbf/header-amp-1.jpg";
     }
   };
