@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box, Container, Typography, Button, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { postNewOrder } from "../../services/apiServices";
 import MySnackBar from "../snackBar/MySnackBar";
@@ -55,63 +55,89 @@ function ReviewForm({ handleNext, handleBack, setOrder }) {
   };
   return (
     <>
-      <Container
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Container>
         <Box sx={{ height: "100%", width: "100%" }}>
-          <Typography fontWeight="600" variant="h5">
-            Review your Order
-          </Typography>
-          <Box display="flex" flexDirection="column" marginTop="1rem">
-            {order.cart.map((product) => {
-              return (
-                <Box
-                  key={product._id}
-                  display="flex"
-                  width="100%"
-                  marginBottom="0.65rem"
-                  bgColor="#eaeaea"
-                  justifyContent="space-between"
-                >
-                  <Typography
-                    sx={{ fontFamily: "number" }}
-                  >{`${product.qty}-${product.name}`}</Typography>
-                  <Typography sx={{ fontFamily: "number" }}>
-                    U$S {product.price}
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography fontWeight="600" variant="h5" mb={5}>
+                Review your Order
+              </Typography>
+            </Grid>
+            <Grid container xs={12} justifyContent="center">
+              {order.cart.map((product) => {
+                return (
+                  <Grid
+                    item
+                    xs={12}
+                    mb={2}
+                    display="flex"
+                    justifyContent="space-between"
+                  >
+                    <Grid container>
+                      <Grid item xs={2}>
+                        <Typography variant="span" fontFamily="number">
+                          {product.qty} x
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={8}>
+                        <Typography variant="span"> {product.name}</Typography>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Box>
+                          <Typography
+                            variant="span"
+                            sx={{ fontFamily: "number" }}
+                          >
+                            U$S {product.price}
+                          </Typography>
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                );
+              })}
+
+              {/* <Box display="flex" flexDirection="column" marginTop="1rem"> */}
+
+              {/* </Box> */}
+              <Grid container justifyContent="space-between" mb={5}>
+                <Grid item xs={2}>
+                  <Typography fontWeight="600" fontSize="1.3rem">
+                    Total:
                   </Typography>
-                </Box>
-              );
-            })}
-          </Box>
-          <Box display="flex" marginTop="1rem" justifyContent="end">
-            <Box display="flex" justifyContent="space-between" width="50%">
-              <Typography fontWeight="600" fontSize="1.3rem">
-                Total:
-              </Typography>
-              <Typography
-                fontWeight="600"
-                fontSize="1.3rem"
-                sx={{ fontFamily: "number" }}
-              >
-                {order.cart.forEach((item) => (total += item.qty * item.price))}
-                U$S {total}
-              </Typography>
-            </Box>
-          </Box>
-          <Box sx={{ marginY: "1rem" }}>
-            <Typography variant="h6">Address</Typography>
-            <Typography>
-              {order.shippingDetails.addressLine}
-              {order.shippingDetails.addressLine2}
-            </Typography>
-            <Typography>
-              {order.shippingDetails.state}, {order.shippingDetails.city}
-            </Typography>
-          </Box>
+                </Grid>
+                <Grid item xs={2}>
+                  <Typography
+                    fontWeight="600"
+                    fontSize="1.3rem"
+                    sx={{ fontFamily: "number" }}
+                  >
+                    {order.cart.forEach(
+                      (item) => (total += item.qty * item.price)
+                    )}
+                    U$S {total}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+
+            {/* <Box sx={{ marginY: "1rem" }}> */}
+            <Grid container justifyContent="flex-start">
+              <Grid item xs={9} textAlign="left">
+                <Typography variant="h6">Address</Typography>
+
+                <Typography>
+                  {order.shippingDetails.addressLine}
+                  {order.shippingDetails.addressLine2}
+                </Typography>
+
+                <Typography>
+                  {order.shippingDetails.state}, {order.shippingDetails.city}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+
           <Box
             sx={{
               display: "flex",

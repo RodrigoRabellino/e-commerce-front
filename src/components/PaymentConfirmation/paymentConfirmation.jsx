@@ -1,8 +1,10 @@
 import React from "react";
-import { Box, Paper, Typography, Button } from "@mui/material";
+import { Box, Paper, Typography, Button, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function PaymentConfirmation({ order }) {
+  const xs = useMediaQuery("(min-width:0)");
+  const sm = useMediaQuery("(min-width:600px)");
   const buttonStyles = {
     ":hover": { transition: "0.2s", color: "white" },
   };
@@ -10,21 +12,29 @@ function PaymentConfirmation({ order }) {
   const orderName = order._id;
   return (
     <>
-      <Box>
-        <Typography fontWeight="600" variant="h5">
+      <Box mb={2}>
+        <Typography fontWeight="400" variant="h4" mb={2}>
           Thank you for your order.
         </Typography>
-        <Typography variant="h6" marginBottom="2rem">
-          {`Your order number is  #${orderName.substring(0, 10)}. 
-          We have emailed you an order
-          confirmation.We will notify you when your order has been delivered.`}
+        <Typography
+          variant="p"
+          marginBottom="2rem"
+          sx={{ fontSize: { xs: "1rem", sm: "1.3rem" } }}
+        >
+          Your order number is{" "}
+          <Typography variant="span" fontWeight="600" fontFamily="number">
+            #${orderName.substring(0, 10)}
+          </Typography>
+          . We have emailed you an order confirmation.We will notify you when
+          your order has been delivered.
         </Typography>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}
+      >
         <Paper
           sx={{
-            width: "70%",
-            height: "70%",
+            width: { md: "70%", xs: "100%" },
             p: "20px",
             display: "flex",
             justifyContent: "center",
