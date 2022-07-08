@@ -143,7 +143,10 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                     >
                       <Grid item sm={2} p={1} maxHeight="5rem">
                         <img
-                          src={item.imgUrl[0]}
+                          src={
+                            process.env.REACT_APP_IMAGE_HOSTING_URL +
+                            item.imgUrl[0]
+                          }
                           alt=""
                           style={{
                             width: "100%",

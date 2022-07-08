@@ -171,9 +171,27 @@ function Navbar() {
               </Link>
 
               {isMatch ? (
-                <>
+                <Box display="flex" alignItems="center">
+                  <Box
+                    display="flex"
+                    onClick={() => setIsCartOpen(true)}
+                    sx={{ cursor: "pointer" }}
+                  >
+                    <Badge
+                      badgeContent={cartQty}
+                      color="secondary"
+                      max={99}
+                      overlap="circular"
+                    >
+                      <ShoppingCartIcon
+                        sx={{ paddingTop: 0.1, marginLeft: 2 }}
+                        className="hover navLink"
+                        color="background"
+                      />
+                    </Badge>
+                  </Box>
                   <DrawerNav />
-                </>
+                </Box>
               ) : (
                 <>
                   <Box
