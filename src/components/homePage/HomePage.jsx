@@ -209,7 +209,9 @@ const HomePage = () => {
                   variant="subtitle1"
                 >
                   Our delivery service is as fast as you have ever imagined. Get
-                  your products at home within 72hs of purchase!
+                  your products at home within{" "}
+                  <span style={{ fontFamily: "number" }}>72hs</span> of
+                  purchase!
                 </Typography>
               </Grid>
               {/* <Divider orientation="vertical" flexItem>
@@ -250,13 +252,15 @@ const HomePage = () => {
       <Box className="marqueebutom">
         <p className="giftext">
           <span style={{ display: "inline-block", marginRight: "20%" }}>
-            Get $85.00 in Bonus Bucks in Fender Player Stratocaster
+            Get <span style={{ fontFamily: "number" }}> $85.00 </span> in Bonus
+            Bucks in Fender Player Stratocaster
           </span>
           <span style={{ display: "inline-block", marginRight: "20%" }}>
             Tidepool with Maple Fingerboard in you buy within the next 48hs!
           </span>
           <span style={{ display: "inline-block", marginRight: "20%" }}>
-            Stay put for the incoming selection of PRS and Marshall products $60
+            Stay put for the incoming selection of PRS and Marshall products{" "}
+            <span style={{ fontFamily: "number" }}>$60</span>
             Bundle Savings in Fishman Loudbox mini BT Songwriter Package with
             Microphone, Stand & Cable!
           </span>

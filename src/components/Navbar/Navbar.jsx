@@ -162,6 +162,7 @@ function Navbar() {
                       width: "25px",
                       // position: "relative",
                       // transform: "rotate(25deg)",
+                      marginBottom: "0.6rem",
                     }}
                     srcSet={require("../../assets/images/guitarreroWithe.png")}
                     alt={"cardLog0"}

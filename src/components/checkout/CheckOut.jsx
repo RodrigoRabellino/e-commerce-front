@@ -8,10 +8,15 @@ import PaymentForm from "../paymentForm/PaymentForm";
 import ReviewForm from "../reviewForm/ReviewForm";
 import AddressForm from "../addressForm/AddressForm";
 import PaymentConfirmation from "../PaymentConfirmation/paymentConfirmation";
+import { Container, StepIcon } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function CheckOut() {
   const [activeStep, setActiveStep] = useState(0);
   const [orderCreated, setOrderCreated] = useState({});
+
+  const xs = useMediaQuery("(min-width:0)");
+  const sm = useMediaQuery("(min-width:600px)");
 
   const steps = [
     "Shipping Address",
@@ -53,40 +58,50 @@ export default function CheckOut() {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100vw",
-        height: "100vh",
-        maxHeight: "1000px",
-        mt: "64px",
-        paddingTop: "2rem",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "center",
-      }}
-    >
-      <Box width="900px" marginBottom="1rem">
-        <Stepper activeStep={activeStep}>
-          {steps.map((step, index) => {
-            return (
-              <Step key={step}>
-                <StepLabel>{step}</StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
-      </Box>
-      <Paper
+    <Container>
+      <Box
         sx={{
-          borderRadius: "15px",
-          backgroundColor: "white",
-          p: "2rem",
-          width: "900px",
+          margin: "auto",
+          width: "100%",
+          maxWidth: "800px",
+          height: "100vh",
+          maxHeight: "1000px",
+          mt: "64px",
+          paddingTop: "2rem",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "start",
+          alignItems: "center",
         }}
       >
-        {getForms(activeStep)}
-      </Paper>
-    </Box>
+        <Box width="100%" marginBottom="1rem" sx={{ flexShrink: 1 }}>
+          <Stepper activeStep={activeStep}>
+            {sm ? (
+              steps.map((step, index) => {
+                return (
+                  <Step key={step}>
+                    <StepLabel>{step}</StepLabel>
+                  </Step>
+                );
+              })
+            ) : (
+              <Step key={activeStep}>
+                <StepLabel>- {steps[activeStep]} </StepLabel>
+              </Step>
+            )}
+          </Stepper>
+        </Box>
+        <Paper
+          sx={{
+            borderRadius: "15px",
+            backgroundColor: "white",
+            p: "2rem",
+            width: "100%",
+          }}
+        >
+          {getForms(activeStep)}
+        </Paper>
+      </Box>
+    </Container>
   );
 }

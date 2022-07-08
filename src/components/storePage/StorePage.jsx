@@ -60,7 +60,7 @@ const StorePage = () => {
   const categoryHeader = () => {
     switch (params.categoryName) {
       case "allproducts":
-        return "https://i.ibb.co/j3DW9S1/header-all-1.jpg";
+        return "https://i.ibb.co/Bn5ppX0/pexels-pixabay-417451.jpg";
       case "accesories":
         return "https://i.ibb.co/LJBrFsL/header-accesories-2.webp";
       case "effects":

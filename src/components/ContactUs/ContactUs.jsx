@@ -247,6 +247,7 @@ function ContactUs() {
                 <img srcSet={imgGuitarStore} alt="" className="imgcontactUs" />
               </Box>
               <Divider sx={{ mr: "1rem" }} />
+<<<<<<< HEAD
               <Grid container>
                 <Grid item xs={12} md={6}>
                   <Typography variant="subtitle1" textAlign="left">
@@ -277,6 +278,61 @@ function ContactUs() {
                     <LinkedInIcon sx={iconStyles} />
                   </Box>
                 </Grid>
+=======
+              <Grid
+                container
+                columns={16}
+                mb={5}
+                sx={{
+                  width: { xs: "80%", md: "100%" },
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    width: "100%",
+                    ml: "-12px",
+                    paddingY: 1,
+                  }}
+                >
+                  <Grid item xs={1}>
+                    <LocationOnIcon sx={{ paddingTop: "0.3rem" }} />
+                  </Grid>
+                  <Grid item xs={7}>
+                    <Typography variant="subtitle1" textAlign="left">
+                      <span style={{ fontFamily: "number" }}>742</span>{" "}
+                      Evergreen Terrace
+                    </Typography>
+                    <Typography variant="subtitle1" textAlign="left">
+                      Open:
+                      <span style={{ fontFamily: "number" }}>9:00-18:00</span>
+                    </Typography>
+                  </Grid>
+
+                  <Grid item xs={1}>
+                    <EmailIcon sx={{ paddingTop: "0.3rem" }} />
+                    <LocalPhoneIcon sx={{ paddingTop: "0.3rem" }} />
+                  </Grid>
+
+                  <Grid item xs={7}>
+                    <Typography variant="subtitle1" textAlign="left">
+                      Guitarrero@ha.com
+                    </Typography>
+                    <Typography variant="subtitle1" textAlign="left">
+                      <span style={{ fontFamily: "number" }}>55523156</span>
+                    </Typography>
+                    <Box
+                      paddingTop="1.4rem"
+                      sx={{ display: "flex", justifyContent: "space-between" }}
+                    >
+                      <InstagramIcon sx={iconStyles} />
+                      <GitHubIcon sx={iconStyles} />
+                      <TwitterIcon sx={iconStyles} />
+                      <LinkedInIcon sx={iconStyles} />
+                    </Box>
+                  </Grid>
+                </Box>
+>>>>>>> 97d5c52b7073d8d2d4c33abf8f2e23366a1548b7
               </Grid>
             </Grid>
           </Grid>

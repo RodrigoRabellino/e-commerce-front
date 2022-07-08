@@ -34,6 +34,7 @@ import sebaPhoto2 from "../../assets/images/Seba2.jpeg";
 import juanPhoto1 from "../../assets/images/JuanBlanco1.jpg";
 import juanPhoto2 from "../../assets/images/JuanBlanco2.jpg";
 import { subTitleStyles, titleStyles } from "./../muiStyles/muiStyles";
+import { postResetDB } from "../../services/apiServices";
 
 const AboutUs = () => {
   const [hover, setHover] = useState(false);
@@ -73,6 +74,11 @@ const AboutUs = () => {
       transition: "0.5s",
       boxShadow: "3px 3px 5px 0 rgb(0,0,, 0.44)",
     },
+  };
+
+  const handleResetDataBase = async () => {
+    const response = await postResetDB();
+    console.log(response);
   };
   return (
     <>
@@ -346,11 +352,12 @@ const AboutUs = () => {
               pt="10px"
             >
               This e-commerce site is oriented to create the final Hack Academy
-              Bootcamp project. We've worked intensively during 3 weeks, each
-              member dedicated around 190 hours. Our first step, was to do a
-              brainstorming which motivated us to design a MER in Figma. Later
-              on, we started the project following the MER and the to do list
-              implemented in Trello.
+              Bootcamp project. We've worked intensively during{" "}
+              <span style={{ fontFamily: "number" }}>3</span> weeks, each member
+              dedicated around <span style={{ fontFamily: "number" }}>190</span>{" "}
+              hours. Our first step, was to do a brainstorming which motivated
+              us to design a MER in Figma. Later on, we started the project
+              following the MER and the to do list implemented in Trello.
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -361,12 +368,15 @@ const AboutUs = () => {
               variant="h5"
               pt="10px"
             >
-              The app was divided in the following projects: 1-User Interface,
-              2-Admin Site, 3-API Rest. Our main purpose was to create our own
-              brand. We designed the color palette inspired by wood and natural
-              elements. All details and functionalities implemented were the
-              team's own ideas. The spanish guitar was the main inspiration
-              element to design this web experience.
+              The app was divided in the following projects:
+              <span style={{ fontFamily: "number" }}>1-</span> User Interface,
+              <span style={{ fontFamily: "number" }}>2-</span>Admin Site,{" "}
+              <span style={{ fontFamily: "number" }}>3-</span>API Rest. Our main
+              purpose was to create our own brand. We designed the color palette
+              inspired by wood and natural elements. All details and
+              functionalities implemented were the team's own ideas. The spanish
+              guitar was the main inspiration element to design this web
+              experience.
             </Typography>
           </Grid>
         </Grid>
@@ -434,11 +444,12 @@ const AboutUs = () => {
 
                 <Typography pt="30px" variant="body2">
                   Our main challenge was to create and design the whole web
-                  experience in just 3 weeks. At the beginning, we thought that
-                  working from home could limit us from crafting a great
-                  product, but we’ve discovered that our workflow was very fluid
-                  and faster than we actually anticipated, overcoming any
-                  potential obstacles efficiently.
+                  experience in just{" "}
+                  <span style={{ fontFamily: "number" }}>3</span> weeks. At the
+                  beginning, we thought that working from home could limit us
+                  from crafting a great product, but we’ve discovered that our
+                  workflow was very fluid and faster than we actually
+                  anticipated, overcoming any potential obstacles efficiently.
                 </Typography>
               </CardContent>
             </Card>
@@ -566,7 +577,8 @@ const AboutUs = () => {
                   pb: "10px",
                 }}
               >
-                Email: user@user.com / Password:1234
+                Email: user@user.com / Password:
+                <span style={{ fontFamily: "number" }}>1234</span>
               </Typography>
               <Typography
                 sx={{
@@ -599,7 +611,9 @@ const AboutUs = () => {
               >
                 For a better experience, please reset the database:
               </Typography>
-              <Button variant="outlined">Reset DataBase</Button>
+              <Button onClick={handleResetDataBase} variant="outlined">
+                Reset DataBase
+              </Button>
             </Box>
           </Grid>
         </Grid>
