@@ -7,6 +7,7 @@ import {
   Avatar,
   Stack,
   Collapse,
+  Badge,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,9 +16,16 @@ import { useSelector } from "react-redux";
 import { stringAvatar } from "./Navbar";
 import { useTheme } from "@emotion/react";
 import PersonIcon from "@mui/icons-material/Person";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function DrawerNav() {
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const cart = useSelector((state) => state.cart);
+  let cartQty = 0;
+  cart.forEach((item) => {
+    cartQty += item.qty;
+  });
   const stringAvatar = (firstName, lastName) => {
     return {
       sx: {
@@ -206,7 +214,24 @@ function DrawerNav() {
               ABOUT
             </Typography>
           </Stack>
-
+          <Box
+            display="flex"
+            onClick={() => setIsCartOpen(true)}
+            sx={{ cursor: "pointer" }}
+          >
+            <Badge
+              badgeContent={cartQty}
+              color="secondary"
+              max={99}
+              overlap="circular"
+            >
+              <ShoppingCartIcon
+                sx={{ paddingTop: 0.1, marginLeft: 2 }}
+                className="hover navLink"
+                color="primary"
+              />
+            </Badge>
+          </Box>
           <Typography
             variant="h6"
             textAlign="center"
