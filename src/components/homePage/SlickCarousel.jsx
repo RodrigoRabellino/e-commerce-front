@@ -81,7 +81,7 @@ const SlickCarousel = ({ starredProducts }) => {
           <Box
             className="carouselBox"
             key={product.name}
-            onClick={() => navigate(`/product/${product._id}`)}
+            onClick={() => navigate(`/product/${product.slug}`)}
           >
             <Box p={1}>
               <img

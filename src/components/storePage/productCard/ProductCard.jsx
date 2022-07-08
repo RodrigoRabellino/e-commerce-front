@@ -1,23 +1,18 @@
 import {
-  Box,
   Card,
   CardHeader,
   CardMedia,
   Typography,
   Grid,
-  CardContent,
-  Divider,
   useTheme,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product, display }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/product/${product._id}`, { replace: false });
+    navigate(`/product/${product.slug}`, { replace: false });
   };
 
   return (

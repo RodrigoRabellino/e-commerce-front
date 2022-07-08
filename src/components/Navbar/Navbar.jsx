@@ -13,9 +13,11 @@ import {
   Badge,
   Avatar,
   IconButton,
-  Popover,
-  Collapse,
   Stack,
+  Menu,
+  MenuItem,
+  MenuList,
+  ClickAwayListener,
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
@@ -39,18 +41,18 @@ function Navbar() {
   const cart = useSelector((state) => state.cart);
   const products = useSelector((state) => state.products);
   const [categories, setCategories] = useState([]);
-  const [categorySelect, setCategorySelect] = useState([]);
-  const [anchor, setAnchor] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [navbarScroll, setNavbarScroll] = useState(false);
   const [page, setPage] = useState(1);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const openPopover = (e) => {
-    setAnchor(e.currentTarget);
+
+  const handleClose = (e) => {
+    if (e.target.id === "span_categories") return setCategoriesOpen(true);
+    setCategoriesOpen(false);
   };
+  const handleOpen = () => setCategoriesOpen((prev) => !prev);
 
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
@@ -81,6 +83,17 @@ function Navbar() {
       },
       children: `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`,
     };
+  };
+
+  const menuItemStyles = {
+    borderRadius: "0 0 10px 10px",
+    transition: "0.2s",
+    borderBottom: "2px solid rgba(242, 219, 184, 0)",
+    ":hover": {
+      transition: "0.2s",
+      background: "rgba(242, 219, 184, 0.1)",
+      borderBottom: "2px solid rgba(242, 219, 184, 1)",
+    },
   };
 
   const changeBackground = () => {
@@ -169,107 +182,137 @@ function Navbar() {
                     width="35%"
                   >
                     <Typography
+                      id="categories__btn"
+                      name="categories__btn"
                       variant="button"
-                      onClick={() => setCategoriesOpen((prev) => !prev)}
-                    >
-                      <Link to="" className="navLink navStyles">
-                        Categories
-                      </Link>
-                    </Typography>
-                    <Collapse
-                      in={categoriesOpen}
-                      unmountOnExit
-                      sx={{
-                        px: "2rem",
-                        pt: "1rem",
-                        position: "absolute",
-                        top: "64px",
-                        left: "31%",
-                        backgroundColor: "rgba(171, 131, 42,0.8)",
-                        borderRadius: "15px",
-                        backdropFilter: "blur(3px)",
+                      onClick={() => {
+                        handleOpen();
+                        console.log(categoriesOpen);
                       }}
                     >
-                      <Stack>
-                        <Typography
-                          variant="button"
-                          className="navStyles"
-                          onClick={() => {
-                            navigate("/store/allproducts");
-                            setOpenDrawer(false);
+                      <span id="span_categories" className="navLink navStyles">
+                        Categories
+                      </span>
+                    </Typography>
+                    <ClickAwayListener onClickAway={(e) => handleClose(e)}>
+                      <MenuList
+                        variant="menu"
+                        id="categories__menu"
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                        sx={{
+                          display: categoriesOpen ? "flex" : "none",
+                          position: "absolute",
+                          left: "32%",
+                          top: "64px",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            backgroundColor: `${theme.palette.primary.main}`,
+                            py: "1rem",
+                            borderRadius: "15px",
+                            backdropFilter: "blur(5px)",
+
+                            // border: "1px solid rgba(255, 255, 255, 0.2)",
                           }}
                         >
-                          {" "}
-                          ALL PRODUCTS
-                        </Typography>
-                        <Typography
-                          variant="button"
-                          className="navStyles"
-                          onClick={() => {
-                            navigate("/store/accesories");
-                            setOpenDrawer(false);
-                          }}
-                        >
-                          {" "}
-                          ACCESORIES
-                        </Typography>
-                        <Typography
-                          variant="button"
-                          className="navStyles"
-                          onClick={() => {
-                            navigate("/store/effects");
-                            setOpenDrawer(false);
-                          }}
-                        >
-                          {" "}
-                          EFFECTS
-                        </Typography>
-                        <Typography
-                          variant="button"
-                          className="navStyles"
-                          onClick={() => {
-                            navigate("/store/bass");
-                            setOpenDrawer(false);
-                          }}
-                        >
-                          {" "}
-                          BASS
-                        </Typography>
-                        <Typography
-                          variant="button"
-                          className="navStyles"
-                          onClick={() => {
-                            navigate("/store/electric");
-                            setOpenDrawer(false);
-                          }}
-                        >
-                          {" "}
-                          ELECTRIC
-                        </Typography>
-                        <Typography
-                          variant="button"
-                          className="navStyles"
-                          onClick={() => {
-                            navigate("/store/acoustic");
-                            setOpenDrawer(false);
-                          }}
-                        >
-                          {" "}
-                          ACOUSTIC
-                        </Typography>
-                        <Typography
-                          variant="button"
-                          className="navStyles"
-                          onClick={() => {
-                            navigate("/store/amplifier");
-                            setOpenDrawer(false);
-                          }}
-                        >
-                          {" "}
-                          AMPLIFIER
-                        </Typography>
-                      </Stack>
-                    </Collapse>
+                          <MenuItem sx={menuItemStyles}>
+                            <Typography
+                              variant="button"
+                              px="1rem"
+                              onClick={(e) => {
+                                navigate("/store/allproducts");
+                                handleClose(e);
+                              }}
+                            >
+                              {" "}
+                              ALL PRODUCTS
+                            </Typography>
+                          </MenuItem>
+                          <MenuItem sx={menuItemStyles}>
+                            <Typography
+                              variant="button"
+                              px="1rem"
+                              onClick={(e) => {
+                                navigate("/store/accesories");
+                                handleClose(e);
+                              }}
+                            >
+                              {" "}
+                              ACCESORIES
+                            </Typography>
+                          </MenuItem>
+                          <MenuItem sx={menuItemStyles}>
+                            <Typography
+                              variant="button"
+                              px="1rem"
+                              onClick={(e) => {
+                                navigate("/store/effects");
+                                handleClose(e);
+                              }}
+                            >
+                              {" "}
+                              EFFECTS
+                            </Typography>
+                          </MenuItem>
+                          <MenuItem sx={menuItemStyles}>
+                            <Typography
+                              variant="button"
+                              px="1rem"
+                              onClick={(e) => {
+                                navigate("/store/bass");
+                                handleClose(e);
+                              }}
+                            >
+                              {" "}
+                              BASS
+                            </Typography>
+                          </MenuItem>
+                          <MenuItem sx={menuItemStyles}>
+                            <Typography
+                              variant="button"
+                              px="1rem"
+                              onClick={(e) => {
+                                navigate("/store/electric");
+                                handleClose(e);
+                              }}
+                            >
+                              {" "}
+                              ELECTRIC
+                            </Typography>
+                          </MenuItem>
+                          <MenuItem sx={menuItemStyles}>
+                            <Typography
+                              variant="button"
+                              px="1rem"
+                              onClick={(e) => {
+                                navigate("/store/acoustic");
+                                handleClose(e);
+                              }}
+                            >
+                              {" "}
+                              ACOUSTIC
+                            </Typography>
+                          </MenuItem>
+                          <MenuItem sx={menuItemStyles}>
+                            <Typography
+                              variant="button"
+                              px="1rem"
+                              onClick={(e) => {
+                                navigate("/store/amplifier");
+                                handleClose(e);
+                              }}
+                            >
+                              {" "}
+                              AMPLIFIER
+                            </Typography>
+                          </MenuItem>
+                        </Box>
+                      </MenuList>
+                    </ClickAwayListener>
+
                     <Typography variant="button">
                       <Link to="/contact" className="navLink navStyles">
                         Contact

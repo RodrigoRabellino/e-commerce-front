@@ -26,14 +26,14 @@ import { useTheme } from "@emotion/react";
 function ProductDetail() {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { id: slug } = useParams();
   const [selectedProduct, setSelectedProduct] = useState({});
   const [qty, setQty] = useState(1);
   const pathImageUrl = process.env.REACT_APP_IMAGE_HOSTING_URL;
 
   useEffect(() => {
     const getProduct = async () => {
-      const response = await fetchOneProduct(id);
+      const response = await fetchOneProduct(slug);
       setSelectedProduct({ ...response.data });
     };
     getProduct();
