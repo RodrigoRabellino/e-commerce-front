@@ -108,9 +108,9 @@ export default function Login() {
                 alignItems: "center",
               }}
             >
-              <Box>LOGUITO</Box>
+              <Typography variant="h3" marginBottom="4px" color="primary">Welcome</Typography>
 
-              <Typography variant="h4">Sign in</Typography>
+              <Typography variant="h5">Sign in</Typography>
               <Divider></Divider>
               <form onSubmit={formik.handleSubmit}>
                 <TextField
