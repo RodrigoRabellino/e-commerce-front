@@ -32,6 +32,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const getstarredProducts = async () => {
       const response = await fetchStarredProducts();
       setStarredProducts([...response]);

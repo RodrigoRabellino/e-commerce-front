@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Stepper from "@mui/material/Stepper";
@@ -17,6 +17,10 @@ export default function CheckOut() {
 
   const xs = useMediaQuery("(min-width:0)");
   const sm = useMediaQuery("(min-width:600px)");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const steps = [
     "Shipping Address",

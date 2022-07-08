@@ -3,10 +3,16 @@ import { Container } from "@mui/system";
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Welcome = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   setTimeout(() => {
     return navigate("/", { replace: true });
   }, 3000);

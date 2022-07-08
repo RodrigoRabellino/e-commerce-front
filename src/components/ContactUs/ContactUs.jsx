@@ -23,7 +23,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { AddTask } from "@mui/icons-material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import { titleStyles } from "../muiStyles/muiStyles";
 
@@ -34,6 +34,11 @@ function ContactUs() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [open, setOpen] = React.useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleClick = () => {
     setOpen(true);
   };

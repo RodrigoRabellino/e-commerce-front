@@ -80,7 +80,12 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
           flexDirection="column"
           justifyContent="flex-start"
           alignItems="flext-start"
-          sx={{ width: "400px", height: "100%", background: "white" }}
+          sx={{
+            width: "350px",
+            height: "100%",
+            background: "white",
+            overflow: "scroll",
+          }}
         >
           <Grid
             item
@@ -169,7 +174,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                             {item.name}
                           </Typography>
                         </Grid>
-                        <Grid item>
+                        <Grid item xs={6}>
                           <Typography variant="span" color="primary">
                             <RemoveIcon
                               sx={{
@@ -210,7 +215,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                         display="flex"
                         flexDirection="column"
                         justifyContent="space-between"
-                        sm={2}
+                        sm={6}
                         sx={{
                           textAlign: "center",
                         }}

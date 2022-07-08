@@ -18,7 +18,7 @@ import { useFormik } from "formik";
 import { loginUserReducer } from "../../Redux/user/slice";
 import { loginUser } from "../../services/loginServices";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loginValidationSchema } from "./loginValidationSchema";
 
 export default function Login() {
@@ -28,6 +28,10 @@ export default function Login() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const routePath = params.get("routePath");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const categoryBtnStyles = {
     bgcolor: "primary.main",
@@ -108,7 +112,9 @@ export default function Login() {
                 alignItems: "center",
               }}
             >
-              <Typography variant="h3" marginBottom="4px" color="primary">Welcome</Typography>
+              <Typography variant="h3" marginBottom="4px" color="primary">
+                Welcome
+              </Typography>
 
               <Typography variant="h5">Sign in</Typography>
               <Divider></Divider>

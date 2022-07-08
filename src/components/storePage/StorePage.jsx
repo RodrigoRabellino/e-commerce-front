@@ -79,6 +79,7 @@ const StorePage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const getAllProducts = async () => {
       const data = await fetchProducts(page);
       setProducts(data.products);

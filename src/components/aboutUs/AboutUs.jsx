@@ -16,7 +16,7 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -45,6 +45,11 @@ const AboutUs = () => {
     width: { md: "150px", sm: "120px", xs: "75px" },
     height: { md: "150px", sm: "120px", xs: "75px" },
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const avatarStyles = {
     height: "100%",
     width: "100%",

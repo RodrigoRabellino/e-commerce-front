@@ -32,6 +32,8 @@ function ProductDetail() {
   const pathImageUrl = process.env.REACT_APP_IMAGE_HOSTING_URL;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const getProduct = async () => {
       const response = await fetchOneProduct(slug);
       setSelectedProduct({ ...response.data });
@@ -86,12 +88,18 @@ function ProductDetail() {
                   justifyContent: "center",
                 }}
               >
-                <img
-                  alt={`${selectedProduct.name}`}
-                  srcSet={pathImageUrl + selectedProduct.imgUrl[0]}
-                  style={{ ...carouselImgStyles }}
-                />
-                <img
+                {selectedProduct.imgUrl.map((image, i) => {
+                  return (
+                    <img
+                      key={i}
+                      alt={`${selectedProduct.name}`}
+                      srcSet={pathImageUrl + selectedProduct.imgUrl[i]}
+                      style={{ ...carouselImgStyles }}
+                    />
+                  );
+                })}
+
+                {/* <img
                   alt={`${selectedProduct.name}`}
                   srcSet={pathImageUrl + selectedProduct.imgUrl[1]}
                   style={{ ...carouselImgStyles }}
@@ -100,7 +108,7 @@ function ProductDetail() {
                   alt={`${selectedProduct.name}`}
                   srcSet={pathImageUrl + selectedProduct.imgUrl[2]}
                   style={{ ...carouselImgStyles }}
-                />
+                /> */}
               </Box>
             </>
           )}

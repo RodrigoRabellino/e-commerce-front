@@ -19,13 +19,17 @@ import { registerUser } from "../../services/registerServices";
 import { loginUserReducer } from "../../Redux/user/slice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Register() {
   const theme = useTheme();
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleRegister = async ({
     firstName,
