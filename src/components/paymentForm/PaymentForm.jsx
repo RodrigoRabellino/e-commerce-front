@@ -32,9 +32,9 @@ function PaymentForm({ handleNext, handleBack }) {
   const { register, handleSubmit, control } = useForm({
     defaultValues: {
       name: "",
-      cardNumber: "66777677676678",
+      cardNumber: "",
       expiredDate: "",
-      cvv: "323",
+      cvv: "",
     },
   });
 
@@ -144,10 +144,12 @@ function PaymentForm({ handleNext, handleBack }) {
                 name={"cardNumber"}
                 render={({ field: { onChange, value } }) => (
                   <TextField
+                    sx={{ fontFamily: "number" }}
                     disabled={isLoading}
                     variant="standard"
                     fullWidth
                     label="CardNumber*"
+                    placeholder="66777677676678"
                     value={value}
                     onChange={onChange}
                     type="text"
@@ -167,7 +169,7 @@ function PaymentForm({ handleNext, handleBack }) {
                       minDate={new Date()}
                       maxDate={new Date("2034-01-01T00:00:00.000")}
                       label="Expire Date"
-                      views={["year", "month"]}
+                      views={["month", "year"]}
                       value={dateExpired}
                       onChange={(newValue) => setDateExpired(newValue)}
                       renderInput={(params) => (
@@ -187,6 +189,7 @@ function PaymentForm({ handleNext, handleBack }) {
                     disabled={isLoading}
                     variant="standard"
                     label="CVV*"
+                    placeholder="323"
                     fullWidth
                     value={value}
                     onChange={onChange}

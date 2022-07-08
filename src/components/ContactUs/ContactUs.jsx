@@ -272,10 +272,12 @@ function ContactUs() {
                   </Grid>
                   <Grid item xs={7}>
                     <Typography variant="subtitle1" textAlign="left">
-                      742 Evergreen Terrace
+                      <span style={{ fontFamily: "number" }}>742</span>{" "}
+                      Evergreen Terrace
                     </Typography>
                     <Typography variant="subtitle1" textAlign="left">
-                      Open: 9:00-18:00
+                      Open:
+                      <span style={{ fontFamily: "number" }}>9:00-18:00</span>
                     </Typography>
                   </Grid>
 
@@ -289,7 +291,7 @@ function ContactUs() {
                       Guitarrero@ha.com
                     </Typography>
                     <Typography variant="subtitle1" textAlign="left">
-                      55523156
+                      <span style={{ fontFamily: "number" }}>55523156</span>
                     </Typography>
                     <Box
                       paddingTop="1.4rem"

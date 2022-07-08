@@ -67,23 +67,25 @@ function Footer() {
             </Typography>
             <Box marginTop={1}>
               <Box color="inherit" textAlign="left">
-                P. Sherman, calle Wallaby, 42
+                P. Sherman, calle Wallaby,
+                <span style={{ fontFamily: "number" }}> 42</span>
               </Box>
             </Box>
             <Box>
               <Box href="" color="inherit" textAlign="left">
-                Open: 9:00-18:00
+                Open: <span style={{ fontFamily: "number" }}> 9:00-18:00 </span>
               </Box>
             </Box>
 
             <Box marginTop={2}>
               <Box href="" color="inherit" textAlign="left">
-                742 Evergreen Terrace
+                <span style={{ fontFamily: "number" }}>742 </span> Evergreen
+                Terrace
               </Box>
             </Box>
             <Box>
               <Box href="" color="inherit" textAlign="left">
-                Open: 9:00-18:00
+                Open:<span style={{ fontFamily: "number" }}> 9:00-18:00</span>
               </Box>
             </Box>
           </Grid>
@@ -99,12 +101,12 @@ function Footer() {
             </Typography>
             <Box>
               <Box href="" color="inherit" textAlign="left" marginTop={1}>
-                pepe.leia@ha.com
+                Guitarrero@ha.com
               </Box>
             </Box>
             <Box>
               <Box href="" color="inherit" textAlign="left">
-                Cel:55523156
+                Cel:<span style={{ fontFamily: "number" }}>55523156</span>
               </Box>
             </Box>
           </Grid>

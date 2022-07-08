@@ -73,3 +73,10 @@ export const postNewOrder = async (id, accessToken, data, totalPrice) => {
     return error;
   }
 };
+
+export const postResetDB = async () => {
+  try {
+    const response = await axios.post(`${API_URL}/resetDataBase`);
+    return response.data;
+  } catch (error) {}
+};

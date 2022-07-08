@@ -164,7 +164,7 @@ export const ResumePage = ({ user }) => {
           </Typography>
           <Typography variant="h6" textAlign="start">
             <PhoneAndroid />
-            {phone}
+            <span style={{ fontFamily: "number" }}>{phone}</span>
           </Typography>
         </Box>
       </Box>
@@ -274,10 +274,12 @@ export const OrdersPage = ({ user }) => {
                 <Typography textOverflow="ellipsis" fontWeight="700">
                   Total:
                 </Typography>
-                <Typography
-                  textOverflow="ellipsis"
-                  fontWeight="700"
-                >{`U$S${totalPrice}`}</Typography>
+                <Typography textOverflow="ellipsis" fontWeight="700">
+                  {" "}
+                  <span
+                    style={{ fontFamily: "number" }}
+                  >{`U$S${totalPrice}`}</span>
+                </Typography>
               </Box>
             </Box>
             <Divider>Payment Details</Divider>
@@ -295,7 +297,12 @@ export const OrdersPage = ({ user }) => {
                 />
               </Box>
               <Box display="flex" flexDirection="column" alignItems="flex-end">
-                <Typography>Card N*: xxxx-xxxx-xxxx-4555</Typography>
+                <Typography>
+                  Card N*:{" "}
+                  <span style={{ fontFamily: "number" }}>
+                    xxxx-xxxx-xxxx-4555
+                  </span>{" "}
+                </Typography>
                 <Typography>
                   {user.firstName} {user.lastName}
                 </Typography>
@@ -304,7 +311,8 @@ export const OrdersPage = ({ user }) => {
             </Box>
             <Divider />
             <Typography variant="overline" color="secondary">
-              ®Guitarrero | P. Sherman, Wallaby St, 42
+              ®Guitarrero | P. Sherman, Wallaby St,{" "}
+              <span style={{ fontFamily: "number" }}>42</span>
             </Typography>
           </Paper>
         );
