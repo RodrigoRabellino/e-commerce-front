@@ -7,14 +7,11 @@ import StepLabel from "@mui/material/StepLabel";
 import PaymentForm from "../paymentForm/PaymentForm";
 import ReviewForm from "../reviewForm/ReviewForm";
 import AddressForm from "../addressForm/AddressForm";
-import PaymentConfirmation from "../paymentConfirmation/paymentConfirmation";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import PaymentConfirmation from "../PaymentConfirmation/paymentConfirmation";
 
 export default function CheckOut() {
   const [activeStep, setActiveStep] = useState(0);
   const [orderCreated, setOrderCreated] = useState({});
-  const user = useSelector((state) => state.user);
 
   const steps = [
     "Shipping Address",

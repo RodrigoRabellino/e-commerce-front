@@ -11,11 +11,9 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate } from "react-router-dom";
-import "./navBar.css";
+import "./NavBar.css";
 import { useSelector } from "react-redux";
-import { stringAvatar } from "./Navbar";
 import { useTheme } from "@emotion/react";
-import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function DrawerNav() {

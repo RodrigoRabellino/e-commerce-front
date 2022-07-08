@@ -7,7 +7,7 @@ import ProductDetail from "./components/productDetail/ProductDetail";
 import AboutUs from "./components/aboutUs/AboutUs";
 import StorePage from "./components/storePage/StorePage";
 import CheckOut from "./components/checkout/CheckOut";
-import ContactUs from "./components/contactUs/ContactUs";
+import ContactUs from "./components/ContactUs/ContactUs";
 import UserPage from "./components/userPage/UserPage";
 import Welcome from "./components/login/Welcome";
 

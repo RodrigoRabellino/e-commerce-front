@@ -3,7 +3,6 @@ import {
   Grid,
   Box,
   Typography,
-  Divider,
   Button,
   CssBaseline,
 } from "@mui/material";
@@ -11,12 +10,11 @@ import {
 import React, { useEffect, useState } from "react";
 import { fetchStarredProducts } from "../../services/apiServices";
 import GridCategories from "../gridCategories/GridCategories";
-import MyCarousel from "./MyCarousel";
 import { useTheme } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
 import { titleStyles, subTitleStyles } from "../muiStyles/muiStyles";
 
-import "./homePage.css";
+import "./HomePage.css";
 import SlickCarousel from "./SlickCarousel";
 
 const HomePage = () => {

@@ -19,7 +19,7 @@ import { ViewList, ViewModule } from "@mui/icons-material";
 import ProductCard from "./productCard/ProductCard";
 import { Container } from "@mui/system";
 import { useParams } from "react-router-dom";
-import "./storePage.css";
+import "./StorePage.css";
 import { titleStyles } from "../muiStyles/muiStyles";
 
 const StorePage = () => {

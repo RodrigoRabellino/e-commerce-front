@@ -22,7 +22,7 @@ import {
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DrawerNav from "./DrawerNav";
 import CartDrawer from "./CartDrawer";
-import "./navBar.css";
+import "./NavBar.css";
 import { fetchCategories, fetchProducts } from "../../services/apiServices";
 
 function ElevationScroll(props) {
