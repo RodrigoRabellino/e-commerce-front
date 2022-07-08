@@ -11,7 +11,6 @@ function ExampleCarousel({ selectedProduct }) {
         display: "flex",
         justifyContent: "center",
         alignitems: "center",
-        height: "35rem",
       }}
     >
       {Object.entries(selectedProduct) === 0 ? (
