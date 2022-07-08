@@ -71,6 +71,7 @@ function ContactUs() {
           variant="h3"
           alignItems="center"
           paddingY="5rem"
+          pb="2rem"
           sx={titleStyles}
         >
           Contact Us
@@ -79,10 +80,11 @@ function ContactUs() {
           elevation={5}
           sx={{
             backgroundColor: "white",
-            mb: "100px",
+            p: "2rem",
+            mb: "2rem",
           }}
         >
-          <Grid container spacing={2} columns={16} sx={{ paddingTop: "2rem" }}>
+          <Grid container spacing={2} columns={16}>
             <Grid
               item
               xs={16}
@@ -91,7 +93,7 @@ function ContactUs() {
               flexDirection="column"
               justifyContent="flex-start"
             >
-              <Box paddingTop="0.5rem" paddingLeft="1rem" textAlign="left">
+              <Box paddingTop="0.5rem" textAlign="left">
                 <Typography
                   variant="h5"
                   pb="0.5rem"
@@ -215,8 +217,6 @@ function ContactUs() {
                   flexDirection: "column",
                   justifyContent: "start",
                   alignItems: "start",
-                  py: "0.5rem",
-                  pr: "1rem",
                 }}
               >
                 <Typography variant="h5" fontWeight={700} color="primary">
@@ -242,66 +242,41 @@ function ContactUs() {
                 </Box>
               </Box>
 
-              <Divider sx={{ mr: "1rem" }} />
-              <Box sx={{ pr: "1rem", width: { xs: "100%" } }}>
-                <img
-                  srcSet={imgGuitarStore}
-                  alt=""
-                  className="imgcontactUs"
-                ></img>
+              <Divider />
+              <Box sx={{ width: { xs: "100%" } }}>
+                <img srcSet={imgGuitarStore} alt="" className="imgcontactUs" />
               </Box>
               <Divider sx={{ mr: "1rem" }} />
-              <Grid
-                container
-                columns={16}
-                mb={5}
-                sx={{
-                  width: { xs: "80%", md: "100%" },
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    width: "100%",
-                    ml: "-12px",
-                    paddingY: 1,
-                  }}
-                >
-                  <Grid item xs={1}>
-                    <LocationOnIcon sx={{ paddingTop: "0.3rem" }} />
-                  </Grid>
-                  <Grid item xs={7}>
-                    <Typography variant="subtitle1" textAlign="left">
-                      742 Evergreen Terrace
-                    </Typography>
-                    <Typography variant="subtitle1" textAlign="left">
-                      Open: 9:00-18:00
-                    </Typography>
-                  </Grid>
+              <Grid container>
+                <Grid item xs={12} md={6}>
+                  <Typography variant="subtitle1" textAlign="left">
+                    <LocationOnIcon /> 742 Evergreen Terrace
+                  </Typography>
+                  <Typography variant="subtitle1" textAlign="left">
+                    Open: 9:00-18:00
+                  </Typography>
+                </Grid>
 
-                  <Grid item xs={1}>
-                    <EmailIcon sx={{ paddingTop: "0.3rem" }} />
-                    <LocalPhoneIcon sx={{ paddingTop: "0.3rem" }} />
-                  </Grid>
-
-                  <Grid item xs={7}>
-                    <Typography variant="subtitle1" textAlign="left">
-                      Guitarrero@ha.com
-                    </Typography>
-                    <Typography variant="subtitle1" textAlign="left">
-                      55523156
-                    </Typography>
-                    <Box
-                      paddingTop="1.4rem"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
-                    >
-                      <InstagramIcon sx={iconStyles} />
-                      <GitHubIcon sx={iconStyles} />
-                      <TwitterIcon sx={iconStyles} />
-                      <LinkedInIcon sx={iconStyles} />
-                    </Box>
-                  </Grid>
-                </Box>
+                <Grid item xs={12} md={6}>
+                  <Typography variant="subtitle1" textAlign="left">
+                    <EmailIcon sx={{ paddingTop: "0.3rem" }} />{" "}
+                    Guitarrero@ha.com
+                  </Typography>
+                  <Typography variant="subtitle1" textAlign="left">
+                    <LocalPhoneIcon sx={{ paddingTop: "0.3rem" }} /> 55523156
+                  </Typography>
+                </Grid>
+                <Grid xs={12}>
+                  <Box
+                    paddingTop="1.4rem"
+                    sx={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <InstagramIcon sx={iconStyles} />
+                    <GitHubIcon sx={iconStyles} />
+                    <TwitterIcon sx={iconStyles} />
+                    <LinkedInIcon sx={iconStyles} />
+                  </Box>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
