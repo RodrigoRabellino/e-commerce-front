@@ -212,7 +212,7 @@ function DrawerNav() {
               ABOUT
             </Typography>
           </Stack>
-          <Box
+          {/* <Box
             display="flex"
             onClick={() => setIsCartOpen(true)}
             sx={{ cursor: "pointer" }}
@@ -229,7 +229,7 @@ function DrawerNav() {
                 color="primary"
               />
             </Badge>
-          </Box>
+          </Box> */}
           <Typography
             variant="h6"
             textAlign="center"

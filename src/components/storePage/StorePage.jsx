@@ -152,7 +152,11 @@ const StorePage = () => {
             </Box>
 
             <Box>
-              <Grid container width="100%" justifyContent="space-between">
+              <Grid
+                container
+                width="100%"
+                justifyContent={{ xs: "center", sm: "space-between" }}
+              >
                 {products.map((product) => {
                   return (
                     <ProductCard

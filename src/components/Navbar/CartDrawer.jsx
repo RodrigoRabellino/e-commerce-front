@@ -56,9 +56,9 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
     const canCheckout = () => {
       cart.map((item) => {
         if (item.qty <= item.stock) {
-          setCanCheckout(true);
+          return setCanCheckout(true);
         } else {
-          setCanCheckout(false);
+          return setCanCheckout(false);
         }
       });
     };

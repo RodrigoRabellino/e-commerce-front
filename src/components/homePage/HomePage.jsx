@@ -113,7 +113,7 @@ const HomePage = () => {
 
       <section className="parallax">
         <Box className="parallax-inner" sx={{ marginBottom: "3rem" }}>
-          <h3 className="title-parallax">Lorem Impsum</h3>
+          <h3 className="title-parallax"></h3>
         </Box>
       </section>
 

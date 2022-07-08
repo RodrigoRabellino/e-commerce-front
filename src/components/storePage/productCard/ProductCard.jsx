@@ -99,6 +99,7 @@ const ListView = ({ product, handleNavigate }) => {
             <Grid item xs={10} sx={{ textAlign: "left" }}>
               <Typography
                 sx={{
+                  display: { xs: "none", md: "initial" },
                   textOverflow: "ellipsis",
                   overflow: "hidden",
                   height: "4rem",

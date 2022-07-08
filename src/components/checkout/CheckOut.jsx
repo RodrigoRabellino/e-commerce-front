@@ -71,6 +71,7 @@ export default function CheckOut() {
           height: "100vh",
           maxHeight: "1000px",
           mt: "64px",
+          mb: "64px",
           paddingTop: "2rem",
           display: "flex",
           flexDirection: "column",
