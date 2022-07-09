@@ -1,9 +1,17 @@
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Drawer, Box, Typography, Button, Grid, useTheme } from "@mui/material";
+import {
+  Drawer,
+  Box,
+  Typography,
+  Button,
+  Grid,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -19,6 +27,7 @@ import { useEffect, useState } from "react";
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const matches = useMediaQuery("(min-width: 415px)");
   const user = useSelector((state) => state.user);
   const [canCheckout, setCanCheckout] = useState(true);
   const addOneToCart = (item) => {
@@ -76,7 +85,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
           justifyContent="flex-start"
           alignItems="flext-start"
           sx={{
-            width: "350px",
+            width: matches ? "400px" : "100%",
             height: "100%",
             background: "white",
             overflow: "scroll",
@@ -92,10 +101,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
             }}
           >
             <Box style={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography
-                variant="h4"
-                sx={{ color: theme.palette.primary.main }}
-              >
+              <Typography variant="h4" color="primary">
                 Shopping Cart
               </Typography>
 
@@ -131,106 +137,113 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
               </Box>
             </Box>
           ) : (
-            <Grid container mt={3} sx={{ width: "100%" }}>
+            <Grid container mt={1} sx={{ width: "100%" }}>
               {cart.map((item) => {
                 return (
-                  <div key={item._id}>
+                  <Grid
+                    key={item._id}
+                    container
+                    justifyContent="space-between"
+                    py={1}
+                    spacing={1}
+                  >
                     <Grid
-                      container
-                      justifyContent="space-between"
-                      py={1}
-                      spacing={1}
+                      item
+                      xs={3}
+                      maxHeight="5rem"
                       sx={{
-                        borderBottom: `1px solid ${theme.palette.primary.main}`,
+                        transition: "0.2s",
+                        ":hover": {
+                          cursor: "pointer",
+                          transform: "translate(0,-4px)",
+                        },
+                      }}
+                      onClick={() => {
+                        navigate(`/product/${item.slug}`);
+                        setIsCartOpen(false);
                       }}
                     >
-                      <Grid
-                        item
-                        xs={3}
-                        maxHeight="5rem"
+                      <img
+                        src={
+                          process.env.REACT_APP_IMAGE_HOSTING_URL +
+                          item.imgUrl[0]
+                        }
+                        alt=""
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </Grid>
+
+                    <Grid
+                      item
+                      xs={7}
+                      display="flex"
+                      flexDirection="column"
+                      justifyContent="space-between"
+                      sx={{
+                        ":hover": {
+                          cursor: "pointer",
+                        },
+                      }}
+                      onClick={() => {
+                        navigate(`/product/${item.slug}`);
+                        setIsCartOpen(false);
+                      }}
+                    >
+                      <Typography
+                        variant="p"
+                        color="text"
+                        fontWeight="500"
                         sx={{
                           transition: "0.2s",
                           ":hover": {
-                            cursor: "pointer",
-                            transform: "translate(0,-4px)",
-                          },
-                        }}
-                        onClick={() => {
-                          navigate(`/product/${item.slug}`);
-                          setIsCartOpen(false);
-                        }}
-                      >
-                        <img
-                          src={
-                            process.env.REACT_APP_IMAGE_HOSTING_URL +
-                            item.imgUrl[0]
-                          }
-                          alt=""
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "contain",
-                          }}
-                        />
-                      </Grid>
-
-                      <Grid
-                        item
-                        xs={8}
-                        display="flex"
-                        flexDirection="column"
-                        justifyContent="space-between"
-                        sx={{
-                          ":hover": {
-                            cursor: "pointer",
-                          },
-                        }}
-                        onClick={() => {
-                          navigate(`/product/${item.slug}`);
-                          setIsCartOpen(false);
-                        }}
-                      >
-                        <Typography
-                          variant="p"
-                          color="primary"
-                          sx={{
+                            transform: "translate(0, -4px)",
+                            color: "primary.dark",
                             transition: "0.2s",
-                            ":hover": {
-                              transform: "translate(0, -4px)",
-                              color: "primary.dark",
-                              transition: "0.2s",
-                            },
-                          }}
-                        >
-                          {item.name}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={1}>
-                        <DeleteIcon
-                          sx={{
-                            color: `${theme.palette.primary.main}`,
-                            "&:hover": {
-                              cursor: "pointer",
-                              color: theme.palette.primary.dark,
-                            },
-                          }}
-                          onClick={() => deleteFromCart(item)}
-                        />
-                      </Grid>
-
-                      <Grid
-                        item
-                        xs={6}
-                        display="flex"
-                        alignItems="flex-end"
-                        mb={1}
+                          },
+                        }}
                       >
-                        <Typography variant="span" color="primary">
-                          <RemoveIcon
+                        {item.name}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={2} display="flex" justifyContent="flex-end">
+                      <DeleteIcon
+                        sx={{
+                          color: `${theme.palette.primary.main}`,
+                          transition: "0.2s",
+                          "&:hover": {
+                            transition: "0.2s",
+                            cursor: "pointer",
+                            color: theme.palette.primary.dark,
+                          },
+                        }}
+                        onClick={() => deleteFromCart(item)}
+                      />
+                    </Grid>
+
+                    <Grid
+                      container
+                      sx={{
+                        backgroundColor: "primary.main",
+                        mt: "5px",
+                        p: "5px",
+                        borderRadius: "5px",
+                        border: `1px solid ${theme.palette.primary.light}`,
+                      }}
+                    >
+                      <Grid item xs={6} display="flex" alignItems="center">
+                        <Typography variant="span" color="background.default">
+                          <RemoveCircleOutlineOutlinedIcon
                             sx={{
+                              transition: "0.2s",
+                              mr: 1,
                               "&:hover": {
+                                transition: "0.2s",
                                 cursor: "pointer",
-                                color: theme.palette.primary.dark,
+                                color: theme.palette.primary.light,
                               },
                             }}
                             fontSize="small"
@@ -239,17 +252,20 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                         </Typography>
                         <Typography
                           variant="span"
-                          color="primary"
+                          color="background.default"
                           className="number"
                         >
                           x {item.qty}
                         </Typography>
-                        <Typography variant="span" color="primary">
-                          <AddIcon
+                        <Typography variant="span" color="background.default">
+                          <AddCircleOutlineOutlinedIcon
                             sx={{
+                              transition: "0.2s",
+                              ml: 1,
                               "&:hover": {
+                                transition: "0.2s",
                                 cursor: "pointer",
-                                color: theme.palette.primary.dark,
+                                color: theme.palette.primary.light,
                               },
                             }}
                             fontSize="small"
@@ -268,7 +284,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                         <Typography
                           variant="p"
                           component="span"
-                          color="primary"
+                          color="background.default"
                         >
                           $
                         </Typography>
@@ -276,15 +292,15 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                           variant="p"
                           component="span"
                           align="center"
-                          color="primary"
+                          color="background.default"
                           className="number"
-                          fontSize="1.2rem"
+                          fontSize="1rem"
                         >
                           {item.price * item.qty}
                         </Typography>
                       </Grid>
                     </Grid>
-                  </div>
+                  </Grid>
                 );
               })}
               <Grid
@@ -295,14 +311,14 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                 alignItems="center"
               >
                 <Grid item sx={{ display: "flex", alignItems: "center" }}>
-                  <Typography variant="h6" color="primary">
+                  <Typography variant="h6" color="primary" mr={1}>
                     Total:
                   </Typography>
                   <Typography
                     variant="p"
                     fontSize="1.5rem"
-                    fontWeight="700"
-                    color="primary"
+                    fontWeight="500"
+                    color="text"
                     className="number"
                   >
                     {" "}
