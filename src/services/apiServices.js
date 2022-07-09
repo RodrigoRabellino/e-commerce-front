@@ -41,7 +41,6 @@ export const fetchProductsByCategory = async (categoryName, page) => {
 
 export const fetchCategories = async () => {
   try {
-    console.log("apiservices");
     const response = await axios.get(`${API_URL}/category`);
 
     return response.data;

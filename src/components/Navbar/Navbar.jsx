@@ -206,7 +206,7 @@ function Navbar() {
                       variant="button"
                       onClick={() => {
                         handleOpen();
-                        console.log(categoriesOpen);
+                        // console.log(categoriesOpen);
                       }}
                     >
                       <span id="span_categories" className="navLink navStyles">

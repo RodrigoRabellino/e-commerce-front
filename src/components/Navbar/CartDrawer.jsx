@@ -54,15 +54,10 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
 
   useEffect(() => {
     const canCheckout = () => {
-      cart.map((item) => {
-        if (item.qty <= item.stock) {
-          setCanCheckout(true);
-        } else {
-          setCanCheckout(false);
-        }
-      });
+      return cart.every((item) => item.qty <= item.stock);
     };
     canCheckout();
+    canCheckout() ? setCanCheckout(true) : setCanCheckout(false);
   }, cart);
 
   return (
