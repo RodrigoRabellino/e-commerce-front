@@ -76,7 +76,6 @@ const SlickCarousel = ({ starredProducts }) => {
       {starredProducts.map((product) => {
         const imageUrl =
           process.env.REACT_APP_IMAGE_HOSTING_URL + product.imgUrl[0];
-        console.log(imageUrl);
         return (
           <Box
             className="carouselBox"

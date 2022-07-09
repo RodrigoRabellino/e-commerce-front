@@ -20,7 +20,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchOneProduct } from "../../services/apiServices";
 import { useDispatch } from "react-redux";
-import { addItemToCart, addOneQty, removeOneQty } from "../../Redux/cart/slice";
+import { addItemToCart } from "../../Redux/cart/slice";
 import { useTheme } from "@emotion/react";
 
 function ProductDetail() {
@@ -33,13 +33,12 @@ function ProductDetail() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
     const getProduct = async () => {
       const response = await fetchOneProduct(slug);
       setSelectedProduct({ ...response.data });
     };
     getProduct();
-  }, []);
+  }, [slug]);
 
   const addToCart = () => {
     dispatch(addItemToCart({ ...selectedProduct, qty: qty }));

@@ -13,7 +13,7 @@ import {
   removeOneQty,
 } from "../../Redux/cart/slice";
 import { createOrderReducer } from "../../Redux/order/slice";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
@@ -58,7 +58,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
     };
     canCheckout();
     canCheckout() ? setCanCheckout(true) : setCanCheckout(false);
-  }, cart);
+  }, [cart]);
 
   return (
     <>
@@ -146,7 +146,6 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                     >
                       <Grid
                         item
-                        // xs={12}
                         xs={3}
                         maxHeight="5rem"
                         sx={{
@@ -157,8 +156,8 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                           },
                         }}
                         onClick={() => {
-                          setIsCartOpen(false);
                           navigate(`/product/${item.slug}`);
+                          setIsCartOpen(false);
                         }}
                       >
                         <img
@@ -187,8 +186,8 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                           },
                         }}
                         onClick={() => {
-                          setIsCartOpen(false);
                           navigate(`/product/${item.slug}`);
+                          setIsCartOpen(false);
                         }}
                       >
                         <Typography
