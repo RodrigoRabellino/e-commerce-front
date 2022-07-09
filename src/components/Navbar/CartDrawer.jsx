@@ -148,6 +148,14 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                         // xs={12}
                         xs={3}
                         maxHeight="5rem"
+                        sx={{
+                          transition: "0.2s",
+                          ":hover": {
+                            cursor: "pointer",
+                            transform: "translate(0,-4px)",
+                          },
+                        }}
+                        onClick={() => navigate(`/product/${item.slug}`)}
                       >
                         <img
                           src={
@@ -165,20 +173,36 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
 
                       <Grid
                         item
-                        // xs={12}
                         xs={8}
                         display="flex"
                         flexDirection="column"
                         justifyContent="space-between"
+                        sx={{
+                          ":hover": {
+                            cursor: "pointer",
+                          },
+                        }}
+                        onClick={() => navigate(`/product/${item.slug}`)}
                       >
-                        <Typography variant="p" color="primary">
+                        <Typography
+                          variant="p"
+                          color="primary"
+                          sx={{
+                            transition: "0.2s",
+                            ":hover": {
+                              transform: "translate(0, -4px)",
+                              color: "primary.dark",
+                              transition: "0.2s",
+                            },
+                          }}
+                        >
                           {item.name}
                         </Typography>
                       </Grid>
                       <Grid item xs={1}>
                         <DeleteIcon
                           sx={{
-                            color: "#8C5032",
+                            color: `${theme.palette.primary.main}`,
                             "&:hover": {
                               cursor: "pointer",
                               color: theme.palette.primary.dark,
