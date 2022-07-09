@@ -138,6 +138,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                     <Grid
                       container
                       justifyContent="space-between"
+                      py={1}
                       spacing={1}
                       sx={{
                         borderBottom: `1px solid ${theme.palette.primary.main}`,
@@ -155,7 +156,10 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                             transform: "translate(0,-4px)",
                           },
                         }}
-                        onClick={() => navigate(`/product/${item.slug}`)}
+                        onClick={() => {
+                          setIsCartOpen(false);
+                          navigate(`/product/${item.slug}`);
+                        }}
                       >
                         <img
                           src={
@@ -182,7 +186,10 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                             cursor: "pointer",
                           },
                         }}
-                        onClick={() => navigate(`/product/${item.slug}`)}
+                        onClick={() => {
+                          setIsCartOpen(false);
+                          navigate(`/product/${item.slug}`);
+                        }}
                       >
                         <Typography
                           variant="p"
