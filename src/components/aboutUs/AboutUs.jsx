@@ -4,68 +4,23 @@ import {
   Card,
   CardContent,
   Button,
-  Avatar,
-  Stack,
-  IconButton,
-  Paper,
   Divider,
   Container,
   Grid,
   CssBaseline,
-  image,
   ListItem,
-  ListItemText,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import "./aboutUs.css";
-import JavascriptIcon from "@mui/icons-material/Javascript";
-import CssIcon from "@mui/icons-material/Css";
-import solePhoto1 from "../../assets/images/soleCampos1.jpg";
-import solePhoto2 from "../../assets/images/sole2.jpg";
-import { fontWeight } from "@mui/system";
-import rodriPhoto1 from "../../assets/images/Rodri1.jpeg";
-import rodriPhoto2 from "../../assets/images/Rodri2.jpeg";
-import { Javascript } from "@mui/icons-material";
-import sebaPhoto1 from "../../assets/images/seba.jpeg";
-import sebaPhoto2 from "../../assets/images/Seba2.jpeg";
-import juanPhoto1 from "../../assets/images/JuanBlanco1.jpg";
-import juanPhoto2 from "../../assets/images/JuanBlanco2.jpg";
-import { subTitleStyles, titleStyles } from "./../muiStyles/muiStyles";
+import React, { useEffect } from "react";
+import { titleStyles } from "./../muiStyles/muiStyles";
 import { postResetDB } from "../../services/apiServices";
+import DevsAvatars from "./DevsAvatars";
+import "./aboutUs.css";
 
 const AboutUs = () => {
-  const [hover, setHover] = useState(false);
-  const [hover1, setHover1] = useState(false);
-  const [touch, setTouch] = useState(false);
-  const [touch1, setTouch1] = useState(false);
-  const avatarBoxStyle = {
-    width: { md: "150px", sm: "120px", xs: "75px" },
-    height: { md: "150px", sm: "120px", xs: "75px" },
-  };
-
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, []);
 
-  const avatarStyles = {
-    height: "100%",
-    width: "100%",
-    ":hover": { transition: "0.2s" },
-  };
-
-  const linkStyles = {
-    height: "2rem",
-    transition: "0.2s",
-    p: 0,
-    px: "5px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    ":hover": { transition: "0.2s", transform: "translateY(-5px)" },
-  };
   const cardStyles = {
     backgroundColor: "white",
     transition: "0.2s",
@@ -77,7 +32,7 @@ const AboutUs = () => {
     boxShadow: "3px 3px 5px 0 rgb(0,0,0, 0.22)",
     ":hover": {
       transition: "0.5s",
-      boxShadow: "3px 3px 5px 0 rgb(0,0,, 0.44)",
+      boxShadow: "3px 3px 5px 0 rgb(0,0,0, 0.44)",
     },
   };
 
@@ -85,6 +40,7 @@ const AboutUs = () => {
     const response = await postResetDB();
     console.log(response);
   };
+
   return (
     <>
       <CssBaseline />
@@ -95,199 +51,7 @@ const AboutUs = () => {
           width: "100%",
         }}
       >
-        <Stack
-          className="about-opacity-bg"
-          justifyContent="center"
-          sx={{
-            alignItems: "center",
-          }}
-          direction="row"
-          spacing={2}
-          flexWrap="wrap"
-        >
-          <Box sx={{ ...avatarBoxStyle, cursor: "pointer" }}>
-            <Avatar
-              id="solePhoto1"
-              src={hover ? solePhoto2 : solePhoto1}
-              className="AvatarSole"
-              sx={avatarStyles}
-              alt="Soledad Photo"
-              onMouseOver={() => setHover(true)}
-              onMouseOut={() => setHover(false)}
-
-              // srcSet={require("../../assets/images/soleCampos1.jpg")}
-            />
-            <Box pt="10px">
-              <Typography color="white">
-                Soledad{" "}
-                <Typography
-                  component="span"
-                  sx={{ display: { xs: "none", md: "inline" } }}
-                >
-                  Campos
-                </Typography>
-              </Typography>
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <IconButton
-                  aria-label="LinkedInIcon"
-                  sx={{ color: "white", ...linkStyles }}
-                >
-                  <a href="https://www.linkedin.com/in/soledad-campos-arellano/">
-                    <LinkedInIcon className="logoLinkedin" />
-                  </a>
-                </IconButton>
-                <IconButton
-                  aria-label="GitHubIcon"
-                  sx={{ color: "white", ...linkStyles }}
-                >
-                  <a href="https://github.com/SoleDalia">
-                    <GitHubIcon className="logoGithub" />
-                  </a>
-                </IconButton>
-              </Box>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              ...avatarBoxStyle,
-              cursor: "pointer",
-            }}
-          >
-            <Avatar
-              id="sebaPhoto1"
-              src={touch ? sebaPhoto2 : sebaPhoto1}
-              className="AvatarSeba"
-              sx={avatarStyles}
-              alt="Seba Photo"
-              onMouseOver={() => setTouch(true)}
-              onMouseOut={() => setTouch(false)}
-
-              // srcSet={require("../../assets/images/soleCampos1.jpg")}
-            />
-            <Box pt="10px">
-              <Typography color="white">
-                Sebastián{" "}
-                <Typography
-                  component="span"
-                  sx={{ display: { xs: "none", md: "inline" } }}
-                >
-                  Sosa
-                </Typography>
-              </Typography>
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <IconButton
-                  aria-label="LinkedInIcon"
-                  sx={{ color: "white", ...linkStyles }}
-                >
-                  <a href="https://www.linkedin.com/in/sebastian-sosa-cinotti/">
-                    <LinkedInIcon className="logoLinkedin" />
-                  </a>
-                </IconButton>
-                <IconButton
-                  aria-label="GitHubIcon"
-                  sx={{ color: "white", ...linkStyles }}
-                >
-                  <a href="https://github.com/1986SebastianSosa">
-                    <GitHubIcon className="logoGithub" />
-                  </a>
-                </IconButton>
-              </Box>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              ...avatarBoxStyle,
-              cursor: "pointer",
-            }}
-          >
-            <Avatar
-              sx={avatarStyles}
-              alt="Rodrigo photo"
-              id="rodriPhoto1"
-              src={hover1 ? rodriPhoto2 : rodriPhoto1}
-              className="AvatarRodri"
-              onMouseOver={() => setHover1(true)}
-              onMouseOut={() => setHover1(false)}
-            />
-            <Box pt="10px">
-              <Typography color="white">
-                Rodrigo{" "}
-                <Typography
-                  component="span"
-                  sx={{ display: { xs: "none", md: "inline" } }}
-                >
-                  Rabellino
-                </Typography>
-              </Typography>
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <IconButton
-                  aria-label="LinkedInIcon"
-                  sx={{ color: "white", ...linkStyles }}
-                >
-                  <a href="https://www.linkedin.com/in/rodrigorabellino/">
-                    <LinkedInIcon className="logoLinkedin" />
-                  </a>
-                </IconButton>
-                <IconButton
-                  aria-label="GitHubIcon"
-                  sx={{ color: "white", ...linkStyles }}
-                >
-                  <a href="https://github.com/RodrigoRabellino">
-                    <GitHubIcon className="logoGithub" />
-                  </a>
-                </IconButton>
-              </Box>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              ...avatarBoxStyle,
-              cursor: "pointer",
-            }}
-          >
-            <Avatar
-              sx={avatarStyles}
-              alt="Juan photo"
-              id="JuanPhoto1"
-              src={touch1 ? juanPhoto2 : juanPhoto1}
-              className="AvatarRodri"
-              onMouseOver={() => setTouch1(true)}
-              onMouseOut={() => setTouch1(false)}
-            />
-            <Box pt="10px">
-              <Typography color="white">
-                Juan{" "}
-                <Typography
-                  component="span"
-                  sx={{ display: { xs: "none", md: "inline" } }}
-                >
-                  Arede
-                </Typography>
-              </Typography>
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <IconButton
-                  aria-label="LinkedInIcon"
-                  sx={{ color: "white", ...linkStyles }}
-                >
-                  <a
-                    href="https://www.linkedin.com/in/juanarede/"
-                    target="_blank"
-                  >
-                    <LinkedInIcon className="logoLinkedin" />
-                  </a>
-                </IconButton>
-                <IconButton
-                  aria-label="GitHubIcon"
-                  sx={{ color: "white", ...linkStyles }}
-                >
-                  <a href="https://github.com/juanarede" target="_blank">
-                    <GitHubIcon className="logoGithub" />
-                  </a>
-                </IconButton>
-              </Box>
-            </Box>
-          </Box>
-        </Stack>
+        <DevsAvatars />
       </Box>
       <Box>
         <Typography
@@ -356,13 +120,20 @@ const AboutUs = () => {
               variant="h5"
               pt="10px"
             >
-              This e-commerce site is oriented to create the final Hack Academy
-              Bootcamp project. We've worked intensively during{" "}
-              <span style={{ fontFamily: "number" }}>3</span> weeks, each member
-              dedicated around <span style={{ fontFamily: "number" }}>190</span>{" "}
-              hours. Our first step, was to do a brainstorming which motivated
-              us to design a MER in Figma. Later on, we started the project
-              following the MER and the to do list implemented in Trello.
+              This e-commerce site is oriented to create the final
+              <b> Hack Academy Bootcamp</b> project. We've worked intensively
+              during
+              <b>
+                <span style={{ fontFamily: "number" }}> 3</span> weeks
+              </b>
+              , each member dedicated around
+              <b>
+                {" "}
+                <span style={{ fontFamily: "number" }}>190</span> hours.
+              </b>{" "}
+              Our first step, was to do a brainstorming which motivated us to
+              design a MER in Figma. Later on, we started the project following
+              the MER and the to do list implemented in Trello.
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -374,14 +145,21 @@ const AboutUs = () => {
               pt="10px"
             >
               The app was divided in the following projects:
-              <span style={{ fontFamily: "number" }}>1-</span> User Interface,
-              <span style={{ fontFamily: "number" }}>2-</span>Admin Site,{" "}
-              <span style={{ fontFamily: "number" }}>3-</span>API Rest. Our main
-              purpose was to create our own brand. We designed the color palette
-              inspired by wood and natural elements. All details and
-              functionalities implemented were the team's own ideas. The spanish
-              guitar was the main inspiration element to design this web
-              experience.
+              <b>
+                <span style={{ fontFamily: "number" }}>1-</span> User Interface,
+              </b>
+              <b>
+                <span style={{ fontFamily: "number" }}>2-</span>Admin Site,
+              </b>
+              <b>
+                <span style={{ fontFamily: "number" }}>3-</span>API Rest.
+              </b>
+              Our main purpose was to create our own brand. We designed the
+              color palette inspired by wood and natural elements. All details
+              and functionalities implemented were the
+              <b> team's own ideas. </b>
+              The spanish guitar was the main inspiration element to design this
+              web experience.
             </Typography>
           </Grid>
         </Grid>
@@ -390,12 +168,12 @@ const AboutUs = () => {
         <Grid container mt="50px" mb="20px">
           <Grid item pr={3} xs={12} md={6}>
             <img
+              loading="lazy"
               alt="merEcommerceFront"
               width="100%"
               srcSet={require("../../assets/images/MERe-commerce.png")}
             />
           </Grid>
-
           <Grid item display="flex" flexDirection="column" xs={12} md={6}>
             <Typography fontSize="16px" lineHeight="1.5rem" textAlign="left">
               <Typography fontWeight="600" fontSize="18px" component="span">
@@ -408,7 +186,12 @@ const AboutUs = () => {
               history.
             </Typography>
 
-            <Typography lineHeight="1.5rem" fontSize="16px" textAlign="left">
+            <Typography
+              lineHeight="1.5rem"
+              fontSize="16px"
+              textAlign="left"
+              mt="1rem"
+            >
               <Typography fontWeight="600" fontSize="18px" component="span">
                 2- Admin Site:
               </Typography>
@@ -418,7 +201,12 @@ const AboutUs = () => {
               edit order status.
             </Typography>
 
-            <Typography lineHeight="1.5rem" textAlign="left" fontSize="16px">
+            <Typography
+              lineHeight="1.5rem"
+              textAlign="left"
+              fontSize="16px"
+              mt="1rem"
+            >
               <Typography fontWeight="600" fontSize="18px" component="span">
                 3-API Rest:
               </Typography>
@@ -449,12 +237,15 @@ const AboutUs = () => {
 
                 <Typography pt="30px" variant="body2">
                   Our main challenge was to create and design the whole web
-                  experience in just{" "}
-                  <span style={{ fontFamily: "number" }}>3</span> weeks. At the
-                  beginning, we thought that working from home could limit us
-                  from crafting a great product, but we’ve discovered that our
-                  workflow was very fluid and faster than we actually
-                  anticipated, overcoming any potential obstacles efficiently.
+                  experience in just
+                  <b>
+                    <span style={{ fontFamily: "number" }}> 3</span> weeks.
+                  </b>
+                  At the beginning, we thought that working from home could
+                  limit us from crafting a <b> great product ,</b> but we’ve
+                  discovered that our workflow was very fluid and faster than we
+                  actually anticipated, overcoming any potential obstacles
+                  <b>efficiently </b>.
                 </Typography>
               </CardContent>
             </Card>
@@ -471,12 +262,12 @@ const AboutUs = () => {
                 <Divider />
 
                 <Typography pt="30px" variant="body2">
-                  We defined a sprint per week and we followed the Trello
-                  pendings list to comply accordingly with the corresponding
-                  time frame. We’ve also developed a very cohesive feedback
-                  communication flow, which enhanced our team’s progress
-                  efforts. We’ve also updated Trello continuously to better
-                  picture our desired project goals.
+                  We defined a <b> sprint per week </b>and we followed the
+                  <b> Trello </b> pendings list to comply accordingly with the
+                  corresponding time frame. We’ve also developed a very
+                  <b> cohesive feedback </b> communication flow, which enhanced
+                  our team’s progress efforts. We’ve also updated Trello
+                  continuously to better picture our desired project goals.
                 </Typography>
               </CardContent>
             </Card>
