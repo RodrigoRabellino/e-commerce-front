@@ -376,7 +376,6 @@ function Navbar() {
                               "&:hover": {
                                 transition: "0.2s",
                                 transform: "translateY(-5px)",
-                                backgroundColor: `${theme.palette.primary.main}`,
                               },
                             }}
                           />
