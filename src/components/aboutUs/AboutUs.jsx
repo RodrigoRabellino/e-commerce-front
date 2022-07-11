@@ -18,7 +18,7 @@ import "./aboutUs.css";
 
 const AboutUs = () => {
   useEffect(() => {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, []);
 
   const cardStyles = {
@@ -75,11 +75,11 @@ const AboutUs = () => {
               variant="h5"
               pt="10px"
             >
-              We are a multidisciplinary team of 4 members, who have different
-              academic backgrounds as well as extensive experience in our
-              respective previous fields, which includes sound designing,
-              acting, adinistrative work and entrepreneurial persuits in the
-              fashion industry.
+              We are a multidisciplinary team of <b> 4 members, </b> who have
+              different academic backgrounds as well as
+              <b> extensive experience</b> in our respective previous fields,
+              which includes sound designing, acting, adinistrative work and
+              entrepreneurial persuits in the fashion industry.
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -91,9 +91,10 @@ const AboutUs = () => {
               pt="10px"
             >
               Despite of these past studies not having anything related between
-              them, we have currently created strong ties to pursue & achieve
-              our main goal: to get better in the IT Development world. This
-              will help us renew our job careers sharing knowledge, ideas, etc.
+              them, we have currently <b>created strong ties </b>to pursue &
+              achieve our main goal: <b>to get better</b> in the IT Development
+              world. This will help us renew our job careers sharing knowledge,
+              ideas, etc.
             </Typography>
           </Grid>
         </Grid>
@@ -128,9 +129,8 @@ const AboutUs = () => {
               </b>
               , each member dedicated around
               <b>
-                {" "}
                 <span style={{ fontFamily: "number" }}>190</span> hours.
-              </b>{" "}
+              </b>
               Our first step, was to do a brainstorming which motivated us to
               design a MER in Figma. Later on, we started the project following
               the MER and the to do list implemented in Trello.
@@ -177,13 +177,13 @@ const AboutUs = () => {
           <Grid item display="flex" flexDirection="column" xs={12} md={6}>
             <Typography fontSize="16px" lineHeight="1.5rem" textAlign="left">
               <Typography fontWeight="600" fontSize="18px" component="span">
-                1-User Interface:
+                1-User Interface:{" "}
               </Typography>
-              Clients can login, navigate the site, browse product categories
-              and add or delete items from the shopping cart. They can also pay
-              the order and deliver it (simulation mode). Finally, once they've
-              finished the shopping process, they can also review their order
-              history.
+              Clients can <b>login,</b> navigate the site,<b> browse </b>
+              product categories and <b> add or delete </b> items from the
+              <b> shopping cart.</b> They can also pay the order and deliver it
+              (simulation mode). Finally, once they've finished the shopping
+              process, they can also review their order history.
             </Typography>
 
             <Typography
@@ -193,12 +193,12 @@ const AboutUs = () => {
               mt="1rem"
             >
               <Typography fontWeight="600" fontSize="18px" component="span">
-                2- Admin Site:
+                2- Admin Site:{" "}
               </Typography>
-              This is where administrators have the controls to manage the site.
-              They can view, create, edit and delete products, categories and
-              admins. In addition to this, they can also check order details and
-              edit order status.
+              This is where administrators <b>have the controls</b> to manage
+              the site. They can <b>view, create, edit and delete products,</b>
+              categories and admins. In addition to this, they can also check
+              order details and edit order status.
             </Typography>
 
             <Typography
@@ -208,10 +208,10 @@ const AboutUs = () => {
               mt="1rem"
             >
               <Typography fontWeight="600" fontSize="18px" component="span">
-                3-API Rest:
+                3-API Rest:{" "}
               </Typography>
-              This site is in charge of receiving and sending the requested
-              information.
+              This site is in charge of receiving and sending the
+              <b> requested information.</b>
             </Typography>
           </Grid>
         </Grid>

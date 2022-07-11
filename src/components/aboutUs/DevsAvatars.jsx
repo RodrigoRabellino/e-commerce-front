@@ -62,12 +62,11 @@ const MyAvatar = ({ dev }) => {
   const avatarStyles = {
     height: "100%",
     width: "100%",
-    transition: "0.2s",
-    ":hover": { transition: "0.2s" },
   };
   const linkStyles = {
     height: "2rem",
     transition: "0.2s",
+    color: "white",
     p: 0,
     px: "5px",
     display: "flex",
@@ -78,20 +77,20 @@ const MyAvatar = ({ dev }) => {
   return (
     <Box sx={{ ...avatarBoxStyle, cursor: "pointer" }}>
       <Avatar
-        id="solePhoto1"
         src={hover ? dev.imageTwo : dev.imageOne}
-        className="AvatarSole"
         sx={avatarStyles}
-        alt="Soledad Photo"
+        alt={`${dev.name}`}
         onMouseOver={() => setHover(true)}
         onMouseOut={() => setHover(false)}
       />
       <Box pt="10px">
-        <Typography color="white">{dev.name}</Typography>
+        <Typography color="white" fontWeight="600">
+          {dev.name}
+        </Typography>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <IconButton
-            aria-label="LinkedInIcon"
-            sx={{ color: "white", ...linkStyles }}
+            aria-label="LinkedIn"
+            sx={linkStyles}
             onClick={() => {
               window.open(dev.linkedin, "_blank");
             }}
@@ -99,8 +98,8 @@ const MyAvatar = ({ dev }) => {
             <LinkedIn className="logoLinkedin" />
           </IconButton>
           <IconButton
-            aria-label="GitHubIcon"
-            sx={{ color: "white", ...linkStyles }}
+            aria-label="GitHub"
+            sx={linkStyles}
             onClick={() => {
               window.open(dev.gitHub, "_blank");
             }}
