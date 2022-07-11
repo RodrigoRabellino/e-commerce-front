@@ -3,8 +3,8 @@ import React from "react";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import MyRoutes from "../MyRoutes";
-import NavigationIcon from "@mui/icons-material/Navigation";
 import { useNavigate } from "react-router-dom";
+import GroupIcon from "@mui/icons-material/Group";
 
 const UserMain = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const UserMain = () => {
           onClick={() => navigate("/about")}
         >
           <Fab variant="extended" color="secondary" aria-label="add">
-            <NavigationIcon sx={{ mr: 1 }} />
+            <GroupIcon sx={{ mr: 1 }} />
             About
           </Fab>
         </Box>
