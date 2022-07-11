@@ -311,9 +311,10 @@ const AboutUs = () => {
               variant="h5"
               pt="10px"
             >
-              We are a multidisciplinary team of 4 members, who have different
-              academic backgrounds as well as extensive experience in our
-              respective previous fields, which includes sound designing,
+              We are a multidisciplinary team of
+              <span style={{ fontFamily: "number" }}>4</span> members, who have
+              different academic backgrounds as well as extensive experience in
+              our respective previous fields, which includes sound designing,
               acting, adinistrative work and entrepreneurial persuits in the
               fashion industry.
             </Typography>

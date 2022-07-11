@@ -185,7 +185,10 @@ function Navbar() {
                       overlap="circular"
                     >
                       <ShoppingCartIcon
-                        sx={{ paddingTop: 0.1, marginLeft: 2 }}
+                        sx={{
+                          paddingTop: 0.1,
+                          marginLeft: 2,
+                        }}
                         className="hover navLink"
                         color="background"
                       />
@@ -368,6 +371,14 @@ function Navbar() {
                         >
                           <Avatar
                             {...stringAvatar(user.firstName, user.lastName)}
+                            sx={{
+                              transition: "0.2s",
+                              "&:hover": {
+                                transition: "0.2s",
+                                transform: "translateY(-5px)",
+                                backgroundColor: `${theme.palette.primary.main}`,
+                              },
+                            }}
                           />
                         </IconButton>
                       </>
@@ -385,7 +396,16 @@ function Navbar() {
                         overlap="circular"
                       >
                         <ShoppingCartIcon
-                          sx={{ paddingTop: 0.1, marginLeft: 2 }}
+                          sx={{
+                            paddingTop: 0.1,
+                            marginLeft: 2,
+                            transition: "0.2s",
+                            "&:hover": {
+                              transition: "0.2s",
+                              transform: "translateY(-5px)",
+                              cursor: "pointer",
+                            },
+                          }}
                           className="hover navLink"
                           color="background"
                         />
