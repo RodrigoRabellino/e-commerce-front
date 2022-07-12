@@ -38,7 +38,7 @@ const AddressDialogue = ({ open, setOpen, address, setAddress }) => {
   return (
     <>
       <Dialog open={open} onClose={handleClose} maxWidth="lg">
-        <DialogTitle sx={{ width: "50rem" }}>Edit your address</DialogTitle>
+        <DialogTitle sx={{ width: "40rem" }}>Edit your address</DialogTitle>
         <form
           onSubmit={() => {
             setAddress(formik.values.address);

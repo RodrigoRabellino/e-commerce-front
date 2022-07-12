@@ -85,7 +85,7 @@ function DrawerNav() {
               <IconButton
                 size="small"
                 onClick={() => {
-                  navigate("/userpage", { replace: false });
+                  navigate(`/userpage/${user._id}`, { replace: false });
                   setOpenDrawer(false);
                 }}
               >

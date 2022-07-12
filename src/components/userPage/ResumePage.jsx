@@ -22,7 +22,7 @@ const ResumePage = ({ user }) => {
   const [lastname, setLastname] = useState(user.lastName);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState(user.password);
-  const [address, setAddress] = useState(user.address[0]);
+  const [address, setAddress] = useState(user.address);
   const [phone, setPhone] = useState(user.phone);
   const [open, setOpen] = useState(false);
   const [field, setField] = useState("");
