@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Dialog,
   DialogActions,
@@ -13,24 +12,25 @@ import { updateUser } from "./../../../services/apiServices";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useParams } from "react-router-dom";
-import { dialogueStyle } from "./dialogueStyle";
 
-const FirstnameDialogue = ({ open, setOpen, firstname, setFirstname, id }) => {
+const EmailDialogue = ({ open, setOpen, email, setEmail, id }) => {
   const handleClose = () => setOpen(false);
   const params = useParams();
 
   const validationSchema = yup.object({
-    firstName: yup
-      .string("Enter your firstname")
-      .required("Your firstname is required"),
+    email: yup
+      .string("Enter your email")
+      .required("Your email is required")
+      .email("Please enter a valid email address"),
   });
 
   const formik = useFormik({
     initialValues: {
-      firstName: firstname,
+      email: email,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      console.log(values);
       updateUser(values, params);
       handleClose();
     },
@@ -38,11 +38,11 @@ const FirstnameDialogue = ({ open, setOpen, firstname, setFirstname, id }) => {
 
   return (
     <>
-      <Dialog open={open} onClose={handleClose} maxWidth="lg">
-        <DialogTitle sx={{ width: "100%" }}>Edit your Firstname</DialogTitle>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Edit your email</DialogTitle>
         <form
           onSubmit={() => {
-            setFirstname(formik.values.firstName);
+            setEmail(formik.values.email);
             formik.handleSubmit();
           }}
         >
@@ -51,16 +51,14 @@ const FirstnameDialogue = ({ open, setOpen, firstname, setFirstname, id }) => {
               autoFocus
               fullWidth
               margin="dense"
-              id="firstName"
-              label="Firstname"
-              type="text"
+              id="email"
+              label="email"
+              type="email"
               variant="standard"
-              value={formik.values.firstName}
+              value={formik.values.email}
               onChange={formik.handleChange}
-              error={
-                formik.touched.firstName && Boolean(formik.errors.firstName)
-              }
-              helperText={formik.touched.firstName && formik.errors.firstName}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
             />
           </DialogContent>
           <DialogActions>
@@ -74,4 +72,4 @@ const FirstnameDialogue = ({ open, setOpen, firstname, setFirstname, id }) => {
   );
 };
 
-export default FirstnameDialogue;
+export default EmailDialogue;

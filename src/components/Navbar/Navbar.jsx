@@ -365,9 +365,12 @@ function Navbar() {
                       <>
                         <IconButton
                           size="small"
-                          onClick={() =>
-                            navigate("/userpage", { replace: false })
-                          }
+                          onClick={() => {
+                            console.log("nav ", user);
+                            navigate(`/userpage/${user._id}`, {
+                              replace: false,
+                            });
+                          }}
                         >
                           <Avatar
                             {...stringAvatar(user.firstName, user.lastName)}

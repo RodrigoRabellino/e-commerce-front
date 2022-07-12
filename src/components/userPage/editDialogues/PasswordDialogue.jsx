@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Dialog,
   DialogActions,
@@ -13,24 +12,24 @@ import { updateUser } from "./../../../services/apiServices";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useParams } from "react-router-dom";
-import { dialogueStyle } from "./dialogueStyle";
 
-const FirstnameDialogue = ({ open, setOpen, firstname, setFirstname, id }) => {
+const PasswordDialogue = ({ open, setOpen, password, setPassword, id }) => {
   const handleClose = () => setOpen(false);
   const params = useParams();
 
   const validationSchema = yup.object({
-    firstName: yup
-      .string("Enter your firstname")
-      .required("Your firstname is required"),
+    password: yup
+      .string("Enter your password")
+      .required("Your password is required"),
   });
 
   const formik = useFormik({
     initialValues: {
-      firstName: firstname,
+      password: password,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      console.log(values);
       updateUser(values, params);
       handleClose();
     },
@@ -38,11 +37,10 @@ const FirstnameDialogue = ({ open, setOpen, firstname, setFirstname, id }) => {
 
   return (
     <>
-      <Dialog open={open} onClose={handleClose} maxWidth="lg">
-        <DialogTitle sx={{ width: "100%" }}>Edit your Firstname</DialogTitle>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Edit your Password</DialogTitle>
         <form
           onSubmit={() => {
-            setFirstname(formik.values.firstName);
             formik.handleSubmit();
           }}
         >
@@ -51,16 +49,14 @@ const FirstnameDialogue = ({ open, setOpen, firstname, setFirstname, id }) => {
               autoFocus
               fullWidth
               margin="dense"
-              id="firstName"
-              label="Firstname"
-              type="text"
+              id="password"
+              label="password"
+              type="password"
               variant="standard"
-              value={formik.values.firstName}
+              value={formik.values.password}
               onChange={formik.handleChange}
-              error={
-                formik.touched.firstName && Boolean(formik.errors.firstName)
-              }
-              helperText={formik.touched.firstName && formik.errors.firstName}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
             />
           </DialogContent>
           <DialogActions>
@@ -74,4 +70,4 @@ const FirstnameDialogue = ({ open, setOpen, firstname, setFirstname, id }) => {
   );
 };
 
-export default FirstnameDialogue;
+export default PasswordDialogue;

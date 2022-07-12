@@ -23,7 +23,7 @@ const MyRoutes = ({ type }) => {
       <Route path="/register" element={<Register />} />
       <Route path="/checkout" element={<CheckOut />} />
       <Route path="/contact" element={<ContactUs />} />
-      <Route path="/userPage" element={<UserPage />} />
+      <Route path="/userPage/:id" element={<UserPage />} />
       <Route path="/welcome" element={<Welcome />} />
       <Route path="/*" element={<HomePage />} />
     </Routes>

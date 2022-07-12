@@ -7,21 +7,98 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import FirstnameDialogue from "./editDialogues/FirstnameDialogue";
+import LastnameDialogue from "./editDialogues/LastnameDialogue";
+import EmailDialogue from "./editDialogues/EmailDialogue";
+import PasswordDialogue from "./editDialogues/PasswordDialogue";
+import AddressDialogue from "./editDialogues/AddressDialogue";
+import PhoneDialogue from "./editDialogues/PhoneDialogue";
 
 const ResumePage = ({ user }) => {
-  const { firstName, lastName, email, address, phone } = user;
   const theme = useTheme();
+  const [firstname, setFirstname] = useState(user.firstName);
+  const [lastname, setLastname] = useState(user.lastName);
+  const [email, setEmail] = useState(user.email);
+  const [password, setPassword] = useState(user.password);
+  const [address, setAddress] = useState(user.address[0]);
+  const [phone, setPhone] = useState(user.phone);
   const [open, setOpen] = useState(false);
   const [field, setField] = useState("");
   const handleOpen = () => setOpen(true);
 
+  useEffect(() => {
+    setFirstname(user.firstName);
+    setLastname(user.lastName);
+    setEmail(user.email);
+    setPassword(user.password);
+    setAddress(user.address);
+    setPhone(user.phone);
+  });
+
   const getDialogue = (editField) => {
     switch (editField) {
       case "firstname":
-        return <FirstnameDialogue setOpen={setOpen} open={open} />;
+        return (
+          <FirstnameDialogue
+            setOpen={setOpen}
+            open={open}
+            firstname={firstname}
+            setFirstname={setFirstname}
+            id={user._id}
+          />
+        );
+      case "lastname":
+        return (
+          <LastnameDialogue
+            setOpen={setOpen}
+            open={open}
+            lastname={lastname}
+            setLastname={setLastname}
+            id={user._id}
+          />
+        );
+      case "email":
+        return (
+          <EmailDialogue
+            setOpen={setOpen}
+            open={open}
+            email={email}
+            setEmail={setEmail}
+            id={user._id}
+          />
+        );
+      case "password":
+        return (
+          <PasswordDialogue
+            setOpen={setOpen}
+            open={open}
+            password={password}
+            setPassword={setPassword}
+            id={user._id}
+          />
+        );
+      case "address":
+        return (
+          <AddressDialogue
+            setOpen={setOpen}
+            open={open}
+            address={user.address}
+            setAddress={setAddress}
+            id={user._id}
+          />
+        );
+      case "phone":
+        return (
+          <PhoneDialogue
+            setOpen={setOpen}
+            open={open}
+            phone={phone}
+            setPhone={setPhone}
+            id={user._id}
+          />
+        );
     }
   };
 
@@ -33,17 +110,6 @@ const ResumePage = ({ user }) => {
     borderRadius: "5px",
     backgroundColor: "white",
     display: "flex",
-  };
-  const modalStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
   };
 
   return (
@@ -71,7 +137,7 @@ const ResumePage = ({ user }) => {
               }}
             >
               <Typography variant="p" fontSize="16px" width="100%">
-                {firstName}
+                {user.firstName}
               </Typography>
 
               <EditIcon fontSize="small" color="primary" />
@@ -79,16 +145,28 @@ const ResumePage = ({ user }) => {
           </Grid>
           <Grid item xs={6}>
             <Typography variant="lead">Lastname:</Typography>
-            <Button sx={buttonStyle} onClick={handleOpen}>
+            <Button
+              sx={buttonStyle}
+              onClick={() => {
+                setField("lastname");
+                handleOpen();
+              }}
+            >
               <Typography variant="p" fontSize="16px" width="100%">
-                {lastName}
+                {user.lastName}
               </Typography>
               <EditIcon fontSize="small" color="primary" />
             </Button>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="body2">Email:</Typography>
-            <Button sx={buttonStyle} onClick={handleOpen}>
+            <Button
+              sx={buttonStyle}
+              onClick={() => {
+                setField("email");
+                handleOpen();
+              }}
+            >
               <Typography variant="p" fontSize="16px" width="100%">
                 {email}
               </Typography>
@@ -97,7 +175,13 @@ const ResumePage = ({ user }) => {
           </Grid>
           <Grid item xs={6}>
             <Typography variant="body2">Password:</Typography>
-            <Button sx={buttonStyle} onClick={handleOpen}>
+            <Button
+              sx={buttonStyle}
+              onClick={() => {
+                setField("password");
+                handleOpen();
+              }}
+            >
               <Typography variant="p" fontSize="16px" width="100%">
                 {"password"}
               </Typography>
@@ -106,18 +190,35 @@ const ResumePage = ({ user }) => {
           </Grid>
           <Grid item xs={6}>
             <Typography variant="body2">Address:</Typography>
-            <Button sx={buttonStyle} onClick={handleOpen}>
+            <Button
+              sx={buttonStyle}
+              onClick={() => {
+                setField("address");
+                handleOpen();
+              }}
+            >
               <Typography variant="p" fontSize="16px" width="100%">
-                {address}
+                {user.address}
               </Typography>
               <EditIcon fontSize="small" color="primary" />
             </Button>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="body2">Phone Number:</Typography>
-            <Button sx={buttonStyle} onClick={handleOpen}>
-              <Typography variant="p" fontSize="16px" width="100%">
-                {phone}
+            <Button
+              sx={buttonStyle}
+              onClick={() => {
+                setField("phone");
+                handleOpen();
+              }}
+            >
+              <Typography
+                variant="p"
+                fontSize="16px"
+                width="100%"
+                fontFamily="number"
+              >
+                {user.phone}
               </Typography>
               <EditIcon fontSize="small" color="primary" />
             </Button>
@@ -125,25 +226,6 @@ const ResumePage = ({ user }) => {
         </Grid>
         {getDialogue(field)}
       </Container>
-
-      {/* <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Typography variant="h3">{`Welcome ${firstName} ${lastName}`}</Typography>
-        <IconButton>
-          <Edit />
-        </IconButton>
-      </Box>
-      <Box pt="2rem">
-        <Typography variant="h6" textAlign="start">
-          <AlternateEmail /> {email}
-        </Typography>
-        <Typography variant="h6" textAlign="start">
-          <ContactMail /> {address}
-        </Typography>
-        <Typography variant="h6" textAlign="start">
-          <PhoneAndroid />
-          <span style={{ fontFamily: "number" }}>{phone}</span>
-        </Typography>
-      </Box> */}
     </>
   );
 };
