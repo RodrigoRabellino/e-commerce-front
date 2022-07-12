@@ -227,15 +227,14 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                     <Grid
                       container
                       sx={{
-                        backgroundColor: "primary.main",
                         mt: "5px",
                         p: "5px",
                         borderRadius: "5px",
-                        border: `1px solid ${theme.palette.primary.light}`,
+                        border: `1px solid ${theme.palette.primary.main}`,
                       }}
                     >
                       <Grid item xs={6} display="flex" alignItems="center">
-                        <Typography variant="span" color="background.default">
+                        <Typography variant="span" color="primary.main">
                           <RemoveCircleOutlineOutlinedIcon
                             sx={{
                               transition: "0.2s",
@@ -243,7 +242,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                               "&:hover": {
                                 transition: "0.2s",
                                 cursor: "pointer",
-                                color: theme.palette.primary.light,
+                                color: theme.palette.primary.dark,
                               },
                             }}
                             fontSize="small"
@@ -252,12 +251,12 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                         </Typography>
                         <Typography
                           variant="span"
-                          color="background.default"
+                          color="text"
                           className="number"
                         >
                           x {item.qty}
                         </Typography>
-                        <Typography variant="span" color="background.default">
+                        <Typography variant="span" color="primary.main">
                           <AddCircleOutlineOutlinedIcon
                             sx={{
                               transition: "0.2s",
@@ -265,7 +264,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                               "&:hover": {
                                 transition: "0.2s",
                                 cursor: "pointer",
-                                color: theme.palette.primary.light,
+                                color: theme.palette.primary.dark,
                               },
                             }}
                             fontSize="small"
@@ -281,18 +280,14 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                           textAlign: "right",
                         }}
                       >
-                        <Typography
-                          variant="p"
-                          component="span"
-                          color="background.default"
-                        >
+                        <Typography variant="p" component="span" color="text">
                           $
                         </Typography>
                         <Typography
                           variant="p"
                           component="span"
                           align="center"
-                          color="background.default"
+                          color="text"
                           className="number"
                           fontSize="1rem"
                         >
@@ -331,7 +326,7 @@ const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
                     sx={{
                       height: "2.5rem",
                       width: "100%",
-                      borderRadius: "15px",
+                      borderRadius: "5px",
                       border: `2px solid ${theme.palette.primary.light}`,
                     }}
                     onClick={handleCheckOut}

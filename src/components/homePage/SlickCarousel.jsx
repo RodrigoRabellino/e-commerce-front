@@ -77,12 +77,8 @@ const SlickCarousel = ({ starredProducts }) => {
         const imageUrl =
           process.env.REACT_APP_IMAGE_HOSTING_URL + product.imgUrl[0];
         return (
-          <Box
-            className="carouselBox"
-            key={product.name}
-            onClick={() => navigate(`/product/${product.slug}`)}
-          >
-            <Box p={1}>
+          <Box className="carouselBox" key={product.name}>
+            <Box p={1} onClick={() => navigate(`/product/${product.slug}`)}>
               <img
                 src={
                   !product.imgUrl[0]
@@ -92,7 +88,7 @@ const SlickCarousel = ({ starredProducts }) => {
                 alt={product.name}
               />
             </Box>
-            <Box>
+            <Box onClick={() => navigate(`/product/${product.slug}`)}>
               <Typography
                 variant="h6"
                 fontSize="1.2rem"
