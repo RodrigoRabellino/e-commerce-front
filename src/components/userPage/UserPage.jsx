@@ -11,6 +11,7 @@ import {
   CircularProgress,
   Avatar,
   CssBaseline,
+  Grid,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -102,14 +103,20 @@ const UserPage = () => {
 
   return (
     <Container sx={{ marginTop: "64px", py: "1rem" }}>
-      <Box display="flex" flexDirection={mediaQuery650 ? "column" : "row"}>
-        <Box width={mediaQuery650 ? "100%" : "25%"} alignItems="center">
+      {/* <Box display="flex" flexDirection={mediaQuery650 ? "column" : "row"}> */}
+      {/* <Box width={mediaQuery650 ? "100%" : "25%"} alignItems="center"> */}
+      <Grid container>
+        <Grid item xs={12} md={4}>
           <Stack
             spacing={2}
-            direction={mediaQuery650 ? "row" : "column"}
+            // direction={mediaQuery650 ? "row" : "column"}
             marginY="1rem"
+            alignItems="center"
           >
-            <Typography variant="h6">
+            <Typography
+              variant="h6"
+              // display={!mediaQuery650 ? "block" : "none"}
+            >
               {user.firstName + " " + user.lastName}
             </Typography>
             <IconButton
@@ -131,7 +138,12 @@ const UserPage = () => {
               return (
                 <Button
                   onClick={() => setActiveTab(item.value)}
-                  sx={{ borderRadius: "15px" }}
+                  sx={{
+                    borderRadius: "15px",
+                    width: "100%",
+                    maxWidth: { xs: "300px", md: "100%" },
+                    margin: "auto",
+                  }}
                   disableElevation
                   variant={activeTab === item.value ? "contained" : "outlined"}
                   key={item.value}
@@ -150,17 +162,23 @@ const UserPage = () => {
               <Logout /> LogOut
             </Button>
           </Stack>
-        </Box>
-        <Box
-          width="100%"
-          height="100%"
-          display="flex"
-          flexDirection="column"
-          pl={mediaQuery650 ? "0" : "2rem"}
-        >
-          {getTab(activeTab)}
-        </Box>
-      </Box>
+        </Grid>
+        <Grid item xs={12} md={8}>
+          <Box
+            width="100%"
+            height="100%"
+            display="flex"
+            flexDirection="column"
+            pl="2rem"
+          >
+            {getTab(activeTab)}
+          </Box>
+        </Grid>
+      </Grid>
+
+      {/* </Box> */}
+
+      {/* </Box> */}
     </Container>
   );
 };

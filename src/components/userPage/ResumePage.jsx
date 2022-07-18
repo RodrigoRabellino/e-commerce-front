@@ -123,11 +123,15 @@ const ResumePage = ({ user }) => {
               borderBottom: `1px solid ${theme.palette.primary.main}`,
             }}
           >
-            <Typography variant="h4">
+            <Typography
+              variant="h4"
+              textAlign="center"
+              sx={{ fontSize: { xs: "1.5rem" } }}
+            >
               Manage your Account Information
             </Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Typography variant="body2" mb={1}>
               Firstname:
             </Typography>
@@ -145,7 +149,7 @@ const ResumePage = ({ user }) => {
               <EditIcon fontSize="small" color="primary" />
             </Button>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Typography variant="body2" mb={1}>
               Lastname:
             </Typography>
@@ -162,7 +166,7 @@ const ResumePage = ({ user }) => {
               <EditIcon fontSize="small" color="primary" />
             </Button>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Typography variant="body2" mb={1}>
               Email:
             </Typography>
@@ -179,7 +183,7 @@ const ResumePage = ({ user }) => {
               <EditIcon fontSize="small" color="primary" />
             </Button>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Typography variant="body2" mb={1}>
               Password:
             </Typography>
@@ -196,7 +200,7 @@ const ResumePage = ({ user }) => {
               <EditIcon fontSize="small" color="primary" />
             </Button>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Box mb={1} display="flex" justifyContent="space-between">
               <Typography
                 variant="body2"
@@ -219,7 +223,7 @@ const ResumePage = ({ user }) => {
               <EditIcon fontSize="small" color="primary" />
             </Button>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Box mb={1} display="flex" justifyContent="space-between">
               <Typography
                 variant="body2"

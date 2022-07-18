@@ -37,18 +37,20 @@ const AddressDialogue = ({ open, setOpen, address, setAddress }) => {
 
   return (
     <>
-      <Dialog open={open} onClose={handleClose} maxWidth="lg">
-        <DialogTitle sx={{ width: "40rem" }}>Edit your address</DialogTitle>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle sx={{ width: { xs: "20rem", sm: "30rem", md: "38rem" } }}>
+          Edit your address
+        </DialogTitle>
         <form
           onSubmit={() => {
             setAddress(formik.values.address);
             formik.handleSubmit();
           }}
         >
-          <DialogContent>
+          <DialogContent sx={{ width: "100%" }}>
             <TextField
               autoFocus
-              fullWidth
+              sx={{ width: { xs: "15rem", sm: "25rem", md: "32rem" } }}
               margin="dense"
               id="address"
               label="address"
