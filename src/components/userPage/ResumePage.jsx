@@ -22,10 +22,10 @@ const ResumePage = ({ user }) => {
   const [lastname, setLastname] = useState(user.lastName);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState(user.password);
-  const [address, setAddress] = useState(user.address);
+  const [address, setAddress] = useState([user.address]);
   const [phone, setPhone] = useState(user.phone);
   const [open, setOpen] = useState(false);
-  const [field, setField] = useState("");
+  const [editField, setEditField] = useState("");
   const handleOpen = () => setOpen(true);
 
   useEffect(() => {
@@ -128,11 +128,13 @@ const ResumePage = ({ user }) => {
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="body2">Firstname:</Typography>
+            <Typography variant="body2" mb={1}>
+              Firstname:
+            </Typography>
             <Button
               sx={buttonStyle}
               onClick={() => {
-                setField("firstname");
+                setEditField("firstname");
                 handleOpen();
               }}
             >
@@ -144,11 +146,13 @@ const ResumePage = ({ user }) => {
             </Button>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="lead">Lastname:</Typography>
+            <Typography variant="body2" mb={1}>
+              Lastname:
+            </Typography>
             <Button
               sx={buttonStyle}
               onClick={() => {
-                setField("lastname");
+                setEditField("lastname");
                 handleOpen();
               }}
             >
@@ -159,11 +163,13 @@ const ResumePage = ({ user }) => {
             </Button>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="body2">Email:</Typography>
+            <Typography variant="body2" mb={1}>
+              Email:
+            </Typography>
             <Button
               sx={buttonStyle}
               onClick={() => {
-                setField("email");
+                setEditField("email");
                 handleOpen();
               }}
             >
@@ -174,11 +180,13 @@ const ResumePage = ({ user }) => {
             </Button>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="body2">Password:</Typography>
+            <Typography variant="body2" mb={1}>
+              Password:
+            </Typography>
             <Button
               sx={buttonStyle}
               onClick={() => {
-                setField("password");
+                setEditField("password");
                 handleOpen();
               }}
             >
@@ -189,11 +197,19 @@ const ResumePage = ({ user }) => {
             </Button>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="body2">Address:</Typography>
+            <Box mb={1} display="flex" justifyContent="space-between">
+              <Typography
+                variant="body2"
+                display="inline"
+                sx={{ marginY: "auto" }}
+              >
+                Address:
+              </Typography>{" "}
+            </Box>
             <Button
               sx={buttonStyle}
               onClick={() => {
-                setField("address");
+                setEditField("address");
                 handleOpen();
               }}
             >
@@ -204,11 +220,19 @@ const ResumePage = ({ user }) => {
             </Button>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="body2">Phone Number:</Typography>
+            <Box mb={1} display="flex" justifyContent="space-between">
+              <Typography
+                variant="body2"
+                display="inline"
+                sx={{ marginY: "auto" }}
+              >
+                Phone Number:
+              </Typography>
+            </Box>
             <Button
               sx={buttonStyle}
               onClick={() => {
-                setField("phone");
+                setEditField("phone");
                 handleOpen();
               }}
             >
@@ -224,7 +248,7 @@ const ResumePage = ({ user }) => {
             </Button>
           </Grid>
         </Grid>
-        {getDialogue(field)}
+        {getDialogue(editField)}
       </Container>
     </>
   );

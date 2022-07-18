@@ -13,7 +13,6 @@ import { updateUser } from "./../../../services/apiServices";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useParams } from "react-router-dom";
-import { dialogueStyle } from "./dialogueStyle";
 
 const FirstnameDialogue = ({ open, setOpen, firstname, setFirstname, id }) => {
   const handleClose = () => setOpen(false);

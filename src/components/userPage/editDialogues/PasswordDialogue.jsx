@@ -29,7 +29,6 @@ const PasswordDialogue = ({ open, setOpen, password, setPassword, id }) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
       updateUser(values, params);
       handleClose();
     },
@@ -53,7 +52,6 @@ const PasswordDialogue = ({ open, setOpen, password, setPassword, id }) => {
               label="password"
               type="password"
               variant="standard"
-              value={formik.values.password}
               onChange={formik.handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
