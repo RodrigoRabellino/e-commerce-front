@@ -86,6 +86,7 @@ function Navbar() {
   };
 
   const menuItemStyles = {
+    color: "primary.main",
     borderRadius: "0 0 10px 10px",
     transition: "0.2s",
     borderBottom: "2px solid rgba(242, 219, 184, 0)",
@@ -232,7 +233,7 @@ function Navbar() {
                       >
                         <Box
                           sx={{
-                            backgroundColor: `${theme.palette.primary.main}`,
+                            backgroundColor: `background.default`,
                             py: "1rem",
                             borderRadius: "15px",
                             backdropFilter: "blur(5px)",

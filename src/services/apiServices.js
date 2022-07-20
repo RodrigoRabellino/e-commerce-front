@@ -62,7 +62,6 @@ export const fetchUser = async (id, accessToken) => {
 
 export const updateUser = async (values, params) => {
   try {
-    console.log("pego api services");
     const user = await axios.patch(`${API_URL}/user/${params.id}`, values);
   } catch (error) {
     return error;

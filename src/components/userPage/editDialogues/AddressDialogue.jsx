@@ -29,7 +29,6 @@ const AddressDialogue = ({ open, setOpen, address, setAddress }) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
       updateUser(values, params);
       handleClose();
     },
