@@ -22,7 +22,8 @@ import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { loginValidationSchema } from "./loginValidationSchema";
 import MySnackBar from "../snackBar/MySnackBar";
-import { Google, Twitter } from "@mui/icons-material";
+import { Twitter } from "@mui/icons-material";
+import Google from "../../assets/icons/google_icon.png";
 
 export default function Login() {
   const theme = useTheme();
@@ -77,6 +78,7 @@ export default function Login() {
 
   return (
     <>
+      <CssBaseline />
       <Container sx={{ paddingY: "2rem", mt: "64px" }}>
         <Grid
           container
@@ -87,7 +89,6 @@ export default function Login() {
             marginBottom: "4rem",
           }}
         >
-          <CssBaseline />
           <Grid
             className="background-guitar"
             item
@@ -198,12 +199,11 @@ export default function Login() {
                   </Button>
                 </NavLink>
 
-                <Divider sx={{ paddingTop: "2rem", color: "black" }}>
-                  OR
-                </Divider>
-                <Box paddingBottom={2} paddingTop={1} alignItems="center">
+                <Divider sx={{ py: "2rem", color: "black" }}>OR</Divider>
+                <Box paddingBottom={2} alignItems="center">
                   <Button
                     variant="outlined"
+                    sx={{ color: "text.primary", width: "100%" }}
                     onClick={() =>
                       handleOpenSnack(
                         "this functions is out of scope",
@@ -211,12 +211,18 @@ export default function Login() {
                       )
                     }
                   >
-                    <Google /> Sign in with Google
+                    <img
+                      src={Google}
+                      alt="Google Icon"
+                      style={{ width: "20.92px", marginRight: "5px" }}
+                    />
+                    <span>Sign in with Google</span>
                   </Button>
                 </Box>
                 <Box alignItems="center">
                   <Button
                     variant="outlined"
+                    sx={{ color: "text.primary", width: "100%" }}
                     onClick={() =>
                       handleOpenSnack(
                         "this functions is out of scope",
@@ -224,7 +230,8 @@ export default function Login() {
                       )
                     }
                   >
-                    <Twitter /> Sign in with Twitter
+                    <Twitter sx={{ mr: "5px", color: "#00acee" }} /> Sign in
+                    with Twitter
                   </Button>
                 </Box>
               </form>
