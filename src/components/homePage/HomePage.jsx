@@ -32,7 +32,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     const getstarredProducts = async () => {
       const response = await fetchStarredProducts();
       setStarredProducts([...response]);
@@ -111,9 +111,20 @@ const HomePage = () => {
         </Container>
       </section>
 
-      <section className="parallax">
-        <Box className="parallax-inner" sx={{ marginBottom: "3rem" }}>
-          <h3 className="title-parallax"></h3>
+      <section>
+        <Box
+          className="parallax"
+          sx={{
+            backgroundSize: { xs: "450%", sm: "300%", md: "200%", lg: "100%" },
+          }}
+        >
+          <Box
+            sx={{
+              height: "50vh",
+              width: "100%",
+              marginBottom: "3rem",
+            }}
+          ></Box>
         </Box>
       </section>
 
@@ -144,7 +155,6 @@ const HomePage = () => {
             >
               {<SlickCarousel starredProducts={starredProducts} />}
             </Box>
-            {/* <MyCarousel starredProducts={starredProducts} /> */}
           </Grid>
         </Grid>
 
@@ -175,9 +185,7 @@ const HomePage = () => {
                   local card with awesome benefits and discounts!
                 </Typography>
               </Grid>
-              {/* <Divider orientation="vertical" flexItem>
-                .
-              </Divider> */}
+
               <Grid
                 item
                 xs={12}

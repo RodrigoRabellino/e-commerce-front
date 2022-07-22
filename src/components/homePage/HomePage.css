@@ -99,18 +99,15 @@
 }
 
 .parallax {
-  background: url("../../assets/images/acousticguitarparallax.jpg") repeat fixed
-    70%;
+  background-image: url("../../assets/images/acousticguitarparallax.jpg");
+  background-attachment: fixed;
+  background-position: 30%;
 }
 
-.parallax-inner {
+/* .parallax-inner {
   padding-top: 10%;
   padding-bottom: 10%;
-}
-
-.title-parallax {
-  color: #fff;
-}
+} */
 
 .iconsvg {
   width: 7rem;

@@ -210,7 +210,6 @@ function Navbar() {
                       variant="button"
                       onClick={() => {
                         handleOpen();
-                        // console.log(categoriesOpen);
                       }}
                     >
                       <span id="span_categories" className="navLink navStyles">
@@ -367,7 +366,6 @@ function Navbar() {
                         <IconButton
                           size="small"
                           onClick={() => {
-                            console.log("nav ", user);
                             navigate(`/userpage/${user._id}`, {
                               replace: false,
                             });

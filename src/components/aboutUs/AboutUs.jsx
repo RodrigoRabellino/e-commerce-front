@@ -38,7 +38,6 @@ const AboutUs = () => {
 
   const handleResetDataBase = async () => {
     const response = await postResetDB();
-    console.log(response);
   };
 
   return (

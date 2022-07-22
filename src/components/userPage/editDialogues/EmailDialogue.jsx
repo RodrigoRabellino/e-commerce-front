@@ -30,7 +30,6 @@ const EmailDialogue = ({ open, setOpen, email, setEmail, id }) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
       updateUser(values, params);
       handleClose();
     },

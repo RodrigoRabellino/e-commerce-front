@@ -27,7 +27,6 @@ const PhoneDialogue = ({ open, setOpen, phone, setPhone, id }) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
       updateUser(values, params);
       handleClose();
     },
